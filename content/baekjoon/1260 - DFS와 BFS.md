@@ -21,12 +21,12 @@ author = "JS970"
 - 아래는 DFS와 BFS의 chat GPT코드의 개념이다.
     - DFS
     
-    ![DFS](/content/baekjoon/1260-img/DFS.png?raw=true)
+    ![DFS](/content/baekjoon/DFS.png?raw=true)
     
     - 인접 리스트의 첫 번째 원소부터 접근하여 해당 노드가 visited == false인 경우 그 노드를 시작 노드로 가지는 DFS를 호출한다. 이러한 방식으로 첫 번째 호출된 DFS의 시작 노드에 대한 모든 adjacency list에 대한 탐색을 모두 마치면 함수가 종료된다.
     - BFS
     
-    ![BFS](/content/baekjoon/1260-img/BFS.png?raw=true)
+    ![BFS](/content/baekjoon/BFS.png?raw=true)
     
     - 앞선 DFS는 함수의 재귀 호출을 통해 구현했다면 BFS는 while loop과 queue를 통해 구현했다. start node에서 시작하여 한 번의 루프마다 queue에서 pop을 수행한다. queue에서 pop 된 후 pop된 노드에 대한 인접 리스트를 탐색한다. 인접 리스트의 원소가 visited == false인 경우 해당 노드를 queue에 push한다. 이런 방식으로 queue가 empty가 아니라면 계속해서 while문을 수행한다. queue를 통해 계층 별로 순서에 맞게 탐색하는 BFS를 구현할 수 있다.
 - DFS, BFS와 별개로 본 문제에서 요구한 사항인 방문 가능한 노드가 다수 있을 경우 번호가 작은 노드를 먼저 방문해야 한다는 조건에 따라 adjacency list를 오름차순으로 정렬해 주어야 했다.
