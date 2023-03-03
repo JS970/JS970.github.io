@@ -3,6 +3,7 @@ title = "ANACONDA 환경설정"
 date = 2023-01-25
 [taxonomies]
 tags = ["env setting", "ANACONDA"]
+categories = ["env setting"]
 [extra]
 author = "JS970"
 +++
