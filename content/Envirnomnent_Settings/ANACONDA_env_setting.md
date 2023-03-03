@@ -7,12 +7,6 @@ tags = ["env setting", "ANACONDA"]
 author = "JS970"
 +++
 
-<aside>
-⚠️ 본 글은 Windows 11 기준으로 작성되었음
-
-</aside>
-⚠️ Ubuntu 22.04환경에서의 설정도 별첨했음
-
 # ANACONDA란?
 
 ---
