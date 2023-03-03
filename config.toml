@@ -58,6 +58,7 @@ hard_link_static = false
 taxonomies = [
     # You can enable/disable RSS
     {name = "tags", rss = true},
+    {category = "categories", rss = true}
 ]
 
 # When set to "true", a search index is built from the pages and section
