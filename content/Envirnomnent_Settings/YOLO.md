@@ -3,7 +3,6 @@ title = "YOLO Quickstart"
 date = 2023-01-25
 [taxonomies]
 tags = ["YOLO", "작성중"]
-categories = ["env setting"]
 [extra]
 author = "JS970"
 +++

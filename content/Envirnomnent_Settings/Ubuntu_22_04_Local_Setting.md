@@ -3,7 +3,6 @@ title = "Ubuntu 22.04 local setting"
 date = 2023-02-14
 [taxonomies]
 tags = ["env setting", "Ubuntu"]
-categories = ["env setting"]
 [extra]
 author = "JS970"
 +++

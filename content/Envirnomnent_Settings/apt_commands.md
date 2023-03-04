@@ -3,7 +3,6 @@ title = "apt commands"
 date = 2023-02-14
 [taxonomies]
 tags = ["env setting"]
-categories = ["env setting"]
 [extra]
 author = "JS970"
 +++

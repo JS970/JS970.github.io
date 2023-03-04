@@ -2,7 +2,7 @@
 title = "1260 - DFS와 BFS"
 date = 2023-02-23
 [taxonomies]
-tags = ["baekjoon", "BFS", "DFS", "Graph"]
+tags = ["baekjoon"]
 [extra]
 author = "JS970"
 +++
@@ -11,6 +11,7 @@ author = "JS970"
 - 날짜: 2023년 2월 23일
 - 상태: Correct/Retry
 - 추가 검토 여부: Yes
+- 알고리즘 : DFS, BFS, Graph
 
 # solution
 
