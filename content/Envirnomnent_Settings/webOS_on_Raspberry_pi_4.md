@@ -2,7 +2,7 @@
 title = "webOS on Raspberry pi 4"
 date = 2023-03-03
 [taxonomies]
-tags = ["일시 중단", "라즈베리 파이", "webOS"]
+tags = ["env setting"]
 [extra]
 author = "JS970"
 +++

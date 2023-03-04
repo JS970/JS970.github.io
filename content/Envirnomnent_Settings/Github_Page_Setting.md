@@ -2,7 +2,7 @@
 title = "Github Page 구축"
 date = 2023-03-03
 [taxonomies]
-tags = ["Github Page", "env setting"]
+tags = ["env setting"]
 [extra]
 author = "JS970"
 +++
