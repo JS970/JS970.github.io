@@ -143,3 +143,15 @@ index_format = "elasticlunr_javascript"
 #
 # author value will be available using {{ config.extra.author }} in templates
 #
+# Menu items
+[[extra.menu]]
+name = "Posts"
+url = "/"
+
+[[extra.menu]]
+name = "Tags"
+url = "tags"
+
+[[extra.menu]]
+name = "About"
+url = "about"
