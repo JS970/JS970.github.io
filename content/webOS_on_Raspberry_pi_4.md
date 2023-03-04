@@ -1,6 +1,6 @@
 +++
 title = "webOS on Raspberry pi 4"
-date = 2023-03-02
+date = 2023-03-01
 [taxonomies]
 tags = ["env setting"]
 [extra]
