@@ -292,7 +292,7 @@ author = "JS970"
     
     LastByteRcvd-LastByteRead ≤ Sizeof(MaxRcvBuffer)
     
-    ![Untitled](TCP/Untitled%2018.png)
+    ![Untitled](/TCP/Untitled%2018.png)
     
 - 정확한 AdvertisedWindow의 값의 계산은 아래와 같다.
     - AdvertisedWindow = MaxRcvBuffer - {(NextByteExpected - 1) - LastByteRead - {the amount of out-of-order data received since the NextByteExpected Sequence Number)}
