@@ -48,24 +48,24 @@ author = "JS970"
 
 ## CIDR Example
 
-![Untitled](./CIDR/Untitled.png)
+![Untitled](/CIDR/Untitled.png)
 
 - Cambridge → Edenburgh → Oxford순으로 IP 할당을 요청했다고 가정하자
 - 194.24.0.0의 시작 주소에서부터 할당을 할 수 있다고 했을 때, Cambridge는 2048개의 주소를 요청하였으므로 194.24.0.0 ~ 194.24.7.255까지의 IP를 할당할 수 있다.(256 * 8 = 2048)
 - Cambridge의 Subnet Mask 계산은 아래와 같다.
     - (194.24의 경우 Network Number이므로 생략함)
 
-![Untitled](./CIDR/Untitled%201.png)
+![Untitled](/CIDR/Untitled%201.png)
 
 - 이때 subnet mask의 1의 개수가 총 21개이므로 194.24.0.0/21과 같이 표현할 수 있다.
     - 11111111.11111111.11111000.00000000 = 255.255.248.0
 - 같은 방법으로 Edenburgh의 Subnet mask를 계산하면 아래와 같다.
 
-![Untitled](./CIDR/Untitled%202.png)
+![Untitled](/CIDR/Untitled%202.png)
 
 - Oxford의 경우 Edenburgh의 IP address를 할당한 직후 available IP 인 194.24.12.0부터 분배하면 아래와 같은 문제가 발생한다.
     
-    ![Untitled](./CIDR/Untitled%203.png)
+    ![Untitled](/CIDR/Untitled%203.png)
     
 - 이때 CIDR 의 표현은 194.24.12.0/19가 되는데 이 경우 할당 가능한 IP의 개수가 32 * 256 = 8192이다. 이 경우 실제 필요한 범위 내인 4096개 보다 더 많은 IP가 할당되므로 194.24.12.0부터 Oxford에 할당할 수 없다.
     - subnet mask에서 0의 개수는 곧 할당 가능한 host의 수를 나타낸다. $2^{13}$ = 8192이므로 위와 같은 계산이 나온다.

@@ -27,7 +27,7 @@ author = "JS970"
 - Unreliable, unordered delivery
 - IP의 “best effort”의 확장
 
-![Untitled](TCP/Untitled.png)
+![Untitled](/TCP/Untitled.png)
 
 - UDP segment의 Length부분은 헤더의 길이를 포함한다.
 - UDP의 특징
@@ -85,7 +85,7 @@ author = "JS970"
 
 - Wireshark TCP 과제 참고할 것
 
-![Untitled](TCP/Untitled%201.png)
+![Untitled](/TCP/Untitled%201.png)
 
 ### src, dest port
 
@@ -137,7 +137,7 @@ author = "JS970"
 
 ### TCP Establishment
 
-![Untitled](TCP/Untitled%202.png)
+![Untitled](/TCP/Untitled%202.png)
 
 - TCP Establishment는 3-way handshaing으로 이뤄진다.
 - Sequence Number는 random number로 설정된다(항상 0부터 시작되는 것이 아님)
@@ -147,7 +147,7 @@ author = "JS970"
 
 ### TCP Termination
 
-![Untitled](TCP/Untitled%203.png)
+![Untitled](/TCP/Untitled%203.png)
 
 - Client 와 Server모두 Terminate를 시작할 수 있다.
 - Client가 Terminate를 시작한다고 했을 때의 시나리오는 아래와 같다.
@@ -161,18 +161,18 @@ author = "JS970"
 
 - Host A에서 전송한 패킷에 대한 Host B의 ACK가 loss된 경우이다.
 
-![Untitled](TCP/Untitled%204.png)
+![Untitled](/TCP/Untitled%204.png)
 
 - Timeout 이내에 ACK를 수신하지 못했을 경우, 아래 그림과 같이 Host A는 ACK를 받지 못한 패킷을 Host B로 재전송한다.
 
-![Untitled](TCP/Untitled%205.png)
+![Untitled](/TCP/Untitled%205.png)
 
 - Host B로부터의 ACK가 Timeout이후에 Host A로 도달하는 경우이다.
 - Host A는 Timeout내에 ACK를 수신하지 못했으므로 Segment #92부터 시작하는 패킷을 재전송한다.
 - 하지만 Host B는 이미 #119까지의 데이터를 모두 수신한 상태이기 때문에 Host A에게 Segment #120을 요구하는 ACK를 전송한다.
 - 아래 경우는 Timeout 이내에서 ACK 100이 loss되었으나 ACK 120은 정상적으로 전송된 경우이다.
 
-![Untitled](TCP/Untitled%206.png)
+![Untitled](/TCP/Untitled%206.png)
 
 - Cumulative ACK scenario에 의해 ACK 100이 loss되어도 ACK 120이 Timeout내에 전송되면 Don’t care이다.
 - 이를 통해 Dumb Sender & Smart Receiver를 확인할 수 있다.
@@ -184,15 +184,15 @@ author = "JS970"
 ![TCP State Diagram](https://ssup2.github.io/images/theory_analysis/TCP_Connection_State/TCP_Connection_State_Diagram.PNG)
 ### TCP Client lifecycle
 
-![Untitled](TCP/Untitled%208.png)
+![Untitled](/TCP/Untitled%208.png)
 
 ### TCP Server lifecycle
 
-![Untitled](TCP/Untitled%209.png)
+![Untitled](/TCP/Untitled%209.png)
 
 - LISTEN state에서 passive participant(server)의 local process가 send operation을 호출하면 SYN_SENT상태로 전이하기도 한다. 이는 마치 active connection establishment처럼 보인다.
 
-![Untitled](TCP/Untitled%2010.png)
+![Untitled](/TCP/Untitled%2010.png)
 
 ### TCP  connection terminating
 
@@ -226,7 +226,7 @@ author = "JS970"
 - TCP의 전이중 연결(full-duplex connection)이 reliable하게 종료되도록 하기 위해 TIME_WAIT가 필요하다.
 - 네트워크 상에서 종료된 Connection관련 Segment들이 완전히 제거 될때까지 대기하여 이후에 생성되는 새로운 Connection에 영향을 미치지 않도록 하기 위해 필요하다.
 
-![Untitled](TCP/Untitled%2011.png)
+![Untitled](/TCP/Untitled%2011.png)
 
 ## TCP Error Control
 
@@ -237,14 +237,14 @@ author = "JS970"
 - Stop-and-Wait에서는 frame의 numbering을 위해 sequence number를 사용한다.
 - sequence number는 modulo-2공간에 기반한다.
     
-    ![Untitled](TCP/Untitled%2012.png)
+    ![Untitled](/TCP/Untitled%2012.png)
     
-    ![Untitled](TCP/Untitled%2013.png)
+    ![Untitled](/TCP/Untitled%2013.png)
     
 - Stop-and-Wait에서는 다음 frame number의 modulo-2연산한 값을 acknowledgement number로 사용한다.
 - Stop-and-Wait의 Flow Diagram은 아래와 같다.
     
-    ![Untitled](TCP/Untitled%2014.png)
+    ![Untitled](/TCP/Untitled%2014.png)
     
 - Bandwidth-delay product
     - Bandwidth * Delay = round trip당 최대 전송 가능한 크기
@@ -257,7 +257,7 @@ author = "JS970"
 
 ### Go - Back - N ARQ
 
-![Untitled](TCP/Untitled%2015.png)
+![Untitled](/TCP/Untitled%2015.png)
 
 - Segment #5, Segment #6이 수신되었지만 #3, #4가 제대로 수신되지 않았다.
 - reveiver에서는 ACK 3을 전송하였으나 #5, #6을 수신한 꼴이 된다. → ACK 3을 각각의 Segment에 대해 전송할 것이다.
@@ -268,7 +268,7 @@ author = "JS970"
     - 위의 경우 경우 실제로 전송된 정보는 sender window가 sliding되지 않았으므로 sender window에서 이전에 전송한 Frame이 재전송된다.
 - Go-Back-N은 이미 성공적으로 전송된 프레임이 있다고 하더라도 이전에 와야 할 프레임이 제대로 전송되지 않았다면 전송에 실패한 프레임부터 차례대로 재전송해야 한다. ⇒optimal 하지 않음
     
-    ![Untitled](TCP/Untitled%2016.png)
+    ![Untitled](/TCP/Untitled%2016.png)
     
 - Stop-and-Wait는 Go-Back-N에서 send window의 크기가1인 특수한 경우로 생각할 수 있다.
 
@@ -282,7 +282,7 @@ author = "JS970"
 - 아래 그림은 sender window 및 receiver window의 크기가 4인 경우에 대한 selective reaeat scenario이다.
     - 왼쪽 그림은 ACK loss가 발생했을 때의 동작이고, 오른쪽 그림은 Frame loss가 발생했을 때의 동작이다.
 
-![Untitled](TCP/Untitled%2017.png)
+![Untitled](/TCP/Untitled%2017.png)
 
 ## TCP Flow Control
 

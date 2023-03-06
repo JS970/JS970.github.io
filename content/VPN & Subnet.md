@@ -18,7 +18,7 @@ author = "JS970"
 
 - 수업 시간에 설명한 VPN 도식, IP turneling을 통해 동작한다.
 
-![Untitled](VPN&Subnet/Untitled.png)
+![Untitled](/VPN&Subnet/Untitled.png)
 
 ## Subnetting
 
@@ -28,7 +28,7 @@ author = "JS970"
 - 사실, “Subnet을 통해 주소와 공간의 효율적인 사용 뿐만 아니라 IP주소의 Hierarchy도 확보할 수 있다.
 - 아래는 IPv4의 Subnetting이다.
 
-![Untitled](VPN&Subnet/Untitled%201.png)
+![Untitled](/VPN&Subnet/Untitled%201.png)
 
 - C 클래스 사설 IP 대역은 192.168.XXX.YYY, A 클래스 사설 IP 대역은 10.XXX.YYY.ZZZ이다.
 - IPv4의 클래스 개념은 매우 비효율적이다.
@@ -42,7 +42,7 @@ author = "JS970"
     
 - 다음은 부산대학교 네트워크를 예시로 Subnet을 나타낸 그림이다.
 
-![Untitled](VPN&Subnet/Untitled%202.png)
+![Untitled](/VPN&Subnet/Untitled%202.png)
 
 - 부산대학교는 ISP에게 B클래스 IP주소를 공급받는다.
 - 부산대학교의 각 Subnet은 ISP에게 직접 C클래스 IP주소를 공급받는 것이 아닌, 부산대학교가 ISP로부터 공급받은 B클래스 IP 주소를 C클래스 IP로 변환하고, 서브넷 마스크를 255.255.255.0으로 설정하여 virtually partitioning된다.
@@ -63,7 +63,7 @@ author = "JS970"
 - 예를 들어 subnet mask가 255.255.255.224인 경우 host의 표현을 위해 5비트를 사용하므로 최대 $2^{5}-1$명의 host를 나타낼 수 있다. ( possible host = $2^{n}-1$)
 - 이러한 subnet mask의 설정을 사용률을 늘일 수 있다. 하지만 보통은 네트워크 관리자가 이렇게까지 설정하기 귀찮으므로 255.255.255.0 처럼 관습적인 subnet mask를 사용한다.
 
-![Untitled](VPN&Subnet/Untitled%203.png)
+![Untitled](/VPN&Subnet/Untitled%203.png)
 
 - Host #1에서 Host #2로 datagram을 전송한다고 했을 때 Next hop은 R1이다(en0).
 - Host #1에서 Host #3로 datagram을 전송한다고 했을 때 Next hop 은 R2이다.

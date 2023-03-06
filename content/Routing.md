@@ -9,7 +9,7 @@ author = "JS970"
 
 ## Forwarding table and Routing table
 
-![Untitled](Routing%20e2f6f3a77f834c93af44556d5ac0b672/Untitled.png)
+![Untitled](/Routing/Untitled.png)
 
 ### Forwarding table
 
@@ -38,17 +38,17 @@ author = "JS970"
 - Bellman-Ford알고리즘을 이용한다.
 - BGP(Border Gateway Protocol, CISCO), EGP(Exterior Gateway Protocol)에서 이러한 방법을 사용한다.
 
-![Untitled](Routing%20e2f6f3a77f834c93af44556d5ac0b672/Untitled%201.png)
+![Untitled](/Routing/Untitled%201.png)
 
 ### Distance Vector Example
 
-![Untitled](Routing%20e2f6f3a77f834c93af44556d5ac0b672/Untitled%202.png)
+![Untitled](/Routing/Untitled%202.png)
 
 - 패킷을 교환하기 전 A노드에서 다른 노드로의 distance는 $\infty$로 초기화된다.
 - 인접 노드 간의 패킷 교환을 통해 점진적으로 B, C, D, E로의 distance가 구해진다.
 - 위 상황에서 A노드 기준으로 총 4번의 패킷 교환이 이루어지면 E노드에 대한 올바른 정보를 얻을 수 있다.
 
-![Untitled](Routing%20e2f6f3a77f834c93af44556d5ac0b672/Untitled%203.png)
+![Untitled](/Routing/Untitled%203.png)
 
 - A노드와 B노드 사이의 경로가 끊겼다면 위 그림과 같이 순차적인 패킷 전송에 의해 매우 느린 속도로 A 노드에서 각 노드로의 거리가 $\infty$로 갱신될 것이다.
 
@@ -65,7 +65,7 @@ author = "JS970"
 - 이후 Dijkstra알고리즘을 이용하여 다른 모든 라우터로의 최단 경로를 알아낼 수 있다.
 - OSPF(Open Shortest Path First)에서 이러한 방법을 사용한다.
 
-![Untitled](Routing%20e2f6f3a77f834c93af44556d5ac0b672/Untitled%204.png)
+![Untitled](/Routing/Untitled%204.png)
 
 ## Reference
 
