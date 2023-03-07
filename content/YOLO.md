@@ -93,7 +93,7 @@ yolo detect train model=yolov8n.pt data=coco128.yaml device=0
 - 이미지 또는 비디오 스트림에서 객체의 위치와 클래스를 식별하는 작업이다.
 - object detector의 결과물은 이미지의 개체를 둘러싼 bounding boxes이다. 라벨, 클래스, confidence score가 각각의 박스 마다 매겨진다. 관심이 있는 장면에서 사물을 특정하기 위해 사용된다. 정확한 모양이나 위치는 특정할 수 없다.
     
-    ![Untitled](/YOLO/Untitled.png)
+    ![Untitled](/image/YOLO/Untitled.png)
     
 - 
 
