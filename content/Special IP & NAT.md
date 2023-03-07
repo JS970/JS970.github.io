@@ -60,7 +60,7 @@ direct broadcast를 이용한 distance network로의 broadcast는 해당 네트�
 
 ## NAT(Network Address Translation)
 
-![Untitled](/Special_IP&NAT/Untitled.png)
+![Untitled](/image/Special_IP&NAT/Untitled.png)
 
 - ipv4는 $2^{32}$개의 주소 할당이 가능하다.
 - 하지만 IoT의 시대로 접어들면서 이는 사실상 불가능해졌다.
@@ -78,7 +78,7 @@ direct broadcast를 이용한 distance network로의 broadcast는 해당 네트�
     6. ip, TCP header의 checksum을 다시 계산한다.
     7. 라우터를 통해 실제 서비스 요청 노드로 packet을 전송한다.
 
-![Untitled](/Special_IP&NAT/Untitled%201.png)
+![Untitled](/image/Special_IP&NAT/Untitled%201.png)
 
 ### NAT 단점
 
