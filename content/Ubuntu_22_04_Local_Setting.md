@@ -40,6 +40,22 @@ sudo shutdown now
     
 - 이를 적용하면 ctrl+space를 통해 한/영 변환이 가능하다.
 
+## ibus
+- fcitx를 편하게 사용중이었지만... 한글과컴퓨터 한컴오피스 2020 for linux에서 한글 입력은 ibus만 인식된다고 한다... 이에 ibus로 다시 설정하게 되었다.(2023-03-12)
+- 설정 -> 지역 및 언어 -> Korean박스가 체크되어 있는지 확인
+	- 체크되어 있지 않다면 체크 후 재부팅
+- terminal에 아래와 같이 입력
+```bash
+ibus-setup
+```
+- ibus Preferences에서 Input Method선택, 여기에 Korean - Hangul 추가할 것
+![ibus preferences](/image/Ubuntu_22_04_Local_Setting/ibus_setting.png)
+- Setting의 Keyboard에서 Korean(Hangul) 추가하고 나머지는 전부 삭제할 것
+![Setting-ibus](/image/Ubuntu_22_04_Local_Setting/ibus-settings.png)
+- 재부팅하면 우측 상단의 상태 표시줄에 한글 입력기가 추가된 것을 볼 수 있다. 이를 우클릭하여 Setup을 선택하면 아래와 같은 창이 표시된다.
+![ibusHangulSetup](/image/Ubuntu_22_04_Local_Setting/ibus-pref.png)
+- 이 창에서 한/영 변환 토글 키 설정이 가능하다.
+
 # nvidia graphic driver
 
 - 여러 가지 설치 방법이 있지만 설치에 꽤 애를 먹었다.
