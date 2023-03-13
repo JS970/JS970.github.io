@@ -156,4 +156,4 @@ url = "tags"
 name = "About"
 url = "about"
 
-extra.katex = true;
+extra.katex = true
