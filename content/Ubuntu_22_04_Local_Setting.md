@@ -33,10 +33,10 @@ sudo shutdown now
 
 - 재부팅 이후 우측 상태 표시줄의 가장 왼쪽에 키보드 모양 아이콘이 추가된 것을 확인할 수 있다.
 
-![Screenshot from 2023-02-14 15-03-38.png](/image/Ubuntu_22_04_Local_Setting/Screenshot_from_2023-02-14_15-03-38.png)
+![Screenshot from 2023-02-14 15-03-38.png](/image/Enviromnent_Settings/Ubuntu_22_04_Local_Setting/Screenshot_from_2023-02-14_15-03-38.png)
 - 키보드 아이콘을 클릭한 후 configure에서 Available input Method로 Hangul을 추가한다.
     
-    ![Screenshot from 2023-02-14 15-05-16.png](/image/Ubuntu_22_04_Local_Setting/Screenshot_from_2023-02-14_15-05-16.png)
+    ![Screenshot from 2023-02-14 15-05-16.png](/image/Enviromnent_Settings/Ubuntu_22_04_Local_Setting/Screenshot_from_2023-02-14_15-05-16.png)
     
 - 이를 적용하면 ctrl+space를 통해 한/영 변환이 가능하다.
 
@@ -83,7 +83,7 @@ sudo apt install nvidia-driver-xxx
 
 - 이때 recommended가 붙어있는 nvidia-driver-525-open을 설치하려고 시도했으나 이 때문에 많은 시간을 소비했다. open버전이 아닌 버전으로 설치해야 했다.
 
-![Untitled](/image/Ubuntu_22_04_Local_Setting/Untitled.png)
+![Untitled](/image/Enviromnent_Settings/Ubuntu_22_04_Local_Setting/Untitled.png)
 
 - 드라이버의 설치가 완료되면 컴퓨터를 재부팅한다.
 
