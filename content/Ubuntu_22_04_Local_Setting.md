@@ -49,11 +49,11 @@ sudo shutdown now
 ibus-setup
 ```
 - ibus Preferences에서 Input Method선택, 여기에 Korean - Hangul 추가할 것
-![ibus preferences](/image/Ubuntu_22_04_Local_Setting/ibus_setting.png)
+![ibus preferences](/image/Enviromnent_Settings/Ubuntu_22_04_Local_Setting/ibus_setting.png)
 - Setting의 Keyboard에서 Korean(Hangul) 추가하고 나머지는 전부 삭제할 것
-![Setting-ibus](/image/Ubuntu_22_04_Local_Setting/ibus-settings.png)
+![Setting-ibus](/image/Enviromnent_Settings/Ubuntu_22_04_Local_Setting/ibus-settings.png)
 - 재부팅하면 우측 상단의 상태 표시줄에 한글 입력기가 추가된 것을 볼 수 있다. 이를 우클릭하여 Setup을 선택하면 아래와 같은 창이 표시된다.
-![ibusHangulSetup](/image/Ubuntu_22_04_Local_Setting/ibus-pref.png)
+![ibusHangulSetup](/image/Enviromnent_Settings/Ubuntu_22_04_Local_Setting/ibus-pref.png)
 - 이 창에서 한/영 변환 토글 키 설정이 가능하다.
 
 # nvidia graphic driver
