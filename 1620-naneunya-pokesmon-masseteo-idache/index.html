@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>1620 - 나는야 포켓몬 마스터 이다솜 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="1620 - 나는야 포켓몬 마스터 이다솜">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/1620-naneunya-pokesmon-masseteo-idache/">
+<meta property="og:url" content="https://js970.github.io/1620-naneunya-pokesmon-masseteo-idache/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-27T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="1620 - 나는야 포켓몬 마스터 이다솜">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/1620-naneunya-pokesmon-masseteo-idache/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "1620 - 나는야 포켓몬 마스터 이다솜"
+  
+    
+    
+      "datePublished":"2023-02-27T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/1620-naneunya-pokesmon-masseteo-idache/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-27">February 27, 2023</time>
+  	</div>
+  	<h1 class="post-title">1620 - 나는야 포켓몬 마스터 이다솜</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 4</li>
+<li>날짜: 2023년 2월 27일</li>
+<li>상태: Correct/Retry</li>
+<li>추가 검토 여부: No</li>
+<li>알고리즘 : map</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>한동안 마주치지 않아서 endl의 사용이 시간초과를 야기한다는 것을 간과했다. 이 때문에 많이 틀렸다.</li>
+<li>기본적으로 map 자료구조를 사용해서 해결할 수 있는 문제이다.</li>
+<li>숫자를 key값으로 하는 map과 문자열을 key값으로 가지는 map두 개를 선언해서 문제를 해결했다.</li>
+<li>unordered_map을 사용하면 map을 사용했을 때보다 살짝 빠르게 문제 풀이가 가능하다. 두 자료구조 모두 제한시간 안에 풀이 가능하다.</li>
+<li>string헤더에서 제공하는 isdigit()함수를 사용하는 법을 기억하도록 하자</li>
+</ul>
+<h1 id="code">code</h1>
+<ul>
+<li>unordered_map사용 코드</li>
+</ul>
+<pre data-lang="cpp" class="language-cpp "><code class="language-cpp" data-lang="cpp">#include &lt;iostream&gt;
+#include &lt;unordered_map&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int N, M;
+    cin &gt;&gt; N &gt;&gt; M;
+    unordered_map&lt;int, string&gt; arr_name;
+    unordered_map&lt;string, int&gt; arr_num;
+    for(int i = 1; i &lt;= N; i++)
+    {
+        string name;
+        cin &gt;&gt; name;
+        arr_name[i] = name;
+        arr_num[name] = i;
+    }
+    string * ans = new string[M];
+    for(int i = 0; i &lt; M; i++)
+        cin &gt;&gt; ans[i];
+
+    for(int i = 0; i &lt; M; i++)
+    {
+        if(isdigit(ans[i][0]))
+        {
+            auto res = arr_name.find(stoi(ans[i]));
+            cout &lt;&lt; res-&gt;second &lt;&lt; endl;
+        }
+        else
+        {
+            auto res = arr_num.find(ans[i]);
+            cout &lt;&lt; res-&gt;second &lt;&lt; endl;
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+<ul>
+<li>map 사용 코드</li>
+</ul>
+<pre data-lang="cpp" class="language-cpp "><code class="language-cpp" data-lang="cpp">#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    
+    int N, M;
+    cin &gt;&gt; N &gt;&gt; M;
+    map&lt;int, string&gt; arr_name;
+    map&lt;string, int&gt; arr_num;
+    for(int i = 1; i &lt;= N; i++)
+    {
+        string name;
+        cin &gt;&gt; name;
+        arr_name[i] = name;
+        arr_num[name] = i;
+    }
+    string * ans = new string[M];
+    for(int i = 0; i &lt; M; i++)
+        cin &gt;&gt; ans[i];
+
+    for(int i = 0; i &lt; M; i++)
+    {
+        if(isdigit(ans[i][0]))
+        {
+            if(arr_name.find(stoi(ans[i])) != arr_name.end())
+                cout &lt;&lt; arr_name[stoi(ans[i])] &lt;&lt; &#x27;\n&#x27;;
+        }
+        else if(arr_num.find(ans[i]) != arr_num.end())
+            cout &lt;&lt; arr_num[ans[i]] &lt;&lt; &#x27;\n&#x27;;
+    }
+
+    return 0;
+}
+</code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/1620">1620번: 나는야 포켓몬 마스터 이다솜</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2021 Aaran Xu. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

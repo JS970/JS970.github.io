@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>소프트웨어시스템설계 2023-03-15 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="소프트웨어시스템설계 2023-03-15 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/sopeuteuweeosissetotsseoggy-3-15-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/sopeuteuweeosissetotsseoggy-3-15-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-15T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="소프트웨어시스템설계 2023-03-15 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/sopeuteuweeosissetotsseoggy-3-15-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "소프트웨어시스템설계 2023-03-15 수업정리"
+  
+    
+    
+      "datePublished":"2023-03-15T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/sopeuteuweeosissetotsseoggy-3-15-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-15">March 15, 2023</time>
+  	</div>
+  	<h1 class="post-title">소프트웨어시스템설계 2023-03-15 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Refactoring 복습(2)</li>
+</ul>
+<h2 id="refactoring-example">Refactoring Example</h2>
+<hr />
+<p>아래의 UML과 코드들은 리펙토링을 하기 이전의 원본 상태이다.</p>
+<h3 id="original-uml">Original UML</h3>
+<p><img src="/image/SSD/uml_original.png" alt="Original UML" /></p>
+<h3 id="original-code-run">Original Code - Run</h3>
+<pre data-lang="java" class="language-java "><code class="language-java" data-lang="java">Customer customer1 = new Customer(&quot;David&quot;);
+Movie movie1 = new Movie(&quot;Madagascar&quot;, Movie.CHILDRENS);
+Rental rental1 = new Rental(movie1, 6);
+Movie movie2 = new Movie(&quot;Star Wars&quot;, Movie.NEW_RELEASE);
+Rental rental2 = new Rental(movie2, 2);
+Movie movie3 = new Movie(&quot;Gone with the Wind&quot;, Movie.REGULAR);
+Rental rental3 = new Rental(movie3, 8);
+customer1.addRental(rental1);
+customer1.addRental(rental2);
+customer1.addRental(rental3);
+System.out.println(customer1.statement());
+</code></pre>
+<ul>
+<li>output</li>
+</ul>
+<pre data-lang="txt" class="language-txt "><code class="language-txt" data-lang="txt">Rental Record for David
+	Madagascar 6.0
+	Star Wars 6.0
+	Gone with the Wind 11.0
+Amount owed is 23.0
+You earned 4 frequent renter points
+</code></pre>
+<h3 id="original-code-class-movie">Original Code - class Movie</h3>
+<pre data-lang="java" class="language-java "><code class="language-java" data-lang="java">public class Movie {
+	public static final int CHILDREN = 2;
+	public static final int REGULAR = 0;
+	public static final int NEW_RELEASE = 1;
+	private String _title;
+	private int _priceCode;
+	public Movie(String title, int priceCode) {
+		_title = title;
+		_priceCode = priceCode;
+	}
+	public int getPriceCode() { return _priceCode; }
+	public void setPriceCode(int arg) { _priceCode = arg; }
+	public String getTitle () { return _title; }
+}
+</code></pre>
+<h3 id="original-code-class-rental">Original Code - class Rental</h3>
+<pre data-lang="java" class="language-java "><code class="language-java" data-lang="java">class Rental {
+	private Movie _movie;
+	private int _daysRented;
+	public Rental(Movie movie, int daysRented) {
+		_movie = movie;
+		_daysRented = daysRented;;
+	}
+	public int getDaysRented() { return _daysRented; }
+	public Movie getMovie() { return _movie; }
+}
+</code></pre>
+<h3 id="original-code-class-customer">Original Code - class Customer</h3>
+<pre data-lang="java" class="language-java "><code class="language-java" data-lang="java">class Customer {
+	private String _name;
+	private Vector&lt;Rental&gt; _rentals = new Vector&lt;Rental&gt;();
+	public Customer (String name) { _name = name; }
+	public void addRental(Rental arg) { _rentals.addElement(arg); }
+	public String getName() { return _name; }
+	public String statement() {
+		double totalAmount = 0;
+		String result = &quot;Rental Record for &quot; + getName() + &quot;\n&quot;;
+		for(Rental each: _rentals) {
+			double thisAmount = 0;
+			switch(each.getMovie().getPriceCode()){
+				case Moviie.REGULAR:
+					thisAmount += 2;
+					if(each.getDaysRented() &gt; 2)
+						thisAmount += (each.getDaysRented() -2) * 1.5;
+					break;
+				case Movie.NEW_RELEASE:
+					thisAmount += each.getDaysRented() * 3;
+					break;
+				case Movie.CHILDREN:
+					thisAmount += 1.5;
+					if(each.getDaysRented() &gt; 3)
+						thisAmount += (each.getDaysRented() - 3) * 1.5;
+					break;
+			}
+			frequentRenterPoints++;
+			if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) 
+				&amp;&amp; each.getDaysRented() &gt; 1)
+				frequentRenterPoints++;
+			result += &quot;\t&quot; + each.getMovie().getTitle() + &quot;\t&quot;
+			+ String.valueOf(thisAmount) + &quot;\n&quot;;
+			totalAmount += thisAmount;
+		}
+		result += &quot;Amount owed is &quot; + String.valueOf(totalAmount) + &quot;\n&quot;;
+		result += &quot;You earned &quot; + String.valueOf(frequentRenterPoints) 
+			+ &quot; frequent renter points&quot;;
+		return result;
+	}
+}
+</code></pre>
+<h3 id="munjejjeoddeugwa-haeggyeo-bbanbbeo">문제점들과 해결 방법</h3>
+<ul>
+<li>아래와 같은 상황에서 위의 코드는 OCP를 위반한다.
+<ul>
+<li>사용자가 출력 방식을 HTML형태로 출력하기를 원한다.</li>
+<li>요금 규정이 변경된다.</li>
+<li>새로운 영화 카테고리가 추가된다.</li>
+</ul>
+</li>
+<li>원인은 아래와 같다.
+<ul>
+<li>Business Code와 UI Code가 섞여 있다.</li>
+<li>Business Code와 UI Code가 독립적으로 너무 자주 변경된다.</li>
+</ul>
+</li>
+<li>해결 방법
+<ul>
+<li>긴 method(statemeent())를 작은 method로 쪼갠다. 이렇게 하여 전체 method가 늘어나면 SRP를 위반할 확률이 낮아진다.
+<ul>
+<li>SRP : Single ResponsibilityPrinciple, 변경의 원인은 하나여야 한다.</li>
+<li>이를 위해 UI, Control, Entity Class를 나누어야 한다.</li>
+</ul>
+</li>
+<li>클래스 추가, 추상 클래스 생성을 통하여 OCP를 충족하도록 설계한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="step1-uml">Step1 - UML</h3>
+<p>Statement method의 implementation을 여러 별개의 method로 extract method한다. 이 과정에서 다른 클래스의 feature를 더 많이 사용한다면 Move method 한다.
+<img src="/image/SSD/uml_step1.png" alt="uml step1" /></p>
+<h3 id="step2-uml">Step2 - UML</h3>
+<p>새로운 클래스를 추상 클래스 형태로 추가하여 Polymorphism을 통해 OCP를 만족시키도록 설계한다. step1에서 다른 class의 feature를 더 많이 사용하여 이동된 method를 확인할 수 있다.
+<img src="/image/SSD/uml_step2.png" alt="uml step2" /></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2021 Aaran Xu. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>
