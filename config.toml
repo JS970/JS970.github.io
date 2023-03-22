@@ -155,5 +155,3 @@ url = "tags"
 [[extra.menu]]
 name = "About"
 url = "about"
-
-extra.katex = true
