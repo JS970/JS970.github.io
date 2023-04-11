@@ -1,7 +1,8 @@
 @echo off
 
 set SRC_DIR=C:\SynologyDrive\obsidian\roundoff
-set DST_DIR=C:\Users\son73\Documents\GitHub\JS970.github.io
+REM change USER_NAME to apply system
+set DST_DIR=C:\Users\USER_NAME\Documents\GitHub\JS970.github.io
 
 set PL_SRC=%SRC_DIR%\PL
 set OS_SRC=%SRC_DIR%\OS
