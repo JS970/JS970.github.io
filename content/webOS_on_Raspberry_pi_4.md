@@ -88,4 +88,4 @@ make webos-build
 
 (23/02/16 기준으로 아래와 같은 에러가 발생하며 더 이상 진행하지 못하고 있다.
 
-![Screenshot from 2023-02-16 22-23-01.png](/image/webOS_on_Raspberry_pi_4/Screenshot_from_2023-02-16_22-23-01.png)
+![Screenshot from 2023-02-16 22-23-01.png](/image/Enviromnent_Settings/webOS_on_Raspberry_pi_4/Screenshot_from_2023-02-16_22-23-01.png)
