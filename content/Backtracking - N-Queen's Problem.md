@@ -1,5 +1,5 @@
 +++
-title = "컴퓨터 알고리즘 2023-05-03 수업정리"
+title = "Backtracking - N-Queen's Problem"
 date = 2023-05-03
 [taxonomies]
 tags = ["Computer Algorithm"]
@@ -7,50 +7,26 @@ tags = ["Computer Algorithm"]
 author = "JS970"
 katex= true
 +++
-# Flow
-- Backtracking - N-queen's problem
-- Backtracking - sum of subset
-- Backtracking - 0-1 Knapsack Problem
-
 ## Backtracking - N-queen's problem
 ---
-- N x N의 체스보드에서 퀸들이 서로를 공격하지 않도록 위치시키는 방법을 구하는 문제![N-Queen's Problem](/image/Algorithm/backtracking.png)
+- N x N의 체스보드에서 N개의 퀸들이 서로를 공격하지 않도록 배치시키는 방법을 구하는 문제
+- Sequence : N개의 Queen이 배치되는 위치에 대한 sequence
+- Set : Queen이 위치 가능한 N\*N의 공간
+- Criterion : 어떠한 두 개의 Queen도 같은 행, 열, 대각선상에 존재할 수 없다.
 
+### 4-Queens Problem
+![4 \* 4 Chessboard](/image/Algorithm/chessboard4.png)
+- 아래는 위 chessboard에 대해 Backtracking을 적용하여 문제를 해결하는 과정을 도식으로 나타낸 것이다.
+	1. 첫 번째 Queen배치, F = {(1, 1), $\phi$}![N-Queens 1](/image/Algorithm/nqueens1.png)
+	2. F에서 most promising한 노드 선택(1, 1), 이 노드에 대해 subproblem configuration으로 `expand`되어 생성된 모든 노드에 대해 `criterion`검사. 검사 결과 `non-promising`이면 discard한다.![N-Queens 2](/image/Algorithm/nqueens2.png)
+	3. (2, 3)의 경우 `non-promising`이 아니므로 F에 추가한다. 다시 subproblem configuration으로 expand 및 criterion검사를 수행한다.![N-Queens 3](/image/Algorithm/nqueens3.png)
+	4. (2, 3)의 모든 child가 `non-promising`이므로 Backtracking을 통해 (1, 1)까지 돌아간다. 이후 (1, 1)에서 탐색되지 않은 promising child인 (2, 4)에 대해 2의 과정을 반복한다.![N-Queens 4](/image/Algorithm/nqueens4.png)
+	5. 4에 이어서(2, 4)에 대해 알고리즘을 수행한다.![N-Queens 5](/image/Algorithm/nqueens5.png)
+	6. (2,4)의 child중 promising child인 (3, 2)에 대해 알고리즘을 수행한다. 이 결과 (4, 2)가 criterion check에 의해 정답임이 판별되므로 이때의 경로 {(1, 1), (2, 4), (3, 2), (4, 2)}를 반환한다.![N-Queens 6](/image/Algorithm/nqueens6.png)
+- 위 예시를 통해 확인할 수 있듯이, (1, 1)을 시작 노드로 가지는 4-Queens Problem의 해를 Backtracking알고리즘을 사용하면 `non-promising`노드의 child에 대한 조사를 생략 가능하므로 전수 조사 없이 해결 가능하다.
+- (1, 2), (1, 3), (1, 4)를 시작 노드로 설정하면 4-Queens Problem의 모든 해를 구할 수 있다.
 
-## Backtracking - sum of subset
----
-### Sum of Subset Problem
-- 집합 S는 s1, s2, ... , sn의 원소로 이루어져 있다.
-- W는 자연수이다.
-- 이때 S의 부분집합의 원소의 합이 W가 되는 모든 경우를 찾아라	
-- n개의 수를 원소로 가지는 집합에서 원소의 합이 W가 되도록 하는 부분집합을 구하는 문제
-- 블랙젝을 생각하면 확 와닿는다.
-
-### State Space Tree
-- 집합 S의 원소를 오름차순으로 정렬한다.
-- 오름차순으로 정렬된 S의 원소에 대해 포함시킬지, 미포함시킬지의 여부를 트리로 구현한다.
-- 오름차순으로 트리를 구성하는 이유는 작은 원소를 먼저 생각하여 유망성을 판단하는 것이 유리하기 때문이다.
-
-### Promising Function
-- 아래는 Sum of Subset문제를 해결하기 위한 promising function 의사 코드이다.
-```c++
-bool promising(int idx) {
-	return (weight + total >= W) && // case 1
-	(weight == W || weight + S[idx+1] <= W); // case 2
-}
+### Code
+```C++
+// TODO 2023-05-30
 ```
-- weight : 현재까지 선택한 모든 원소의 합
-- total : 아직 선택하지 않은 모든 원소의 합
-- S\[idx\] : S를 오름차순으로 정렬했을 때의 idx+1번째 원소
-- W : 부분집합의 합이 이 값이 된다면 찾고 있는 경우이다.
-- case 1 : weight + total이 W보다 작다면 W에 도달할 수 없는 경우 배제한다.
-- case 2 : weight값이 W를 초과하는 경우에 대해 배제한다.
-
-### Solution
-- 앞서 구한 promising function을 사용하여 state space tree를 promising function이 true인 노드의 서브트리에 대해서만 재귀적으로 DFS를 통해 탐색한다.
-- 아래는 탐색 과정을 도식으로 나타낸 것이다.![State Space Diagram](/image/Algorithm/backtracking_sumofsubset.png)
-
-## Backtracking - 0-1 Knapsack Problem
----
-> TODO continue 2023-05-03
-
