@@ -1,5 +1,5 @@
 +++
-title = "Dijkstra Algorithm"
+title = "Greedy Algorithm - Dijkstra Algorithm"
 date = 2023-04-26
 [taxonomies]
 tags = ["Computer Algorithm"]

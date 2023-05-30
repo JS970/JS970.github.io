@@ -1,5 +1,5 @@
 +++
-title = "Prim Algorithm"
+title = "Greedy Algorithm - Prim Algorithm"
 date = 2023-04-24
 [taxonomies]
 tags = ["Computer Algorithm"]

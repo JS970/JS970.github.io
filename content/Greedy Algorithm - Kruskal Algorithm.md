@@ -1,5 +1,5 @@
 +++
-title = "Kruskal Algorithm"
+title = "Greedy Algorithm - Kruskal Algorithm"
 date = 2023-04-24
 [taxonomies]
 tags = ["Computer Algorithm"]
