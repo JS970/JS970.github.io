@@ -7,9 +7,6 @@ tags = ["Computer Algorithm"]
 author = "JS970"
 katex= true
 +++
-# Flow
-- Backtracking
-
 ## Backtracking
 ---
 - Backtracking을 통해 미로에서 길을 찾는다고 생각해 보자.
