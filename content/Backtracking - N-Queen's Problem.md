@@ -9,12 +9,13 @@ katex= true
 +++
 ## Backtracking - N-queen's problem
 ---
+### N-Queen's Problem
 - N x N의 체스보드에서 N개의 퀸들이 서로를 공격하지 않도록 배치시키는 방법을 구하는 문제
 - Sequence : N개의 Queen이 배치되는 위치에 대한 sequence
 - Set : Queen이 위치 가능한 N\*N의 공간
 - Criterion : 어떠한 두 개의 Queen도 같은 행, 열, 대각선상에 존재할 수 없다.
 
-### 4-Queens Problem
+### 4-Queens Problem Solution
 ![4 \* 4 Chessboard](/image/Algorithm/chessboard4.png)
 - 아래는 위 chessboard에 대해 Backtracking을 적용하여 문제를 해결하는 과정을 도식으로 나타낸 것이다.
 	1. 첫 번째 Queen배치, F = {(1, 1), $\phi$}![N-Queens 1](/image/Algorithm/nqueens1.png)
