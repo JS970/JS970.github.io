@@ -104,6 +104,12 @@ katex= true
 		- `Need[i]` = `Need[i]` - `Request[i]`
 	- 위의 과정을 모든 프로세스에 대헤 진행하여 safe하다면 Pi에 자원을 할당한다.
 	 - unsafe라면 Pi는 선행 프로세스가 자원 할당을 해제할 때까지 대기해야 한다.
+- Banker's Algorithm 동작
+	1. Request에 대해 `Resource-Request Algorithm`을 수행한다.
+	2. `Safety Algorithm`을 수행하여 `safe state`를 검사한다.
+- Deadlock Avoidance에서는 `Need`정보를 바탕으로 `safe sequence`가 존재하는지 검사한다. 
+	- `safe sequence` 가 존재한다면 Deadlock Avoidance가 되는 것이다.
+	- `safe sequence`가 존재하지 않는다면 `unsafe`이다.
 
 ## Deadlock Handling - Deadlock Detection
 ---
@@ -121,7 +127,11 @@ katex= true
 
 ### Variant of the Banker's Algorithm
 - Deadlock Avoidance가 목적이 아니라 Deadlock Detection이 목적이다.
-
+- `Need[i]`에 대해서는 생각하지 않고, 순간 순간의 `Request[i]`를 처리할 수 있는지 판단한다.
+- 모든 `Request`가 처리되는 `sequence`가 존재한다면 해당 시스템에서는 Deadlock이 탐지되지 않은 것이다.
+	- 이는 `Request`의 순서를 다루는 것이므로 `safe sequence`와는 다른 개념이다.
+- 만약 `Work[i]`상태에서 처리할 수 있는 `Request[i]`가 없다면, `Finish == false`인 모든 프로세스가 Deadlock을 유발하는 프로세스이다.
+- `Finish == false`로 Deadlock을 유발하는 프로세스들에 대해서 `Process Termination`혹은 `Resource Preemption`을 통해 Deadlock Recovery를 수행한다.
 
 ### Recovery shceme : Process Termination
 - Deadlock이 Detection된 경우 프로세스를 종료시키는 방법
