@@ -1,6 +1,6 @@
 +++
 title = "Type Binding, Storage Binding, Scope"
-date = 2023-05-11
+date = 2023-05-12
 [taxonomies]
 tags = ["Programming Language Principles"]
 [extra]
