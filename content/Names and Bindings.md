@@ -1,5 +1,5 @@
 +++
-title = "Scope and Storage Binding"
+title = "Names and Bindings"
 date = 2023-05-11
 [taxonomies]
 tags = ["Programming Language Principles"]
