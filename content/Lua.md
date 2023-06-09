@@ -150,91 +150,91 @@ make all test
 
 ### Control Structure
 - `if-else`구문은 아래 코드처럼 마지막에 `end`키워드를 사용해야 한다.
-```Lua
-if a<b then 
-	return a 
-else 
-	return b 
-end
-```
+	```Lua
+	if a<b then 
+		return a 
+	else 
+		return b 
+	end
+	```
 - `while`, `for`역시 마지막에 `end`키워드를 사용해야 한다.
-```Lua
-while condition do
-	-- statement
-end
-
--- Generic For Loop
-for variable in structure do
-	-- statement
-	-- structure 자리에는 iterator 가 위치한다.
-	-- Generic For Loop의 경우 iterator가 모두 순회할 때까지 반복한다.
-end
-
--- Neumeric For Loop
-for i=1, 10, 2 do
-	-- statement
-	-- 증분 값을 생략하면 1로 자동 설정된다.
-end
-```
+	```Lua
+	while condition do
+		-- statement
+	end
+	
+	-- Generic For Loop
+	for variable in structure do
+		-- statement
+		-- structure 자리에는 iterator 가 위치한다.
+		-- Generic For Loop의 경우 iterator가 모두 순회할 때까지 반복한다.
+	end
+	
+	-- Neumeric For Loop
+	for i=1, 10, 2 do
+		-- statement
+		-- 증분 값을 생략하면 1로 자동 설정된다.
+	end
+	```
 
 ### Functions
 - `Lua`에서 함수를 정의할 때는 `function`키워드를 이용한다.
 - 함수가 끝날 때는 `end`를 사용하여 함수의 선언이 종료되었음을 명시해야 한다.
 - 대입과 마찬가지로 부족한 인수는 `nil`로 전달되며, 남는 인수는 버린다.
 - 아래 함수는 두 값을 더하는 함수 add이다.
-```Lua
-function add(a, b)
-	return a + b
-end
-```
+	```Lua
+	function add(a, b)
+		return a + b
+	end
+	```
 - `Lua`는 Default Argument를 지원하지 않는다. 하지만 조건 연산자를 이용하면 비슷한 역할을 하도록 구현할 수 있다.
 - 아래는 인수가 주어지지 않은 경우(`nil`인 경우 원하는 기본 인수(0)으로 설정하는 함수이다.
-```Lua
-function add(a, b)
-	b = b or 0
-	a = a or 0
-	return a + b
-end
-```
+	```Lua
+	function add(a, b)
+		b = b or 0
+		a = a or 0
+		return a + b
+	end
+	```
 - 아래는 팩토리얼을 계산하는 `Lua`함수이다.
-```Lua
-function factorial(n)
-	if n == 0 then 
-		return 1
-	else
-		return n * factorial(n-1)
+	```Lua
+	function factorial(n)
+		if n == 0 then 
+			return 1
+		else
+			return n * factorial(n-1)
+		end
 	end
-end
-```
+	```
 - 이를 tail recursion을 만족하도록 수정하면 다음과 같다.
-```Lua
-function tailFactorial(n, acc)
-	acc = acc or 1
-	if n == 0 then
-		return acc
-	else
-		acc = acc * n
-		return tailFactorial(n-1, acc)
+	```Lua
+	function tailFactorial(n, acc)
+		acc = acc or 1
+		if n == 0 then
+			return acc
+		else
+			acc = acc * n
+			return tailFactorial(n-1, acc)
+		end
 	end
-end
-```
+	```
 
 ### Lambda
 - `람다 함수`란 이름 없는 함수를 뜻한다.
 - 키워드 `function`다음에 아무 이름 없이 함수를 쓰면 `람다 함수`가 된다.
 - 아래는 덧셈을 수행하는 람다 함수 프로그램이다.
-```Lua
-(function(a, b) return a+b end)(2, 3)
-```
+	```Lua
+	(function(a, b) return a+b end)(2, 3)
+	```
 - 람다 함수를 사용하면 아래와 같이 지역 함수를 정의할 수 있다.
-```Lua
-function add(a, b)
-	local add1 = function(b)
-		return b + 1
+	```Lua
+	function add(a, b)
+		local add1 = function(b)
+			return b + 1
+		end
+		return a == 0 and b or add(a-1, add1(b))
 	end
-	return a == 0 and b or add(a-1, add1(b))
-end
-```
+	```
 - 재귀 지역 함수(Recursive Local Function)의 사용에서 주의사항
 	```Lua
 	function count(n)
@@ -268,45 +268,45 @@ end
 
 ### File Input and Output
 - 파일을 모드 문자열에 지정된 대로 여는 방법(file open)
-```Lua
-handle = io.open(fileName, MODE)
-```
+	```Lua
+	handle = io.open(fileName, MODE)
+	```
 - 기본 입력 혹은 출력을 handle로 바꾸는 방법(file set)
-```Lua
-io.input(handle), io.output(handle)
-```
+	```Lua
+	io.input(handle), io.output(handle)
+	```
 - 파일을 닫는 방법
-```Lua
-io.close(handle)
-```
+	```Lua
+	io.close(handle)
+	```
 
 ### Input
 - 문자열을 입력받아 반환
-```Lua
-io.read()
-```
+	```Lua
+	io.read()
+	```
 - 수를 입력받아 반환
-```Lua
-io.read("*n")
-```
+	```Lua
+	io.read("*n")
+	```
 - 한 행을 입력받아 반환
-```Lua
-io.read("1*")
-```
+	```Lua
+	io.read("1*")
+	```
 - 파일 내 모든 데이터를 입력받아 반환
-```Lua
-io.read("*a")
-```
+	```Lua
+	io.read("*a")
+	```
 
 ### output
 - 데이터를 출력한다
-```Lua
-print(data)
-```
+	```Lua
+	print(data)
+	```
 - 파일의 맨 끝 행에 출력한다. print와 달리 개행문자를 출력하지 않는다.
-```Lua
-io.write(data)
-```
+	```Lua
+	io.write(data)
+	```
 
 ### Closure
 ![Closure](/image/PL/closure.png)
@@ -314,37 +314,37 @@ io.write(data)
 - 언제든지 함수를 계산할 수 있는 형태이다.
 - 람다 함수는 참조 환경이 없는 클로저라고 볼 수 있다.
 - 아래는 `Lua`의 `Closure`를 정의한 예시이다.
-```Lua
-function newCounter()
-	local i = -1
-	return function() i = i + 1 return i end
-end
-```
+	```Lua
+	function newCounter()
+		local i = -1
+		return function() i = i + 1 return i end
+	end
+	```
 - 아래는 위의 `Closure` 사용 예시이다.
 	- newCounter()가 총 10번 실행된다.
 	- 이때 newCounter()의 호출 시마다 내부 참조 환경 i의 값이 바뀌어 매번 다른 값을 반환한다.
-```Lua
-c1 = newCounter()
-for i = 1, 10 do print(c1()) end
-```
+	```Lua
+	c1 = newCounter()
+	for i = 1, 10 do print(c1()) end
+	```
 
 ### Iterator
 - 어떤 자료 구조의 모든 자료를 훑는 함수를 반복자(iterator)라고 한다.
 - `Lua`의 `Closure`를 이용하면 반복자를 작성할 수 있다.
 - 아래는 `Lua`의 반복자 정의 예시이다.
-```Lua
-function iterator(t)
-	local i, sz = 0, #t
-	return function()
-		i = i + 1
-		if i <= sz then return t[i] end
+	```Lua
+	function iterator(t)
+		local i, sz = 0, #t
+		return function()
+			i = i + 1
+			if i <= sz then return t[i] end
+		end
 	end
-end
-```
+	```
 - 아래는 위 프로그램에서 정의한 반복자를 사용하는 `Lua`프로그램의 예시이다.
-```Lua
-for n in iterator({1, 2, 3, 4}) do print(n) end
-```
+	```Lua
+	for n in iterator({1, 2, 3, 4}) do print(n) end
+	```
 
 ### Coroutine
 - 자신만의 수행 상태를 지니고 있는 함수를 `Coroutine`이라고 부른다.
@@ -358,23 +358,23 @@ for n in iterator({1, 2, 3, 4}) do print(n) end
 - `Lua`에서의 `Coroutine`은 통상적인 `Coroutine`과 달리 호출자와 피호출자가 구분되는 asymetric `Coroutine`이다.
 - `Coroutine`은 상태를 지니고 있다는 점에서 `Iterator`와 유사한 측면이 있다. 하지만 `Coroutine`은 `Iterator`보다 훨씬 다양한 상태에 있을 수 있으므로 훨씬 강력하다.
 - 아래의 코드는 `Coroutine`을 사용한 `Lua`프로그램 코드이다.
-```Lua
-cntdown = coroutine.create(function()
-	coroutine.yield(5)
-	coroutine.yield(4)
-	coroutine.yield(3)
-	coroutine.yield(2)
-	coroutine.yield(1)
-end)
-
-repeat
+	```Lua
+	cntdown = coroutine.create(function()
+		coroutine.yield(5)
+		coroutine.yield(4)
+		coroutine.yield(3)
+		coroutine.yield(2)
+		coroutine.yield(1)
+	end)
+	
+	repeat
+		state, cnt = coroutine.resume(cntdown)
+		print(cnt == nil and "Blast" or cnt, state)
+	until coroutine.status(cntdown) == "dead"
+	
 	state, cnt = coroutine.resume(cntdown)
-	print(cnt == nil and "Blast" or cnt, state)
-until coroutine.status(cntdown) == "dead"
-
-state, cnt = coroutine.resume(cntdown)
-print(cnt, state)
-```
+	print(cnt, state)
+	```
 - `coroutine.create`를 통해 `Coroutine`을 생성한다.
 - `coroutine.tield`를 통해 `Coroutine`을 실행한다(사실상 return의 역할을 수행한다).
 - `coroutine.resume`을 통해 `Coroutine`을 재개한다.
@@ -382,30 +382,30 @@ print(cnt, state)
 
 ### 파일 입출력 & Coroutine을 사용한 예시 프로그램
 - 아래 프로그램은 1부터 입력받은 수 n까지의 모든 수 중 짝수만을 `evens.txt`에 write하는 프로그램이다.
-```Lua
-producer = function(n)
-	return coroutine.create(function()
-		for i = 1, n do coroutine.yield(i) end
-	end)
-end
-
-consumer = function(p)
-	return coroutine.create(function()
-		handle = io.open("evens.txt", "w")
-		io.output(handle)
-		repeat
-			_, num = coroutine.resume(p)
-			if num % 2 == 0 then
-				io.write(num)
-				io.write("\n")
-			end
-		until coroutine.status(p) == "dead"
-		io.close(handle)
-	end)
-end
-
-n = io.read("*n")
-p = producer(n)
-c = consumer(p)
-coroutine.resume(c)
-```
+	```Lua
+	producer = function(n)
+		return coroutine.create(function()
+			for i = 1, n do coroutine.yield(i) end
+		end)
+	end
+	
+	consumer = function(p)
+		return coroutine.create(function()
+			handle = io.open("evens.txt", "w")
+			io.output(handle)
+			repeat
+				_, num = coroutine.resume(p)
+				if num % 2 == 0 then
+					io.write(num)
+					io.write("\n")
+				end
+			until coroutine.status(p) == "dead"
+			io.close(handle)
+		end)
+	end
+	
+	n = io.read("*n")
+	p = producer(n)
+	c = consumer(p)
+	coroutine.resume(c)
+	```
