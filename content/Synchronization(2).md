@@ -286,7 +286,7 @@ katex= true
 		// writing is performed
 		signal(wrt);
 	} while(TRUE)
-```
+	```
 - Reader의 코드는 아래와 같다.
 	```c
 	do {
