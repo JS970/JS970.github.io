@@ -264,7 +264,7 @@ katex= true
 	- Consumer가 루프에서 탈출하기 위해서는 Product에서 item을 생산해야 한다.
 	- 하지만 `mutex`가 Consumer에 의해 점유된 상태이므로 Product는 `wait(mutex)`에서 루프에 빠진다.
 	- 서로가 자원을 점유한 상태에서 상대 프로세스의 자원을 대기중인 상황이므로 `deadlock`이다.
-	- 아래 그림은 위 상황을 도식으로 나타낸 것이다.![Bounded Buffer Deadlock](image/OS/boundedBuffer.png) 
+	- 아래 그림은 위 상황을 도식으로 나타낸 것이다.![Bounded Buffer Deadlock](/image/OS/boundedBuffer.png) 
 
 ### Readers and Writers Problem
 - Concurrent processes 간에 Data set이 공유되고 있다고 하자.
