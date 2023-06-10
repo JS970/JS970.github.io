@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-06-08T05:52:58.573Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="S0Nwz1gIFRBYMfKW3GgE" version="21.2.8" type="device">
+<mxfile host="Electron" modified="2023-06-10T04:55:32.906Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="IZoyqDLjJxqIt0AHlQNy" version="21.2.8" type="device">
   <diagram name="Page-1" id="uAzkmh9ahReXTtQtv0_R">
-    <mxGraphModel dx="1694" dy="619" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+    <mxGraphModel dx="1549" dy="513" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2292,6 +2292,38 @@
               <mxPoint x="181" y="4009" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="WrpjSD6eoMvz-zk5UaGG-59" value="producer" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#CCFFFF;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="920" y="3880" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="WrpjSD6eoMvz-zk5UaGG-60" value="consumer" style="rounded=0;whiteSpace=wrap;html=1;horizontal=1;verticalAlign=top;fillColor=#FFFFCC;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="3880" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="WrpjSD6eoMvz-zk5UaGG-61" value="mutex" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFCCCC;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="3920" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WrpjSD6eoMvz-zk5UaGG-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;curved=1;strokeColor=#FF0000;strokeWidth=3;fontStyle=1;fontFamily=Helvetica;fontSize=14;" edge="1" parent="1" source="WrpjSD6eoMvz-zk5UaGG-62" target="WrpjSD6eoMvz-zk5UaGG-59">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1430" y="4000" />
+              <mxPoint x="1020" y="4000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WrpjSD6eoMvz-zk5UaGG-62" value="full = 0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#CCFFCC;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="3920" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WrpjSD6eoMvz-zk5UaGG-64" value="Producer는 mutex가 없어서 buffer pool에 접근하지 못해 item을 생산할 수가 없다.&lt;br&gt;Consumer는 full=0인 상태이므로 사용 가능한 item이 없어 Producer에서 item을 생산할 때까지 대기해야 한다." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="920" y="4040" width="540" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WrpjSD6eoMvz-zk5UaGG-65" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#FF0000;strokeWidth=3;fontStyle=1;fontFamily=Helvetica;fontSize=14;" edge="1" parent="1" source="WrpjSD6eoMvz-zk5UaGG-59" target="WrpjSD6eoMvz-zk5UaGG-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WrpjSD6eoMvz-zk5UaGG-66" value="waiting" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontFamily=Helvetica;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="3910" width="60" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="WrpjSD6eoMvz-zk5UaGG-68" value="waiting" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontFamily=Helvetica;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="3980" width="60" height="10" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

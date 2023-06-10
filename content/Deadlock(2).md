@@ -7,11 +7,6 @@ tags = ["Operating System"]
 author = "JS970"
 katex= true
 +++
-# Flow
-- Deadlock Handling - Deadlock Prevention
-- Deadlock Handling - Deadlock Avoidance
-- Deadlock Handling - Deadlock Detection
-
 ## Deadlock Handling - Deadlock Prevention
 ---
 - deadlock condition중 최소 한 가지 이상의 조건을 만족하지 않도록 설정하여 deadlock을 예방하는 방법
