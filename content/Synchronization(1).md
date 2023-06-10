@@ -1,6 +1,6 @@
 +++
 title = "Synchronization(1)"
-date = 2023-04-12
+date = 2023-04-11
 [taxonomies]
 tags = ["Operating System"]
 [extra]
