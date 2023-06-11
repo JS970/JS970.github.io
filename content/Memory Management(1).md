@@ -1,5 +1,5 @@
 +++
-title = "Memory Management"
+title = "Memory Management(1)"
 date = 2023-05-11
 [taxonomies]
 tags = ["Operating System"]
@@ -7,7 +7,7 @@ tags = ["Operating System"]
 author = "JS970"
 katex= true
 +++
-> Deadlock, Synchronization, Scheduling에서는 프로세스의 자원 공유에 관해 다뤘다면, 이번 글에서는 메모리 공유에 대해 다룬다. 
+> Synchronization, Deadlock 에서는 프로세스의 자원 공유에 관해 다뤘다면, 이번 글에서는 메모리 공유에 대해 다룬다. 
 ## Memory Management Backgrounds
 ---
 ### Address Space
