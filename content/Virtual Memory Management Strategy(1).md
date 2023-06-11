@@ -7,13 +7,6 @@ tags = ["Operating System"]
 author = "JS970"
 katex= true
 +++
-# Flow
-- Virtual Memory Overview
-- Demand Paging
-- Page Replacement Schemes
-- Thrashing
-- Kernel Memory Allocation Schemes
-
 ## Virtual Memory overview
 ---
 - 어떤 프로그램이 실행될 때 그 프로그램 전체가 로딩될 필요는 없다.
