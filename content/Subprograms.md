@@ -1,5 +1,5 @@
 +++
-title = "프로그래밍언어론 2023-06-01 수업정리"
+title = "Subprograms"
 date = 2023-06-01
 [taxonomies]
 tags = ["Programming Language Principles"]
@@ -7,26 +7,6 @@ tags = ["Programming Language Principles"]
 author = "JS970"
 katex= true
 +++
-# Flow
--  Review(Control Flow)
--  Subprobram Concepts
-- Procedures and Functions
-- Parameter Passing Methods
-- Function Overloading
-- Jensen's Device
-- Coroutine
-
-## Review(Control Flow)
----
-- 연산자 레벨(수식 수준) Control Flow
-	- 단락회로 계산
-- Statement 레벨(문장 수준) Control Flow
-	- 이론적 배경 : 반복구조와 선택구조만을 사용하여 Statement Level Control Flow를 제어할 수 있다.
-		- 선택구조 : 1way, 2way, 3way branch
-		- 반복구조 : 계수기에 의한 반복구조, 조건에 따른 반복구조
-		- 순차구조
-- Dijkstra는 선택구조, 반복구조의 Deterministic한 특성을 없에기 위해 조건부 명령어, 무작위 선택문을 제시하였다. 또한 GOTO controversy를 제기했다.
-
 ## Subprogram Concepts
 ---
 - Program = Algorithm + Data Structure(Wirth 저) 에서 Algorithm이 Control Flow를 담당한다.
