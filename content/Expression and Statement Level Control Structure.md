@@ -1,5 +1,5 @@
 +++
-title = "프로그래밍언어론 2023-05-30 수업정리"
+title = "Expression and Statement Level Control Structure"
 date = 2023-05-30
 [taxonomies]
 tags = ["Programming Language Principles"]
@@ -7,28 +7,6 @@ tags = ["Programming Language Principles"]
 author = "JS970"
 katex= true
 +++
-# Flow
-- Review(Expression)
-- Short-Circuit Evaluation
-- Statement-Level Control Structure
-- Goto Controversy
-- Guarded Commands
-
-## Review(Expression)
----
-> Expression - 값 $\in$ 타입 - 연산 - 연산자
-- 연산자에 대한 결합방향과 우선순위에 대해 고려해야 한다.
-	- 결합방향에는 좌결합(이항연산자 +, -)과 우결합(=, \*\*, ++, 단항연산자 +, -)이 있다.
-	- 이때 `=` 을 연산자로 볼 수도 있고 표현식으로 볼 수도 있다.
-	- 이에 walrus operator(바다코끼리 연산자) `:=` 가 등장하였다.
-- 연산자에 대해 우선순위도 고려해야 한다.
-	- APL은 특이하게 연산자에 대한 우선순위가 없었다.
-- 연산자에 의해 값이 변경되는 것을 `side-effect` 라고 한다.
-	- 부수효과, 부대효과라고도 한다.
-	- 혼합 자료형 수식(mixed mode operator)에서 형 변환 시 `side-effect` 가 일어난다.
-	- 형 변환을 통해 값의 표현 범위가 축소될 수도, 확장될 수도 있다.
-	- 형 변환에는 명시적 형 변환(cast, explicit)과 암시적 형 변환이 있다.
-
 ## Control Flow(제어 구조)
 ---
 ### Control flow란?
@@ -57,7 +35,7 @@ katex= true
 	```Python
 	A * (B / 13 - 1), (A >= 0) and (B < 10)
 	```
-	- 단락회로 계산을 지원할 경우 위 수식에서는 A가 0 이상일 경우 and이후로는 연산할 필요가 없다.
+	- 단락회로 계산을 지원할 경우 위 수식에서는 **A가 0 이상일 경우 and이후로는 연산할 필요가 없다**.
 - `Pascal` 은 단락회로 계산을 지원하지 않는다.
 - `C`, `C++`, `Java`, `Modula-2` 는 논리곱, 논리합에 대한 단락회로 계산을 지원한다.
 - `Ada`는 프로그래머가 단락회로 계산 여부를 선택할 수 있다.
@@ -106,7 +84,7 @@ katex= true
 ### 대입 연산식
 - 대입 연산을 문장으로 간주하지 않고 표현식으로 간주한다.
 - C, C++, Java에서 이러한 방식을 채택했다.
-- Python에서도 walrus operator(`:=`)형태로 채택했다.
+- Python에서도 `walrus operator`(`:=`)형태로 채택했다.
 	```Python
 	while(line := input()):
 	```
