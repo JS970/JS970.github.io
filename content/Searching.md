@@ -72,8 +72,8 @@ katex= true
 	-  삽입 연산에 대해서 아래와 같은 세 가지 경우의 수가 존재한다.![Red Black insertion](/image/Algorithm/rbInsert01.png)
 	- 이 세 가지의 경우에 대해 어떤 방식으로 삽입 연산이 일어나는지 알아보자.
 	- 부모가 모두 `black`이면 그냥 삽입하면 된다.
-	- 부모가 `red`이며 부모와 동일 부모를 갖는 노드 역시 `red`라면 `restructing`을 수행한다.
-	- 부모가 `red`이며 부모와 동일 부모를 갖는 노드가 `black`이라면 `recoloring`을 수행한다.
+	- 부모가 `red`이며 부모와 동일 부모를 갖는 노드가 `black`이라면 `restructing`을 수행한다.
+	- 부모가 `red`이며 부모와 동일 부모를 갖는 노드가 `red`라면 `recoloring`을 수행한다.
 - Restructing
 	- 부모 노드의 부모 노드를 조상 노드라고 하자.
 	- 삽입하는 노드, 부모 노드, 조상 노드를 오름차순으로 정렬한다.
