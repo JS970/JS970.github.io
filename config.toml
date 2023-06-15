@@ -65,6 +65,10 @@ taxonomies = [
 # content for `default_language`.
 build_search_index = false
 
+[markdown]
+# When set to "true", all code blocks are highlighted.
+highlight_code = true
+
 # Configuration of the link checker.
 [link_checker]
 # Skip link checking for external URLs that start with these prefixes
