@@ -1,0 +1,61 @@
+{% import "macros/image.html" as image %}
+{% import "macros/summary.html" as summary %}
+{% import "macros/info.html" as info %}
+
+{% macro render(page, type="default") %}
+  {% if type == "overlay" %}
+    <div class="card border-0 text-white">
+      {{image::render(
+        src=get_url(path=page.path~page.extra.image),
+        alt=page.title,
+        extra="card-img"
+      )}}
+      <div class="card-img-overlay">
+        {{info::render(page=page)}}
+      </div>
+    </div>
+  {% elif type == "vertical" %}
+    <div class="card p-3 border-0">
+      {% if page.extra.image %}{{image::render(
+        src=get_url(path=page.path~page.extra.image),
+        alt=page.title,
+        extra="card-img-top"
+      )}}{% endif %}
+      <div class="card-body">
+        {{info::render(page=page)}}
+      </div>
+    </div>
+  {% elif type == "carousel" %}
+    <div class="carousel-item">
+      <img
+        src="{{get_url(path=page.path~page.extra.image)}}"
+        class="d-block w-100"
+        alt="{{page.title}}"
+      >
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{page.title}}</h5>
+        <p>{{authors::render(page=page)}}</p>
+      </div>
+    </div>
+  {% else %}
+    <div class="card p-3 border-0">
+      <div class="row g-5">
+        {% set img = page.extra.image | default(value="") %}
+        {% if img %}
+        <div class="col-md-4 d-flex align-items-center">
+          {{image::render(
+            src=get_url(path=page.path~img),
+            alt=page.title
+          )}}
+        </div>
+        {% endif %}
+        <div class="col-md-{% if img %}8{% else %}12{% endif %}">
+          {{info::render(page=page)}}
+          {% if type == "default" %}
+          {{summary::render(page=page)}}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endmacro %}

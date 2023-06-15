@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% import "macros/authors.html" as authors %}
+{% import "macros/authorbox.html" as authorbox %}
+
+{% block title %}{{page.title}} | {{config.title}}{% endblock %}
+
+{% block content %}
+  <h1>{{page.title}}</h1>
+  <p class="text-muted">
+    {{authors::render(page=page)}}
+  </p>
+  {% if page.taxonomies.tags %}
+  <p>
+    {% for tag in page.taxonomies.tags %}
+      <a
+        href="{{get_taxonomy_url(kind="tags", name=tag)}}"
+        class="badge bg-dark text-decoration-none link-light me-1"
+      >
+        {{tag}}
+      </a>
+    {% endfor %}
+  </p>
+  {% endif %}
+  <div class="content">
+    {{page.content | safe}}
+  </div>
+  {% for author_slug in page.taxonomies.authors | default(value=[]) %}
+    {{authorbox::render(author_slug=author_slug)}}
+  {% endfor %}
+{% endblock %}
+
+{% block scripts %}
+  {% if config.extra.utterances %}
+  <script
+    src="https://utteranc.es/client.js"
+    repo="{{config.extra.utterances}}"
+    issue-term="{{config.extra.utterances_issue_term}}"
+    label="{{config.extra.utterances_label}}"
+    theme="{{config.extra.utterances_theme}}"
+    crossorigin="anonymous"
+    async
+  ></script>
+  {% endif %}
+{% endblock %}

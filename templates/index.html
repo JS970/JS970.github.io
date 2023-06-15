@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% import "macros/post.html" as post %}
+{% import "macros/posts.html" as posts %}
+{% import "macros/paginator.html" as paginator %}
+{% import "macros/header.html" as header %}
+
+{% block content %}
+  {% for row in section.extra.home | default(value=[]) %}
+    <div class="row">
+      {% for item in row %}
+        <div class="col-md-{{item.size}}">
+          {% if item.title %}
+            {{header::render(text=item.title)}}
+          {% endif %}
+          {% if item.section %}
+            {% set articles = get_section(path=item.section~"/_index.md") %}
+            {% set type = item.type | default(value='default') %}
+            {% if item.rows %}
+              {% set_global start = item.start %}
+              {% for row in item.rows %}
+                {% set end = start + row %}
+                {% set pages = articles.pages | slice(start=start, end=end) %}
+                {{posts::render(pages=pages, type=type, row=row)}}
+                {% set_global start = end %}
+              {% endfor %}
+            {% else %}
+              {% set pages = articles.pages | slice(start=item.start, end=item.end) %}
+              {% set row = item.row | default(value=0) %}
+              {{posts::render(pages=pages, type=type, row=row)}}
+            {% endif %}
+          {% else %}
+            {% for i in item.items %}
+              <div class="card m-5">
+                {% if i.img %}
+                <a href="{{i.url}}">
+                  <img
+                    src="{{get_url(path=i.img)}}"
+                    class="card-img-top"
+                    alt="{{i.info | default(value='')}}"
+                    title="{{i.info | default(value='')}}"
+                  >
+                </a>
+                {% endif %}
+                <div class="card-body text-center">
+                  {% if i.title %}
+                  <h5 class="card-title">{{i.title}}</h5>
+                  {% endif %}
+                  {% if i.description %}
+                  <p class="card-text">{{i.description}}</p>
+                  {% endif %}
+                  {% if i.label or i.icon %}
+                  <a
+                    href="{{i.url}}"
+                    {% if i.button %}class="btn btn-{{i.button}}"{% endif %}
+                  >{{i.label}}{% if i.icon %} <i class="{{i.icon}}"></i>{% endif %}</a>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+  {% if section.title %}
+    <h1 class="px-3">{{section.title}}</h1>
+  {% endif %}
+  {% if section.description %}
+    <p class="px-3 text-muted">{{section.description}}</p>
+  {% endif %}
+  {% if section.content %}
+    <div class="content px-3">{{section.content | safe}}</div>
+  {% endif %}
+	{% for page in paginator.pages %}
+    {{post::render(page=page)}}
+	{% endfor %}
+  {{paginator::render(paginator=paginator)}}
+  {% if section.extra.tags %}
+    {{header::render(text=config.extra.tags)}}
+    {% set tags = get_taxonomy(kind="tags") %}
+    {% for item in tags.items %}
+      <a
+        class="text-decoration-none text-reset"
+        href="{{item.permalink}}"
+      >{{item.name}}</a> | 
+    {% endfor %}
+  {% endif %}
+{% endblock %}
