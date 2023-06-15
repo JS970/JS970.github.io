@@ -143,8 +143,8 @@ index_format = "elasticlunr_javascript"
 # You can put any kind of data here. The data
 # will be accessible in all templates
 # Example:
-#     [extra]
-#     author = "Famous author"
+[extra]
+author = "JS970"
 #
 # author value will be available using {{ config.extra.author }} in templates
 #
