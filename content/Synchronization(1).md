@@ -116,7 +116,7 @@ katex= true
 	- Pi의 관점에서는 Pj가 실행중일 때는 while문을 이용해 Pj의 `Critical Section`접근 권한이 유효한 동안 무한 대기한다. Pj의 경우 반대로 동작한다.
 	- `Exit Section`에서는 접근 권한을 반환하여 while문에서 대기중이던 상대 프로세스가 `Critical Section`으로 진입할 수 있도록 한다.
 	- Procedure `i`
-	```C
+		```C
 		// Procedure : Pi
 		do {
 			/* Entry Section */

@@ -68,6 +68,7 @@ build_search_index = false
 [markdown]
 # When set to "true", all code blocks are highlighted.
 highlight_code = true
+highlight_theme = "base16-ocean-dark"
 
 # Configuration of the link checker.
 [link_checker]
