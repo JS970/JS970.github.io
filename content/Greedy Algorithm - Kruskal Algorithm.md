@@ -17,7 +17,7 @@ katex= true
 	- 위에서 설명한 과정을 차례대로 수행하면 아래 그림과 같다.![Kruskal Algorithm](/image/Algorithm/kruskal.png)
 
 ### Code
-```C++, linenos
+```C++
 #include <iostream>
 #include <vector>
 #include <algorithm>
