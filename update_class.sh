@@ -25,7 +25,15 @@ cp -r /Users/sonjaeseong/SynologyDrive/obsidian/roundoff/image/SSD/* /Users/sonj
 cp -r /Users/sonjaeseong/SynologyDrive/obsidian/roundoff/image/Algorithm/* /Users/sonjaeseong/workspace/JS970.github.io/static/image/Algorithm
 
 # Enviromnent_Settings
-cp -r /Users/sonjaeseong/SynologyDrive/obsidian/roundoff/Enviromnent_Settings/* /Users/sonjaeseong/workspace/JS970.github.io/content
+cp -r /Users/sonjaeseong/SynologyDrive/obsidian/roundoff/Environment_Settings/* /Users/sonjaeseong/workspace/JS970.github.io/content
 
 # Environment_Settings Image
-cp -r /Users/sonjaeseong/SynologyDrive/obsidian/roundoff/image/Enviromnent_Settings/* /Users/sonjaeseong/workspace/JS970.github.io/static/image/Enviromnent_Settings
+cp -r /Users/sonjaeseong/SynologyDrive/obsidian/roundoff/image/Environment_Settings/* /Users/sonjaeseong/workspace/JS970.github.io/static/image/Environment_Settings
+
+# TinyML
+cp -r /Users/sonjaeseong/SynologyDrive/obsidian/roundoff/TinyML/* /Users/sonjaeseong/workspace/JS970.github.io/content
+
+# TinyML Image
+cp -r /Users/sonjaeseong/SynologyDrive/obsidian/roundoff/image/TinyML/* /Users/sonjaeseong/workspace/JS970.github.io/static/image/TinyML
+
+
