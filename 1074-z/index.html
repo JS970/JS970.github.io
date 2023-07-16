@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>1074 - Z | Rounding Off</title>
+
+
+
+<meta property="og:title" content="1074 - Z">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/1074-z/">
+<meta property="og:url" content="https://js970.github.io/1074-z/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-17T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="1074 - Z">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/1074-z/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "1074 - Z"
+  
+    
+    
+      "datePublished":"2023-02-17T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/1074-z/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-17">February 17, 2023</time>
+  	</div>
+  	<h1 class="post-title">1074 - Z</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 1</li>
+<li>날짜: 2023년 2월 17일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No</li>
+<li>알고리즘 : 분할정복</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>입력되는 배열은 행 또는 열의 크기가 $2^n$인 정사각형 형태의 배열이다. 이를 4개의 구역으로 나누는 방식을 재귀적으로 적용하였다.</li>
+<li>4개로 나눠진 각각의 구역은 다시 4개의 서로 다른 구역으로 나눌 수 있다. 이 과정을 2*2배열까지 적용한다.</li>
+<li>이 문제의 입력을 배열로 구현하면 메모리 초과의 발생이 자명하다. 이에 실제로 배열을 구현하지는 않고 배열의 인덱스를 나타내는 변수 idx를 이용한다.</li>
+<li>idx는 r행 c열에 위치한 수가 몇 번째로 출력되는지 순서를 나타낸다.</li>
+<li>앞서 설명한 4개의 구역을 임의로 1섹터, 2섹터, 3섹터, 4섹터로 분류한다. 1섹터는 $2^{n-1} * 2^{n-1}$개의 칸을 을 0번, 2섹터는 1번, 3섹터는 2번, 4섹터는 3번 통과한 후 해당 섹터의 프레임에 도달한다. 이 값을 섹터의 프레임이 1이 될때까지 재귀적으로 반복한다.</li>
+<li>설명이 어려운 것에 비해 코드로 구현한 것은 아래처럼 매우 간단하다.</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">cmath</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> N, r, c;
+</span><span>    cin &gt;&gt; N &gt;&gt; r &gt;&gt; c;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> div;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> idx = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">1</span><span>; i &lt;= N; i++)
+</span><span>    {
+</span><span>        div = </span><span style="color:#96b5b4;">pow</span><span>(</span><span style="color:#d08770;">2</span><span>, N-i);
+</span><span>        </span><span style="color:#b48ead;">if</span><span>((r/div)%</span><span style="color:#d08770;">2 </span><span>== </span><span style="color:#d08770;">0 </span><span>&amp;&amp; (c/div)%</span><span style="color:#d08770;">2 </span><span>== </span><span style="color:#d08770;">0</span><span>) idx += div * div * </span><span style="color:#d08770;">0</span><span>;
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>((r/div)%</span><span style="color:#d08770;">2 </span><span>== </span><span style="color:#d08770;">0 </span><span>&amp;&amp; (c/div)%</span><span style="color:#d08770;">2 </span><span>== </span><span style="color:#d08770;">1</span><span>) idx += div * div * </span><span style="color:#d08770;">1</span><span>;
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>((r/div)%</span><span style="color:#d08770;">2 </span><span>== </span><span style="color:#d08770;">1 </span><span>&amp;&amp; (c/div)%</span><span style="color:#d08770;">2 </span><span>== </span><span style="color:#d08770;">0</span><span>) idx += div * div * </span><span style="color:#d08770;">2</span><span>;
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>((r/div)%</span><span style="color:#d08770;">2 </span><span>== </span><span style="color:#d08770;">1 </span><span>&amp;&amp; (c/div)%</span><span style="color:#d08770;">2 </span><span>== </span><span style="color:#d08770;">1</span><span>) idx += div * div * </span><span style="color:#d08770;">3</span><span>;
+</span><span>    }
+</span><span>    cout &lt;&lt; idx &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/1074">1074번: Z</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

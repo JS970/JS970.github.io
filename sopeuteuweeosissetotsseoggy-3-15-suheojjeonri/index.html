@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>소프트웨어시스템설계 2023-03-15 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="소프트웨어시스템설계 2023-03-15 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/sopeuteuweeosissetotsseoggy-3-15-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/sopeuteuweeosissetotsseoggy-3-15-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-15T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="소프트웨어시스템설계 2023-03-15 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/sopeuteuweeosissetotsseoggy-3-15-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "소프트웨어시스템설계 2023-03-15 수업정리"
+  
+    
+    
+      "datePublished":"2023-03-15T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/sopeuteuweeosissetotsseoggy-3-15-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-15">March 15, 2023</time>
+  	</div>
+  	<h1 class="post-title">소프트웨어시스템설계 2023-03-15 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Refactoring (2)</li>
+</ul>
+<h2 id="refactoring-example">Refactoring Example</h2>
+<hr />
+<p>아래의 UML과 코드들은 리펙토링을 하기 이전의 원본 상태이다.</p>
+<h3 id="original-uml">Original UML</h3>
+<p><img src="/image/SSD/uml_original.png" alt="Original UML" /></p>
+<h3 id="original-code-run">Original Code - Run</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ebcb8b;">Customer</span><span> customer1 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Customer</span><span>(&quot;</span><span style="color:#a3be8c;">David</span><span>&quot;);
+</span><span style="color:#ebcb8b;">Movie</span><span> movie1 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Movie</span><span>(&quot;</span><span style="color:#a3be8c;">Madagascar</span><span>&quot;, </span><span style="color:#ebcb8b;">Movie</span><span>.</span><span style="color:#d08770;">CHILDRENS</span><span>);
+</span><span style="color:#ebcb8b;">Rental</span><span> rental1 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Rental</span><span>(movie1, </span><span style="color:#d08770;">6</span><span>);
+</span><span style="color:#ebcb8b;">Movie</span><span> movie2 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Movie</span><span>(&quot;</span><span style="color:#a3be8c;">Star Wars</span><span>&quot;, </span><span style="color:#ebcb8b;">Movie</span><span>.</span><span style="color:#d08770;">NEW_RELEASE</span><span>);
+</span><span style="color:#ebcb8b;">Rental</span><span> rental2 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Rental</span><span>(movie2, </span><span style="color:#d08770;">2</span><span>);
+</span><span style="color:#ebcb8b;">Movie</span><span> movie3 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Movie</span><span>(&quot;</span><span style="color:#a3be8c;">Gone with the Wind</span><span>&quot;, </span><span style="color:#ebcb8b;">Movie</span><span>.</span><span style="color:#d08770;">REGULAR</span><span>);
+</span><span style="color:#ebcb8b;">Rental</span><span> rental3 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Rental</span><span>(movie3, </span><span style="color:#d08770;">8</span><span>);
+</span><span>customer1.</span><span style="color:#bf616a;">addRental</span><span>(rental1);
+</span><span>customer1.</span><span style="color:#bf616a;">addRental</span><span>(rental2);
+</span><span>customer1.</span><span style="color:#bf616a;">addRental</span><span>(rental3);
+</span><span style="color:#ebcb8b;">System</span><span>.out.</span><span style="color:#bf616a;">println</span><span>(customer1.</span><span style="color:#bf616a;">statement</span><span>());
+</span></code></pre>
+<ul>
+<li>output</li>
+</ul>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>Rental Record for David
+</span><span>	Madagascar 6.0
+</span><span>	Star Wars 6.0
+</span><span>	Gone with the Wind 11.0
+</span><span>Amount owed is 23.0
+</span><span>You earned 4 frequent renter points
+</span></code></pre>
+<h3 id="original-code-class-movie">Original Code - class Movie</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">Movie </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public static final int </span><span style="color:#eff1f5;">CHILDREN </span><span>= </span><span style="color:#d08770;">2</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public static final int </span><span style="color:#eff1f5;">REGULAR </span><span>= </span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public static final int </span><span style="color:#eff1f5;">NEW_RELEASE </span><span>= </span><span style="color:#d08770;">1</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">private </span><span style="color:#ebcb8b;">String </span><span style="color:#eff1f5;">_title;
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">private int </span><span style="color:#eff1f5;">_priceCode;
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public </span><span style="color:#8fa1b3;">Movie</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">String </span><span style="color:#bf616a;">title</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">priceCode</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">		_title </span><span>=</span><span style="color:#eff1f5;"> title;
+</span><span style="color:#eff1f5;">		_priceCode </span><span>=</span><span style="color:#eff1f5;"> priceCode;
+</span><span style="color:#eff1f5;">	}
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public int </span><span style="color:#8fa1b3;">getPriceCode</span><span style="color:#eff1f5;">() { </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> _priceCode; }
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">setPriceCode</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">arg</span><span style="color:#eff1f5;">) { _priceCode </span><span>=</span><span style="color:#eff1f5;"> arg; }
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">String </span><span style="color:#8fa1b3;">getTitle </span><span style="color:#eff1f5;">() { </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> _title; }
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<h3 id="original-code-class-rental">Original Code - class Rental</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">Rental </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">private </span><span style="color:#ebcb8b;">Movie </span><span style="color:#eff1f5;">_movie;
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">private int </span><span style="color:#eff1f5;">_daysRented;
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public </span><span style="color:#8fa1b3;">Rental</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Movie </span><span style="color:#bf616a;">movie</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">daysRented</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">		_movie </span><span>=</span><span style="color:#eff1f5;"> movie;
+</span><span style="color:#eff1f5;">		_daysRented </span><span>=</span><span style="color:#eff1f5;"> daysRented;;
+</span><span style="color:#eff1f5;">	}
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public int </span><span style="color:#8fa1b3;">getDaysRented</span><span style="color:#eff1f5;">() { </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> _daysRented; }
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">Movie </span><span style="color:#8fa1b3;">getMovie</span><span style="color:#eff1f5;">() { </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> _movie; }
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<h3 id="original-code-class-customer">Original Code - class Customer</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">Customer </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">private </span><span style="color:#ebcb8b;">String </span><span style="color:#eff1f5;">_name;
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">private </span><span style="color:#ebcb8b;">Vector</span><span style="color:#eff1f5;">&lt;</span><span style="color:#ebcb8b;">Rental</span><span style="color:#eff1f5;">&gt; _rentals </span><span>= </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Vector</span><span style="color:#eff1f5;">&lt;</span><span style="color:#ebcb8b;">Rental</span><span style="color:#eff1f5;">&gt;();
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public </span><span style="color:#8fa1b3;">Customer </span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">String </span><span style="color:#bf616a;">name</span><span style="color:#eff1f5;">) { _name </span><span>=</span><span style="color:#eff1f5;"> name; }
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">addRental</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Rental </span><span style="color:#bf616a;">arg</span><span style="color:#eff1f5;">) { _rentals.</span><span style="color:#bf616a;">addElement</span><span style="color:#eff1f5;">(arg); }
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">String </span><span style="color:#8fa1b3;">getName</span><span style="color:#eff1f5;">() { </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> _name; }
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">String </span><span style="color:#8fa1b3;">statement</span><span style="color:#eff1f5;">() {
+</span><span style="color:#eff1f5;">		</span><span style="color:#b48ead;">double</span><span style="color:#eff1f5;"> totalAmount </span><span>= </span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">		</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;"> result </span><span>= &quot;</span><span style="color:#a3be8c;">Rental Record for </span><span>&quot; + </span><span style="color:#bf616a;">getName</span><span style="color:#eff1f5;">() </span><span>+ &quot;</span><span style="color:#96b5b4;">\n</span><span>&quot;</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">		</span><span style="color:#b48ead;">for</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Rental</span><span style="color:#eff1f5;"> each</span><span>:</span><span style="color:#eff1f5;"> _rentals) {
+</span><span style="color:#eff1f5;">			</span><span style="color:#b48ead;">double</span><span style="color:#eff1f5;"> thisAmount </span><span>= </span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">			</span><span style="color:#b48ead;">switch</span><span style="color:#eff1f5;">(each.</span><span style="color:#bf616a;">getMovie</span><span style="color:#eff1f5;">().</span><span style="color:#bf616a;">getPriceCode</span><span style="color:#eff1f5;">()){
+</span><span style="color:#eff1f5;">				</span><span style="color:#b48ead;">case </span><span style="color:#ebcb8b;">Moviie</span><span style="color:#eff1f5;">.</span><span style="color:#d08770;">REGULAR</span><span>:
+</span><span style="color:#eff1f5;">					thisAmount </span><span>+= </span><span style="color:#d08770;">2</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">					</span><span style="color:#b48ead;">if</span><span style="color:#eff1f5;">(each.</span><span style="color:#bf616a;">getDaysRented</span><span style="color:#eff1f5;">() </span><span>&gt; </span><span style="color:#d08770;">2</span><span style="color:#eff1f5;">)
+</span><span style="color:#eff1f5;">						thisAmount </span><span>+= </span><span style="color:#eff1f5;">(each.</span><span style="color:#bf616a;">getDaysRented</span><span style="color:#eff1f5;">() </span><span>-</span><span style="color:#d08770;">2</span><span style="color:#eff1f5;">) </span><span>* </span><span style="color:#d08770;">1.5</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">					</span><span style="color:#b48ead;">break</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">				</span><span style="color:#b48ead;">case </span><span style="color:#ebcb8b;">Movie</span><span style="color:#eff1f5;">.</span><span style="color:#d08770;">NEW_RELEASE</span><span>:
+</span><span style="color:#eff1f5;">					thisAmount </span><span>+=</span><span style="color:#eff1f5;"> each.</span><span style="color:#bf616a;">getDaysRented</span><span style="color:#eff1f5;">() </span><span>* </span><span style="color:#d08770;">3</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">					</span><span style="color:#b48ead;">break</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">				</span><span style="color:#b48ead;">case </span><span style="color:#ebcb8b;">Movie</span><span style="color:#eff1f5;">.</span><span style="color:#d08770;">CHILDREN</span><span>:
+</span><span style="color:#eff1f5;">					thisAmount </span><span>+= </span><span style="color:#d08770;">1.5</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">					</span><span style="color:#b48ead;">if</span><span style="color:#eff1f5;">(each.</span><span style="color:#bf616a;">getDaysRented</span><span style="color:#eff1f5;">() </span><span>&gt; </span><span style="color:#d08770;">3</span><span style="color:#eff1f5;">)
+</span><span style="color:#eff1f5;">						thisAmount </span><span>+= </span><span style="color:#eff1f5;">(each.</span><span style="color:#bf616a;">getDaysRented</span><span style="color:#eff1f5;">() </span><span>- </span><span style="color:#d08770;">3</span><span style="color:#eff1f5;">) </span><span>* </span><span style="color:#d08770;">1.5</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">					</span><span style="color:#b48ead;">break</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">			}
+</span><span style="color:#eff1f5;">			frequentRenterPoints</span><span>++</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">			</span><span style="color:#b48ead;">if</span><span style="color:#eff1f5;">((each.</span><span style="color:#bf616a;">getMovie</span><span style="color:#eff1f5;">().</span><span style="color:#bf616a;">getPriceCode</span><span style="color:#eff1f5;">() </span><span>== </span><span style="color:#ebcb8b;">Movie</span><span style="color:#eff1f5;">.</span><span style="color:#d08770;">NEW_RELEASE</span><span style="color:#eff1f5;">) 
+</span><span style="color:#eff1f5;">				</span><span>&amp;&amp;</span><span style="color:#eff1f5;"> each.</span><span style="color:#bf616a;">getDaysRented</span><span style="color:#eff1f5;">() </span><span>&gt; </span><span style="color:#d08770;">1</span><span style="color:#eff1f5;">)
+</span><span style="color:#eff1f5;">				frequentRenterPoints</span><span>++</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">			result </span><span>+= &quot;</span><span style="color:#96b5b4;">\t</span><span>&quot; +</span><span style="color:#eff1f5;"> each.</span><span style="color:#bf616a;">getMovie</span><span style="color:#eff1f5;">().</span><span style="color:#bf616a;">getTitle</span><span style="color:#eff1f5;">() </span><span>+ &quot;</span><span style="color:#96b5b4;">\t</span><span>&quot;
+</span><span style="color:#eff1f5;">			</span><span>+ </span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">valueOf</span><span style="color:#eff1f5;">(thisAmount) </span><span>+ &quot;</span><span style="color:#96b5b4;">\n</span><span>&quot;</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">			totalAmount </span><span>+=</span><span style="color:#eff1f5;"> thisAmount;
+</span><span style="color:#eff1f5;">		}
+</span><span style="color:#eff1f5;">		result </span><span>+= &quot;</span><span style="color:#a3be8c;">Amount owed is </span><span>&quot; + </span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">valueOf</span><span style="color:#eff1f5;">(totalAmount) </span><span>+ &quot;</span><span style="color:#96b5b4;">\n</span><span>&quot;</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">		result </span><span>+= &quot;</span><span style="color:#a3be8c;">You earned </span><span>&quot; + </span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">valueOf</span><span style="color:#eff1f5;">(frequentRenterPoints) 
+</span><span style="color:#eff1f5;">			</span><span>+ &quot;</span><span style="color:#a3be8c;"> frequent renter points</span><span>&quot;</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">		</span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> result;
+</span><span style="color:#eff1f5;">	}
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<h3 id="munjejjeoddeugwa-haeggyeo-bbanbbeo">문제점들과 해결 방법</h3>
+<ul>
+<li>아래와 같은 상황에서 위의 코드는 OCP를 위반한다.
+<ul>
+<li>사용자가 출력 방식을 HTML형태로 출력하기를 원한다.</li>
+<li>요금 규정이 변경된다.</li>
+<li>새로운 영화 카테고리가 추가된다.</li>
+</ul>
+</li>
+<li>원인은 아래와 같다.
+<ul>
+<li>Business Code와 UI Code가 섞여 있다.</li>
+<li>Business Code와 UI Code가 독립적으로 너무 자주 변경된다.</li>
+</ul>
+</li>
+<li>해결 방법
+<ul>
+<li>긴 method(statemeent())를 작은 method로 쪼갠다. 이렇게 하여 전체 method가 늘어나면 SRP를 위반할 확률이 낮아진다.
+<ul>
+<li>SRP : Single ResponsibilityPrinciple, 변경의 원인은 하나여야 한다.</li>
+<li>이를 위해 UI, Control, Entity Class를 나누어야 한다.</li>
+</ul>
+</li>
+<li>클래스 추가, 추상 클래스 생성을 통하여 OCP를 충족하도록 설계한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="step1-uml">Step1 - UML</h3>
+<p>Statement method의 implementation을 여러 별개의 method로 extract method한다. 이 과정에서 다른 클래스의 feature를 더 많이 사용한다면 Move method 한다.
+<img src="/image/SSD/uml_step1.png" alt="uml step1" /></p>
+<h3 id="step2-uml">Step2 - UML</h3>
+<p>새로운 클래스를 추상 클래스 형태로 추가하여 Polymorphism을 통해 OCP를 만족시키도록 설계한다. step1에서 다른 class의 feature를 더 많이 사용하여 이동된 method를 확인할 수 있다.
+<img src="/image/SSD/uml_step2.png" alt="uml step2" /></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>소프트웨어시스템설계 2023-03-29 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="소프트웨어시스템설계 2023-03-29 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/sopeuteuweeosissetotsseoggy-3-29-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/sopeuteuweeosissetotsseoggy-3-29-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-29T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="소프트웨어시스템설계 2023-03-29 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/sopeuteuweeosissetotsseoggy-3-29-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "소프트웨어시스템설계 2023-03-29 수업정리"
+  
+    
+    
+      "datePublished":"2023-03-29T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/sopeuteuweeosissetotsseoggy-3-29-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-29">March 29, 2023</time>
+  	</div>
+  	<h1 class="post-title">소프트웨어시스템설계 2023-03-29 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Review</li>
+<li>Design Pattern Overview</li>
+</ul>
+<h2 id="review">Review</h2>
+<hr />
+<ul>
+<li>사실 <a href="https://refactoring.guru/ko/refactoring/smells">Code Smell</a> 은 성능 측면에서는 별 영향을 주지 않는다.</li>
+<li>하지만 code smell을 없에면 유지보수성을 강화할 수 있다.</li>
+<li>현실적으로는 유지보수성 이외에도 <a href="http://www.splex.co.kr/isoiec-9126-25010">ISO 25010</a>의 여러 요소를 중요하게 판단해야 한다.</li>
+<li>본 강의에서는 유지보수성에 중점을 두고 설명한다.</li>
+</ul>
+<h2 id="design-pattern-overview">Design Pattern Overview</h2>
+<hr />
+<p>일반적으로 디자인 과정은 아래와 같은 세 개의 sub-process로 나눌 수 있다.
+<img src="/image/SSD/design_process.png" alt="design process" />
+개발 과정에서 비슷한 코드를 재사용하듯이, 설계 과정에서도 이러한 설계사항을 재사용 할 수 있다. 이를 설계의 재사용이라고 하고 Design Pattern으로 정리되었다. Design Pattern의 사용을 통해 검증된 설계를 상황에 맞게 적용할 수 있다.</p>
+<h3 id="example-data-views-consistency-problem">Example : Data - Views Consistency Problem</h3>
+<p>다음 상황의 문제점에 대해 살펴보자
+<img src="/image/SSD/scorerecord.png" alt="ScoreRecord" /></p>
+<ul>
+<li>점수 정보를 저장하는 ScoreRecord클래스는 데이터를 가공하여 출력하는 DataSheet, PieGraph, BarGraph 클래스에 정보 갱신 사실을 알리기 위해 association 하고 있다.</li>
+<li>DataSheet, PieGraph, BarGraph클래스는 ScoreRecord로 부터 점수 정보를 받아오기 위해 ScoreRecord에 association하고 있다.</li>
+<li>이러한 설계는 새로운 그래프의 추가, 점수 정보 이외의 정보 추가 등 새로운 요구사항을 반영해야 할 때 OCP를 위반하는 문제점이 있다.</li>
+<li>OCP위반을 막기 위해서는 ScoreRecord가 나머지 클래스를 association하지 않아야 한다.</li>
+<li>하지만 이 경우 점수 정보가 변경되었을 때 나머지 클래스에서 실시간 갱신이 힘들다는 문제가 있다.</li>
+<li>이를 해결하기 위해 나머지 클래스에서 ScoreRecord클래스를 주기적으로 Polling하면 되지만, 이 경우 불필요한 recource를 낭비하게 되어 성능이 떨어지는 문제가 있다.</li>
+<li>이런 총체적인 문제점을 해결하기 위해서는 <strong>Observer Pattern</strong>을 적용하면 된다.</li>
+<li>아래 UML은 Observer Pattern을 적용한 UML이다.
+<img src="/image/SSD/observer_scorerecord.png" alt="ScoreRecord with Observer Pattern" /></li>
+<li>구현은 항상 바뀔 수 있으니 인터페이스에 의존해야 한다.(DIP)
+<ul>
+<li>DIP : Dependency Inversion Principle</li>
+<li>ConcreteSubject가 Observer를 직접 참조하면 ConcreteSubject가 여러 개일 경우 결국 duplicated code smell이 발생한다. <em>Subject</em> 클래스 생성을 통한 인터페이스 의존을 통해 이런 문제를 해결할 수 있다.
+<ul>
+<li>기존 코드에서는 list, array, vector로 객체 리스트를 관리했지만, 인터페이스 의존을 할 경우 set등의 non-ordered 자료구조를 사용하여 관리가 가능하다.</li>
+</ul>
+</li>
+<li>이런 식의 인터페이스 의존을 통해 Shotgun Surgery smell을 없엘 수 있다.</li>
+</ul>
+</li>
+<li>ConcreteSubject가 ConcreteObserver를 직접 association하여 OCP를 위반하는 것이 문제였던 초기 상황과 달리, Subject가 Observer를 association하고 있는 상황이므로 OCP를 위반하지 않으면서 성능 문제도 없다.
+<ul>
+<li>ScoreRecord(ConcreteSubject)에서 Notify()호출 -&gt; Observer의 Update()호출 -&gt; 그래프 및 데이터시트 갱신</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

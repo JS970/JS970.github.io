@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>컴퓨터 알고리즘 2023-03-20 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="컴퓨터 알고리즘 2023-03-20 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/keompyuteo-algorijjeu-3-20-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/keompyuteo-algorijjeu-3-20-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-20T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="컴퓨터 알고리즘 2023-03-20 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/keompyuteo-algorijjeu-3-20-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "컴퓨터 알고리즘 2023-03-20 수업정리"
+  
+    
+    
+      "datePublished":"2023-03-20T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/keompyuteo-algorijjeu-3-20-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-20">March 20, 2023</time>
+  	</div>
+  	<h1 class="post-title">컴퓨터 알고리즘 2023-03-20 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Divide and Conquer - Quicksort</li>
+</ul>
+<h2 id="divide-and-conquer-quicksort">Divide and Conquer - Quicksort</h2>
+<hr />
+<h3 id="quicksort-algorithm-kwig-jjeonryeol">Quicksort Algorithm(퀵 정렬)</h3>
+<ul>
+<li>배열은 재귀적으로 두 개의 partition으로 나눠진다.(Divide)
+<ul>
+<li>배열은 pivot값을 기준으로 pivot값보다 작은 partition, pivot값보다 크거나 같은partition의 두 개의 sub-arrays로 나눠진다.</li>
+</ul>
+</li>
+<li>나눠진 두 개의 partition배열에 대해서 정렬이 이루어진다.(Conquer)</li>
+<li>Merge Sort와 달리 별도의 메모리 공간을 필요로 하지 않는다.
+<ul>
+<li>새롭게 배열을 생성하지는 않기 때문</li>
+</ul>
+</li>
+</ul>
+<h3 id="worst-case-complexity-of-quicksort">Worst-case Complexity of Quicksort</h3>
+<ul>
+<li>초기 배열의 원소들이 얼마나 균등하게 분포되어 있는지에 따라 시간복잡도가 다르다. 특히, pivot value에 따라 시간복잡도가 달라진다.</li>
+<li>이미 배열이 정렬되어 있지만 이 상태를 모른 채 Quicksort를 수행하는 경우가 가장 많은 연산을 해야 하는 worst-case이다.
+<ul>
+<li>n개의 원소가 있는 배열에서 comparison연산이 가장 많이 일어나는 경우,  n-1번의 연산과 다시 n-1개의 원소를 가지는 배열에 대한 Quicksort 연산을 거쳐야 한다.
+$$T(n) = T(n-1) + (n-1)$$</li>
+<li>모든 경우에 대해 위와 같은 최대 연산을 가지게 된다면 아래와 같은 시간복잡도를 가지게 된다.
+$$T(n) = \sum^{n}_{k=1}(k-1) \in \Theta(n^2)$$</li>
+</ul>
+</li>
+</ul>
+<h3 id="average-case-time-complexity-of-quicksort">Average-case time complexity of Quicksort</h3>
+<p>n개의 서로 다른 원소를 가지는 배열에서 Mn = total comparison이라고 하자.
+$$M_n = \sum_{j=1}^n(n-1 + M_{j-1} + M_{n-j})\frac{1}{n}$$
+$$M_n =n-1 + \frac{2}{n}\sum_{k=1}^{n-1}M_k$$
+$$nM_n = n(n-1)+2\sum_{k=1}^{n-1}\ \ ...\ (1)$$
+이렇게 얻어진 식의 n에 n+1을 대입하면$$(n+1)M_{n+1} = n(n+1) + 2\sum_{k=1}^{n}M_k\ \ \ ...\ (2)$$(2) - (1)을 하면$$(n+1)M_{n+1} = (n+2)M_n+2n$$$$\frac{M_{n+1}}{n+2} = \frac{M_n}{n+1}+\frac{2n}{(n+1)(n+2)}$$
+$$\frac{M_{n+1}}{n+2} = \frac{M_{n-1}}{n} + \frac{2(n-1)}{n(n+1)} +\frac{2n}{(n+1)(n+2)} = 2 \sum_{k=0}^{n-1}\frac{n-k}{(n+1-k)(n+2-k)}$$
+n-k를 i로 치환하면$$M_{n+1} = 2(n+2)\sum_{k=0}^{n-1}\frac{n-k}{(n+1-k)(n+2-k)} = 2(n+2)\sum_{i=1}^{n}\frac{i}{(i+1)(i+2)}$$
+부분분수로 분리하면$$M_{n+1} = 2(n+2)\sum_{i=1}^n[\frac{2}{i+2}-\frac{1}{i+1}]$$
+Average-case에 대해 Time complexity를 고려중이다. 분포는 균일분포이며, 이때의 평균값을 Average-case라 말할 수 있으므로 정적분을 취해 계산을 이어갈 수 있다.$$M_{n+1} = 2(n+2)[\int_3^{n+2}\frac{2}{x}dx - \int_2^{n+1}\frac{1}{x}dx] = 2(n+2)[2log(n+2) - log(n+1) + log2 - 2log3]$$
+$$M_{n+1} = 2(n+2)[log(n+2) + log(\frac{n+2}{n+1}) + log2 - 2log3]$$</p>
+<p>따라서 Quicksort Algorithm의 Average-Case Time Complexity는 다음과 깉이 말할 수 있다.
+$$M_n \in \Theta(nlogn)$$</p>
+<h3 id="implementataion">Implementataion</h3>
+<ul>
+<li>다음은 quicksort algorithm의 c++ 구현이다.</li>
+</ul>
+<pre data-lang="C++" style="background-color:#2b303b;color:#c0c5ce;" class="language-C++ "><code class="language-C++" data-lang="C++"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span> 
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">partition</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">arr</span><span>[], </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">pivot</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">first</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">last</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> pivotIndex = first++;
+</span><span>    </span><span style="color:#b48ead;">while</span><span>(first &lt;= last)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(arr[first] &gt; pivot &amp;&amp; arr[last] &lt;= pivot)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">int</span><span> tmp = arr[first];
+</span><span>            arr[first] = arr[last];
+</span><span>            arr[last] = tmp;
+</span><span>        }
+</span><span> 
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(arr[first] &lt;= pivot) first++;
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(arr[last] &gt; pivot) last--;
+</span><span>    }
+</span><span> 
+</span><span>    </span><span style="color:#b48ead;">return</span><span> last;
+</span><span>}
+</span><span> 
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">quickSort</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">arr</span><span>[], </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">first</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">last</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(first &lt; last)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">int</span><span> pivot = arr[first];
+</span><span>        </span><span style="color:#b48ead;">int</span><span> splitPoint = </span><span style="color:#bf616a;">partition</span><span>(arr, pivot, first, last);
+</span><span> 
+</span><span>        arr[first] = arr[splitPoint];
+</span><span>        arr[splitPoint] = pivot;
+</span><span> 
+</span><span>        </span><span style="color:#bf616a;">quickSort</span><span>(arr, first, splitPoint-</span><span style="color:#d08770;">1</span><span>);
+</span><span>        </span><span style="color:#bf616a;">quickSort</span><span>(arr, splitPoint+</span><span style="color:#d08770;">1</span><span>, last);
+</span><span>    }
+</span><span>}
+</span><span> 
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> arrSize; cin &gt;&gt; arrSize;
+</span><span> 
+</span><span>    </span><span style="color:#b48ead;">int </span><span>* arr = </span><span style="color:#b48ead;">new int</span><span>[arrSize];
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; arrSize; i++)
+</span><span>        cin &gt;&gt; arr[i];
+</span><span> 
+</span><span>    </span><span style="color:#bf616a;">quickSort</span><span>(arr, </span><span style="color:#d08770;">0</span><span>, arrSize-</span><span style="color:#d08770;">1</span><span>);
+</span><span> 
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; arrSize; i++)
+</span><span>        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
+</span><span>    cout &lt;&lt; endl;
+</span><span> 
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

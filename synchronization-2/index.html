@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Synchronization(2) | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Synchronization(2)">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/synchronization-2/">
+<meta property="og:url" content="https://js970.github.io/synchronization-2/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-12T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Synchronization(2)">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/synchronization-2/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Synchronization(2)"
+  
+    
+    
+      "datePublished":"2023-04-12T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/synchronization-2/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-12">April 12, 2023</time>
+  	</div>
+  	<h1 class="post-title">Synchronization(2)</h1>
+  	<div class="post-line"></div>
+  	<h2 id="synchronization-hardware">Synchronization Hardware</h2>
+<hr />
+<h3 id="lock">Lock</h3>
+<ul>
+<li><code>critical section</code>으로 진입하지 못하도록 <code>key</code>를 이용하여 <code>lock</code>하는 것</li>
+<li>hardware의 atomic instruction을 사용하여 구현한다.</li>
+<li>대부분의 현대 기기들은 <code>atomic hardware instruction</code>을 지원한다.
+<ul>
+<li><code>high level</code>코드를 <code>non-interruptable</code>하게 만드는 역할을 한다.</li>
+<li><code>test</code>와 <code>set</code>를 사용하여 구현하거나 <code>swap</code>을 이용하는 방법으로 <code>lock</code>을 구현한다.</li>
+<li><code>test</code>, <code>set</code>, <code>swap</code>는 모두 <code>atomic hardware instruction</code>이다.</li>
+</ul>
+</li>
+<li>아래는 <code>lock</code>을 사용하는 <code>critical section solution</code>코드이다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">do </span><span>{
+</span><span>	</span><span style="color:#65737e;">/* Acquire lock */
+</span><span>	
+</span><span>	{
+</span><span>		</span><span style="color:#65737e;">/* Critical Section */
+</span><span>	}
+</span><span>
+</span><span>	</span><span style="color:#65737e;">/* Release lock */
+</span><span>
+</span><span>	{
+</span><span>		</span><span style="color:#65737e;">/* Remainder Section */
+</span><span>	}
+</span><span>} </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">TRUE</span><span>);
+</span></code></pre>
+<ul>
+<li>high level코드이지만 실제로는 <code>atomic instruction</code>이 사용되므로 <code>critical section</code>에 대한 보호가 가능하다.</li>
+</ul>
+</li>
+<li><code>Peterson's Solution</code>으로 2개의 프로세스에 대한 Solution은 제공할 수 있지만, 실제로는 n개의 프로세스에 대한 <code>critical section solution</code>이 요구된다. 이는 Software적인 방식으로는 현실적인 문제가 있으므로 <code>Synchronization Hardwar</code>를 이용한다.</li>
+</ul>
+<h3 id="testandset-instruction">TestAndSet Instruction</h3>
+<ul>
+<li>아래는 <code>lock</code>을 <code>TestAndSet</code>명령어를 사용하여 구현한 코드이다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span>boolean </span><span style="color:#8fa1b3;">TestAndSet</span><span>(boolean *</span><span style="color:#bf616a;">target</span><span>) {
+</span><span>	boolean rv = *target;
+</span><span>	*target = </span><span style="color:#d08770;">TRUE</span><span>;
+</span><span>	</span><span style="color:#b48ead;">return</span><span> rv;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">do </span><span>{
+</span><span>	</span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#bf616a;">TestAndSet</span><span>(&amp;lcok));
+</span><span>	
+</span><span>	</span><span style="color:#65737e;">/* critical section */
+</span><span>	
+</span><span>	lock = </span><span style="color:#d08770;">FALSE</span><span>;
+</span><span>	
+</span><span>	</span><span style="color:#65737e;">/* remainder section */
+</span><span>
+</span><span>} </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">TRUE</span><span>);
+</span></code></pre>
+</li>
+<li><code>Mutual Exclusion</code>과 <code>Progress</code>조건은 만족한다.</li>
+<li>하지만 <code>Bounded Waiting</code>조건을 만족하지 않는다는 문제가 있다.
+<ul>
+<li>여러 프로세스가 <code>critical section</code>진입을 위해 대기하고 있다고 했을 때, 현재 실행중인 프로세스가 <code>critical section</code>에 대한 접근을 반환한 후 어떤 프로세스가 접근할 지 알 수 없다.</li>
+<li>경우에 따라서는 특정 프로세스 <code>critical section</code>에 접근을 하지 못하는 <code>starvation</code>문제가 발생할 수도 있다.</li>
+<li><code>Bounded Waiting</code>조건을 만족하지 않으므로 유효한 <code>critical section solution</code>으로 볼 수 없다.</li>
+</ul>
+</li>
+<li>이는 <code>critical section</code>으로 진입하려는 프로세스들의 <strong>순서</strong>가 정해지지 않았기 때문이다.</li>
+</ul>
+<h3 id="swap-instruction">Swap Instruction</h3>
+<ul>
+<li><code>Swap</code>명령어는 <code>key</code>와 <code>lock</code>값을 바꾸는 함수이다.</li>
+<li>아래는 <code>lock</code>을 <code>Swap</code>명령어를 사용하여 구현한 코드이다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">Swap </span><span>(boolean *</span><span style="color:#bf616a;">a</span><span>, boolean *</span><span style="color:#bf616a;">b</span><span>) {
+</span><span>	boolean temp = *a;
+</span><span>	*a = b;
+</span><span>	*b = temp;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">do </span><span>{
+</span><span>	key = </span><span style="color:#d08770;">TRUE</span><span>;
+</span><span>	</span><span style="color:#b48ead;">while </span><span>(key == </span><span style="color:#d08770;">TRUE</span><span>)
+</span><span>		</span><span style="color:#bf616a;">Swap</span><span>(&amp;lock, &amp;key);
+</span><span>		
+</span><span>	</span><span style="color:#65737e;">/* critical section */
+</span><span>	
+</span><span>	lock = </span><span style="color:#d08770;">FALSE</span><span>;
+</span><span>	
+</span><span>	</span><span style="color:#65737e;">/* remainder section */
+</span><span>
+</span><span>} </span><span style="color:#b48ead;">while </span><span>(</span><span style="color:#d08770;">TRUE</span><span>);
+</span></code></pre>
+</li>
+<li><code>TestAndSet</code>의 경우와 마찬가지로 <code>Mutual Exclusion</code>과 <code>Progress</code>조건은 만족하지만 <code>Bounded Waiting</code>조건을 만족하지 않아 유효한 <code>critical section solution</code>으로 볼 수 없다.</li>
+</ul>
+<h3 id="bounded-waiting-joggeo-haeggyeo">Bounded Waiting 조건 해결</h3>
+<ul>
+<li>아래는 <strong>순서</strong>를 정해서 <code>Bounded Waiting</code>조건을 만족시키도록 <code>TestAndSet</code>을 사용하는 코드이다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">do </span><span>{
+</span><span>	waiting[i] = </span><span style="color:#d08770;">TRUE</span><span>;
+</span><span>	key = </span><span style="color:#d08770;">TRUE</span><span>;
+</span><span>	</span><span style="color:#b48ead;">while </span><span>(waiting[i] &amp;&amp; key)
+</span><span>		key = </span><span style="color:#bf616a;">TestAndSet</span><span>(&amp;lock);
+</span><span>	waiting[i] = </span><span style="color:#d08770;">FALSE</span><span>;
+</span><span>	
+</span><span>	</span><span style="color:#65737e;">/* critical section */
+</span><span>	
+</span><span>	j = (i+</span><span style="color:#d08770;">1</span><span>) % n;
+</span><span>	</span><span style="color:#b48ead;">while</span><span>((j != i) &amp;&amp; !waiting[j])
+</span><span>		j = (j+</span><span style="color:#d08770;">1</span><span>) % n;
+</span><span>
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(j == i)
+</span><span>		lock = </span><span style="color:#d08770;">FALSE</span><span>;
+</span><span>	</span><span style="color:#b48ead;">else
+</span><span>		waiting[j] = </span><span style="color:#d08770;">FALSE</span><span>;
+</span><span>		
+</span><span>	</span><span style="color:#65737e;">/* remainder section */
+</span><span>}
+</span></code></pre>
+</li>
+<li><code>critical section</code>을 나온 뒤 어떤 프로세스에게 <code>critical section</code>의 점유를 넘겨줄 지를 정한다.</li>
+<li>위 코드상으로는 <code>i == j</code>가 아니라면 프로세스 i+1에게 <code>critical section</code>의 점유를 넘긴다.</li>
+<li><code>i == j</code>인 경우는 현재 디기 중인 프로세스가 프로세스 <code>i</code>밖에 없는 상태이므로 다시 <code>critical section</code>으로 들어가면 된다.</li>
+<li><code>waiting</code>배열을 통해 <code>critical section</code>접근을 대기하는 프로세스는  순차대로 접근이 보장된다. </li>
+<li>최악의 경우에도 n-1번의 다른 프로세스의 <code>critical section</code>접근이 끝난 뒤에는 <code>critical section</code>으로의 접근이 보장되므로 <code>Bounded waiting</code>을 만족한다.</li>
+<li>따라서 이 Solution은 유효한 <code>critical section solution</code>이다.</li>
+</ul>
+<h2 id="semaphore">Semaphore</h2>
+<hr />
+<ul>
+<li><code>Semaphore</code>는  <code>wait()</code>, <code>signal()</code>의 두 개의 <code>atomic operation</code>에 의해서만 접근 가능한 정수 변수이다. </li>
+<li>아래는 <code>wait()</code>을 구현한 코드이다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#bf616a;">wait</span><span>(S) {
+</span><span>	</span><span style="color:#b48ead;">while</span><span> S &lt;= </span><span style="color:#d08770;">0</span><span>;
+</span><span>	S--;
+</span><span>}
+</span></code></pre>
+<ul>
+<li><code>wait()</code>는 <code>Semaphore</code>값을 1만큼 감소시킨다.</li>
+<li><code>Semaphore</code>값이 0이하라면 대기한다.</li>
+</ul>
+</li>
+<li>아래는 <code>signal()</code>을 구현한 코드이다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#bf616a;">signal</span><span>(s) {
+</span><span>	S++;
+</span><span>}
+</span></code></pre>
+<ul>
+<li><code>signal()</code>은 <code>Semaphore</code>값을 1만큼 증가시킨다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="semaphoreyi-jjonryu">Semaphore의 종류</h3>
+<ul>
+<li><code>Binary Semaphore(0..1)</code> : <code>Semaphore</code>는 0 또는 1의 값만 가질 수 있다(<code>mutex lock</code>이라고도 한다).
+<ul>
+<li>초기값은 1로 설정된다.</li>
+</ul>
+</li>
+<li><code>Counting Semaphore(0..N)</code> : <code>Semaphore</code>는 는 제한된 범위의 모든 값을 가질 수 있다.
+<ul>
+<li>여러 개의 <code>resources</code>가 있을 경우 사용한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="semaphoreyi-sahyon">Semaphore의 사용</h3>
+<ul>
+<li><code>critical section problem</code>을 해결하기 위해 아래 코드처럼 <code>Semaphore</code>를 사용할 수 있다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">do </span><span>{
+</span><span>	</span><span style="color:#bf616a;">wait</span><span>(mutex);
+</span><span>
+</span><span>	</span><span style="color:#65737e;">/* critical sesction */
+</span><span>
+</span><span>	</span><span style="color:#96b5b4;">signal</span><span>(mutex);
+</span><span>
+</span><span>	</span><span style="color:#65737e;">/* remainder section */
+</span><span>} </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">TRUE</span><span>);
+</span></code></pre>
+</li>
+<li><code>Process Syncronization</code>을 위해 아래 코드처럼 <code>Semaphore</code>를 사용할 수 있다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#65737e;">/* Process P1*/
+</span><span>s1;
+</span><span style="color:#bf616a;">signal</span><span>(sync);
+</span><span>
+</span><span style="color:#65737e;">/* Process P2 */
+</span><span style="color:#bf616a;">wait</span><span>(sync);
+</span><span>s2;
+</span></code></pre>
+<ul>
+<li><code>sync</code>의 값이 0인 상태라면, s2는 Process P1의 signal이 실행되기 전에는 실행되지 않는다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="semaphoreyi-guhyeon">Semaphore의 구현</h3>
+<ul>
+<li><code>Busy waiting</code> : 어떤 프로세스가 <code>critical section</code>에 있는 경우, <code>critical section</code>에 접근을 시도하는 다른 프로세스들은 loop의 entry code를 계속해서 계산하면서 loop을 순회하게 된다.</li>
+<li><code>Blocking &amp; Wake-up</code> : <code>Busy waiting</code>문제를 해결하기 위한 방법이다.
+<ul>
+<li>각각의 <code>Semaphore</code>에는 <code>waiting queue</code>가 존재한다.</li>
+<li>프로세스가 <code>wait()</code>를 실행시키고 <code>Semaphore</code>값이 음수임이 확인되면 프로세스를 <code>waiting queue</code>에 삽입하여 동작을 중지한다(<code>block</code>).</li>
+<li><code>waiting queue</code>를 사용하여 다음에 실행될 프로세스의 순서가 확정되므로 <code>Bounded Waiting</code>조건을 만족한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="semaphoreyi-munjejjeo">Semaphore의 문제점</h3>
+<ul>
+<li>Deadlock
+<ul>
+<li>두 개 이상의 프로세스가 <code>Semaphore</code>를 점유한 채로 다른 <code>Semaphore</code>를 <code>wait()</code>하고 있는 상태</li>
+<li>자원을 점유한 상태에서 자원을 해제하지 않고 다른 자원을 요청하는 상황이 상호 프로세스 간 맞물린 것</li>
+<li>아래 코드에서 <code>Semaphore</code> S, Q가 각각 1로 초기화 되었다면 P0과 P1은 <code>deadlock</code>상태에 빠지게 된다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#65737e;">/* Process P0 */
+</span><span style="color:#bf616a;">wait</span><span>(S);
+</span><span style="color:#bf616a;">wait</span><span>(Q);
+</span><span>...
+</span><span style="color:#bf616a;">signal</span><span>(S);
+</span><span style="color:#bf616a;">signal</span><span>(Q);
+</span><span>
+</span><span style="color:#65737e;">/* Process P1 */
+</span><span style="color:#bf616a;">wait</span><span>(Q);
+</span><span style="color:#bf616a;">wait</span><span>(S);
+</span><span>...
+</span><span style="color:#bf616a;">signal</span><span>(Q);
+</span><span style="color:#bf616a;">signal</span><span>(S);
+</span></code></pre>
+<ul>
+<li>P0의 <code>wait(S)</code>가 실행되면서 S = 0이 된다.</li>
+<li>P1의 <code>wait(Q)</code>가 실행되면서 Q = 0이 된다.</li>
+<li>P0, P1는 각각 Q, S를 요구하는 상황이 되는데(<code>wait(Q)</code>, <code>wait(S)</code>호출) 이때 서로가 자원을 해제하지 않으면 영원히 교착 상태에 빠져 탈출하지 못한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Starvation
+<ul>
+<li><code>Indefinite blocking</code>이라고도 한다.</li>
+<li>프로세스가 <code>Semaphore</code>의 queue에서 빠져나오지 못해 사실상 중단된 상태이다.</li>
+<li><code>deadlock</code>으로 인해 <code>Semaphore</code>의 queue에 있는 다른 프로세스들이 실행되지 못하여 발생한다.</li>
+</ul>
+</li>
+<li>Priority Inversion
+<ul>
+<li>높은 우선순위를 가지는 프로세스가 낮은 우선순위를 가지는 프로세스가 점유한 <code>Semaphore</code>를 대기중일 때 발생하는 문제이다.</li>
+<li>아래 그림과 같은 상황은 독립된 프로세스 간에는 상관이 없지만 서로 연관되어 있으면서 서로 다른 우선순위를 가지는 프로세스들에 의해 발생한다.<img src="/image/OS/priority_inversion.png" alt="Priority Inversion" /></li>
+<li>위 그림에서 우선순위는 Process A가 Process B보다 높지만, Process C에서 점유한  <code>Semaphore</code>에 의해 프로세스가 block되면서 Process B가 Process A보다 먼저 실행되는 문제가 발생한다.</li>
+<li><code>priority inversion</code>문제를 해결하기 위해 <code>priority-inheritance protocol</code>을 사용한다.</li>
+<li><code>priority-inheritance protocol</code>이란 낮은 우선순위(C, 5)를 가지는 프로세스의 우선순위를 일시적으로 높은 우선순위를 가지는 프로세스의 우선순위(A, 1)를 가지도록 우선순위를 높이는 것을 말한다.</li>
+<li>이후 높은 프로세스에서 <code>Semaphore</code>에 의해 block이 일어나지 않는 시점이 되면, 낮은 프로세스의 우선순위를 원래대로 되돌린다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="classical-problems">Classical Problems</h2>
+<hr />
+<blockquote>
+<p>본 절에서는 대표적인 동기화 문제에 대해서 알아본다.</p>
+</blockquote>
+<h3 id="bounded-buffer-problem">Bounded-Buffer Problem</h3>
+<ul>
+<li>N개의 buffer가 각각 하나의 item을 hold할 수 있다고 하자.</li>
+<li>아래와 같은 <code>Semaphore</code>를 사용한다.
+<ul>
+<li><code>mutex</code> : 버퍼 pool에 <code>Mutual Exclusive</code>하게 접근하기 위한 <code>Semaphore</code>, 1로 초기화된다.</li>
+<li><code>full</code> : <code>full buffer</code>의 개수를 세기 위한 <code>Semaphore</code>, 0으로 초기화된다.</li>
+<li><code>empty</code> : <code>empty buffer</code>의 개수를 세기 위한 <code>Semaphore</code>, N으로 초기화된다.</li>
+</ul>
+</li>
+<li>item을 생산하는 프로세스 Producer의 코드는 아래와 같다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">do </span><span>{
+</span><span>	</span><span style="color:#65737e;">/* Produce an item */
+</span><span>	</span><span style="color:#bf616a;">wait</span><span>(empty);
+</span><span>	</span><span style="color:#bf616a;">wait</span><span>(mutex);
+</span><span>	</span><span style="color:#65737e;">/* Add next product to buffer */
+</span><span>	</span><span style="color:#96b5b4;">signal</span><span>(mutex);
+</span><span>	</span><span style="color:#96b5b4;">signal</span><span>(full);
+</span><span>} </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">TRUE</span><span>);
+</span></code></pre>
+<ul>
+<li><code>mutex</code>를 이용하여 버퍼 pool로의 <code>Mutual Exclusion</code>을 보장한다.</li>
+<li>생산자 프로세스에서 item을 생산할 예정이므로 <code>wait(empty)</code>를 사용해 item을 저장할 수 있는 버퍼가 있는지 확인한다.</li>
+<li>작업이 끝나면 버퍼 pool로 다른 프로세스가 접근할 수 있도록 <code>signal(mutex)</code>를 호출한다.</li>
+<li>작업이 끝나면 생산자 프로세스에서 item을 생산하였으므로 <code>full</code>을 증가시킨다.</li>
+</ul>
+</li>
+<li>item을 소비하는 프로세스 Consumer의 코드는 아래와 같다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">do </span><span>{
+</span><span>	</span><span style="color:#bf616a;">wait</span><span>(full);
+</span><span>	</span><span style="color:#bf616a;">wait</span><span>(mutex);
+</span><span>	</span><span style="color:#65737e;">/* remove an item from the buffer */
+</span><span>	</span><span style="color:#96b5b4;">signal</span><span>(mutex);
+</span><span>	</span><span style="color:#96b5b4;">signal</span><span>(empty);
+</span><span>} </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">TRUE</span><span>);
+</span></code></pre>
+<ul>
+<li><code>mutex</code>를 이용하여 버퍼 pool로의 <code>Mutual Exclusion</code>을 보장한다.</li>
+<li>소비자 프로세스에서 item을 소비할 예정이므로 <code>wait(full)</code>을 통해 사용할 item이 있는지 확인한다.</li>
+<li>작업이 끝나면 버퍼 pool로 다른 프로세스가 접근할 수 있도록 <code>signal(mutex)</code>를 호출한다.</li>
+<li>작업이 끝나면 소비자 프로세스에서 item을 소비하였으므로 <code>empty</code>을 증가시킨다.</li>
+</ul>
+</li>
+<li>참고로 프로세스 Consumer의 코드를 아래와 같이 수정하면 <code>deadlock</code>이 발생한다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">do </span><span>{
+</span><span>	</span><span style="color:#bf616a;">wait</span><span>(mutex);
+</span><span>	</span><span style="color:#bf616a;">wait</span><span>(full);
+</span><span>	</span><span style="color:#65737e;">/* remove an item from the buffer */
+</span><span>	</span><span style="color:#96b5b4;">signal</span><span>(mutex);
+</span><span>	</span><span style="color:#96b5b4;">signal</span><span>(empty);
+</span><span>} </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">TRUE</span><span>);
+</span></code></pre>
+<ul>
+<li>만약 <code>full</code>의 값이 0인 상황에서 Consumer가 실행되어 <code>mutex</code>를 점유하게 된다고 하자.</li>
+<li>이때 <code>full</code>의 값이 0이므로 Consumer는 <code>wait(full)</code>에서 루프에 빠진다.</li>
+<li>Consumer가 루프에서 탈출하기 위해서는 Product에서 item을 생산해야 한다.</li>
+<li>하지만 <code>mutex</code>가 Consumer에 의해 점유된 상태이므로 Product는 <code>wait(mutex)</code>에서 루프에 빠진다.</li>
+<li>서로가 자원을 점유한 상태에서 상대 프로세스의 자원을 대기중인 상황이므로 <code>deadlock</code>이다.</li>
+<li>아래 그림은 위 상황을 도식으로 나타낸 것이다.<img src="/image/OS/boundedBuffer.png" alt="Bounded Buffer Deadlock" /> </li>
+</ul>
+</li>
+</ul>
+<h3 id="readers-and-writers-problem">Readers and Writers Problem</h3>
+<ul>
+<li>Concurrent processes 간에 Data set이 공유되고 있다고 하자.
+<ul>
+<li>Readers : <strong>only read</strong> the data set, don't perform any updates</li>
+<li>Writers : can both <strong>read and write</strong> the data set</li>
+</ul>
+</li>
+<li>아래의 조건을 만족해야 한다.
+<ul>
+<li>동시에 여러 Readers가 읽는 동작을 수행하는 것을 허용한다. </li>
+<li>하지만 오직 하나의 writer만 shared data에 접근 가능하다.</li>
+<li>이에 따른 shared data에 대한 접근 제어가 필요하다.</li>
+</ul>
+</li>
+<li>Semaphores &amp; Shared data
+<ul>
+<li><code>readcount</code> : 몇 개의 reader 프로세스가 data set을 read하고 있는지 count</li>
+<li><code>mutex</code> : 초기값은 1로 설정되며, <code>readcount</code>가 업데이트 될 때의 <code>mutual exclusion</code>을 보장한다.</li>
+<li><code>wrt</code> : 초기값은 1로 설정되며, writer의 <code>mutual exclusion</code>을 보장한다.(writer가 1개일 때는 의미x)</li>
+</ul>
+</li>
+<li>아래에서 설명한 코드들은 writer process가 하나인 경우에 대한 solution이다.</li>
+<li>Writer의 코드는 아래와 같다.<pre data-lang="c" style="background-color:#2b303b;color:#c0c5ce;" class="language-c "><code class="language-c" data-lang="c"><span style="color:#b48ead;">do </span><span>{
+</span><span>	</span><span style="color:#bf616a;">wait</span><span>(wrt);
+</span><span>	</span><span style="color:#65737e;">// writing is performed
+</span><span>	</span><span style="color:#96b5b4;">signal</span><span>(wrt);
+</span><span>} </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">TRUE</span><span>)
+</span></code></pre>
+</li>
+<li>Reader의 코드는 아래와 같다.<pre data-lang="c" style="background-color:#2b303b;color:#c0c5ce;" class="language-c "><code class="language-c" data-lang="c"><span style="color:#b48ead;">do </span><span>{
+</span><span>	</span><span style="color:#65737e;">// readcount에 대한 mutual exclusion
+</span><span>	</span><span style="color:#bf616a;">wait</span><span>(mutex);
+</span><span>	readcount++;
+</span><span>
+</span><span>	</span><span style="color:#65737e;">// 첫 번째 reader의 경우 데이터가 쓰여졌는지 확인해야 한다.
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(readcount == </span><span style="color:#d08770;">1</span><span>) </span><span style="color:#bf616a;">wait</span><span>(wrt);
+</span><span>	
+</span><span>	</span><span style="color:#65737e;">// reading is performed
+</span><span>
+</span><span>	</span><span style="color:#65737e;">// readcount에 대한 mutual exclusion
+</span><span>	</span><span style="color:#96b5b4;">signal</span><span>(mutex);
+</span><span>	readcount--;
+</span><span>
+</span><span>	</span><span style="color:#65737e;">// 마지막 reader의 경우 writer가 쓸 수 있는 상태임을 알려줘야 한다.
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(readcount == </span><span style="color:#d08770;">0</span><span>) </span><span style="color:#96b5b4;">signal</span><span>(wrt);
+</span><span>	
+</span><span>	</span><span style="color:#96b5b4;">signal</span><span>(mutex);
+</span><span>} </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">TRUE</span><span>)
+</span></code></pre>
+</li>
+</ul>
+<h3 id="dining-philoosophers-problem">Dining-Philoosophers Problem</h3>
+<ul>
+<li>식사하는 철학자 문제(사진출처 : 위키피디아)<img src="/image/OS/dining_philosophers.png" alt="Dining Philosophers Problem" /></li>
+<li>굉장히 큰 규모의 concurrent process의 동시제어가 필요한 상황에 대해 다룬다.</li>
+<li>문제 설명
+<ul>
+<li>다섯 명의 철학자가 원탁에 앉아 있고, 음식을 먹기 위해서는 양 옆의 젓가락을 동시에 들어야 한다.</li>
+<li>이때 바로 옆의 사람이 음식을 먹기 위해서는 본인이 젓가락을 내려 놓아야 하는 상황이다.</li>
+<li>다섯 명 모두가 서로를 기다리는 <code>deadlock</code>상태에 빠질 수 있다.</li>
+</ul>
+</li>
+<li>chopstick을 <code>semaphore</code>로, philosophers를 <code>process</code>라고 생각하자.
+<ul>
+<li>젓가락의 사용 여부를 mutex로 0/1로 표현한다.(초기값은 1로 설정된다.)</li>
+<li>규칙을 tough하게 설정하여 <code>deadlock</code>이 발생하지 않도록 만들어야 한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="monitor">Monitor</h2>
+<hr />
+<ul>
+<li><code>Semaphore</code>를 잘못 사용하면 <code>deadlock</code>을 포함한 탐지하기 힘든 error를 유발한다.
+<ul>
+<li>signal(mutex) -&gt; wait(mutex) : <code>Mutual Exclusion</code>을 만족하지 않는다.</li>
+<li>wait(mutex) -&gt; wait(mutex) : <code>deadlock</code>상태에 빠질 위험이 있다.</li>
+<li>wait(mutex), signal(mutex)를 빠트린 경우 : <code>Mutual Exclusion</code>, <code>deadlock</code>모두 유발 가능</li>
+</ul>
+</li>
+<li>Java에서는 <code>Semaphore</code>를 잘못 사용하는 문제 등을 high level에서 해결하기 위해 <code>Monitor</code>를 제공한다.</li>
+<li><code>Monitor</code>의 동작은 아래와 같다.<img src="/image/OS/monitor.png" alt="Monitor" />
+<ul>
+<li>모니터 내부의 프로시저들이 순차적으로 실행된다.</li>
+<li>condition variable을 사용한다.(그림에서의 x와 y)</li>
+<li>condition variable에 대한 wait(), signal()메소드를 제공한다.
+<ul>
+<li><code>wait</code> : 어떤 프로세스를 대기 상태로 변경</li>
+<li><code>signal</code> : 대기 상태에서 다시 resume</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>아래 코드의 프로시저(P1, P2, P3 ... )는 한 번에 하나만 실행 가능하다.<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span>monitor monotor_name {
+</span><span>	</span><span style="color:#65737e;">// shared variable declaration
+</span><span>	procedure </span><span style="color:#bf616a;">P1</span><span>(...) {...}
+</span><span>	
+</span><span>	procedure </span><span style="color:#bf616a;">P2</span><span>(...) {...}
+</span><span>	
+</span><span>	procedure </span><span style="color:#bf616a;">P3</span><span>(...) {...}
+</span><span>
+</span><span>	...
+</span><span>}
+</span></code></pre>
+</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

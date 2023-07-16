@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>1389 - 케빈 베이컨의 6단계 법칙 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="1389 - 케빈 베이컨의 6단계 법칙">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/1389-kebbi-beikeonyi-6ddaggy-bbeocig/">
+<meta property="og:url" content="https://js970.github.io/1389-kebbi-beikeonyi-6ddaggy-bbeocig/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-24T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="1389 - 케빈 베이컨의 6단계 법칙">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/1389-kebbi-beikeonyi-6ddaggy-bbeocig/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "1389 - 케빈 베이컨의 6단계 법칙"
+  
+    
+    
+      "datePublished":"2023-02-24T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/1389-kebbi-beikeonyi-6ddaggy-bbeocig/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-24">February 24, 2023</time>
+  	</div>
+  	<h1 class="post-title">1389 - 케빈 베이컨의 6단계 법칙</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 1</li>
+<li>날짜: 2023년 2월 24일</li>
+<li>상태: Correct/Retry</li>
+<li>추가 검토 여부: Yes</li>
+<li>알고리즘 : BFS, Graph, 다익스트라 알고리즘, 플로이드 워셜 알고리즘</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>1260번 문제와 마찬가지로 chat GPT의 코드를 이용하여 학습했다. chat GPT의 코드를 기반으로 문제의 조건에 맞게 일부 수정하여 제출하였다.</li>
+<li>다익스트라 알고리즘의 구현은 BFS와 유사한 방식으로 구현되었다. 노드를 이동해 가면서 해당 노드의 인접 노드에 대해 정해진 규칙에 따라(다익스트라 알고리즘에서는 가장 시작 노드로부터weight의 합이 가장 적은 노드부터 탐색한다.) 탐색하고, 이를 priority queue에 삽입하여 모든 노드에 대한 연산이 끝날 때까지 반복한다.</li>
+<li>BFS와 구현 상의 차이점으로는, BFS는 visited벡터 컨테이너를 사용하여 방문한 노드인지의 여부를 확인해 모든 노드가 방문되었을 경우 반복문이 끝나는 형식으로 구현되어 있지만, 다익스트라 알고리즘의 경우 노드가 중복해서 queue에 들어갈 수 있다는 점이 가장 큰 차이점이다. 다익스트라 알고리즘에서 노드가 중복해서 queue에 들어가더라도(인접 리스트의 특성상 한번 연산한 노드에 대해서 다시 호출이 되는 구조이다.) 전체 거리가 더 적지 않다면 queue에 삽입하지 않기 때문에 반복문의 탈출이 가능하다.</li>
+<li>다음은 기본적인 다익스트라 알고리즘이다.
+<ol>
+<li>출발 노드를 설정한다.</li>
+<li>출발 노드를 기준으로 각 노드의 최소 비용을 저장한다.</li>
+<li>방문하지 않은 노드 중에서 가장 비용이 적은 노드를 선택한다.</li>
+<li>해당 노드를 거쳐서 특정한 노드로 가는 경우를 고려하여 최소 비용을 갱신한다.</li>
+<li>3~4를 반복한다.(모든 노드가 방문 처리되었을 때까지)</li>
+</ol>
+</li>
+<li>다음은 내 코드의 다익스트라 알고리즘의 작동 방식이다.
+<ol>
+<li>start노드에 대한 dist배열 초기화 및 priority queue로의 삽입</li>
+<li>start노드의 인접 리스트를 참조하여 거리값 갱신, 거리값이 dist행렬의 값보다 작다면 초기화하고 priority queue로 push한다.</li>
+<li>push한 start노드의 인접 리스트에 있는 노드가 queue에서 pop되면서 2를 반복해서 수행한다. 이 과정은 priority queue가 empty가 아니라면 계쏙해서 반복된다.</li>
+</ol>
+</li>
+<li>본 문제에서는 노드 간 weight값이 1이라고 생각할 수 있으므로 모든 비용을 1로 처리했다.</li>
+<li>본 코드에서 priority queue컨테이너에 들어가는 pair&lt;int, int&gt;는 first가 start로부터 현재 노드까지의 이동 비용이고, second가 인접 노드의 노드 번호를 의미한다.
+<ul>
+<li>이 부분의 구현은 chat GPT의 구현이었는데, 사실 어떤 의도로 이러한 코딩을 했는지는 잘 모르겠다. 아마 인접 노드의 번호가 곧 가중치를 의미하는 상황인 것으로 추측된다. 본 문제에서 모든 가중치는 1로 통일되기 때문에 코드를 수정하여 노드 번호의 의미만 가지도록 하였다.</li>
+</ul>
+</li>
+<li>나는 이 문제를 다익스트라 알고리즘을 사용하여 해결하였다. 하지만 가중치가 1로 통일되어 있는 상황이기 때문에 BFS알고리즘으로도 충분히 해결 가능하다. 또한 백준 카테고리 상으로는 플로이드-워셜 알고리즘을 사용해서도 해결 가능하다. 추후에 시도해 볼 것. (기본적으로 그래프 상에서 두 정점 사이의 최소 거리를 구하는 알고리즘이니 당연하다…)</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">vector</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">queue</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">climits</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">const int</span><span> INF = INT_MAX;
+</span><span>
+</span><span>vector&lt;pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">int</span><span>&gt;&gt; adj[</span><span style="color:#d08770;">10001</span><span>];
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">dijkstra</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">start</span><span>, </span><span style="color:#b48ead;">int </span><span>** </span><span style="color:#bf616a;">dist</span><span>)
+</span><span>{
+</span><span>    priority_queue&lt;pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">int</span><span>&gt;, vector&lt;pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">int</span><span>&gt;&gt;, greater&lt;pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">int</span><span>&gt;&gt;&gt; pq;
+</span><span>    pq.</span><span style="color:#bf616a;">push</span><span>({</span><span style="color:#d08770;">0</span><span>,start});
+</span><span>    dist[start][start] = </span><span style="color:#d08770;">0</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">while</span><span>(!pq.</span><span style="color:#bf616a;">empty</span><span>())
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">int</span><span> u = pq.</span><span style="color:#bf616a;">top</span><span>().</span><span style="color:#bf616a;">second</span><span>;
+</span><span>        pq.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">auto</span><span> v : adj[u])
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">int</span><span> w = v.</span><span style="color:#bf616a;">first</span><span>;
+</span><span>            </span><span style="color:#b48ead;">int</span><span> weight = v.</span><span style="color:#bf616a;">second</span><span>;
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(dist[start][u] + </span><span style="color:#d08770;">1 </span><span>&lt; dist[start][w])
+</span><span>            {
+</span><span>                dist[start][w] = dist[start][u] + </span><span style="color:#d08770;">1</span><span>;
+</span><span>                pq.</span><span style="color:#bf616a;">push</span><span>({dist[start][w], w});
+</span><span>            }
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> n, m;
+</span><span>    cin &gt;&gt; n &gt;&gt; m;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int </span><span>** dist = </span><span style="color:#b48ead;">new int</span><span>*[n+</span><span style="color:#d08770;">1</span><span>];
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; n+</span><span style="color:#d08770;">1</span><span>; i++)
+</span><span>        dist[i] = </span><span style="color:#b48ead;">new int</span><span>[n+</span><span style="color:#d08770;">1</span><span>];
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; n+</span><span style="color:#d08770;">1</span><span>; i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j = </span><span style="color:#d08770;">0</span><span>; j &lt; n+</span><span style="color:#d08770;">1</span><span>; j++)
+</span><span>            dist[i][j] = INF;
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; m; i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">int</span><span> u, v;
+</span><span>        cin &gt;&gt; u &gt;&gt; v;
+</span><span>        adj[u].</span><span style="color:#bf616a;">push_back</span><span>({v, </span><span style="color:#d08770;">1</span><span>});
+</span><span>        adj[v].</span><span style="color:#bf616a;">push_back</span><span>({u, </span><span style="color:#d08770;">1</span><span>});
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">1</span><span>; i &lt;= n; i++)
+</span><span>        </span><span style="color:#bf616a;">dijkstra</span><span>(i, dist);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int </span><span>* sum = </span><span style="color:#b48ead;">new int</span><span>[n+</span><span style="color:#d08770;">1</span><span>];
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; n+</span><span style="color:#d08770;">1</span><span>; i++)
+</span><span>        sum[i] = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">1</span><span>; i &lt;= n; i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j = </span><span style="color:#d08770;">1</span><span>; j &lt;= n; j++)
+</span><span>        {
+</span><span>            sum[i] += dist[i][j];
+</span><span>        }
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">int</span><span> idx;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> min = </span><span style="color:#d08770;">99999</span><span>;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">1</span><span>; i &lt;= n; i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(min &gt; sum[i])
+</span><span>        {
+</span><span>            min = sum[i];
+</span><span>            idx = i;
+</span><span>        }
+</span><span>    }
+</span><span>    cout &lt;&lt; idx &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/1389">1389번: 케빈 베이컨의 6단계 법칙</a></p>
+<p><a href="https://m.blog.naver.com/ndb796/221234424646">23. 다익스트라(Dijkstra) 알고리즘</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

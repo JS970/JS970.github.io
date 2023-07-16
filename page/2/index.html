@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Home | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Home">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/page/2/">
+<meta property="og:url" content="https://js970.github.io/page/2/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+
+
+  <link rel="prev" href="https://js970.github.io/">
+
+
+
+  <link rel="next" href="https://js970.github.io/page/3/">
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Home">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/page/2/",
+  "@context":"https://schema.org",
+  "@type": "WebSite",
+  "headline": "Home"
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+
+	<div class="catalogue">
+		<a href="https://js970.github.io/expression-and-statement-level-control-structure/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-30" class="catalogue-time">May 30, 2023</time>
+    <h1 class="catalogue-title">Expression and Statement Level Control Structure</h1>
+    <div class="catalogue-line"></div>
+    <p>Control Flow(제어 구조)
+
+Control flow란?
+
+제어분과 제어문에 의해 제어되는 문장의 집합
+구조화 프로그래밍에서 모든 순서도는 선택구조 와 반복구조 만으로 표현이 가능하다.(prime component)
+
+구조화 프로그래밍이란?
+
+
+위에서 아래로의 수행 흐름을 순차적 수행 흐름이라고 한다.
+괄호, goto문, 문장 레이블 등을 통해 수행 흐름을 명시적으로 표기한다.
+표현식 내에서의 수행 흐름, 문장 사이의 수행 흐름, 단위 프로그램(sub program, thread)사이의 수…</p>
+  </div>
+</a><a href="https://js970.github.io/expressions-and-assignments/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-23" class="catalogue-time">May 23, 2023</time>
+    <h1 class="catalogue-title">Expressions and Assignments</h1>
+    <div class="catalogue-line"></div>
+    <p>Expressions
+
+
+expression에는 표현식과 대입문이 있다.
+표현식은 값을 표현한다.
+대입문은 변수의 값을 변경하거나 메모리의 위치를 변경한다.
+
+어느 위치를 변경할 것인가 : L-value
+어떤 값으로 변경할 것인가 : R-value
+
+
+
+설계 고려 사항
+
+대입 기호가 대칭인가?
+
+a = a+1(대칭)
+a := a+1(비대칭)
+
+
+대입 기호가 연산자인가, 아니면 그냥 문장을 만드는가?
+
+a = b = c = 3.14 : c에 3.14 대입, b에 c대입, a에 b대입(C)
+a = b…</p>
+  </div>
+</a><a href="https://js970.github.io/virtual-memory-management-strategy-2/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-23" class="catalogue-time">May 23, 2023</time>
+    <h1 class="catalogue-title">Virtual Memory Management Strategy(2)</h1>
+    <div class="catalogue-line"></div>
+    <p>Thrashing
+
+
+프로세스에 충분한 page frame이 할당되지 않으면 page fault rate가 높아지게 된다.
+page fault가 발생하게 되면 새로운 페이지를 로드하기 위해 기존의 프레임을 backing store에 swap out해야 한다.
+하지만 다시 이 데이터를 필요로 할 경우 또 swapping이 일어나게 된다.
+이러한 악순환은 CPU utilization을 낮추게 된다. 이에 운영체제는 multiprogramming의 강도를 높여 CPU utilization을 높이려고 시…</p>
+  </div>
+</a><a href="https://js970.github.io/virtual-memory-management-strategy-1/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-22" class="catalogue-time">May 22, 2023</time>
+    <h1 class="catalogue-title">Virtual Memory Management Strategy(1)</h1>
+    <div class="catalogue-line"></div>
+    <p>Virtual Memory overview
+
+
+어떤 프로그램이 실행될 때 그 프로그램 전체가 로딩될 필요는 없다.
+
+에러 코드 및 그 처리에 관한 코드는 에러가 발생했을 때 로딩해도 된다.
+Array, lists, table등은 실제 필요한 것보다 매우 큰 메모리 할당을 요구한다. (dynamic loading)
+프로그램의 option을 포함한 특정 기능들은 잘 사용되지 않거나 거의 사용되지 않을 수 있다.
+하드디스크에서 메모리로의 load는 많은 오버헤드가 발생하므로, 당장 필요한 코드만 loa…</p>
+  </div>
+</a><a href="https://js970.github.io/types/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-16" class="catalogue-time">May 16, 2023</time>
+    <h1 class="catalogue-title">Types</h1>
+    <div class="catalogue-line"></div>
+    <p>Concept of Type
+
+
+Type은 어떤 프로그래밍 언어의 좋고 나쁨을 가리는 척도가 될 수 있다.
+
+Scalar(단순) vs Composite(복합)
+
+Scalar타입은 atomic values를 나타낸다.
+Composite타입은 atomic타입을 unit으로 가지는 타입이다.
+
+Primitive(기본) vs User-defined(사용자 정의)
+
+Primitive타입은 language에서 지원하는 타입이다.
+User-defined타입은 사용자에 의해 새롭게 정의된 타입이다.
+
+Funda…</p>
+  </div>
+</a><a href="https://js970.github.io/lua/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-15" class="catalogue-time">May 15, 2023</time>
+    <h1 class="catalogue-title">Lua</h1>
+    <div class="catalogue-line"></div>
+    <p>Lua Intro
+
+About Lua
+
+단순하고 쉬운 구문을 가진다.
+Python과 유사하지만 들여쓰기 언어는 아니다.(인덴트 무시해도 됨)
+Hybrid implementation 방식으로 구현되어 속도 역시 Python과 비교했을 때 훨씬 빠르다.
+동적 타입 언어이며, garbage collection을 통한 자동 메모리 관리 기능이 있다.
+ANSI C로 작성되었으며 엔진이 공개되어 있다.
+
+Env Setting
+
+Download Page
+At Terminal(Mac tested)
+
+별도의 환경…</p>
+  </div>
+</a><a href="https://js970.github.io/memory-management-2/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-12" class="catalogue-time">May 12, 2023</time>
+    <h1 class="catalogue-title">Memory Management(2)</h1>
+    <div class="catalogue-line"></div>
+    <p>Memory Allocation Schemes - Continuous Memory Allocation
+
+
+MMU에서  limit register, relocation register를 사용하여 프로세스 단위로 메모리 할당.
+메모리 상에서 free space(hole)를 탐핵하여 프로세스를 할당한다.
+partition이 늘어나면 memory management관점에서 multiprogramming이 제한된다.
+프로세스가 할당되기에 충분한 hole에 프로세스를 할당한다.
+
+first-fit : 메모리…</p>
+  </div>
+</a><a href="https://js970.github.io/type-binding-storage-binding-scope/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-12" class="catalogue-time">May 12, 2023</time>
+    <h1 class="catalogue-title">Type Binding, Storage Binding, Scope</h1>
+    <div class="catalogue-line"></div>
+    <p>Type Binding, Storage Binding, Scope
+
+Type
+
+Type은 Value Set + Operation Set 으로 생각할 수 있다.
+Value Set : 가질 수 있는 값의 집합
+Operation Set : 해당 타입의 값들에 대해 적용 가능한 연산자의 집합
+예를 들어 C/C++에서 char타입의 경우 아래와 같은 Value Set, Operation Set을 가진다.
+
+Value Set : 8비트 범위의 이진수
+Operator Set : 단항 -, +, 이항 -, +,…</p>
+  </div>
+</a><a href="https://js970.github.io/memory-management-1/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-11" class="catalogue-time">May 11, 2023</time>
+    <h1 class="catalogue-title">Memory Management(1)</h1>
+    <div class="catalogue-line"></div>
+    <p>
+Synchronization, Deadlock 에서는 프로세스의 자원 공유에 관해 다뤘다면, 이번 글에서는 메모리 공유에 대해 다룬다. 
+
+Memory Management Backgrounds
+
+Address Space
+
+운영 체제가 생성하는 physical memory의 추상체가 Address Space이다.
+Program Code, Heap, Stack영역으로 구분된다.                                                  
+
+Program Code : 명령…</p>
+  </div>
+</a><a href="https://js970.github.io/names-and-bindings/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-11" class="catalogue-time">May 11, 2023</time>
+    <h1 class="catalogue-title">Names and Bindings</h1>
+    <div class="catalogue-line"></div>
+    <p>Names and Bindings
+
+Name
+
+Name은 프로그램에서 식별자 역할을 한다.
+Name은 자료 구조, 타입, 함수, 특수 기능 등 여러 namespace에 속할 수 있다.
+문법적으로는 Name을 lexeme의 instance라고 말할 수 있다.
+프로그래밍 언어 설계에 있어서 Name의 디자인 시 고려 사항으로는 아래와 같은 것들이 있다.
+
+case sensitive?
+최대로 가질 수 있는 길이
+Special Words의 존재
+
+Keyword, Reserved Word, Predefin…</p>
+  </div>
+</a><a href="https://js970.github.io/prolog/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-04" class="catalogue-time">May  4, 2023</time>
+    <h1 class="catalogue-title">Prolog</h1>
+    <div class="catalogue-line"></div>
+    <p>Prolog Intro
+
+Prolog History
+
+1972년에 Alain colmerauer와 Philippe Roussel이 만들었다.
+1979년에 Kowalski의 논문 Algorithm = Logic + Control에서 소개된 이후 널리 알려졌다.
+일본 정부에서 5세대 프로젝트의 기본 언어로 채택되는 등 나름 영향력이 있었다.
+
+Prolog Resources
+
+Prolog Env
+
+SWI Prolog
+Visual Prolog
+Strawberry Prolog
+
+
+Prolog Docs
+
+J…</p>
+  </div>
+</a><a href="https://js970.github.io/backtracking-0-1-knapsack-problem/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-03" class="catalogue-time">May  3, 2023</time>
+    <h1 class="catalogue-title">Backtracking - 0-1 Knapsack Problem</h1>
+    <div class="catalogue-line"></div>
+    <p>Backtracking - 0-1 Knapsack Problem
+
+
+0-1 Knapsack problem에 대해서는 Greedy Algorithm에서 다루었다. 본 단에서는  Backtracking 알고리즘을 사용하여 0-1 Knapsack problem을 해결하는 방법에 대해 다룬다. 가방에 최대 담을 수 있는 무게는 16, 각 물건들의 가격과 무게는 (40$, 2), (30$, 5), (50$, 10), (10$, 5) 이다.
+
+Promising Function
+
+profit : 현재 노드까지…</p>
+  </div>
+</a><a href="https://js970.github.io/backtracking-n-queen-s-problem/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-03" class="catalogue-time">May  3, 2023</time>
+    <h1 class="catalogue-title">Backtracking - N-Queen&#x27;s Problem</h1>
+    <div class="catalogue-line"></div>
+    <p>Backtracking - N-queen's problem
+
+N-Queen's Problem
+
+N x N의 체스보드에서 N개의 퀸들이 서로를 공격하지 않도록 배치시키는 방법을 구하는 문제
+Sequence : N개의 Queen이 배치되는 위치에 대한 sequence
+Set : Queen이 위치 가능한 N*N의 공간
+Criterion : 어떠한 두 개의 Queen도 같은 행, 열, 대각선상에 존재할 수 없다.
+
+4-Queens Problem Solution
+
+
+아래는 위 chessboard에 대해 B…</p>
+  </div>
+</a><a href="https://js970.github.io/backtracking-sum-of-subset-problem/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-03" class="catalogue-time">May  3, 2023</time>
+    <h1 class="catalogue-title">Backtracking - Sum of Subset Problem</h1>
+    <div class="catalogue-line"></div>
+    <p>Backtracking - sum of subset
+
+Sum of Subset Problem
+
+집합 S는 s1, s2, ... , sn의 원소로 이루어져 있다.
+W는 자연수이다.
+이때 S의 부분집합의 원소의 합이 W가 되는 모든 경우를 찾아라	
+n개의 수를 원소로 가지는 집합에서 원소의 합이 W가 되도록 하는 부분집합을 구하는 문제
+블랙젝을 생각하면 확 와닿는다.
+
+Promising Function
+
+아래는 Sum of Subset문제를 해결하기 위한 promising function 의사 코드이…</p>
+  </div>
+</a><a href="https://js970.github.io/deadlock-2/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-03" class="catalogue-time">May  3, 2023</time>
+    <h1 class="catalogue-title">Deadlock(2)</h1>
+    <div class="catalogue-line"></div>
+    <p>Deadlock Handling - Deadlock Prevention
+
+
+deadlock condition중 최소 한 가지 이상의 조건을 만족하지 않도록 설정하여 deadlock을 예방하는 방법
+Computational Overhead가 너무 커서 실제로 사용하지는 않는다.
+본 절에서는 방법론에 대해서만 다룬다.
+
+Mutual Exclusion
+
+shared resources를 require하지 않고 nonsharable resource만 hold하는 방법으로 구현한다.
+일반적으로 Mutual …</p>
+  </div>
+</a>
+	</div>
+	<div class="pagination">
+		<a href="https://js970.github.io/" class="left arrow">&#8592;</a>
+		<span>2</span>
+		<a href="https://js970.github.io/page/3/" class="right arrow">&#8594;</a>
+	</div>
+
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

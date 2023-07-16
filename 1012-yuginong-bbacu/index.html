@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>1012 - 유기농 배추 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="1012 - 유기농 배추">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/1012-yuginong-bbacu/">
+<meta property="og:url" content="https://js970.github.io/1012-yuginong-bbacu/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-16T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="1012 - 유기농 배추">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/1012-yuginong-bbacu/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "1012 - 유기농 배추"
+  
+    
+    
+      "datePublished":"2023-02-16T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/1012-yuginong-bbacu/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-16">February 16, 2023</time>
+  	</div>
+  	<h1 class="post-title">1012 - 유기농 배추</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 2</li>
+<li>날짜: 2023년 2월 16일</li>
+<li>상태: Correct/Retry</li>
+<li>추가 검토 여부: No</li>
+<li>알고리즘 : DFS</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>pair array를 사용하여 배추가 심어져 있는지의 여부(0, 1)와 벌레가 도달 가능/불가능 여부(true, false)의 정보를 저장했다.</li>
+<li>배열은 N*M의 크기를 가지는 일차원 배열이며 x, y값이 곧 행과 열의 index이므로 이를 이용하여 배열을 참조했다.</li>
+<li>dfs함수를 구현하여 기존의 벌레 도달 지역이 아닌 곳의 배추가 심어져 있다면 ans를 증가시켜 총 필요한 벌레의 수를 구했다.</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">utility</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">dfs</span><span>(pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">bool</span><span>&gt; </span><span style="color:#bf616a;">arr</span><span>[], </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">N</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">M</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">i</span><span>)
+</span><span>{
+</span><span>    arr[i].</span><span style="color:#bf616a;">second </span><span>= </span><span style="color:#d08770;">true</span><span>;
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(i%M != </span><span style="color:#d08770;">0</span><span>)
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(arr[i-</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">first </span><span>== </span><span style="color:#d08770;">1 </span><span>&amp;&amp; !arr[i-</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">second</span><span>)
+</span><span>            </span><span style="color:#bf616a;">dfs</span><span>(arr, N, M, i-</span><span style="color:#d08770;">1</span><span>);
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(i%M != M-</span><span style="color:#d08770;">1</span><span>)
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(arr[i+</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">first </span><span>== </span><span style="color:#d08770;">1 </span><span>&amp;&amp; !arr[i+</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">second</span><span>)
+</span><span>            </span><span style="color:#bf616a;">dfs</span><span>(arr, N, M, i+</span><span style="color:#d08770;">1</span><span>);
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(i-M &gt;= </span><span style="color:#d08770;">0</span><span>)
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(arr[i-M].</span><span style="color:#bf616a;">first </span><span>== </span><span style="color:#d08770;">1 </span><span>&amp;&amp; !arr[i-M].</span><span style="color:#bf616a;">second</span><span>)
+</span><span>            </span><span style="color:#bf616a;">dfs</span><span>(arr, N, M, i-M);
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(i+M &lt; N*M)
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(arr[i+M].</span><span style="color:#bf616a;">first </span><span>== </span><span style="color:#d08770;">1 </span><span>&amp;&amp; !arr[i+M].</span><span style="color:#bf616a;">second</span><span>)
+</span><span>            </span><span style="color:#bf616a;">dfs</span><span>(arr, N, M, i+M); 
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    ios::</span><span style="color:#bf616a;">sync_with_stdio</span><span>(</span><span style="color:#d08770;">false</span><span>);
+</span><span>    cin.</span><span style="color:#bf616a;">tie</span><span>(</span><span style="color:#d08770;">NULL</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> testC;
+</span><span>    cin &gt;&gt; testC;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> N, M, K;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> x, y;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> ans = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> c = </span><span style="color:#d08770;">0</span><span>; c &lt; testC; c++)
+</span><span>    {
+</span><span>        cin &gt;&gt; M &gt;&gt; N &gt;&gt; K;
+</span><span>        pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">bool</span><span>&gt; * arr = </span><span style="color:#b48ead;">new</span><span> pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">bool</span><span>&gt;[N*M];
+</span><span>        ans = </span><span style="color:#d08770;">0</span><span>;
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N*M; i++)
+</span><span>        {
+</span><span>            arr[i].</span><span style="color:#bf616a;">first </span><span>= </span><span style="color:#d08770;">0</span><span>;
+</span><span>            arr[i].</span><span style="color:#bf616a;">second </span><span>= </span><span style="color:#d08770;">false</span><span>;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; K; i++)
+</span><span>        {
+</span><span>            cin &gt;&gt; x &gt;&gt; y;
+</span><span>            arr[M*y+x].</span><span style="color:#bf616a;">first </span><span>= </span><span style="color:#d08770;">1</span><span>;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N*M; i++)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(arr[i].</span><span style="color:#bf616a;">first </span><span>== </span><span style="color:#d08770;">1</span><span>)
+</span><span>                </span><span style="color:#b48ead;">if</span><span>(!arr[i].</span><span style="color:#bf616a;">second</span><span>)
+</span><span>                {
+</span><span>                    </span><span style="color:#bf616a;">dfs</span><span>(arr, N, M, i);
+</span><span>                    ans++;
+</span><span>                }
+</span><span>        }
+</span><span>        cout &lt;&lt; ans &lt;&lt; endl;
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/1012">1012번: 유기농 배추</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

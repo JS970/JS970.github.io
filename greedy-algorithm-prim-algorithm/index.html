@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Greedy Algorithm - Prim Algorithm | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Greedy Algorithm - Prim Algorithm">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/greedy-algorithm-prim-algorithm/">
+<meta property="og:url" content="https://js970.github.io/greedy-algorithm-prim-algorithm/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-24T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Greedy Algorithm - Prim Algorithm">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/greedy-algorithm-prim-algorithm/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Greedy Algorithm - Prim Algorithm"
+  
+    
+    
+      "datePublished":"2023-04-24T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/greedy-algorithm-prim-algorithm/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-24">April 24, 2023</time>
+  	</div>
+  	<h1 class="post-title">Greedy Algorithm - Prim Algorithm</h1>
+  	<div class="post-line"></div>
+  	<h2 id="prim-s-algorithm">Prim's Algorithm</h2>
+<hr />
+<ol>
+<li>그래프에서 하나의 꼭짓점을 선택한다.</li>
+<li>꼭짓점과 edge를 구성하는 vertex중 edge의 weight이 가장 작은 vertex를 선택한다.</li>
+<li>2에서의 vertices와 edge를 구성하는 vertex중 edge의 weight이 가장 작은 vertex를 선택한다.</li>
+<li>더 이상 선택되지 않은 vertex가 없을 때까지 1~3을 반복한다.
+<img src="/image/Algorithm/Prim.png" alt="Prim's Algorithm" /></li>
+</ol>
+<h3 id="code">Code</h3>
+<pre data-lang="C++" style="background-color:#2b303b;color:#c0c5ce;" class="language-C++ "><code class="language-C++" data-lang="C++"><span style="color:#65737e;">/* Code by https://4legs-study.tistory.com/m/112 */
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">vector</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">algorithm</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">queue</span><span>&gt;
+</span><span> 
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span> 
+</span><span style="color:#b48ead;">typedef</span><span> pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">int</span><span>&gt; p;
+</span><span style="color:#65737e;">// number of vertex
+</span><span style="color:#b48ead;">int</span><span> v = </span><span style="color:#d08770;">6</span><span>;
+</span><span style="color:#65737e;">// adj[1][2][2] : e(1, 2), w = 2
+</span><span>vector&lt;p&gt; adj[</span><span style="color:#d08770;">7</span><span>];
+</span><span style="color:#65737e;">// check array
+</span><span style="color:#b48ead;">bool</span><span> visit[</span><span style="color:#d08770;">7</span><span>];
+</span><span> 
+</span><span style="color:#b48ead;">struct </span><span>compare {
+</span><span>    </span><span style="color:#b48ead;">bool </span><span style="color:#8fa1b3;">operator()</span><span>(p </span><span style="color:#bf616a;">a</span><span>, p </span><span style="color:#bf616a;">b</span><span>) {
+</span><span>        </span><span style="color:#b48ead;">return</span><span> a.</span><span style="color:#bf616a;">second </span><span>&gt; b.</span><span style="color:#bf616a;">second</span><span>;
+</span><span>    }
+</span><span>};
+</span><span> 
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">Prim</span><span>() {
+</span><span>    </span><span style="color:#65737e;">// 큐 안의 간선들은 가중치 기준 오름차순으로 항상 정렬된다.
+</span><span>    priority_queue&lt;p, vector&lt;p&gt;, compare&gt; pque;
+</span><span> 
+</span><span>    </span><span style="color:#65737e;">// 출발지와 연결된 간선들을 모두 큐에 삽입
+</span><span>    </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; adj[</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">size</span><span>(); i++) pque.</span><span style="color:#bf616a;">push</span><span>(adj[</span><span style="color:#d08770;">1</span><span>][i]);
+</span><span>    visit[</span><span style="color:#d08770;">1</span><span>] = </span><span style="color:#d08770;">true</span><span>;
+</span><span> 
+</span><span>    </span><span style="color:#b48ead;">int</span><span> cnt = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#65737e;">// 정점의 개수 - 1만큼 반복한다.
+</span><span>    </span><span style="color:#b48ead;">while</span><span>(cnt &lt; v - </span><span style="color:#d08770;">1</span><span>) {
+</span><span>        </span><span style="color:#65737e;">// 큐 안의 간선들 중 가중치가 가장 작은 간선을 큐에서 빼낸다.
+</span><span>        p curline = pque.</span><span style="color:#bf616a;">top</span><span>();
+</span><span>        pque.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span> 
+</span><span>        </span><span style="color:#65737e;">// node, weight값을 curline의 값으로 갱신
+</span><span>        </span><span style="color:#b48ead;">int</span><span> node = curline.</span><span style="color:#bf616a;">first</span><span>;
+</span><span>        </span><span style="color:#b48ead;">int</span><span> weight = curline.</span><span style="color:#bf616a;">second</span><span>;
+</span><span> 
+</span><span>        </span><span style="color:#65737e;">// 뽑은 간선의 목적지 노드가 이미 발견된 상태라면 선택하지 않음
+</span><span>        </span><span style="color:#b48ead;">if </span><span>(visit[node]) </span><span style="color:#b48ead;">continue</span><span>;
+</span><span>        </span><span style="color:#65737e;">// 방문 노드 표시
+</span><span>        visit[node] = </span><span style="color:#d08770;">true</span><span>;
+</span><span>        cnt++;
+</span><span> 
+</span><span>        </span><span style="color:#65737e;">// 현재 간선을 MST에 추가
+</span><span>        </span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">번 정점 발견 : 비용 </span><span style="color:#d08770;">%d</span><span style="color:#96b5b4;">\n</span><span>&quot;, node, weight);
+</span><span> 
+</span><span>        </span><span style="color:#65737e;">// 뽑은 간선의 목적지 노드와 연결된 간선들을 모두 큐에 삽입
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; adj[node].</span><span style="color:#bf616a;">size</span><span>(); i++) {
+</span><span>            </span><span style="color:#b48ead;">int</span><span> nextnode = adj[node][i].</span><span style="color:#bf616a;">first</span><span>;
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(!visit[nextnode]) pque.</span><span style="color:#bf616a;">push</span><span>(adj[node][i]);
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span> 
+</span><span style="color:#65737e;">// Graph Initialization
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">init</span><span>() {
+</span><span>    adj[</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">2</span><span>, </span><span style="color:#d08770;">9</span><span>));
+</span><span>    adj[</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">3</span><span>, </span><span style="color:#d08770;">4</span><span>));
+</span><span>    adj[</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">4</span><span>, </span><span style="color:#d08770;">3</span><span>));
+</span><span>    adj[</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">5</span><span>, </span><span style="color:#d08770;">1</span><span>));
+</span><span> 
+</span><span>    adj[</span><span style="color:#d08770;">2</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">9</span><span>));
+</span><span>    adj[</span><span style="color:#d08770;">2</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">4</span><span>, </span><span style="color:#d08770;">4</span><span>));
+</span><span>    adj[</span><span style="color:#d08770;">2</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">5</span><span>, </span><span style="color:#d08770;">5</span><span>));
+</span><span> 
+</span><span>    adj[</span><span style="color:#d08770;">3</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">4</span><span>));
+</span><span>    adj[</span><span style="color:#d08770;">3</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">6</span><span>, </span><span style="color:#d08770;">6</span><span>));
+</span><span> 
+</span><span>    adj[</span><span style="color:#d08770;">4</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">3</span><span>));
+</span><span>    adj[</span><span style="color:#d08770;">4</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">2</span><span>, </span><span style="color:#d08770;">4</span><span>));
+</span><span>    adj[</span><span style="color:#d08770;">4</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">5</span><span>, </span><span style="color:#d08770;">2</span><span>));
+</span><span>    adj[</span><span style="color:#d08770;">4</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">6</span><span>, </span><span style="color:#d08770;">8</span><span>));
+</span><span> 
+</span><span>    adj[</span><span style="color:#d08770;">5</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>));
+</span><span>    adj[</span><span style="color:#d08770;">5</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">2</span><span>, </span><span style="color:#d08770;">5</span><span>));
+</span><span>    adj[</span><span style="color:#d08770;">5</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">4</span><span>, </span><span style="color:#d08770;">2</span><span>));
+</span><span> 
+</span><span>    adj[</span><span style="color:#d08770;">6</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">3</span><span>, </span><span style="color:#d08770;">6</span><span>));
+</span><span>    adj[</span><span style="color:#d08770;">6</span><span>].</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#bf616a;">make_pair</span><span>(</span><span style="color:#d08770;">4</span><span>, </span><span style="color:#d08770;">8</span><span>));
+</span><span>}
+</span><span> 
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#bf616a;">init</span><span>();
+</span><span> 
+</span><span>    </span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#a3be8c;">[MST]</span><span style="color:#96b5b4;">\n</span><span>&quot;);
+</span><span>    </span><span style="color:#bf616a;">Prim</span><span>();
+</span><span> 
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h3 id="every-case-time-complexity-of-prim-s-algorithm">Every-Case Time Complexity of Prim's Algorithm</h3>
+<ul>
+<li>Input Size : n</li>
+<li>서로 connection이 없는 vertex의 edge weight는 무한대로 초기화된다.</li>
+<li>Basic operation : n-1회 반복하는 반복문 내부에 각각 n-1회 반복하는 2개의 for loop이 존재한다.
+<ul>
+<li>n-1회 반복하는 반복문 : 시작 vertex를 제외한 모든 vertex에 대해 탐색</li>
+<li>n-1회 반복하는 for문-1 : 모든 vertex중 가장 weight이 작은 vertex 탐색</li>
+<li>n-1회 반복하는 for문-2 : 선택되지 않은 vertex의 weight 갱신
+$$T(n) = 2 \times (n-1) \times (n-1) \in \Theta(n^2)$$</li>
+</ul>
+</li>
+</ul>
+<h3 id="reference">Reference</h3>
+<p><a href="https://4legs-study.tistory.com/m/112">MST - Prim code</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

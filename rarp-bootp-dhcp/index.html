@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Mobile IPv4 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Mobile IPv4">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/rarp-bootp-dhcp/">
+<meta property="og:url" content="https://js970.github.io/rarp-bootp-dhcp/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2022-12-07T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Mobile IPv4">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/rarp-bootp-dhcp/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Mobile IPv4"
+  
+    
+    
+      "datePublished":"2022-12-07T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/rarp-bootp-dhcp/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2022-12-07">December  7, 2022</time>
+  	</div>
+  	<h1 class="post-title">Mobile IPv4</h1>
+  	<div class="post-line"></div>
+  	<h1 id="rarp-bootp-dhcp">RARP, BOOTP, DHCP</h1>
+<p>정리: Done
+정리일: 2022년 12월 7일</p>
+<h1 id="rarp-reverse-address-resolution-protocol-rfc903">RARP : Reverse Address Resolution Protocol - RFC903</h1>
+<ul>
+<li>시스템이 booting될 때, 보통은 IP address를 저장해 놓은 파일로부터 IP주소를 얻는다.</li>
+<li>그렇다면 저장 장치가 없는 시스템에서는 어떻게 IP주소를 얻을 수 있을까?
+<ul>
+<li>MAC주소(하드웨어 주소) 는 고유하기 때문에 MAC에 대응하는 IP주소를 lookup을 통해 얻을 수 있다.(lookup table??)</li>
+<li>MAC주소의 경우 시스템에 내장된 이더넷 칩셋에 저장되어 있으므로 이 정보를 이용해 서버로부터 IP주소를 획득할 수 있다.</li>
+</ul>
+</li>
+<li>RARP는 TCP/IP specification이다.</li>
+</ul>
+<h2 id="determining-an-ip-address-at-startup">Determining an IP Address at Startup</h2>
+<ul>
+<li>Network를 이용하여 remote server로부터 IP주소를 획득한다.</li>
+<li>MAC주소를 이용해 통신한다.</li>
+<li>IP테이블을 관리하는 서버로부터 IP주소를 요청한다.
+<ul>
+<li>만약 서버의 주소를 모른다면 ??</li>
+<li>Broadcast를 이용한다.</li>
+</ul>
+</li>
+<li>RARP는 ARP처럼 작동한다.</li>
+</ul>
+<ol>
+<li>요청자는 RARP request를 broadcast한다.</li>
+<li>서버는 요청자에게 응답한다(unicast)</li>
+<li>요청자는 첫 번째 응답자로부터 받은 IP주소를 저장한다.</li>
+<li>요청자는 IP주소를 얻을 때까지 계속해서 요청을 보낸다.</li>
+</ol>
+<h2 id="alternatives-to-rarp">Alternatives to RARP</h2>
+<ul>
+<li>
+<p>RARP를 구현하기 위해서는 물리 계층을 이용해야 한다.</p>
+</li>
+<li>
+<p>상위 계층에서 이를 구현할 수 있다면 개발이 더 쉬울 것이다.</p>
+<p>⇒ <strong>BOOTP</strong></p>
+</li>
+</ul>
+<h1 id="bootp-bootstrap-protocol-bootp">BOOTP : BOOTstrap Protocol (BOOTP)</h1>
+<ul>
+<li>RARP 대체 가능</li>
+<li>네트워크 계층에서 동작한다.</li>
+<li>UDP/IP 패킷을 이용해서 메시지를 전달한다.</li>
+<li>Host는 여전히 MAC Address를 통해 식별된다.</li>
+<li>어떻게??
+<ul>
+<li>255.255.255.255(limited broadcast ip address)를 이용한다.
+<ul>
+<li>라우터에 의해 포워딩되지 않는다.</li>
+</ul>
+</li>
+<li>Host(요청자)가 IP주소를 획득하기 전까지 LAN을 통해 broadcast된다.</li>
+<li>BOOTP 서버는 limited broadcast를 사용하여 응답한다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="dynamic-host-configuration-protocol">Dynamic Host Configuration Protocol</h1>
+<ul>
+<li>DHCP는 BOOTP의 확장이다.</li>
+<li>여전히 static allocation을 지원한다.</li>
+<li>DHCP에 의해 영구적인 주소를 부여하는 automatic configuration을 제공한다.</li>
+<li>일시적 할당을 지원한다. (Supports temporary allocation)</li>
+</ul>
+<h2 id="dynamic-configuration">Dynamic Configuration</h2>
+<ul>
+<li>BOOTP는 lookup table(static)의 MAC에 대응하는 IP주소를 반환한다.</li>
+<li>DHCP의 경우 IP테이블의 빈 공간을 Dynamic allocation을 통해 IP주소를 반환한다.</li>
+</ul>
+<h2 id="dhcp-ddonjja-jjeoca">DHCP 동작 절차</h2>
+<ol>
+<li>Host가 INITIALIZE 상태로 boot한다.</li>
+<li>DHCP서버에 연결하기 위해 client는 DHCPDISCOVER message를 255.255.255.255를 이용해서 broadcast한다. 그리고 SELECT state로 전이한다.
+<ol>
+<li>Unique header format, variable length option field</li>
+<li>UDP packet은 67번 포트를 이용한다.</li>
+</ol>
+</li>
+<li>서버가 DHCPOFFER message를 통해 응답한다.
+<ol>
+<li>Host는 하나 이상의 응답을 수신할 수 있으며, 그 중 하나에 대해 응답한다.</li>
+</ol>
+</li>
+<li>Client가 REQUEST state로 전이하고 1대의 서버로부터 IP를 받는다(lease, 임대)
+<ol>
+<li>DHCPREQUEST 메시지를 서버로 보낸다. (서버는 DHCPACK 으로 응답한다.)</li>
+</ol>
+</li>
+<li>Client는 BOUND state(IDLE)로 전이한다.</li>
+</ol>
+<p>출처 : <a href="https://commons.wikimedia.org/wiki/File:Dhcp-client-state-diagram.svg">https://commons.wikimedia.org/wiki/File:Dhcp-client-state-diagram.svg</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

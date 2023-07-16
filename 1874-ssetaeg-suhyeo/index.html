@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>1874 - 스택 수열 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="1874 - 스택 수열">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/1874-ssetaeg-suhyeo/">
+<meta property="og:url" content="https://js970.github.io/1874-ssetaeg-suhyeo/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-01T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="1874 - 스택 수열">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/1874-ssetaeg-suhyeo/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "1874 - 스택 수열"
+  
+    
+    
+      "datePublished":"2023-02-01T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/1874-ssetaeg-suhyeo/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-01">February  1, 2023</time>
+  	</div>
+  	<h1 class="post-title">1874 - 스택 수열</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 3</li>
+<li>날짜: 2023년 2월 1일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>stack자료구조를 사용하여 원하는 입력받은 수열을 만드는 문제이다.</li>
+<li>아래와 같이 경우의 수를 나누어 해결했다.
+<ul>
+<li>스텍이 빈 경우 → stack에 규칙에 따라 push</li>
+<li>스텍에 원소가 있는 경우
+<ul>
+<li>stack top이 조건을 충족하는 경우 → pop or push</li>
+<li>stack top이 조건을 충족하지 않는 경우 → break</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>cout &lt;&lt; endl;의 구문에서 endl은 버퍼를 비우는 동작이 추가되므로 시간 초과가 발생하였다.
+<ul>
+<li>사실 cout자체도 printf보다 시간을 많이 사용하므로 printf를 사용하는 것이 맞는 것 같다.</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">stack</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> stack_size;
+</span><span>    cin &gt;&gt; stack_size;
+</span><span>    </span><span style="color:#b48ead;">int </span><span>* elem = </span><span style="color:#b48ead;">new int</span><span>[stack_size];
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; stack_size; i++)
+</span><span>        cin &gt;&gt; elem[i];
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> previous_inserted_elem = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> elem_cnt = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> prev_elem = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    stack&lt;</span><span style="color:#b48ead;">int</span><span>&gt; stack;
+</span><span>    </span><span style="color:#b48ead;">char </span><span>* print_arr = </span><span style="color:#b48ead;">new char</span><span>[stack_size*</span><span style="color:#d08770;">2</span><span>];
+</span><span>    </span><span style="color:#b48ead;">int</span><span> arr_idx = </span><span style="color:#d08770;">0</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">while</span><span>(elem_cnt &lt; stack_size)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(stack.</span><span style="color:#bf616a;">empty</span><span>())
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = previous_inserted_elem+</span><span style="color:#d08770;">1</span><span>; i &lt;= elem[elem_cnt]; i++)
+</span><span>            {
+</span><span>                stack.</span><span style="color:#bf616a;">push</span><span>(i);
+</span><span>                print_arr[arr_idx++] = &#39;</span><span style="color:#a3be8c;">+</span><span>&#39;;
+</span><span>                previous_inserted_elem = i;
+</span><span>            }
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(stack.</span><span style="color:#bf616a;">top</span><span>() == elem[elem_cnt])
+</span><span>        {
+</span><span>            stack.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>            print_arr[arr_idx++] = &#39;</span><span style="color:#a3be8c;">-</span><span>&#39;;
+</span><span>            elem_cnt++;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>(stack.</span><span style="color:#bf616a;">top</span><span>() &lt; elem[elem_cnt])
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(previous_inserted_elem &lt; elem[elem_cnt])
+</span><span>            {
+</span><span>                </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = previous_inserted_elem+</span><span style="color:#d08770;">1</span><span>; i &lt;= elem[elem_cnt]; i++)
+</span><span>                {
+</span><span>                    stack.</span><span style="color:#bf616a;">push</span><span>(i);
+</span><span>                    print_arr[arr_idx++] = &#39;</span><span style="color:#a3be8c;">+</span><span>&#39;;
+</span><span>                    previous_inserted_elem = i;
+</span><span>                }
+</span><span>            }
+</span><span>            </span><span style="color:#b48ead;">else
+</span><span>            {
+</span><span>                </span><span style="color:#b48ead;">break</span><span>;
+</span><span>            }
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else break</span><span>;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(arr_idx == stack_size*</span><span style="color:#d08770;">2</span><span>)
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; arr_idx; i++)
+</span><span>            cout &lt;&lt; print_arr[i] &lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>    </span><span style="color:#b48ead;">else
+</span><span>        cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">NO</span><span>&quot; &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/1874">1874번: 스택 수열</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

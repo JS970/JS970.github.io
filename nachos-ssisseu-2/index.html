@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Nachos(2) | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Nachos(2)">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/nachos-ssisseu-2/">
+<meta property="og:url" content="https://js970.github.io/nachos-ssisseu-2/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-30T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Nachos(2)">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/nachos-ssisseu-2/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Nachos(2)"
+  
+    
+    
+      "datePublished":"2023-04-30T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/nachos-ssisseu-2/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-30">April 30, 2023</time>
+  	</div>
+  	<h1 class="post-title">Nachos(2)</h1>
+  	<div class="post-line"></div>
+  	<h1 id="1">#1</h1>
+<h2 id="kodde">코드</h2>
+<ul>
+<li>selfTest2 메소드와 SimpleThread클래스를 아래와 같이 작성하여 Round-Robin 스케줄링을 구현할 수 있다.</li>
+</ul>
+<h3 id="selftest2">selfTest2()</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public static</span><span> void </span><span style="color:#bf616a;">selfTest2</span><span>() {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">debug</span><span>(dbgThread, &quot;</span><span style="color:#a3be8c;">Enter KThread.selfTest2</span><span>&quot;);
+</span><span>
+</span><span>	</span><span style="color:#b48ead;">int</span><span> timeslice;
+</span><span>	</span><span style="color:#b48ead;">int</span><span> numberOfThreads;
+</span><span>	</span><span style="color:#b48ead;">int</span><span> burstTime1;
+</span><span>	</span><span style="color:#b48ead;">int</span><span> burstTime2;
+</span><span>
+</span><span>	</span><span style="color:#ebcb8b;">String</span><span> fileName = &quot;</span><span style="color:#a3be8c;">input</span><span>&quot;;
+</span><span>	</span><span style="color:#b48ead;">try </span><span>{
+</span><span>		</span><span style="color:#ebcb8b;">FileReader</span><span> fileReader = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">FileReader</span><span>(fileName);
+</span><span>		</span><span style="color:#ebcb8b;">BufferedReader</span><span> bufferedReader = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">BufferedReader</span><span>(fileReader);
+</span><span>
+</span><span>		</span><span style="color:#ebcb8b;">String</span><span> line = bufferedReader.</span><span style="color:#bf616a;">readLine</span><span>();
+</span><span>		timeslice = </span><span style="color:#ebcb8b;">Integer</span><span>.</span><span style="color:#bf616a;">parseInt</span><span>(line);
+</span><span>
+</span><span>		line = bufferedReader.</span><span style="color:#bf616a;">readLine</span><span>();
+</span><span>		numberOfThreads = </span><span style="color:#ebcb8b;">Integer</span><span>.</span><span style="color:#bf616a;">parseInt</span><span>(line);
+</span><span>
+</span><span>		line = bufferedReader.</span><span style="color:#bf616a;">readLine</span><span>();
+</span><span>		burstTime1 = </span><span style="color:#ebcb8b;">Integer</span><span>.</span><span style="color:#bf616a;">parseInt</span><span>(line);
+</span><span>
+</span><span>		line = bufferedReader.</span><span style="color:#bf616a;">readLine</span><span>();
+</span><span>		burstTime2= </span><span style="color:#ebcb8b;">Integer</span><span>.</span><span style="color:#bf616a;">parseInt</span><span>(line);
+</span><span>
+</span><span>		bufferedReader.</span><span style="color:#bf616a;">close</span><span>();
+</span><span>
+</span><span>		</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">KThread</span><span>(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">SimpleThread</span><span>(burstTime1, timeslice))
+</span><span>		.</span><span style="color:#bf616a;">setName</span><span>(&quot;</span><span style="color:#a3be8c;">forked thread 1</span><span>&quot;).</span><span style="color:#bf616a;">fork</span><span>();
+</span><span>		</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">KThread</span><span>(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">SimpleThread</span><span>(burstTime2, timeslice))
+</span><span>		.</span><span style="color:#bf616a;">setName</span><span>(&quot;</span><span style="color:#a3be8c;">forked thread 2</span><span>&quot;).</span><span style="color:#bf616a;">fork</span><span>();
+</span><span>		</span><span style="color:#b48ead;">new </span><span style="color:#bf616a;">mainThread</span><span>().</span><span style="color:#bf616a;">run</span><span>();
+</span><span>		</span><span style="color:#bf616a;">yield</span><span>();
+</span><span>	} </span><span style="color:#b48ead;">catch </span><span>(</span><span style="color:#ebcb8b;">IOException </span><span style="color:#bf616a;">e</span><span>) {
+</span><span>		e.</span><span style="color:#bf616a;">printStackTrace</span><span>();
+</span><span>	}
+</span><span>}
+</span></code></pre>
+<ul>
+<li><code>input.txt</code>파일을 읽어서 timeslice, numberOfThread, burstTime1, burstTime2를 초기화한다.</li>
+<li>초기화한 변수들을 바탕으로 KThread를 생성한다.</li>
+</ul>
+<h3 id="simplethread">SimpleThread</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">private static class </span><span style="color:#ebcb8b;">SimpleThread </span><span style="color:#b48ead;">implements </span><span style="color:#a3be8c;">Runnable </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">	</span><span style="color:#8fa1b3;">SimpleThread</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">burst_time</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">timeslice</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">		</span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">.burst_time </span><span>=</span><span style="color:#eff1f5;"> burst_time;
+</span><span style="color:#eff1f5;">		</span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">.timeslice </span><span>=</span><span style="color:#eff1f5;"> timeslice;
+</span><span style="color:#eff1f5;">	}
+</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">run</span><span style="color:#eff1f5;">() {
+</span><span style="color:#eff1f5;">		</span><span style="color:#b48ead;">int</span><span style="color:#eff1f5;"> remaining_time </span><span>=</span><span style="color:#eff1f5;"> burst_time;
+</span><span style="color:#eff1f5;">		</span><span style="color:#b48ead;">long</span><span style="color:#eff1f5;"> current_tick;
+</span><span style="color:#eff1f5;">		</span><span style="color:#b48ead;">while</span><span style="color:#eff1f5;">(remaining_time </span><span>&gt; </span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">			</span><span style="color:#b48ead;">while</span><span style="color:#eff1f5;">(timeslice </span><span>&gt; </span><span style="color:#d08770;">0 </span><span>&amp;&amp;</span><span style="color:#eff1f5;"> remaining_time </span><span>&gt; </span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">				current_tick </span><span>= </span><span style="color:#ebcb8b;">Machine</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">timer</span><span style="color:#eff1f5;">().</span><span style="color:#bf616a;">getTime</span><span style="color:#eff1f5;">();
+</span><span style="color:#eff1f5;">				remaining_time</span><span>--</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">				timeslice</span><span>--</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">				</span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(current_tick 
+</span><span style="color:#eff1f5;">				</span><span>+ &quot;</span><span style="color:#a3be8c;"> running:</span><span>&quot; +</span><span style="color:#eff1f5;"> currentThread.</span><span style="color:#bf616a;">getName</span><span style="color:#eff1f5;">()
+</span><span style="color:#eff1f5;">					</span><span>+ &quot;</span><span style="color:#a3be8c;">, remaining time: </span><span>&quot; +</span><span style="color:#eff1f5;"> remaining_time);
+</span><span style="color:#eff1f5;">				</span><span style="color:#ebcb8b;">Machine</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">interrupt</span><span style="color:#eff1f5;">().</span><span style="color:#bf616a;">tick</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">false</span><span style="color:#eff1f5;">);
+</span><span style="color:#eff1f5;">			}
+</span><span style="color:#eff1f5;">			currentThread.</span><span style="color:#bf616a;">yield</span><span style="color:#eff1f5;">();
+</span><span style="color:#eff1f5;">			timeslice </span><span>= </span><span style="color:#d08770;">2</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">		}
+</span><span style="color:#eff1f5;">	}
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">private int </span><span style="color:#eff1f5;">burst_time;
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">private int </span><span style="color:#eff1f5;">timeslice;
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<ul>
+<li>selfTest2()에서 생성되는 KThread의 생성자 인수로 들어가는 SimpleThread class이다.</li>
+<li>SimpleThread역시 Runnable인터페이스를 구현했으므로 run()에 대한 정의가 필요하다.</li>
+<li>SimpleThread는 Round-Robin Scheduling으로 동작하는 Thread이다. timeslice 멤버 변수를 사용해서 두 틱동안 동작하고 yield()를 호출하여 다음 ready process로 resource를 넘긴다.</li>
+<li>만약 timeslice안에 프로세스가 종료되었을 경우, 곧바로 다음 프로세스로 resource를 넘긴다.</li>
+</ul>
+<h2 id="ssihaeng-ggyeogwa">실행 결과</h2>
+<p><img src="/image/OS/proj2-1_result.png" alt="result01" /></p>
+<h1 id="2">#2</h1>
+<ul>
+<li>PriorityScheduler는 Scheduler 추상 클래스를 상속하여 만들어진다.</li>
+<li>PriorityScheduler를 구현하기에 앞서 Scheduler에 대해 분석해 보았다.</li>
+<li>아래와 같이 코드를 수정한 후 proj폴더의 nachos.conf파일에서 scheduler를 priority scheduler로 변경해 주어야 한다.</li>
+</ul>
+<h2 id="abstract-class-scheduler">Abstract Class Scheduler</h2>
+<hr />
+<h3 id="schdeuler">Schdeuler()</h3>
+<ul>
+<li>Scheduler의 생성자이다.</li>
+</ul>
+<h3 id="newthreadqueue-boolean-transferpriority">_newThreadQueue(boolean transferPriority)</h3>
+<ul>
+<li>public abstract ThreadQueue newThreadQueue(boolean transferPriority);</li>
+<li>thread를 저장하는 Queue이다.</li>
+<li>추상 메소드이므로 PriorityScheduler 에서 구현해 줘야 한다.</li>
+</ul>
+<h3 id="getpriority-kthread-thread">getPriority(KThread thread)</h3>
+<ul>
+<li>public int getPriority(KThread thread)</li>
+<li>현재 thread의 priority를 반환하도록 구현되어야 한다.</li>
+<li>제공된 코드에서는 구현된 바가 없다.</li>
+</ul>
+<h3 id="getpriority">getPriority()</h3>
+<ul>
+<li>위의 메소드의 thread파라미터가 들어갈 자리에 현재 thread가 들어간다.</li>
+<li>getPriority(KThread.currentThread());</li>
+</ul>
+<h3 id="geteffectivepriority-kthread-thread">getEffectivePriority(KThread thread)</h3>
+<ul>
+<li>public int getEffectivePriority(KThread thread)</li>
+<li>본 함수를 사용하여 threadQueue에서 상대적인 priority를 비교한다.</li>
+<li>제공된 코드에서는 구현된 바가 없다.</li>
+</ul>
+<h3 id="geteffectivepriority">getEffectivePriority()</h3>
+<ul>
+<li>위의 메소드의 thread 파라미터가 들어갈 자리에 현재 thread가 들어간다.</li>
+<li>getEffectivePriority(KThread.currentThread());</li>
+</ul>
+<h3 id="setpriority-kthread-thread-int-priority">setPriority(KThread thread, int priority)</h3>
+<ul>
+<li>public void setPriority(KThread thread, int priority)</li>
+<li>우선순위를 설정하는 역할을 수행한다.</li>
+<li>제공된 코드에서는 구현된 바가 없다.</li>
+</ul>
+<h3 id="setpriority-int-priority">setPriority(int priority)</h3>
+<ul>
+<li>위의 메소드의 thread 파라미터가 들어갈 자리에 현재 thread가 들어간다.</li>
+<li>setPriority(KThread.currentThread(), priority);</li>
+</ul>
+<h3 id="increasepriority-decreasepriority">increasePriority(), decreasePriority()</h3>
+<ul>
+<li>public boolean increasePriority(), public boolean decreasePriority()</li>
+<li>현재 thread의 priority를 올리거나 내린다.</li>
+<li>제공된 코드에서는 구현된 바가 없다.</li>
+</ul>
+<h2 id="priorityscheduler">PriorityScheduler</h2>
+<hr />
+<h3 id="newthreadqueue-boolean-transferpriority-1">newThreadQueue(boolean transferPriority)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">ThreadQueue </span><span style="color:#bf616a;">newThreadQueue</span><span>(</span><span style="color:#b48ead;">boolean</span><span> transferPriority) {
+</span><span>	</span><span style="color:#b48ead;">return new </span><span style="color:#ebcb8b;">PriorityQueue</span><span>(transferPriority);
+</span><span>}
+</span></code></pre>
+<ul>
+<li>PriorityQueue를 생성하여 반환하도록 abstract method가 구현되었다.</li>
+</ul>
+<h3 id="getpriority-kthread-thread-1">getPriority(KThread thread)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public int </span><span style="color:#bf616a;">getPriority</span><span>(</span><span style="color:#ebcb8b;">KThread</span><span> thread) {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disabled</span><span>());
+</span><span>	
+</span><span>	</span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">getThreadState</span><span>(thread).</span><span style="color:#bf616a;">getPriority</span><span>();
+</span><span>}
+</span></code></pre>
+<ul>
+<li>현재 ThreadState에서 getPriority()를 호출하여 현재 thread의 priority를 반환한다.</li>
+<li>getPriority(), getThreadState등은 PriorityScheduler에서 추가한 메소드이며 아래 절에서 다룬다.</li>
+</ul>
+<h3 id="geteffectivepriority-kthread-thread-1">getEffectivePriority(KThread thread)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public int </span><span style="color:#bf616a;">getEffectivePriority</span><span>(</span><span style="color:#ebcb8b;">KThread</span><span> thread) {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disabled</span><span>());
+</span><span>	
+</span><span>	</span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">getThreadState</span><span>(thread).</span><span style="color:#bf616a;">getEffectivePriority</span><span>();
+</span><span>}
+</span></code></pre>
+<ul>
+<li>추후 정의되는 ThreadState 클래스의 getEffectivePriority() 메소드를 사용하여 파라미터로 전달받은 thread의 effectivePriority를 반환한다.</li>
+</ul>
+<h3 id="setpriority-kthread-thread-int-priority-1">setPriority(KThread thread, int priority)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">setPriority</span><span>(</span><span style="color:#ebcb8b;">KThread</span><span> thread, </span><span style="color:#b48ead;">int</span><span> priority) {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disabled</span><span>());
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(priority &gt;= priorityMinimum &amp;&amp;
+</span><span>	priority &lt;= priorityMaximum);
+</span><span>	
+</span><span>	</span><span style="color:#bf616a;">getThreadState</span><span>(thread).</span><span style="color:#bf616a;">setPriority</span><span>(priority);
+</span><span>}
+</span></code></pre>
+<ul>
+<li>가능할 경우(maximum, minimum priority체크) 파라미터로 전달받은 thread의 priority를 파라미터로 전달받은 priority로 변경한다.</li>
+<li>이때, 우선순위의 변경은 ThreadState 클래스의 setPriority 메소드를 이용한다.</li>
+</ul>
+<h3 id="increasepriority">increasePriority()</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public boolean </span><span style="color:#bf616a;">increasePriority</span><span>() {
+</span><span>	</span><span style="color:#b48ead;">boolean</span><span> intStatus = </span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disable</span><span>();
+</span><span>	
+</span><span>	</span><span style="color:#ebcb8b;">KThread</span><span> thread = </span><span style="color:#ebcb8b;">KThread</span><span>.</span><span style="color:#bf616a;">currentThread</span><span>();
+</span><span>	</span><span style="color:#b48ead;">int</span><span> priority = </span><span style="color:#bf616a;">getPriority</span><span>(thread);
+</span><span>	</span><span style="color:#b48ead;">if </span><span>(priority == priorityMaximum) </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">false</span><span>;
+</span><span>	</span><span style="color:#bf616a;">setPriority</span><span>(thread, priority+</span><span style="color:#d08770;">1</span><span>);
+</span><span>	
+</span><span>	</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">restore</span><span>(intStatus);
+</span><span>	</span><span style="color:#b48ead;">return </span><span style="color:#d08770;">true</span><span>;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>현재 thread의 priority를 1만큼 증가시킨다.</li>
+<li>이때 setPriority 메소드를 활용한다.</li>
+<li>제한 조건에 해당되지 않는다면(정상적으로 priority increase가 일어났다면) true를 반환한다.</li>
+<li>그렇지 않은 경우 false를 반환한다.</li>
+</ul>
+<h3 id="decreasepriority">decreasePriority()</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public boolean </span><span style="color:#bf616a;">decreasePriority</span><span>() {
+</span><span>	</span><span style="color:#b48ead;">boolean</span><span> intStatus = </span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disable</span><span>();
+</span><span>	
+</span><span>	</span><span style="color:#ebcb8b;">KThread</span><span> thread = </span><span style="color:#ebcb8b;">KThread</span><span>.</span><span style="color:#bf616a;">currentThread</span><span>();
+</span><span>	</span><span style="color:#b48ead;">int</span><span> priority = </span><span style="color:#bf616a;">getPriority</span><span>(thread);
+</span><span>	</span><span style="color:#b48ead;">if </span><span>(priority == priorityMinimum)
+</span><span>	</span><span style="color:#b48ead;">return </span><span style="color:#d08770;">false</span><span>;
+</span><span>	</span><span style="color:#bf616a;">setPriority</span><span>(thread, priority-</span><span style="color:#d08770;">1</span><span>);
+</span><span>	
+</span><span>	</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">restore</span><span>(intStatus);
+</span><span>	</span><span style="color:#b48ead;">return </span><span style="color:#d08770;">true</span><span>;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>increasePriority()와 비슷하게 동작하지만, 현재 thread의 priority를 1만큼 감소시키는 동작을 한다.</li>
+</ul>
+<h3 id="getthreadstate-kthread-thread">getThreadState(KThread thread)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">protected </span><span style="color:#ebcb8b;">ThreadState </span><span style="color:#bf616a;">getThreadState</span><span>(</span><span style="color:#ebcb8b;">KThread</span><span> thread) {
+</span><span>	</span><span style="color:#b48ead;">if </span><span>(thread.schedulingState == </span><span style="color:#d08770;">null</span><span>)
+</span><span>		thread.schedulingState = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">ThreadState</span><span>(thread);
+</span><span>	
+</span><span>	</span><span style="color:#b48ead;">return </span><span>(</span><span style="color:#ebcb8b;">ThreadState</span><span>) thread.schedulingState;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>현재 thread의 schedulingState를 반환한다.</li>
+<li>schedulingState는 ThreadState 클래스의 멤버 변수이며, 현재 thread의 상태를 나타낸다.</li>
+</ul>
+<h2 id="priorityqueue">PriorityQueue</h2>
+<hr />
+<ul>
+<li>PriorityQueue클래스 내부에 protected로 선언된 클래스이다.</li>
+<li>ThreadQueue를 상속하여 구현하였다.</li>
+</ul>
+<h3 id="member-variables">Member Variables</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">protected final </span><span style="color:#ebcb8b;">List</span><span>&lt;</span><span style="color:#ebcb8b;">ThreadState</span><span>&gt; threadsWaiting;
+</span><span style="color:#b48ead;">protected </span><span style="color:#ebcb8b;">ThreadState</span><span> resourceHolder = </span><span style="color:#d08770;">null</span><span>;
+</span><span style="color:#b48ead;">protected int</span><span> effectivePriority = priorityMinimum;
+</span><span style="color:#b48ead;">protected boolean</span><span> priorityChange;
+</span><span style="color:#b48ead;">public boolean</span><span> transferPriority;
+</span></code></pre>
+<ul>
+<li>threadsWaiting
+<ul>
+<li>현재 waiting 상태인 threads를 저장하는 list이다.</li>
+<li>이를 위해 PriorityScheduler.java에서 java.util.List의 선언이 필요하다.</li>
+</ul>
+</li>
+<li>resourceHolder
+<ul>
+<li>현재 자원을 점유하고 있는 thread의 reference이다.</li>
+<li>초기값은 null로 초기화된다.</li>
+</ul>
+</li>
+<li>effectivePriority
+<ul>
+<li>queue의 effectivePriority를 저장한다.</li>
+<li>초기값은 priorityMinimum으로 초기화된다.</li>
+</ul>
+</li>
+<li>priorityChange
+<ul>
+<li>현재 effectivePriority가 유효하지 않은 경우 true 값을 가진다.</li>
+</ul>
+</li>
+<li>transferPriority
+<ul>
+<li>Queue에서 대기중인 다른 thread로 priority transfer가 일어나야 하는 경우 true값을 가진다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="priorityqueue-boolean-transferpriority">PriorityQueue(boolean transferPriority)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#bf616a;">PriorityQueue</span><span>(</span><span style="color:#b48ead;">boolean</span><span> transferPriority) {
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.transferPriority = transferPriority;
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.threadsWaiting = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">LinkedList</span><span>&lt;</span><span style="color:#ebcb8b;">ThreadState</span><span>&gt;();
+</span><span>}
+</span></code></pre>
+<ul>
+<li>PriorityQueue의 생성자이다.</li>
+<li>본 코드에서는 threadsWaiting을 LinkedList를 사용하여 구현했다.
+<ul>
+<li>이를 위해 java.util.LinkedList를 선언해 줘야 한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="waitforaccess-kthread-thread">waitForAccess(KThread thread)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">waitForAccess</span><span>(</span><span style="color:#ebcb8b;">KThread</span><span> thread) {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disabled</span><span>());
+</span><span>	</span><span style="color:#b48ead;">final </span><span style="color:#ebcb8b;">ThreadState</span><span> ts = </span><span style="color:#bf616a;">getThreadState</span><span>(thread);
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.threadsWaiting.</span><span style="color:#bf616a;">add</span><span>(ts);
+</span><span>	ts.</span><span style="color:#bf616a;">waitForAccess</span><span>(</span><span style="color:#bf616a;">this</span><span>);
+</span><span>}
+</span></code></pre>
+<ul>
+<li>ThreadState(PriorityQueue클래스와 마찬가지로 PriorityScheduler에 선언된 클래스이다. 아래 절에서 다룬다.) 타입의 ts변수를 선언하여 현재 thread의 상태를 저장한다.</li>
+<li>threadsWaiting에 ts를 추가한다.</li>
+<li>ts에 대해 waitForAccess를 호출한다.(마찬가지로 ThreadState의 메소드이다.)</li>
+</ul>
+<h3 id="acquire-kthread-thread">acquire(KThread thread)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">acquire</span><span>(</span><span style="color:#ebcb8b;">KThread</span><span> thread) {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disabled</span><span>());
+</span><span>	
+</span><span>	</span><span style="color:#b48ead;">final </span><span style="color:#ebcb8b;">ThreadState</span><span> ts = </span><span style="color:#bf616a;">getThreadState</span><span>(thread);
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">this</span><span>.resourceHolder != </span><span style="color:#d08770;">null</span><span>) {
+</span><span>		</span><span style="color:#bf616a;">this</span><span>.resourceHolder.</span><span style="color:#bf616a;">release</span><span>(</span><span style="color:#bf616a;">this</span><span>);
+</span><span>	}
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.resourceHolder = ts;
+</span><span>	ts.</span><span style="color:#bf616a;">acquire</span><span>(</span><span style="color:#bf616a;">this</span><span>);
+</span><span>}
+</span></code></pre>
+<ul>
+<li>waitForAccess와 같은 방식으로 동작한다.</li>
+<li>resourceHolder가 null이 아니라면 현재 resourceHolder(ThreadState 객체이다.)를 Queue에서 remove 한다.</li>
+<li>resourceHolder의 값을 ts로 갱신하고, ts에 대해서 acquire동작을 수행한다.</li>
+</ul>
+<h3 id="nextthread">nextThread()</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">KThread </span><span style="color:#bf616a;">nextThread</span><span>() {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disabled</span><span>());
+</span><span>	
+</span><span>	</span><span style="color:#b48ead;">final </span><span style="color:#ebcb8b;">ThreadState</span><span> nextThread = </span><span style="color:#bf616a;">this</span><span>.</span><span style="color:#bf616a;">pickNextThread</span><span>();
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(nextThread == </span><span style="color:#d08770;">null</span><span>) </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">null</span><span>;
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.threadsWaiting.</span><span style="color:#bf616a;">remove</span><span>(nextThread);
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.</span><span style="color:#bf616a;">acquire</span><span>(nextThread.</span><span style="color:#bf616a;">getThread</span><span>());
+</span><span>	</span><span style="color:#b48ead;">return</span><span> nextThread.</span><span style="color:#bf616a;">getThread</span><span>();
+</span><span>}
+</span></code></pre>
+<ul>
+<li>다음에 실행될 thread를 반환하는 메소드이다.</li>
+<li>다음에 실행될 thread의 정보를 얻기 위해 pickNextThread메소드를 이용한다.</li>
+<li>다음에 실행될 thread가 존재하지 않는다면 null을 반환한다.</li>
+<li>다음에 실행될 thread에 대해서 threadsWaiting에서 제거하고, acquire를 수행한다.</li>
+</ul>
+<h3 id="picknextthread">pickNextThread()</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">protected </span><span style="color:#ebcb8b;">ThreadState </span><span style="color:#bf616a;">pickNextThread</span><span>() {
+</span><span>	</span><span style="color:#b48ead;">int</span><span> nextPriority = priorityMinimum;
+</span><span>	</span><span style="color:#ebcb8b;">ThreadState</span><span> next = </span><span style="color:#d08770;">null</span><span>;
+</span><span>	
+</span><span>	</span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">final </span><span style="color:#ebcb8b;">ThreadState</span><span> currThread : </span><span style="color:#bf616a;">this</span><span>.threadsWaiting) {
+</span><span>		</span><span style="color:#b48ead;">int</span><span> currPriority = currThread.</span><span style="color:#bf616a;">getEffectivePriority</span><span>();
+</span><span>		</span><span style="color:#b48ead;">if</span><span>(next == </span><span style="color:#d08770;">null </span><span>|| (currPriority &gt; nextPriority)) {	
+</span><span>				next = currThread;
+</span><span>				nextPriority = currPriority;
+</span><span>			}
+</span><span>	}
+</span><span>	</span><span style="color:#b48ead;">return</span><span> next;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>nextPriority변수를 설정하여 threadsWaiting리스트를 순회한다.</li>
+<li>가장 priority가 높은 thread를 next로 설정하며, 이때의 priority를 nextPriority로 갱신한다.</li>
+<li>threadsWaiting의 순회가 끝났을 때 가장 우선순위가 높은 thread를 반환한다.</li>
+</ul>
+<h3 id="geteffectivepriority-1">getEffectivePriority()</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public int </span><span style="color:#bf616a;">getEffectivePriority</span><span>() {
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(!</span><span style="color:#bf616a;">this</span><span>.transferPriority) </span><span style="color:#b48ead;">return</span><span> priorityMinimum;
+</span><span>	</span><span style="color:#b48ead;">else if</span><span>(</span><span style="color:#bf616a;">this</span><span>.priorityChange) {
+</span><span>		</span><span style="color:#bf616a;">this</span><span>.effectivePriority = priorityMinimum;
+</span><span>		</span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">final </span><span style="color:#ebcb8b;">ThreadState</span><span> curr : </span><span style="color:#bf616a;">this</span><span>.threadsWaiting) {
+</span><span>			</span><span style="color:#bf616a;">this</span><span>.effectivePriority =
+</span><span>			</span><span style="color:#ebcb8b;">Math</span><span>.</span><span style="color:#bf616a;">max</span><span>(</span><span style="color:#bf616a;">this</span><span>.effectivePriority, curr.</span><span style="color:#bf616a;">getEffectivePriority</span><span>());
+</span><span>		}
+</span><span>		</span><span style="color:#bf616a;">this</span><span>.priorityChange = </span><span style="color:#d08770;">false</span><span>;
+</span><span>	}
+</span><span>	</span><span style="color:#b48ead;">return</span><span> effectivePriority;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>threadsWaiting을 순회하면서 가장 높은 priority를 갖는 thread의 priority로 effectivePriority값을 갱신하고, 이를 반환한다.)</li>
+<li>effectivePriority가 갱신되었으므로 priorityChange는 false로 설정한다.(유효한 effectivePriority)</li>
+</ul>
+<h3 id="invalidatecachedpriority">invalidateCachedPriority()</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">private</span><span> void </span><span style="color:#bf616a;">invalidateCachedPriority</span><span>() {
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(!</span><span style="color:#bf616a;">this</span><span>.transferPriority) </span><span style="color:#b48ead;">return</span><span>;
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.priorityChange = </span><span style="color:#d08770;">true</span><span>;
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">this</span><span>.resourceHolder != </span><span style="color:#d08770;">null</span><span>) resourceHolder.</span><span style="color:#bf616a;">invalidateCachedPriority</span><span>();
+</span><span>}
+</span></code></pre>
+<ul>
+<li>Priority가 변경되어야 할 경우, resourceHolder에 대해서 ThreadState.invalidateCachedPriority()를 수행한다.</li>
+</ul>
+<h2 id="threadstate">ThreadState</h2>
+<hr />
+<ul>
+<li>PriorityQueue클래스 내부에 protected로 선언된 클래스이다.</li>
+</ul>
+<h3 id="member-variables-1">Member Variables</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">protected </span><span style="color:#ebcb8b;">KThread</span><span> thread;
+</span><span style="color:#b48ead;">protected int</span><span> priority;
+</span><span style="color:#b48ead;">protected boolean</span><span> priorityChange = </span><span style="color:#d08770;">false</span><span>;
+</span><span style="color:#b48ead;">protected int</span><span> effectivePriority = priorityMinimum;
+</span><span style="color:#b48ead;">protected final </span><span style="color:#ebcb8b;">List</span><span>&lt;</span><span style="color:#ebcb8b;">PriorityQueue</span><span>&gt; resourcesIHave;
+</span><span style="color:#b48ead;">protected final </span><span style="color:#ebcb8b;">List</span><span>&lt;</span><span style="color:#ebcb8b;">PriorityQueue</span><span>&gt; resourcesIWant;
+</span></code></pre>
+<ul>
+<li>thread
+<ul>
+<li>현재 thread를 저장한다.</li>
+</ul>
+</li>
+<li>prioirty
+<ul>
+<li>priority를 저장한다.</li>
+</ul>
+</li>
+<li>priorityChange
+<ul>
+<li>현재 ThreadState의 effective priority가 유효하지 않다면 true값을 가진다.</li>
+</ul>
+</li>
+<li>effectivePriority
+<ul>
+<li>본 thread의 effective priority값을 가진다.</li>
+</ul>
+</li>
+<li>resourceIHave
+<ul>
+<li>현재 resourceHolder가 가지고 있는 queue의 리스트</li>
+</ul>
+</li>
+<li>resourceIWant
+<ul>
+<li>현재 resourceHolder가 기다리는 queue의 리스트</li>
+</ul>
+</li>
+</ul>
+<h3 id="threadstate-kthread-thread">ThreadState(KThread thread)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public </span><span style="color:#bf616a;">ThreadState</span><span>(</span><span style="color:#ebcb8b;">KThread</span><span> thread) {
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.thread = thread;
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.resourcesIHave = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">LinkedList</span><span>&lt;</span><span style="color:#ebcb8b;">PriorityQueue</span><span>&gt;();
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.resourcesIWant = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">LinkedList</span><span>&lt;</span><span style="color:#ebcb8b;">PriorityQueue</span><span>&gt;();
+</span><span>	</span><span style="color:#bf616a;">setPriority</span><span>(priorityDefault);
+</span><span>}
+</span></code></pre>
+<ul>
+<li>ThreadState의 생성자이다.</li>
+<li>resourcesIHave, resourcesIWant의 리스트로 Linked list를 사용한다.</li>
+</ul>
+<h3 id="getpriority-1">getPriority()</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public int </span><span style="color:#bf616a;">getPriority</span><span>() {
+</span><span>	</span><span style="color:#b48ead;">return</span><span> priority;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>현재 thread의 priority를 반환한다.</li>
+</ul>
+<h3 id="geteffectivepriority-2">getEffectivePriority()</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public int </span><span style="color:#bf616a;">getEffectivePriority</span><span>() {
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">this</span><span>.resourcesIHave.</span><span style="color:#bf616a;">isEmpty</span><span>()) </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">this</span><span>.</span><span style="color:#bf616a;">getPriority</span><span>();
+</span><span>	</span><span style="color:#b48ead;">else if</span><span>(</span><span style="color:#bf616a;">this</span><span>.priorityChange) {
+</span><span>		</span><span style="color:#bf616a;">this</span><span>.effectivePriority = </span><span style="color:#bf616a;">this</span><span>.</span><span style="color:#bf616a;">getPriority</span><span>();
+</span><span>		</span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">final </span><span style="color:#ebcb8b;">PriorityQueue</span><span> pq : </span><span style="color:#bf616a;">this</span><span>.resourcesIHave) {
+</span><span>			</span><span style="color:#bf616a;">this</span><span>.effectivePriority =
+</span><span>			</span><span style="color:#ebcb8b;">Math</span><span>.</span><span style="color:#bf616a;">max</span><span>(</span><span style="color:#bf616a;">this</span><span>.effectivePriority, pq. </span><span style="color:#bf616a;">getEffectivePriority</span><span>());
+</span><span>		}
+</span><span>		</span><span style="color:#bf616a;">this</span><span>.priorityChange = </span><span style="color:#d08770;">false</span><span>;
+</span><span>	}
+</span><span>	</span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">this</span><span>.effectivePriority;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>resourcesIHave를 순회하면서 effectivepriority를 값을 갱신한다.</li>
+</ul>
+<h3 id="setpriority-int-priority-1">setPriority(int priority)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">setPriority</span><span>(</span><span style="color:#b48ead;">int</span><span> priority) {
+</span><span>	</span><span style="color:#b48ead;">if </span><span>(</span><span style="color:#bf616a;">this</span><span>.priority == priority) </span><span style="color:#b48ead;">return</span><span>;
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.priority = priority;
+</span><span>	</span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">final </span><span style="color:#ebcb8b;">PriorityQueue</span><span> pq : resourcesIWant) {
+</span><span>		 q.</span><span style="color:#bf616a;">invalidateCachedPriority</span><span>();
+</span><span>	}
+</span><span>}
+</span></code></pre>
+<ul>
+<li>resourcesIWant의 이전 상태의 Priority에 대해 invalidate처리를 진행한다.</li>
+<li>이떄 PriorityQueue의 invalidateCachedPriority()메소드를 호출한다.</li>
+</ul>
+<h3 id="waitforaccess-priorityqueue-waitqueue">waitForAccess(PriorityQueue waitQueue)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">waitForAccess</span><span>(</span><span style="color:#ebcb8b;">PriorityQueue</span><span> waitQueue) {
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.resourcesIWant.</span><span style="color:#bf616a;">add</span><span>(waitQueue);
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.resourcesIHave.</span><span style="color:#bf616a;">remove</span><span>(waitQueue);
+</span><span>	waitQueue.</span><span style="color:#bf616a;">invalidateCachedPriority</span><span>();
+</span><span>}
+</span></code></pre>
+<ul>
+<li>Access요청이 들어온 queue를 resourcesIWant에 추가한다.</li>
+<li>해당 큐를 resourcesIHave에서 제거한다.</li>
+<li>해당 큐에 대해서 PriorityQueu.invalidateCachedPriority()를 호출한다.</li>
+</ul>
+<h3 id="acquire-priorityqueue-waitqueue">acquire(PriorityQueue waitQueue)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">acquire</span><span>(</span><span style="color:#ebcb8b;">PriorityQueue</span><span> waitQueue) {
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.resourcesIHave.</span><span style="color:#bf616a;">add</span><span>(waitQueue);	
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.resourcesIWant.</span><span style="color:#bf616a;">remove</span><span>(waitQueue);	
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.</span><span style="color:#bf616a;">invalidateCachedPriority</span><span>();
+</span><span>}
+</span></code></pre>
+<ul>
+<li>acquire요청이 들어온 queue에 대해서 처리한다.</li>
+<li>해당 큐를 resourcesIHave에 추가하고, resourcesIWant에서는 제거한다.</li>
+<li>해당 큐에 대해서 PriorityQueue.invalidateCachedPriority()를 호출한다.</li>
+</ul>
+<h3 id="release-priorityqueue-waitqueue">release(PriorityQueue waitQueue)</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">release</span><span>(</span><span style="color:#ebcb8b;">PriorityQueue</span><span> waitQueue) {
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.resourcesIHave.</span><span style="color:#bf616a;">remove</span><span>(waitQueue);
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.</span><span style="color:#bf616a;">invalidateCachedPriority</span><span>();
+</span><span>}
+</span></code></pre>
+<ul>
+<li>resourcesIHave에서 파라미터로 전달받은 waitQueue를 제거한다.</li>
+<li>해당 큐에 대해서 PriorityQueue.invalidateCachedPriority()를 호출한다.</li>
+</ul>
+<h3 id="getthread">getThread()</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">KThread </span><span style="color:#bf616a;">getThread</span><span>() {
+</span><span>	</span><span style="color:#b48ead;">return</span><span> thread;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>member variable thread에 대한 getter이다.</li>
+</ul>
+<h3 id="invalidatecachedpriority-1">invalidateCachedPriority()</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">private</span><span> void </span><span style="color:#bf616a;">invalidateCachedPriority</span><span>() {
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">this</span><span>.priorityChange) </span><span style="color:#b48ead;">return</span><span>;
+</span><span>	</span><span style="color:#bf616a;">this</span><span>.priorityChange = </span><span style="color:#d08770;">true</span><span>;
+</span><span>	</span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">final </span><span style="color:#ebcb8b;">PriorityQueue</span><span> pq : </span><span style="color:#bf616a;">this</span><span>.resourcesIWant) {
+</span><span>		pq.</span><span style="color:#bf616a;">invalidateCachedPriority</span><span>();
+</span><span>	}
+</span><span>}
+</span></code></pre>
+<ul>
+<li>resourcesIWant에 대해서 invalidateCachedPriority()를 호출한다.</li>
+</ul>
+<h2 id="reference">reference</h2>
+<ul>
+<li>priority scheduler의 구현에 있어 아래 깃허브 저장소를 참고했습니다.
+<ul>
+<li><a href="https://github.com/jeremyrios/CS162-Nachos-OperatingSystem">reference github repo</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

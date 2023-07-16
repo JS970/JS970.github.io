@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>YOLO Quickstart | Rounding Off</title>
+
+
+
+<meta property="og:title" content="YOLO Quickstart">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/yolo/">
+<meta property="og:url" content="https://js970.github.io/yolo/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-01-25T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="YOLO Quickstart">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/yolo/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "YOLO Quickstart"
+  
+    
+    
+      "datePublished":"2023-01-25T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/yolo/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-01-25">January 25, 2023</time>
+  	</div>
+  	<h1 class="post-title">YOLO Quickstart</h1>
+  	<div class="post-line"></div>
+  	<h1 id="yolo-you-look-only-once-ran">YOLO(You Look Only Once)란?</h1>
+<hr />
+<ul>
+<li>
+<p>딥러닝을 이용한 Object Detection, Image Segmentation 프로그램</p>
+</li>
+<li>
+<p>Ultralytics에서 개발했다.</p>
+</li>
+<li>
+<p>라이센스는 GPL-3.0라이센스이다. 주의할 것</p>
+<p><a href="https://github.com/ultralytics/yolov5/blob/master/LICENSE">yolov5/LICENSE at master · ultralytics/yolov5</a></p>
+</li>
+<li>
+<p>본 글은 Ultralytics YOLOv8 Docs를 기반으로 작성되었다.</p>
+<p><a href="https://docs.ultralytics.com/">Ultralytics YOLOv8 Docs</a></p>
+</li>
+</ul>
+<h1 id="yolo-quickstart">YOLO Quickstart</h1>
+<hr />
+<h2 id="environment-requirments">Environment Requirments</h2>
+<p><a href="https://github.com/ultralytics/ultralytics/blob/main/requirements.txt">ultralytics/requirements.txt at main · ultralytics/ultralytics</a></p>
+<h2 id="install">Install</h2>
+<p>다음은 나의 환경에서 YOLO를 설치하는 과정을 기록한 것이다.</p>
+<pre data-lang="powershell" style="background-color:#2b303b;color:#c0c5ce;" class="language-powershell "><code class="language-powershell" data-lang="powershell"><span>pip install ultralytics
+</span></code></pre>
+<ul>
+<li>만약 dependency issue가 있다면 다 설치해서 해결해 주자</li>
+<li>CUDA가 설치되어 있어야 YOLO를 실행할 수 있으니 CUDA도 설치하자(YOLO가 pytorch를 사용하는데 여기에서 CUDA를 필요로 하는 것 같다.)
+<ul>
+<li>
+<p><a href="https://developer.nvidia.com/cuda-downloads?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10">CUDA 설치</a>(NAS에 CUDA_12.0.1 저장되어 있다)</p>
+</li>
+<li>
+<p>Ubuntu 22.04에서 CUDA를 설치할 경우 다음 명령어를 한 줄씩 입력한다.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">wget</span><span> https://developer.download.nvidia.com/compute/cuda/12.0.1/local_installers/cuda_12.0.1_525.85.12_linux.run
+</span><span style="color:#bf616a;">sudo</span><span> sh cuda_12.0.1_525.85.12_linux.run
+</span></code></pre>
+</li>
+<li>
+<p>위의 명령어 입력 후 실행시킨 프로그램에서 그래픽 드라이버는 제외하고 설치해야 정상적으로 설치된다.</p>
+</li>
+<li>
+<p>이후 nvcc명령어를 사용해서 쿠다 버전이 확인이 되지 않는다. 이를 해결하기 위해 다음 문장을 ~/.profile의 가장 밑에 추가한다.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#b48ead;">export </span><span style="color:#bf616a;">PATH</span><span>=</span><span style="color:#a3be8c;">/usr/local/cuda-12.0/bin:</span><span>$</span><span style="color:#bf616a;">PATH
+</span><span style="color:#b48ead;">export </span><span style="color:#bf616a;">LD_LIBRARY_PATH</span><span>=</span><span style="color:#a3be8c;">/usr/local/cuda-12.0/lib64:</span><span>$</span><span style="color:#bf616a;">LD_LIBRARY_PATH
+</span></code></pre>
+</li>
+<li>
+<p>이후 source ~/.profile 명령어를 통해 변경사항을 적용시키면 아래 명령어를 통해 쿠다 버전이 정상적으로 인식되는 것을 확인할 수 있다.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">nvcc -V
+</span></code></pre>
+</li>
+<li>
+<p><a href="https://developer.nvidia.com/rdp/cudnn-download">cuDNN설치</a>(로그인 필요, CUDA12.0에 사용되는 cuDNN v8.8.0, NAS에 저장되어 있다)</p>
+<ul>
+<li>압축 해제 후 CUDA설치 경로(C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\lib)의 bin, include, lib 폴더에 추가한다.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://webnautes.tistory.com/1765">Ubuntu 22.04설치</a></p>
+</li>
+<li>
+<p>Ubuntu 22.04에서 설치 시 재부팅을 해 주어야 한다.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="cli-example">CLI Example</h2>
+<pre data-lang="powershell" style="background-color:#2b303b;color:#c0c5ce;" class="language-powershell "><code class="language-powershell" data-lang="powershell"><span>yolo detect train model=yolov8n.pt </span><span style="color:#b48ead;">data</span><span>=coco128.yaml device=</span><span style="color:#d08770;">0
+</span></code></pre>
+<ul>
+<li>위의 명령어를 입력하여 간단한 예제를 수행할 수 있다.
+<ul>
+<li>pytorch가 제대로 설치되어 있지 않다면 CUDA, cuDNN이 제대로 설치되어 있어도 에러가 발생한다. <a href="https://pytorch.org/get-started/locally/">여기</a>에서 환경에 맞게 다운로드 받을 수 있다.</li>
+</ul>
+</li>
+</ul>
+<aside>
+💡 2/12일 기준으로 이유는 모르겠지만 아래와 같은 에러가 발생하여 CLI예제 및 Python code예제를 수행하지 못하고 있다…. 해결 요망..
+</aside>
+<h2 id="export">Export</h2>
+<ul>
+<li>학습 모델은 onnx확장자로 export 된다.</li>
+</ul>
+<h1 id="tasks">Tasks</h1>
+<h2 id="detection">Detection</h2>
+<ul>
+<li>
+<p>객체 감지</p>
+</li>
+<li>
+<p>이미지 또는 비디오 스트림에서 객체의 위치와 클래스를 식별하는 작업이다.</p>
+</li>
+<li>
+<p>object detector의 결과물은 이미지의 개체를 둘러싼 bounding boxes이다. 라벨, 클래스, confidence score가 각각의 박스 마다 매겨진다. 관심이 있는 장면에서 사물을 특정하기 위해 사용된다. 정확한 모양이나 위치는 특정할 수 없다.</p>
+<p><img src="/image/YOLO/Untitled.png" alt="Untitled" /></p>
+</li>
+<li></li>
+</ul>
+<h2 id="segmentation">Segmentation</h2>
+<h2 id="classification">Classification</h2>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

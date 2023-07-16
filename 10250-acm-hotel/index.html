@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>10250 - ACM 호텔 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="10250 - ACM 호텔">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/10250-acm-hotel/">
+<meta property="og:url" content="https://js970.github.io/10250-acm-hotel/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-05T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="10250 - ACM 호텔">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/10250-acm-hotel/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "10250 - ACM 호텔"
+  
+    
+    
+      "datePublished":"2023-02-05T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/10250-acm-hotel/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-05">February  5, 2023</time>
+  	</div>
+  	<h1 class="post-title">10250 - ACM 호텔</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 브론즈 3</li>
+<li>날짜: 2023년 2월 5일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>입력된 순서 당 배정될 방의 번호를 계산하는 공식을 만들었다.</li>
+<li>공식에 반례가 있어 한번 틀렸다. 예외 처리를 통해 정답 처리 되었다.</li>
+<li>솔직히 W값은 필요가 없었는데 왜 입력으로 넣는지가 궁금하다.</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> testC;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> H, W, N;
+</span><span>    cin &gt;&gt; testC;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> floor;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> room;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; testC; i++)
+</span><span>    {
+</span><span>        cin &gt;&gt; H;
+</span><span>        cin &gt;&gt; W;
+</span><span>        cin &gt;&gt; N;
+</span><span>        floor = N%H;
+</span><span>        room = (N / H) + </span><span style="color:#d08770;">1</span><span>;
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(floor == </span><span style="color:#d08770;">0</span><span>)
+</span><span>        {
+</span><span>            floor = H;
+</span><span>            room--;
+</span><span>        }
+</span><span>        cout &lt;&lt; floor * </span><span style="color:#d08770;">100 </span><span>+ room &lt;&lt; endl;
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/10250">10250번: ACM호텔</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

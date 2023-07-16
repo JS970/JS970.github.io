@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Deadlock(1) | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Deadlock(1)">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/deadlock-1/">
+<meta property="og:url" content="https://js970.github.io/deadlock-1/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-05-01T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Deadlock(1)">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/deadlock-1/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Deadlock(1)"
+  
+    
+    
+      "datePublished":"2023-05-01T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/deadlock-1/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-05-01">May  1, 2023</time>
+  	</div>
+  	<h1 class="post-title">Deadlock(1)</h1>
+  	<div class="post-line"></div>
+  	<h2 id="deadlock-deadlock-conditions">Deadlock - Deadlock conditions</h2>
+<hr />
+<ul>
+<li>프로세스는 한정적인 resource를 사용한다. 이때 다른 프로세스가 사용중인 resource를 요구할 수 있다.</li>
+<li>이 때 발생하는 문제에 대해 좀 더 직관적으로 살펴보기 위해 system model관점에서 살펴보자.</li>
+</ul>
+<h3 id="system-model">System Model</h3>
+<ul>
+<li>시스템은 <code>resource</code>와 <code>process</code>로 구성된다.
+<ul>
+<li><code>resource</code>들은 Resource Type으로 분류한다.(R1, R2, R3, ... , Rm)</li>
+<li>각 Resource Type들은 CPU cycle, Memory space, I/O devices등 자원 타입을 의미한다.</li>
+</ul>
+</li>
+<li>Resource Type Ri는 Wi개의 <code>instance</code>를 가질 수 잇다.
+<ul>
+<li>자원 종류별로 사용 가능한 <code>instance</code>개수가 제한된다.(Class-Object 개념으로 생각하자)</li>
+</ul>
+</li>
+<li>프로세스들은 아래와 같은 과정으로 <code>resource</code>를 사용한다.
+<ul>
+<li>Request(자원 요청)</li>
+<li>Use(자원 사용)</li>
+<li>Release(자원 반납)</li>
+</ul>
+</li>
+</ul>
+<h3 id="deadlock">deadlock</h3>
+<blockquote>
+<p>A set of blocked processes each holding a resource and waiting to acquire a resource held by another process in the set</p>
+</blockquote>
+<ul>
+<li>두 개의 프로세스가 자원을 보유(<code>held</code>)한 상태로 상대방의 자원을 <code>request</code>하고 있는 상황이 <code>deadlock</code>이다.</li>
+<li>자원을 해제하지 않으면서 다른 프로세스에 의해 점유된 자원을 <code>request</code>하는 것이 <code>deadlock</code>의 원인이다.</li>
+<li><code>deadlock</code>을 해결하기 위해서는 <code>held</code>하고 있는 자원을 <code>release</code>하면 된다.</li>
+<li>다음 장에서 설명할 4가지 deadlock conditions를 동시에 만족하면 deadlock이 발생할 가능성이 있다.</li>
+</ul>
+<h3 id="deadlock-conditions">Deadlock conditions</h3>
+<ul>
+<li>아래의 1, 2, 3, 4번 조건을 모두 만족한다면 deadlock이 발생할 가능성이 있다.</li>
+</ul>
+<ol>
+<li><code>Mutual Exclusion</code>
+<ul>
+<li>하나의 프로세스만 하나의 자원을 사용할 수 있는 상황이다.(semaphore 등)</li>
+</ul>
+</li>
+<li><code>Hold and Wait</code>
+<ul>
+<li>다른 프로세스에서 hold되어진 자원을 요청하고 이를 기다리는 상황이다.</li>
+</ul>
+</li>
+<li><code>No Preemption</code>
+<ul>
+<li>resource가 오직 resource를 hold하고 있는 프로세스의 release를 통해서만 회수된다.</li>
+</ul>
+</li>
+<li><code>Circular Wait</code>
+<ul>
+<li>프로세스 간 순환 구조를 형성하면서 대기중이다.</li>
+<li>P1 -&gt; P2 -&gt; P3 -&gt; P4 -&gt; P1</li>
+</ul>
+</li>
+</ol>
+<h3 id="resource-allocation-graph">Resource Allocation Graph</h3>
+<ul>
+<li>아래는 Resource Allocation Graph의 구성 요소 도식이다.<img src="/image/OS/resourceAllocationElements.png" alt="Allocation Graph Consistents" /></li>
+<li>그래프의 vertices는 두 가지 타입으로 구성된다
+<ul>
+<li>process(P0, P1, ..., Pm) : m개의 프로세스가 존재</li>
+<li>resource(R0, R1, ..., Rn) : n개의 resource가 존재</li>
+</ul>
+</li>
+<li>그래프의 edge 역시 두 종류가 있다.
+<ul>
+<li>Request Edge : directed edge Pi -&gt; Rj</li>
+<li>Assignment Edge : directed edge Rj -&gt; Pi</li>
+</ul>
+</li>
+</ul>
+<h3 id="resource-allocation-graph-example1-no-deadlock">Resource Allocation Graph Example1(No Deadlock)</h3>
+<p><img src="/image/OS/resourceAllocationGraphNoDeadlock.png" alt="Resouurce Allocation Graph Example(No Deadlock)" /></p>
+<ul>
+<li>R1, R2, R3, R4는 mutex조건(mutual exclusion)을 만족한다고 가정하자.
+<ul>
+<li>위 그래프만으로는 알 수 없다.</li>
+</ul>
+</li>
+<li>hold and wait
+<ul>
+<li>P1은 R2를 hold하고 있으며 R1을 request하고 있다.</li>
+<li>P2는 R1을 hold하고 있으며 R3를 request하고 있다.</li>
+<li>P3의 경우 R3를 hold하고 있지만 resource를 request하고 있지 않다.</li>
+</ul>
+</li>
+<li>No Preemption조건 역시 그래프만으로는 확인할 수 없으므로 만족한다고 가정하자.</li>
+<li>Circular Wait
+<ul>
+<li>circular wait을 만족하지 않는다.</li>
+<li>P1 -&gt; R1 -&gt; P2 -&gt; R3 -&gt; P3, R2 -&gt; P2</li>
+</ul>
+</li>
+</ul>
+<h3 id="resource-allocation-graph-example2-deadlock">Resource Allocation Graph Example2(Deadlock)</h3>
+<p><img src="/image/OS/resourceAllocationGraphDeadlock.png" alt="Resource Allocation Graph with Deadlock" /></p>
+<ul>
+<li>R1, R2, R3, R4는 mutual exclusion 조건을 만족한다고 가정하자.</li>
+<li>Hold and Wait
+<ul>
+<li>P1, P2, P3모두 해당된다.</li>
+</ul>
+</li>
+<li>No Preemption조건을 만족한다고 가정하자.</li>
+<li>Circular Wait조건을 만족한다.
+<ul>
+<li>P1 -&gt; R1 -&gt; P2 -&gt; R3 -&gt; P3 -&gt; R2 -&gt; P1(P2)</li>
+</ul>
+</li>
+<li>네 가지 조건을 만족하기 때문에 deadlock이 존재할 수 있고, 실제로도 있다.
+<ul>
+<li>네 가지 조건을 만족해도 deadlock이 없을 수 있다. 아래의 예시를 보자.</li>
+</ul>
+</li>
+</ul>
+<h3 id="resource-allocation-graph-example3-no-deadlock">Resource Allocation Graph Example3(No Deadlock)</h3>
+<p><img src="/image/OS/resourceAllocationGraphCircleNoDeadlock.png" alt="No Deadlock with deadlock conditions" /></p>
+<ul>
+<li>위 그래프는 deadlock condition의 네 가지 조건을 모두 만족한다. </li>
+<li>하지만 실제로 deadlock은 발생하지 않는다.</li>
+<li>이는 P4(또는 P2)가 자원을 release하면 P3가 R2에 접근하면서 Circular Cycle이 깨지게 된다.</li>
+<li>cycle은 P1과 P3가 형성하지만 P2, P4에 의해 cycle이 깨질 수 있으므로 deadlock이 발생하지 않는다.</li>
+<li>결국 Resource Allocation Graph를 통해서 확실히 알 수 있는 정보는 cycle유무를 통해 deadlock이 없다는 것을 확실히 할 수 있다는 것이다.</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

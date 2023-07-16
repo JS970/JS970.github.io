@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>1992 - 쿼드트리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="1992 - 쿼드트리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/1992-kweoddeteuri/">
+<meta property="og:url" content="https://js970.github.io/1992-kweoddeteuri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-11T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="1992 - 쿼드트리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/1992-kweoddeteuri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "1992 - 쿼드트리"
+  
+    
+    
+      "datePublished":"2023-03-11T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/1992-kweoddeteuri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-11">March 11, 2023</time>
+  	</div>
+  	<h1 class="post-title">1992 - 쿼드트리</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 1</li>
+<li>날짜: 2023년 3월 11일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No</li>
+<li>알고리즘 : 분할 정복, 재귀</li>
+</ul>
+<h1 id="solution">Solution</h1>
+<ul>
+<li>compressable함수를 구현하여 2차원 배열의 모든 원소가 같은 원소로 구성되어있는지 확인한다.
+<ul>
+<li>하나라도 다른 원소가 포함되어 있다면 false를 반환한다.</li>
+</ul>
+</li>
+<li>compress함수를 구현하여 recursion을 통해 입력된 배열에 대해 compress를 수행한다.
+<ul>
+<li>만약 모든 원소의 값이 같지 않아서 압축이 되지 않을 경우, 4분할을 통해 compress함수를 재귀호출한다(recursion)</li>
+<li>처음에는 이차원 배열을 새롭게 생성하여 compress를 호출하였으나, compressable과 compress함수의 인자로 row, col의 시작 인덱스를 주어, 추가 배열 생성 없이 호출이 가능하도록 구현했다.</li>
+</ul>
+</li>
+<li>메인 함수에서 입력을 받을 때 입력 형식을 맞추기 위해 char타입으로 입력을 받아 하나씩 저장했다.
+<ul>
+<li>int타입으로 구현하면 0과 1이 붙어서 한 숫자로 인식된다.</li>
+</ul>
+</li>
+<li>처음에 이차원 배열의 동적할당 후 생성하는 문법에 오류가 있어 문제를 몇 번 틀렸다.
+<ul>
+<li>이중 포인터 하나만 배열로 동적할당 한 뒤, 각 이중 포인터 배열의 원소에 대해 다시 동적할당하는 방식으로 코딩해야 한다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">bool </span><span style="color:#8fa1b3;">compressable</span><span>(</span><span style="color:#b48ead;">int </span><span>** </span><span style="color:#bf616a;">arr</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">row</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">col</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">size</span><span>)
+</span><span>{
+</span><span>	</span><span style="color:#b48ead;">int</span><span> elem = arr[row][col];
+</span><span>	</span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = row; i &lt; row+size; i++)
+</span><span>	{
+</span><span>		</span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j = col; j &lt; col+size; j++)
+</span><span>		</span><span style="color:#b48ead;">if</span><span>(arr[i][j] != elem) </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">false</span><span>;
+</span><span>	}
+</span><span>	</span><span style="color:#b48ead;">return </span><span style="color:#d08770;">true</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">compress</span><span>(</span><span style="color:#b48ead;">int </span><span>** </span><span style="color:#bf616a;">arr</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">row</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">col</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">size</span><span>)
+</span><span>{
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">compressable</span><span>(arr, row, col, size)) cout &lt;&lt; arr[row][col];
+</span><span>	</span><span style="color:#b48ead;">else
+</span><span>	{
+</span><span>		cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">(</span><span>&quot;;
+</span><span>		</span><span style="color:#b48ead;">int</span><span> sub_size = size / </span><span style="color:#d08770;">2</span><span>;
+</span><span>		</span><span style="color:#bf616a;">compress</span><span>(arr, row, col, sub_size);
+</span><span>		</span><span style="color:#bf616a;">compress</span><span>(arr, row, col+sub_size, sub_size);
+</span><span>		</span><span style="color:#bf616a;">compress</span><span>(arr, row+sub_size, col, sub_size);
+</span><span>		</span><span style="color:#bf616a;">compress</span><span>(arr, row+sub_size, col+sub_size, sub_size);
+</span><span>		cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">)</span><span>&quot;;
+</span><span>	}
+</span><span>} 
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>	</span><span style="color:#b48ead;">int</span><span> N;
+</span><span>	cin &gt;&gt; N;
+</span><span>	</span><span style="color:#b48ead;">int </span><span>** arr = </span><span style="color:#b48ead;">new int</span><span>*[N];
+</span><span>	</span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N; i++)
+</span><span>	{
+</span><span>		arr[i] = </span><span style="color:#b48ead;">new int</span><span>[N];
+</span><span>		</span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j = </span><span style="color:#d08770;">0</span><span>; j &lt; N; j++)
+</span><span>		{
+</span><span>			</span><span style="color:#b48ead;">char</span><span> c;
+</span><span>			cin &gt;&gt; c;
+</span><span>			arr[i][j] = c - &#39;</span><span style="color:#a3be8c;">0</span><span>&#39;;
+</span><span>		}
+</span><span>	}
+</span><span>	</span><span style="color:#bf616a;">compress</span><span>(arr, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, N); 
+</span><span>	</span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/1992">1992번: 쿼드트리</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

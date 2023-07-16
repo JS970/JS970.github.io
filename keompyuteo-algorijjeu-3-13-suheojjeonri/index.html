@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>컴퓨터 알고리즘 2023-03-13 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="컴퓨터 알고리즘 2023-03-13 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/keompyuteo-algorijjeu-3-13-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/keompyuteo-algorijjeu-3-13-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-13T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="컴퓨터 알고리즘 2023-03-13 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/keompyuteo-algorijjeu-3-13-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "컴퓨터 알고리즘 2023-03-13 수업정리"
+  
+    
+    
+      "datePublished":"2023-03-13T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/keompyuteo-algorijjeu-3-13-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-13">March 13, 2023</time>
+  	</div>
+  	<h1 class="post-title">컴퓨터 알고리즘 2023-03-13 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Big $O$, Big $\Theta$, Big $\Omega$ </li>
+</ul>
+<h2 id="big-o-big-theta-big-omega">Big $O$, Big $\Theta$, Big $\Omega$</h2>
+<hr />
+<h3 id="big-o">Big $O$</h3>
+<p>주어진 복잡도 함수 f(n)에 대하여, n이 임의의 수 N 보다 크거나 같을 때, g(n)이 f(n)에 어떠한 상수 c를 곱한 것보다 작거나 같다면 아래와 같이 표현한다. 그리고 g(n) is oh of f(n) 이라고 읽는다.
+$$g(n) \leq c * f(n),\ g(n) \in O(f(n))$$ </p>
+<ul>
+<li>임의의 수 N보다 n이 커야 한다는 조건은, 입력값의 크기가 작은 경우에 더 빠른 알고리즘이 존재하므로 이러한 조건이 붙은 것이다. 당연하지만, N이 작을수록 위의 수식을 만족하기 힘들다. 하지만 어떠한 정수 N에 대해서만 만족하면 되고, Big $O$, Big $\Theta$, Big $\Omega$ 는 매우 큰 수 n에 대해서 다루기 때문에 별 의미는 없다. </li>
+</ul>
+<h3 id="big-omega">Big $\Omega$</h3>
+<p>앞서 살펴본 Big $O$ 가 g(n)의 시간복잡도의 upperbound를 (g(n)은 한 f(n)보다는 빠른 알고리즘임을 의미한다.)의미했다면, Big $\Omega$ 는 g(n)의 시간복잡도의 lowerbound를 의미한다. 따라서 Big $\Omega$ 표현은 아래 수식을 만족해야 한다. 단순하게 Big $O$ notation과는 부등호 방향이 반대이다.
+$$if\ g(n) \in \Omega(f(n)),\ g(n) \ge c * f(n)\ for(n \ge N)$$</p>
+<h3 id="big-theta">Big $\Theta$</h3>
+<p>g(n)이 $O(f(n),\ \Omega(f(n))$ 에 모두 속할 경우 아래와 같이 표기할 수 있다.
+$$g(n) \in \Theta(f(n))$$</p>
+<ul>
+<li>결국, Big $\Theta$는 집합은 같은 시간복잡도의 집합을 표시한다고 할 수 있다.</li>
+<li>정의에 따라 $2n^2,\ n^2+10$ 은 같은 Big $\Theta$는 집합에 속한다고 말할 수 있다. (same complexity를 가진다)</li>
+<li>Big $O$, Big $\Theta$, Big $\Omega$ notation을 통해 서로 다른 알고리즘 간의 수학적인 비교가 가능하다.</li>
+<li>어떠한 시간복잡도 함수가 각 notation을 충족하는지는 부등식을 통해 증명 가능하다.</li>
+</ul>
+<h3 id="dossi-pyohyeon">도식 표현</h3>
+<ul>
+<li>아래 그림은 각 집합의 영역을 그림으로 표시한 것이다.
+<img src="/image/Algorithm/bigO_1.png" alt="big O sigma, theta" /></li>
+<li>아래 그림은 각 집합(Big $O$, Big $\Theta$, Big $\Omega$)의 증가율을 비교한 것이다.
+<img src="/image/Algorithm/bigO_2.png" alt="graphOfBigO" /></li>
+<li>아래 그림은 위에서 설명한 집합에 속하는 시간복잡도 함수를 벤 다이어그램으로 표현한 것이다.
+<img src="/image/Algorithm/diagram.png" alt="diagram" /></li>
+</ul>
+<h3 id="example">Example</h3>
+<p>아래의 수식이 참인지 증명하시오
+$$n! \in \Theta(n^n)$$
+<img src="/image/Algorithm/proof-theta.png" alt="proof" /></p>
+<ul>
+<li>증명의 2번 부분에서, 당연히 $log(n) \ge n/2log(n/2)$ 이지만, 임의의 상수 $c$에 대해서는 위 수식이 성립하기 때문에 참이라고 말할 수 있다.</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

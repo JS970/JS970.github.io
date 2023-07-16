@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>컴퓨터 알고리즘 2023-04-09 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="컴퓨터 알고리즘 2023-04-09 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/keompyuteo-algorijjeu-4-9-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/keompyuteo-algorijjeu-4-9-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-09T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="컴퓨터 알고리즘 2023-04-09 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/keompyuteo-algorijjeu-4-9-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "컴퓨터 알고리즘 2023-04-09 수업정리"
+  
+    
+    
+      "datePublished":"2023-04-09T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/keompyuteo-algorijjeu-4-9-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-09">April  9, 2023</time>
+  	</div>
+  	<h1 class="post-title">컴퓨터 알고리즘 2023-04-09 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Sequence Alignment</li>
+<li>Dynamic Programming - Needleman-Wunsch algorithm</li>
+</ul>
+<h2 id="sequence-alignment">Sequence Alignment</h2>
+<hr />
+<blockquote>
+<p>An alignment is an assignment of gaps to positions 0, ..., M in x, and 0, ..., N in y, so as to line up each letter in one sequence with either a letter or a gap in the other sequence</p>
+</blockquote>
+<blockquote>
+<p>Sequence Alignment란 결국 두 개 이상의 시퀸스(문자열)을 정렬하여 유사한 부분을 찾아내는 것이다.</p>
+</blockquote>
+<ul>
+<li>아래는 서로 다른 두 사람의 DNA염기 서열에 대해 sequence alignment를 진행하는 예시이다.
+<ul>
+<li>
+<p>Befrore Sequence Alignment</p>
+<p>person A : AGGCTATCACCTGACCTCCAGGCCGATGCCC</p>
+<p>person B : TAGCTATCACGACCGCGGTCGATTTGCCCGAC</p>
+</li>
+<li>
+<p>After Sequence Alignment</p>
+<p>person A : -<strong>AG</strong>G<strong>CTATCAC</strong>CT<strong>GACC</strong>T<strong>C</strong>CA<strong>GG</strong>C<strong>CGA</strong>--<strong>TGCCC</strong>---</p>
+<p>person B : T<strong>AG</strong>-<strong>CTATCAC</strong>--<strong>GACC</strong>G<strong>C</strong>--<strong>GG</strong>T<strong>CGA</strong>TT<strong>TGCCC</strong>GAC</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="what-is-a-good-alignment">What is a good alignment?</h3>
+<ul>
+<li>
+<p>match, mismatch, gap으로 구분하여 alignment를 비교한다.</p>
+</li>
+<li>
+<p>match, mismatch, gap에 대해서 가중치를 설정하여 우선순위에 맞게 alignment를 진행한다.</p>
+</li>
+<li>
+<p>아래는 matches(5point), mismatches(-3point), gap(-4point)에 따라 alignment를 비교하는 예시이다.</p>
+</li>
+<li>
+<p>6 matches, 3 mismatches, 1 gap : 17point</p>
+<p>AGGCTAGTT-</p>
+<p>AGCGAAGTTT</p>
+</li>
+<li>
+<p>7 matches, 1 mismatch, 3 gaps : 20point</p>
+<p>AGGCTA-GTT-</p>
+<p>AG-CGAAGTTT</p>
+</li>
+<li>
+<p>7 matches, 0 mismatches, 5 gaps : 15point</p>
+<p>AGGC-TA-GTT-</p>
+<p>AG-CG-AAGTTT</p>
+</li>
+</ul>
+<h2 id="dynamic-programming-needleman-wunsch-algorithm">Dynamic Programming - Needleman-Wunsch algorithm</h2>
+<hr />
+<ul>
+<li>두 염기서열의 공통 부분이 가장 많아지도록 정렬할 때 사용되는 알고리즘</li>
+<li>The score of the alignment = <strong>(# of matches) * m - (# of mismatches) * s - (# of gaps) * d</strong>
+<ul>
+<li>두 서열에서 문자쌍이 일치할 경우 : +m점</li>
+<li>두 서열에서 문자쌍이 서로 다를 경우 : -s점</li>
+<li>Sequence Alignmnet 중 gap이 발생할 경우 : -d점</li>
+</ul>
+</li>
+<li>F(i, j)가 주어진 sequence x, y의 subsequence x[1..i], y[1..j]의 정렬에 대한 optimal 점수라고 하자. subsequence x[1..i], y[1..j] 에 대해 다음과 같은 세 가지 경우가 존재한다.
+$$x_1 ..... x_i $$$$y_1.....y_j$$
+<ol>
+<li>x(i)가 y(i)에 align되는 경우 : F(i, j) = F(i-1, j-1) + { (x(i) == y(i)) ? m : -s }</li>
+<li>x(i)가 gap과 align되는 경우 : F(i, j) = F(i-1, j) - d</li>
+<li>y(i)가 gap과 align되는 경우 : F(i, j) = F(i, j-1) - d</li>
+</ol>
+</li>
+<li>따라서 F(i-1, j-1)이 optimal하다고 했을 떄 아래와 같은 recursive equation이 도출된다.$$F(i, j)=max\begin{cases}F(i-1,j-1)+s(x_i,y_i)\F(i-1,j)-d\F(i,j-1)-d\end{cases}$$$$s(x_i, y_i) = \begin{cases}m,\ (if\ x_i = y_i)\-s,\ (otherwise)\end{cases}$$</li>
+<li>이와 같은 recursice equation과 F(i, j)의 score를 저장하는 matrix를 통해 Dynamic Programming을 통한 Sequence Alignmnet를 수행할 수 있다.(Needleman-Wunsch Algorithm)</li>
+<li>아래는 두 염기서열에 대한 Needleman-Wunsch Algorithm)을 step by step으로 적용한 것이다.
+<ol>
+<li>Score 행렬 초기화<img src="/image/Algorithm/Needleman-Wunsch_01.png" alt="Step1" /></li>
+<li>Score 계산<img src="/image/Algorithm/Needleman-Wunsch_02.png" alt="Step 2" />
+<ul>
+<li>Score를 계산하면서 해당 칸이 위, 왼쪽, 왼쪽 대각선 위 세 방향 중 어디에서 유래했는지를 별도의 matrix를 통해 저장해야 한다.</li>
+<li>그림에서는 정답에 대해서만 빨간색 실선 화살표로 나타냈다.</li>
+</ul>
+</li>
+<li>트레이싱
+<ul>
+<li>가장 점수가 높은 칸은 8이다.</li>
+<li>이 지점에서부터 해당 칸의 이전 단계로 step 2에서 작성한 matrix를 참고하여 돌아간다(tracing)</li>
+<li>모든 경로가 파악되면 s1, s2에 대한 optimal solution을 알 수 있다.
+<ul>
+<li>위에서 내려오는 칸은 s2가 gap을 가지고, 좌에서 우로 이동하는 칸은 s1이 gap을 가진다.</li>
+<li>s1 : C A T - - A C</li>
+<li>s2 : - A T C G A C</li>
+</ul>
+</li>
+<li>만약 최댓값이 같아 어느 방향에서 오는 지 특정할 수 없는 경우 임의의 칸을 선택하면 된다.
+<ul>
+<li>위 그림에서 빨간 점선 테두리의 칸은 두 가지 이상의 기원을 가질 수 있다.</li>
+<li>아무 값이나 임의로 선택하면 된다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="implementation">Implementation</h3>
+<pre data-lang="C++" style="background-color:#2b303b;color:#c0c5ce;" class="language-C++ "><code class="language-C++" data-lang="C++"><span style="color:#65737e;">// TODO (`2023-04-15)
+</span></code></pre>
+<h3 id="reference">Reference</h3>
+<p><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST : Basic Local Alilgnment Search Tool - NCBI</a></p>
+<p><a href="http://tomoyo.ivyro.net/123/wiki.php/TeX_%EB%B0%8F_LaTeX_%EC%88%98%EC%8B%9D_%EB%AC%B8%EB%B2%95">마크다운 수식 위키</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

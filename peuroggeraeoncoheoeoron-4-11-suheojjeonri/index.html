@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>프로그래밍언어론 2023-04-11 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="프로그래밍언어론 2023-04-11 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/peuroggeraeoncoheoeoron-4-11-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/peuroggeraeoncoheoeoron-4-11-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-11T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="프로그래밍언어론 2023-04-11 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/peuroggeraeoncoheoeoron-4-11-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "프로그래밍언어론 2023-04-11 수업정리"
+  
+    
+    
+      "datePublished":"2023-04-11T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/peuroggeraeoncoheoeoron-4-11-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-11">April 11, 2023</time>
+  	</div>
+  	<h1 class="post-title">프로그래밍언어론 2023-04-11 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>PL Review</li>
+<li>Axiomatic System</li>
+</ul>
+<h2 id="pl-review">PL Review</h2>
+<hr />
+<ul>
+<li>Programming Language는 Syntax와 Semantic으로 나타내어진다.</li>
+<li>Syntax : CFG(Grammar)로 표기</li>
+<li>Semantic
+<ul>
+<li>Static Semantic
+<ul>
+<li>Attribute Grammar : 속성 문법, (문법 규칙 + 속성 계산 규칙)을 통해 컴파일 이전에 의미에 대한 정의를 끝낸다.</li>
+</ul>
+</li>
+<li>Dynamic Semantic
+<ul>
+<li>Operational Semantics : 추상기계의 상태변화로 의미를 나타낸다.</li>
+<li>Denotational Semantics : 의미 함수를 사용하여 프로그래밍 언어의 의미를 나타낸다.</li>
+<li>Axiomatic Semantics : 조건 변화를 이용하여 프로그래밍 언어의 의미를 나타낸다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="axiomatic-semantics">Axiomatic Semantics</h3>
+<ul>
+<li>프로그램 요소에 대한 사전조건(precondition)과 사후조건(postcondition)을 통해 프로그램의 의미를 파학한다.</li>
+<li>프로그램 수행 측면 중 일부는 무시된다.</li>
+<li>아래와 같이 표기된다.$${P}\ program\ {Q}$$
+<ul>
+<li>P : 프로그램 수행 전의 조건, input specification</li>
+<li>Q : 프로그램 수행 후의 조건, output specification</li>
+</ul>
+</li>
+</ul>
+<h2 id="axiomatic-system">Axiomatic System</h2>
+<hr />
+<h3 id="axiom">Axiom</h3>
+<ul>
+<li>조건 없이 참이라고 전제하는 명제</li>
+<li>가정과 결론의 형태를 갖는 axiom을 특별히 rule이라고 한다.</li>
+</ul>
+<h3 id="axiomatic-system-1">Axiomatic System</h3>
+<ul>
+<li>정리(<strong>Theorem</strong>)를 유도할 수 있는 임의의 axiom들의 집합</li>
+</ul>
+<h3 id="the-weakest-precondition-coehya-sajjeojoggeo">The Weakest Precondition(최약 사전조건)</h3>
+<ul>
+<li>여러 가능한 사전조건 중 주어진 사후조건에 대해 제한이 가장 작은 사전조건</li>
+<li>아래는 wp의 예시이다.$${P}\ sum:= 2 * x +1\ {sum&gt;1}$$
+<ul>
+<li>위 Axiomatic Semantics의 표현에서 사전조건으로 아래와 같은 식들이 모두 가능하다.
+<ul>
+<li>P : x &gt; 50</li>
+<li>P : x &gt; 40</li>
+<li>P : x &gt; 10</li>
+<li>P : x &gt; 0</li>
+</ul>
+</li>
+<li>x &gt; 50은 x &gt; 40, x &gt;10, x &gt; 0을 imply(함의) 할 수 있다.</li>
+<li>따라서 이 중에서 사후조건 sum&gt;1 에 대해 가장 제약이 적은 사전조건은 P : x &gt; 0이다.
+<ul>
+<li>wp : x &gt; 0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>만약 wp를 output specification으로부터 추론 가능하다면 해당 프로그램 정상적인 프로그램이라고 말할 수 있다.
+<ul>
+<li>프로그램(S)의 결과(Q)에 대한 최약 사전조건(WP)이 도출되지 않는다면 비정상적인 프로그램이다.</li>
+<li>이를 사용해 프로그램의 유효성에 대한 증명을 할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="assignment-axiom">Assignment Axiom</h3>
+<p>$${Q[E/x]}\ x:= E\ {Q}$$</p>
+<ul>
+<li>Q{[E/x]}란, Q의 자유 변수 x를 모두 E로 치환한 것이다.</li>
+<li>적용 예시
+$${P}\ a:=b/2-1\ {a&lt;10}$$
+$${a&lt;10}[(b/2-1)/a]$$
+$${b/2-1 &lt; 10}$$
+$${b&lt;22}$$</li>
+</ul>
+<h3 id="the-rules-of-consequences">The Rules of Consequences</h3>
+<ul>
+<li>Weakening the Postcondition$$\frac{{P}\ S\ {Q'}, Q' \Rightarrow Q} {{P}\ S\ {Q}}$$</li>
+<li>Strengthen the Precondition$$\frac{P\Rightarrow P',\ {P'}\ S\ {Q}}{{P}\ S\ {Q}}$$</li>
+<li>Merging them$$\frac{P\Rightarrow P',\ {P'}\ S\ {Q'},\ Q'\Rightarrow Q}{{P}\ S\ {Q}}$$</li>
+<li>적용 예시$$\frac{x&gt;5\Rightarrow x&gt;3,\ {x&gt;3}\ x:x-3\ {x&gt;0}}{{x&gt;5}\ x:x-3\ {x&gt;0}}$$</li>
+</ul>
+<h3 id="the-rule-of-composition">The Rule of Composition</h3>
+<p>$$\frac{{P}\ S_1\ {Q},\ {Q}\ S_2\ {R}}{{P}\ S_1;S_2\ {R}}$$</p>
+<ul>
+<li>S1, S2를 순차적으로 실행하면 P로부터 R을 유도할 수 있다.</li>
+<li>적용 예시$${P}\ y:=3*x + 1;x:= y+3\ {x&lt;10}$$
+<ul>
+<li>Assignment Axiom을 적용하여 아래와 같이 식의 변형이 가능하다.$${P}\ y:=3*x+1\ {y&lt;7}$$</li>
+<li>다시 Assignment Axiom을 적용하면$${P}\Rightarrow{x&lt;2}$$</li>
+</ul>
+</li>
+</ul>
+<h3 id="the-rule-of-selection">The Rule of Selection</h3>
+<p>$$\frac{{P\wedge B}\ S_1\ {Q},\ {P \wedge \neg B}\ S_2\ {Q}}{{P}\ if \ B\ then\ S_1\ else\ S_2}$$</p>
+<ul>
+<li>적용 예시$${P}\ if\ (x&gt;0)\ then\ y:=y-1\ else\ y:=y+1\ {y&gt;0}$$</li>
+<li>x&gt;0 인 경우 Association Axiom에 의해 y&gt;1이 유도된다.</li>
+<li>x&lt;=0인 경우 Association Axiom에 의해 y&gt;-1이 유도된다.</li>
+<li>y&gt;1은 y&gt;-1을 imply하므로 P = (y &gt; 1)이다.</li>
+</ul>
+<h3 id="the-rule-of-iteration">The Rule of Iteration</h3>
+<p>$$\frac{{I\wedge B}\ S\ {I}}{{I}\ while\ B\ do\ S\ {I\wedge \neg B}}$$</p>
+<ul>
+<li>I : Loop Invarient, 루프 불변식
+<ul>
+<li>반복문 수행 전에도 참</li>
+<li>반복문 수행 중에도 참</li>
+<li>반복문 수행 후에도 참</li>
+<li>항상 참이다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="the-rule-of-iteration-example-1">The Rule of Iteration Example 1</h3>
+<p>다음 구문에서 weakest precondition을 찾으시오</p>
+<pre data-lang="BNF" style="background-color:#2b303b;color:#c0c5ce;" class="language-BNF "><code class="language-BNF" data-lang="BNF"><span>while y!=x do
+</span><span>	y := y+1
+</span><span>{y=x}
+</span></code></pre>
+<p>(cont...)</p>
+<h3 id="reference">Reference</h3>
+<p><a href="http://tomoyo.ivyro.net/123/wiki.php/%EC%88%98%EB%A6%AC%EB%85%BC%EB%A6%AC%2Cmathematical_logic">마크다운 수식(logic)</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

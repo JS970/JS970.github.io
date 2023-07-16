@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>4949 - 균형잡힌 세상 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="4949 - 균형잡힌 세상">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/4949-ggyuhyeongjjahin-sessan/">
+<meta property="og:url" content="https://js970.github.io/4949-ggyuhyeongjjahin-sessan/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-09T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="4949 - 균형잡힌 세상">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/4949-ggyuhyeongjjahin-sessan/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "4949 - 균형잡힌 세상"
+  
+    
+    
+      "datePublished":"2023-02-09T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/4949-ggyuhyeongjjahin-sessan/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-09">February  9, 2023</time>
+  	</div>
+  	<h1 class="post-title">4949 - 균형잡힌 세상</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 4</li>
+<li>날짜: 2023년 2월 9일</li>
+<li>상태: Correct/Retry</li>
+<li>추가 검토 여부: Yes</li>
+<li>알고리즘 : stack</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>입력받은 문자열에 대해서 string헤더의 substr함수를 사용하여 재귀적으로 검사하였다.</li>
+<li>소괄호와 대괄호가 알맞게 열리고 닫힌 경우에 대해 그 안의 모든 문자열을 재귀함수의 입력으로 넣었다.</li>
+<li>결과적으로 정답이었으나 상당히 많은 시행착오가 있었고 적지 않은 시간을 소모했다.</li>
+<li>stack을 사용하여 훨씬 간단한 풀이가 가능하다.
+<ul>
+<li>괄호가 열리고 닫히는 과정을 stack을 통해 안정적으로 구현 가능하다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">string</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">bool </span><span style="color:#8fa1b3;">balance</span><span>(string </span><span style="color:#bf616a;">msg</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> depth = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> start = -</span><span style="color:#d08770;">1</span><span>, end = -</span><span style="color:#d08770;">1</span><span>;
+</span><span>    </span><span style="color:#b48ead;">bool</span><span> ret = </span><span style="color:#d08770;">true</span><span>;
+</span><span>    </span><span style="color:#b48ead;">bool</span><span> subbalance = </span><span style="color:#d08770;">true</span><span>;
+</span><span>    string sub;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; msg.</span><span style="color:#bf616a;">size</span><span>(); i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(msg[i] == &#39;</span><span style="color:#a3be8c;">(</span><span>&#39;)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(start == -</span><span style="color:#d08770;">1</span><span>)
+</span><span>                start = i;
+</span><span>            depth++;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(msg[i] == &#39;</span><span style="color:#a3be8c;">[</span><span>&#39;)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(start == -</span><span style="color:#d08770;">1</span><span>)
+</span><span>                start = i;
+</span><span>            depth++;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(msg[i] == &#39;</span><span style="color:#a3be8c;">)</span><span>&#39;)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(msg[start] == &#39;</span><span style="color:#a3be8c;">(</span><span>&#39; &amp;&amp; depth == </span><span style="color:#d08770;">1</span><span>)
+</span><span>                end = i;
+</span><span>            depth--;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(msg[i] == &#39;</span><span style="color:#a3be8c;">]</span><span>&#39;)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(msg[start] == &#39;</span><span style="color:#a3be8c;">[</span><span>&#39; &amp;&amp; depth == </span><span style="color:#d08770;">1</span><span>)
+</span><span>                end = i;
+</span><span>            depth--;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(start != -</span><span style="color:#d08770;">1 </span><span>&amp;&amp; end != -</span><span style="color:#d08770;">1</span><span>)
+</span><span>        {
+</span><span>            sub = msg.</span><span style="color:#bf616a;">substr</span><span>(start+</span><span style="color:#d08770;">1</span><span>, end-start-</span><span style="color:#d08770;">1</span><span>);
+</span><span>            subbalance = </span><span style="color:#bf616a;">balance</span><span>(sub);
+</span><span>            start = -</span><span style="color:#d08770;">1</span><span>, end = -</span><span style="color:#d08770;">1</span><span>;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(depth &lt; </span><span style="color:#d08770;">0 </span><span>|| !subbalance)
+</span><span>        {
+</span><span>            ret = </span><span style="color:#d08770;">false</span><span>;
+</span><span>            </span><span style="color:#b48ead;">break</span><span>;
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(depth != </span><span style="color:#d08770;">0</span><span>) ret = </span><span style="color:#d08770;">false</span><span>;
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(start != -</span><span style="color:#d08770;">1 </span><span>&amp;&amp; end == -</span><span style="color:#d08770;">1</span><span>) ret = </span><span style="color:#d08770;">false</span><span>;
+</span><span>    </span><span style="color:#b48ead;">return</span><span> ret;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    string message;
+</span><span>    </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">1</span><span>)
+</span><span>    {
+</span><span>        </span><span style="color:#bf616a;">getline</span><span>(cin, message);
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(message == &quot;</span><span style="color:#a3be8c;">.</span><span>&quot;) </span><span style="color:#b48ead;">break</span><span>;
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">balance</span><span>(message)) cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">yes</span><span>&quot; &lt;&lt; endl;
+</span><span>        </span><span style="color:#b48ead;">else</span><span> cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">no</span><span>&quot; &lt;&lt; endl;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>stack을 사용한 풀이</li>
+</ul>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">bits/stdc++.h</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>  ios::</span><span style="color:#bf616a;">sync_with_stdio</span><span>(</span><span style="color:#d08770;">0</span><span>);
+</span><span>  cin.</span><span style="color:#bf616a;">tie</span><span>(</span><span style="color:#d08770;">0</span><span>);
+</span><span>  </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">true</span><span>){
+</span><span>    string a;
+</span><span>    </span><span style="color:#bf616a;">getline</span><span>(cin, a);
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(a == &quot;</span><span style="color:#a3be8c;">.</span><span>&quot;) </span><span style="color:#b48ead;">break</span><span>;
+</span><span>    stack&lt;</span><span style="color:#b48ead;">char</span><span>&gt; s;
+</span><span>    </span><span style="color:#b48ead;">bool</span><span> isValid = </span><span style="color:#d08770;">true</span><span>;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">auto</span><span> c : a){
+</span><span>      </span><span style="color:#b48ead;">if</span><span>(c == &#39;</span><span style="color:#a3be8c;">(</span><span>&#39; || c == &#39;</span><span style="color:#a3be8c;">[</span><span>&#39;) s.</span><span style="color:#bf616a;">push</span><span>(c);
+</span><span>      </span><span style="color:#b48ead;">else if</span><span>(c == &#39;</span><span style="color:#a3be8c;">)</span><span>&#39;){
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(s.</span><span style="color:#bf616a;">empty</span><span>() || s.</span><span style="color:#bf616a;">top</span><span>() != &#39;</span><span style="color:#a3be8c;">(</span><span>&#39;){
+</span><span>          isValid = </span><span style="color:#d08770;">false</span><span>;
+</span><span>          </span><span style="color:#b48ead;">break</span><span>;
+</span><span>        }
+</span><span>        s.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>      }
+</span><span>      </span><span style="color:#b48ead;">else if</span><span>(c == &#39;</span><span style="color:#a3be8c;">]</span><span>&#39;){
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(s.</span><span style="color:#bf616a;">empty</span><span>() || s.</span><span style="color:#bf616a;">top</span><span>() != &#39;</span><span style="color:#a3be8c;">[</span><span>&#39;){
+</span><span>          isValid = </span><span style="color:#d08770;">false</span><span>;
+</span><span>          </span><span style="color:#b48ead;">break</span><span>;
+</span><span>        }
+</span><span>        s.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>      }
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(!s.</span><span style="color:#bf616a;">empty</span><span>()) isValid = </span><span style="color:#d08770;">false</span><span>;
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(isValid) cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">yes</span><span style="color:#96b5b4;">\n</span><span>&quot;;
+</span><span>    </span><span style="color:#b48ead;">else</span><span> cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">no</span><span style="color:#96b5b4;">\n</span><span>&quot;;
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/4949">4949번: 균형잡힌 세상</a></p>
+<ul>
+<li>stack 사용한 풀이
+<a href="https://www.acmicpc.net/source/55558193">로그인</a></li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

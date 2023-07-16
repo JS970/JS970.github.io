@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>운영체제 2023-03-15 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="운영체제 2023-03-15 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/unhyeonceje-3-15-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/unhyeonceje-3-15-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-15T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="운영체제 2023-03-15 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/unhyeonceje-3-15-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "운영체제 2023-03-15 수업정리"
+  
+    
+    
+      "datePublished":"2023-03-15T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/unhyeonceje-3-15-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-15">March 15, 2023</time>
+  	</div>
+  	<h1 class="post-title">운영체제 2023-03-15 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>System Call</li>
+<li>Operating System Structure</li>
+</ul>
+<h2 id="system-call">System Call</h2>
+<hr />
+<h3 id="operating-system-services">Operating-System Services</h3>
+<p><img src="/image/OS/os_service.png" alt="Operating System Services" /></p>
+<ul>
+<li>User mode에서 실행되는 프로그램이 자원 할당, 처리 요청 등 Kernel의 서비스를 이용할 경우 System Call을 사용한다.</li>
+<li>User mode에서의 요청인 System Call이 발생하면 운영 체제는 이를 처리해 준다.</li>
+<li>당연하지만 운영체제마다 제공하는 System Call API는 모두 다르다.
+<ul>
+<li>같은 역할을 하더라도 이름이나 구현 등에 차이가 있다.</li>
+<li>API를 사용하는 이유는 항상 System Call을 호출하는 것을 현실적으로 어려우며, API를 사용함으로써 운영 체제만 같다면 hardward-independent하게 동작하여 이식성을 높일 수 있기 때문이다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="system-call-ddonjja">System Call 동작</h3>
+<ul>
+<li>system call이 호출되면, 이에 대응하는 system call number의 interrupt vector가 호출된다.
+<ul>
+<li>함수명을 넘겨주는 과정이다.</li>
+<li>system call table을 이용한다.</li>
+<li>linux에서는 eax레지스터를 사용한다.</li>
+</ul>
+</li>
+<li>system call 함수에서 사용될 parameter값들을 전달한다.
+<ul>
+<li>파라미터를 넘겨주는 과정은 아래와 같은 세 가지 방법으로 구현 가능하다.
+<ul>
+<li>레지스터를 통한 파라미터 값의 직접 전달</li>
+<li>레지스터를 통한 메모리 주소값 전달</li>
+<li>Stack을 사용한 파라미터 전달</li>
+</ul>
+</li>
+<li>linux에서 레지스터를 사용하는 경우 ebx, ecx등 레지스터를 사용한다.</li>
+</ul>
+</li>
+<li>interrupt vector는 system call이 수행해야 할 실제 구현부에 접근한다.
+<ul>
+<li>body라고 하며, 이 부분에서 전달받은 파라미터를 이용하여 결과값을 계산한다.</li>
+</ul>
+</li>
+<li>결과값을 system call을 호출한 영역으로 return한다.</li>
+</ul>
+<h3 id="system-call-implementation">System Call Implementation</h3>
+<ul>
+<li>동작 과정에서 확인할 수 있는 것처럼 아래와 같은 절차를 거쳐 System Call을 등록할 수 있다.
+<ol>
+<li>System Call Function 정의
+<ul>
+<li>System Call의 body를 구현하는 과정에 해당한다.</li>
+</ul>
+</li>
+<li>인터럽트 벡터 등록
+<ul>
+<li>System Call Number를 부여한다.</li>
+</ul>
+</li>
+<li>System Call Function 등록
+<ul>
+<li>linux/arch/i386/kernel/vsyscall-sysenter.S파일에 function을 등록한다.</li>
+</ul>
+</li>
+<li>Rebuild &amp; Test</li>
+</ol>
+</li>
+</ul>
+<h3 id="types-of-system-call">Types of System Call</h3>
+<ul>
+<li>System Call을 통해 아래의 requirement를 만족시킨다.
+<ul>
+<li>Process Control</li>
+<li>File manipulation(management)</li>
+<li>Device manipulation</li>
+<li>Information maintenance</li>
+<li>Communication</li>
+<li>Protection</li>
+</ul>
+</li>
+<li>앞서 설명했듯, 동작 자체는 비슷하더라도 운영 체제 별로 System Call의 구현 및 지원하는 API는 모두 다르다. 예시로 아래 두 Sys Call API는 같은 동작을 한다.
+<ul>
+<li>Windows : CreateProcess()</li>
+<li>Linux : fork()</li>
+</ul>
+</li>
+</ul>
+<h2 id="operating-system-structure">Operating System Structure</h2>
+<hr />
+<h3 id="simple-structure-monolitic">Simple Structure(monolitic)</h3>
+<ul>
+<li>모듈 형태로 나눠지지 않은 단일 kernel형태이다.</li>
+<li>인터페이스 및 계층 구조가 정의되지 않은 형태이다.</li>
+<li>기능 중심으로 Operating System을 설계했다.</li>
+<li>management관점에서는 성능이 떨어진다.</li>
+<li>MS-DOS, 초기 UNIX에서 이러한 구조를 채텍했다.</li>
+<li>아래는 traditional UNIX system의 nonolitic kernel형태이다. <img src="/image/OS/monolithic.png" alt="monolithic" />
+<ul>
+<li>계층 구조를 가지지 않으며 kernel의 모든 기능이 동일한 level에서 동작한다.</li>
+<li>기능 간의 interoperation에서 효율이 떨어지는 문제점이 있다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="layered-approach">Layered Approach</h3>
+<ul>
+<li>비슷한 기능이나 서비스를 제공할 경우 동일 layer로 구성했다.</li>
+<li>monolithic 구조의 기능의 계층화가 없고 인터페이스를 제공하지 않는다는 점을 보완했다.</li>
+<li>layered approach구조의 N번째 계층의 설계에 있어 N-1번째 계층과의 상호 작용만 고려하면 된다는 장점이 있다.</li>
+<li>기능의 생성 및 디버깅에 편의를 주는 장점이 있다.</li>
+<li>하지만 동작 과정에서 여러 layer를 거쳐야 할 경우 work-overload가 커지는 문제가 있다.</li>
+</ul>
+<h3 id="microkernels">Microkernels</h3>
+<p><img src="/image/OS/microkernels.png" alt="Microkernels" /></p>
+<ul>
+<li>기존의 kernel이 제공했던 많은 기능들을 user level로 옮겼다.
+<ul>
+<li>kernel에서 제공하던 기능들이 많이 사라졌으므로, 이식성이 증대되었다.</li>
+<li>또한 kernel영역의 간소화로 인해 보안성이 증가했다.</li>
+<li>새로운 architecture로의 이식성이 증가되었다.</li>
+<li>kernel의 크기가 작으므로 확장성이 좋다는 장점이 있다.</li>
+</ul>
+</li>
+<li>하지만 기능 구현에 있어 user-level에서 각 기능 간 통신은 kernel을 거쳐 통신해야 하므로(message passing), 프로그램 간의 communication overhead가 증가했고 이는 user-level에서의 performance overhead 증가로 이어진다.</li>
+<li>Mac OS X(Darwin)이 이러한 구조를 채택했다.</li>
+</ul>
+<h3 id="modules">Modules</h3>
+<p><img src="/image/OS/modules.png" alt="Modules" /></p>
+<ul>
+<li>미리 커널의 기능을 정의하는 방식이다.</li>
+<li>각각의 기능들은 객체 지향 프로그래밍 방식으로 설계되었다.
+<ul>
+<li>필요할 때마다 모듈을 추가하기에 용이하다.</li>
+</ul>
+</li>
+<li>모듈 간 통신은 미리 정의된 방법으로 kernel에서 일어난다.</li>
+<li>모듈들은 boot time 또는 run time에 필요한 모듈들만 kernel에 적재된다.
+<ul>
+<li>불필요한 overhead를 줄일 수 있다.</li>
+</ul>
+</li>
+<li>계층 구조가 아니므로 모듈들은 다른 모듈과 직접적으로 통신 가능하다는 점에서 layered approach와 차이점이 있다.</li>
+<li>kernel이 기존에 정의된 최소한의 동작을 지원해야 하며, 프로그램이 kernel을 통해 communicate 한다는 점에서 microkernel과 비슷하다. 하지만 모듈 방식에서는 필요한 모듈을 kernel에 적재하고 있기 때문에 microkernel과 달리 message passing등을 고려할 필요가 없다.</li>
+</ul>
+<h3 id="hybrid-system">Hybrid System</h3>
+<ul>
+<li>사실 최근 OS들은 앞서 살펴본 구조들의 단일 구성만으로 설계되지는 않는다.
+<ul>
+<li>여러 구조들을 동시에 채택하여 User-level의 requirement(보안성, 기능, 사용성 등)을 충족시킨다.</li>
+</ul>
+</li>
+<li>아래는 Hybrid 방식의 Mac OS X이다.<img src="/image/OS/hybrid.png" alt="Hybrid" /></li>
+</ul>
+<h3 id="ios">iOS</h3>
+<ul>
+<li>iphone, ipad에서 사용되는 운영 체제이다.</li>
+<li>Mac OS X의 기본 구조 위에 기능을 추가한 형태이다.</li>
+<li>모바일 환경을 지원하기 위해 아래와 같은 기능을 추가했다.
+<ul>
+<li><strong>Cocoa-touch</strong>(Objective-C) for developing apps</li>
+<li><strong>Media Services</strong> for graphics, audio, video</li>
+<li><strong>Core Services</strong> for cloud computing, databases</li>
+<li>Core Operating System은 앞서 말했읏이 Mac OS X기반이다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="android">Android</h3>
+<ul>
+<li>안드로이드 환경에서 사용되는 운영 체제이다.</li>
+<li>리눅스 커널에 기반했지만 power management등 기능을 추가했다.</li>
+<li>Open Handset Alliance(오픈 소스, mostly Google)에 의해 개발되었다.</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

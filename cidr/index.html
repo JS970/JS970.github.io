@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>CIDR | Rounding Off</title>
+
+
+
+<meta property="og:title" content="CIDR">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/cidr/">
+<meta property="og:url" content="https://js970.github.io/cidr/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2022-11-17T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="CIDR">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/cidr/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CIDR"
+  
+    
+    
+      "datePublished":"2022-11-17T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/cidr/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2022-11-17">November 17, 2022</time>
+  	</div>
+  	<h1 class="post-title">CIDR</h1>
+  	<div class="post-line"></div>
+  	<h1 id="cidr-classless-inter-domain-routing">CIDR(Classless Inter Domain Routing)</h1>
+<ul>
+<li>EGP(Exterior Gateway Protocol)에서 CIDR을 사용하여 IP를 분배한다.</li>
+<li>RFC1519에서 CIDR의 개념을 설명한다.</li>
+</ul>
+<h2 id="problem-of-ipv4-class">Problem of IPv4 “class”</h2>
+<ul>
+<li>대부분의 경우 class A(16M)는 과하고, class C(255)는 부족하다.</li>
+<li>조사에 따르면 class B의 경우도 절반 이상의 class B 네트워크의 host수가 50 미만이었다…</li>
+<li>“class”개념의 탈피가 필요하다.</li>
+</ul>
+<h2 id="cidryi-gganyeom">CIDR의 개념</h2>
+<ul>
+<li>앞서 말한 “class”때문에 IP주소의 낭비가 심각하다.</li>
+<li>EGP에서는 CIDR을 통해 주소를 할당하여 IP주소의 낭비를 막는다.</li>
+<li>CIDR을 사용하면 2의 거듭제곱(power of 2)의 단위로 IP주소의 동적 할당이 가능하다.</li>
+<li>2000개의 주소를 요구한다면 2048개의 IP주소를 할당하는 식이다.</li>
+<li>CIDR은 bitwise prefix를 사용하여 IP주소를 식별한다. 이를 통해 IP 주소 블록을 단일 항목으로 그룹화하여 라우팅을 용이하게 한다.
+<ul>
+<li>class 기반 라우팅이 아닌 CIDR block 기반 라우팅이다.</li>
+<li>CIDR block 기반 라우팅을 통해 라우팅 테이블 항목을 최소화할 수 있다.</li>
+</ul>
+</li>
+<li>같은 CIDR블록은 IP주소의 이진 표현에서 비트 단위의 초기 시퀸스가 같다.</li>
+<li>IPv4 CIDR구문은 IPv4와 유사한 구문을 사용한다 - XXX.YYY.ZZZ.WWW/NN</li>
+<li>X, Y, Z, W부분은 IP와 같이 8bit단위의 4바이트(32비트) 이진수로 해석된다.</li>
+<li>슬래시 뒤쪽 부분인 NN은 주소의 왼쪽부터 카운트되는 공유된 초기 시퀸스의 개수이다.
+<ul>
+<li>1의 개수를 의미한다.</li>
+<li>/24인 경우 ⇒ 11111111.11111111.11111111.00000000</li>
+</ul>
+</li>
+</ul>
+<h2 id="cidr-routing-table-entry">CIDR &amp; Routing Table Entry</h2>
+<ul>
+<li>CIDR에서는 라우팅 테이블의 각 항목이 32bit mask를 사용한다.
+<ul>
+<li>라우팅 테이블은 (IP주소, subnet mask, outgoing line)의 triple array로 구성된다.</li>
+</ul>
+</li>
+<li>라우터는 아래와 같이 동작한다.
+<ol>
+<li>
+<p>패킷이 들어오면 대상의 IP주소가 먼저 추출된다.</p>
+</li>
+<li>
+<p>그런 다음 라우팅 테이블을 항목별로 스캔하여 대상 주소를 마스킹하고, 일치하는 테이블 항목을 탐색한다.</p>
+</li>
+<li>
+<p>일치하는 항목이 여러 개 있을 경우 가장 일치하는 부분이 긴 항목을 사용한다.</p>
+<p>⇒ longest prefix match first, /20과 /24 두 개의 mask가 일치한다면 /24를 사용한다.</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="cidr-example">CIDR Example</h2>
+<p><img src="/image/CIDR/Untitled.png" alt="Untitled" /></p>
+<ul>
+<li>Cambridge → Edenburgh → Oxford순으로 IP 할당을 요청했다고 가정하자</li>
+<li>194.24.0.0의 시작 주소에서부터 할당을 할 수 있다고 했을 때, Cambridge는 2048개의 주소를 요청하였으므로 194.24.0.0 ~ 194.24.7.255까지의 IP를 할당할 수 있다.(256 * 8 = 2048)</li>
+<li>Cambridge의 Subnet Mask 계산은 아래와 같다.
+<ul>
+<li>(194.24의 경우 Network Number이므로 생략함)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/image/CIDR/Untitled%201.png" alt="Untitled" /></p>
+<ul>
+<li>이때 subnet mask의 1의 개수가 총 21개이므로 194.24.0.0/21과 같이 표현할 수 있다.
+<ul>
+<li>11111111.11111111.11111000.00000000 = 255.255.248.0</li>
+</ul>
+</li>
+<li>같은 방법으로 Edenburgh의 Subnet mask를 계산하면 아래와 같다.</li>
+</ul>
+<p><img src="/image/CIDR/Untitled%202.png" alt="Untitled" /></p>
+<ul>
+<li>
+<p>Oxford의 경우 Edenburgh의 IP address를 할당한 직후 available IP 인 194.24.12.0부터 분배하면 아래와 같은 문제가 발생한다.</p>
+<p><img src="/image/CIDR/Untitled%203.png" alt="Untitled" /></p>
+</li>
+<li>
+<p>이때 CIDR 의 표현은 194.24.12.0/19가 되는데 이 경우 할당 가능한 IP의 개수가 32 * 256 = 8192이다. 이 경우 실제 필요한 범위 내인 4096개 보다 더 많은 IP가 할당되므로 194.24.12.0부터 Oxford에 할당할 수 없다.</p>
+<ul>
+<li>subnet mask에서 0의 개수는 곧 할당 가능한 host의 수를 나타낸다. $2^{13}$ = 8192이므로 위와 같은 계산이 나온다.</li>
+</ul>
+</li>
+<li>
+<p>따라서 Oxford에 알맞은 크기의 IP address가 할당할 수 있도록 Oxford의 First Address를 194.24.12.0이 아닌 194.24.16.0부터 할당한다.</p>
+</li>
+<li>
+<p>Oxford의 IP address 할당을 위해 사용되는 194.24.16.0~194.24.21.255의 IP와 Edenburgh가 사용하는 194.24.8.0~194.24.11.255사이의 빈 IP주소는 알맞은 크기의 할당이 필요할 때까지 남겨둔다.</p>
+</li>
+</ul>
+<h3 id="add-on">Add on</h3>
+<ul>
+<li>Utilization = $busy~time/observed~time$, 100%, 50%, 25% … ⇒ no unit</li>
+<li>Throughput = $number~of~successful~packets / observed~time$, 10 packets / sec ⇒ unit</li>
+<li>100% utilization does not garuntee good throughput!</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

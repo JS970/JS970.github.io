@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Virtual Memory Management Strategy(1) | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Virtual Memory Management Strategy(1)">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/virtual-memory-management-strategy-1/">
+<meta property="og:url" content="https://js970.github.io/virtual-memory-management-strategy-1/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-05-22T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Virtual Memory Management Strategy(1)">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/virtual-memory-management-strategy-1/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Virtual Memory Management Strategy(1)"
+  
+    
+    
+      "datePublished":"2023-05-22T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/virtual-memory-management-strategy-1/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-05-22">May 22, 2023</time>
+  	</div>
+  	<h1 class="post-title">Virtual Memory Management Strategy(1)</h1>
+  	<div class="post-line"></div>
+  	<h2 id="virtual-memory-overview">Virtual Memory overview</h2>
+<hr />
+<ul>
+<li>어떤 프로그램이 실행될 때 그 프로그램 전체가 로딩될 필요는 없다.
+<ul>
+<li>에러 코드 및 그 처리에 관한 코드는 에러가 발생했을 때 로딩해도 된다.</li>
+<li>Array, lists, table등은 실제 필요한 것보다 매우 큰 메모리 할당을 요구한다. (dynamic loading)</li>
+<li>프로그램의 option을 포함한 특정 기능들은 잘 사용되지 않거나 거의 사용되지 않을 수 있다.</li>
+<li>하드디스크에서 메모리로의 load는 많은 오버헤드가 발생하므로, 당장 필요한 코드만 load해서 사용하면 오베헤드를 줄일 수 있다.</li>
+</ul>
+</li>
+<li>프로그램 실행에 있어 프로그램 전체를 로딩하지 않으면 아래와 같은 이점이 있다.
+<ul>
+<li>더 이상 사용 가능한 physical memory에 제한받지 않는다.
+<ul>
+<li>physical memory보다 큰 프로그램을 구동 가능하다.</li>
+</ul>
+</li>
+<li>한번에 더 많은 프로그램을 동시 실행할 수 있다(timesharing)</li>
+<li>load, swap등의 동작에 I/O request으로 인한 오버헤드를 줄일 수 있다.</li>
+</ul>
+</li>
+<li>이러한 프로그램 실행은 <code>virtual memory management</code>를 통해 구현 가능하다.<img src="/image/OS/virtualMemory.png" alt="Virtual Memory Overview" />
+<ul>
+<li><code>virtual memory</code>를 통해 user의 <code>logical memory</code>와 <code>physical memory</code>를 독립적으로 볼 수 있다.</li>
+<li><code>virtual memory</code>가 <code>physical memory</code>보다 큰 것을 확인할 수 있다.</li>
+<li><code>virtual memory</code>에서 memory map을 통해 요구되는 데이터가 <code>physical memory</code>에 존재하지 않는 경우 <code>swapping</code>을 통해 backing store에서 <code>physical memory</code>로 데이터를 가져온다.</li>
+<li>뿐만 아니라 여러 프로세스를 Timesharing을 통해 동시 실행할 수 있다.</li>
+<li>프로그램 전체가 로딩되는 것이 아니므로 I/O request총량 역시 적다.</li>
+</ul>
+</li>
+<li>이러한 <code>virtual memory management</code>는 아래의 방법으로 구현할 수 있다.
+<ul>
+<li>Demand paging</li>
+<li>Demand segmentation</li>
+</ul>
+</li>
+</ul>
+<h2 id="demand-paging">Demand Paging</h2>
+<hr />
+<ul>
+<li><code>Demand Paging</code>이란 프로그램에서 필요로 하는 데이터가 필요할 때만 메인 메모리로 load하는 것이다.</li>
+<li><code>Demand Paging</code> 을 위해서는 <code>swap-in</code>, <code>swap-out</code>동작을 수행하는 <code>swapper</code>가 필요하다.</li>
+<li><code>swapper</code>는 <code>lazy swaper</code>라고도 불린다. 이는 <code>page</code>가 필요할 때까지 <code>swap</code>을 수행하지 않기 때문이다.</li>
+<li>메인 메모리에 찾고자 하는 <code>page</code>가 있는지 없는지를 판단하기 위해 <code>MMU</code> 등 하드웨어의 도움을 받기도 한다.</li>
+<li>메인 메모리에 찾고자 하는 <code>page</code>가 있으며 <code>legal</code>하다면 이를 사용하면 된다.</li>
+<li>메인 메모리에 찾고자 하는 <code>page</code>가 없을 경우 이를 <code>page fault</code>라고 한다.
+<ul>
+<li>단순히 메인 메모리에 <code>page</code>가 없는 경우 <code>swapping</code>을 통해 메모리로 <code>page</code>를 로드한다.</li>
+<li>만약 <code>invalid reference</code>의 경우 system call을 통해 abort한다.</li>
+<li>machine이 부팅된 직후에는 당연히 모든 <code>page</code>가 메인 메모리에 존재하지 않으므로 not-in memory 상태이다. 이러한 경우 <code>swap-out</code>동작은 별도로 필요하지 않다.</li>
+</ul>
+</li>
+<li><code>page fault</code>가 발생하면 아래의 순서대로 동작한다.<img src="/image/OS/demandPaging.png" alt="Demand Paging" />
+<ol>
+<li>운영 체제는 <code>invalid reference</code>인지 <code>not-in-memory</code>인지 판단한다.</li>
+<li><code>not-in-memory</code>의 경우 Free frame을 찾는다. (<code>invalid reference</code>면 abort한다)</li>
+<li><code>backing store</code>와 메모 Free frame간의 <code>swapping</code>을 수행한다.</li>
+<li><code>page table</code>의 valid/invalid bit을 수정한다.</li>
+<li><code>page fault</code>를 유발한 명령어를 재수행한다.</li>
+</ol>
+<ul>
+<li>위 과정에서 <code>swap-out</code>동작은 생략되었다. <code>physical memory</code>가 Free frame이 아닌 경우 <code>swap-out</code>역시 필요하다.</li>
+</ul>
+</li>
+<li><code>demand paging</code>의 성능은 아래와 같은 세 가지 요소에 의해 결정된다.
+<ul>
+<li>Service the interrupt</li>
+<li>Read the page</li>
+<li>Restart the process</li>
+</ul>
+</li>
+<li><code>page fault rate</code>를 p 라고 하자. p = 0이면 <code>page fault</code>가 발생하지 않는 것이고, 1이면 모든 참조가 fault인 것을 의미한다.
+<ul>
+<li>이때 EAT(Effective Access Time)는 (1-p) * Memory Access Time + p * Page Fault Service Time</li>
+<li>Page Fault Service Time = page fault overhead = swap page out + swap page in + restart overhead</li>
+</ul>
+</li>
+<li><code>virtual memory</code>를 사용하는 중, process가 fork된 상황을 가정해 보자. 이때 실제로 자식 프로세스가 부모 프로세스와 독립된 <code>physical memory</code>를 가지지 않는다.
+<ul>
+<li>필요한 경우에만 <code>physical memory</code>에 공간을 만드는 것이다.</li>
+<li><code>virtual memory mapping</code>을 통해 같은 <code>physical memory</code>를 공유한다.</li>
+<li>두 프로세스 중 R/W 동작이 발생하면 그때 <code>physical memory</code>에 새로운 메모리 공간을 할당한다.</li>
+<li>이를 <code>Copy-on-Write(COW)</code>라고 한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="page-replacement">Page Replacement</h2>
+<hr />
+<ul>
+<li><code>demand paging</code>과정에서 <code>swapping</code>횟수를 줄이는 것은 한계가 있다.</li>
+<li>일반적으로 프로세스에 할당되는 <code>frame</code>의 개수를 늘리면 <code>page fault</code>는 줄어들지만 이 역시 한계가 있다.<img src="/image/OS/increaseFrame.png" alt="Increase Frame" /></li>
+<li>결국 <code>physical memory</code>에 존재하는 <code>frame</code>중 <code>victim page</code>를 선택하여 <code>swapping</code>을 해야 한다.<img src="/image/OS/victim.png" alt="victim" /></li>
+<li>이때 <code>victim page</code>를 선택하는 알고리즘에는 아래와 같은 알고리즘이 있다.
+<ul>
+<li>FIFO page replacement</li>
+<li>Optimal page replacement</li>
+<li>LRU page replacement</li>
+<li>LRU-Approximation page replacement</li>
+<li>Counting-Based page replacement
+<ul>
+<li>LFU algorithm</li>
+<li>MFU algorithm</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>위 알고리즘을 통해 적절한 <code>victim page</code>를 선택하여 <code>page fault</code>를 최소화 하는 것이 최종 목적이다.</li>
+</ul>
+<h3 id="fifo-page-replacement">FIFO page replacement</h3>
+<ul>
+<li><code>page frame</code>에 load 된 순서대로 교체되는 알고리즘이다.</li>
+<li>즉, <code>victim page</code>는 가장 오래된 <code>page</code>가 선택된다.</li>
+<li>성능이 좋지 않아서 다른 <code>page replace algorithm</code>에 보조 알고리즘으로 사용된다.</li>
+<li>무엇보다 프로세스 당 할당되는 프레임의 수를 늘려도 경우에 따라 오히려 <code>page fault</code>가 증가하여 결과에 대해 예측하기 힘들다는 단점이 있다.<img src="/image/OS/fifoGraph.png" alt="FIFO page replacement graph" />
+<ul>
+<li><code>frame</code>을 3개에서 4개로 늘렸을 경우 오히려 <code>page fault</code>가 증가했다.</li>
+<li>이러한 현상을 <code>Belady's abnomaly</code>라고 한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="optimal-page-replacement">Optimal page replacement</h3>
+<ul>
+<li>가장 이상적인 <code>page replace algorithm</code>이지만 현실적으로 구현할 수 없다.</li>
+<li>다른 <code>page replace algoritm</code>의 성능을 이 알고리즘과 비교하는 데 사용된다.</li>
+<li><code>physical memory</code>에서 가장 나중에 사용될 <code>frame</code>을 <code>victim frame</code>으로 설정한다.
+<ul>
+<li>가장 나중에 사용될 <code>frame</code>을 판단할 방법이 없다.</li>
+<li>이 방법을 사용해도 <code>page fault</code>는 발생한다. 이는 프로세스 당 <code>frame</code>이 제한되어 있기 때문이다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="lru-least-recently-used-algorithm">LRU(Least recently Used) algorithm</h3>
+<ul>
+<li><code>Optimal page replacement</code>에서는 미래에 사용될 <code>frame</code>을 체크했다. <code>LRU algorithm</code>에서는 과거에 사용된 <code>frame</code>중 가장 이전에 참조된 <code>frame</code>을 <code>victim frame</code>으로 설정한다.</li>
+<li><code>locality</code>를 고려하였기 때문에, <code>LRU</code>는 <code>Optimal page replacement</code>에 근사한다.</li>
+<li><code>stack</code>을 사용하기 때문에 <code>Belady's anomaly</code>가 없다.</li>
+<li>하지만 소프트웨어를 이용한 방식만으로는 구현하기 힘들다. (Requires H/W supports)<img src="/image/OS/stackIssue.png" alt="LRU stack issue" />
+<ul>
+<li>위 그림에서 확인할 수 있듯이, a지점 이후 7을 참조하게 된다.</li>
+<li>하지만 7은 스텍의 중간에 위치해 있다. 이를 빼내어 stack.top에 올릴 방법이 없다.</li>
+<li>이 과정에서 주소를 참조하는 방식으로 하드웨어의 도움을 받아야 한다.</li>
+<li>하지만 이런 하드웨어는 비싸다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="lru-approximation-algorithm">LRU-Approximation algorithm</h3>
+<ul>
+<li><code>use bit</code>을 사용하는 하드웨어의 도움을 받는다.
+<ul>
+<li><code>page</code>가 참조될 때마다 <code>use bit</code>의 값을 1로 설정한다.</li>
+</ul>
+</li>
+<li>하드웨어는 절대 <code>use bit</code>을 clear하지 않는다. 이는 OS의 역할이다.</li>
+<li>LRU-Approximation : Reference Bit
+<ul>
+<li>각 <code>page</code>마다 8비트의 <code>reference bit</code>을 가진다.</li>
+<li><code>reference bit</code>의 초기값은 0으로 초기화된다.</li>
+<li>참조된 경우 가장 왼쪽 비트를 1로 갱신한다.</li>
+<li>참조되지 않은 경우 right shift한다.</li>
+<li>8-time interval동안 페이지의 참조 정보를 알 수 있다.</li>
+<li><code>11000100</code>인 페이지는 <code>01110111</code>인 페이지보다 더 최근에 사용된 <code>frame</code>이다.</li>
+</ul>
+</li>
+<li>LRU-Approximation : Second-Chance algorithm
+<ul>
+<li><code>FIFO algorithm</code>에 하드웨어가 제공하는 <code>reference bit</code>이 추가된 circular queue형태이다.<img src="/image/OS/secondChance.png" alt="Second-Change Algorithm" /></li>
+<li>위 도식처럼 페이지가 참조될 때 <code>reference bit</code>를 1로 갱신한다.</li>
+<li><code>reference bit</code>이 1인 경우 바로 해당 <code>page</code>를 <code>victim frame</code>으로 선정하지 않는다. 이때 <code>reference bit</code> 값은 0으로 갱신한다.</li>
+<li>모든 <code>reference bit</code>값이 동일하다면 <code>FIFO algorithm</code>과 동일하게 동작한다.</li>
+<li><code>reference bit</code>를 1bit이 아닌 2bit, 3bit으로 제공하여 <code>enhanced second-chance algorithm</code>으로 사용하기도 한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="counting-based-algorithm">Counting-Based algorithm</h3>
+<ul>
+<li>각각의 프레임은 참조가 일어난 횟수를 저장하는 카운터를 가진다.</li>
+<li>LFU(Least Frequently Used) algorithm은 가장 적은 횟수의 참조가 일어난 프레임을 <code>victim frame</code>으로 선정한다.</li>
+<li>MFU(Most Frequently Used) algorithm은 가장 많은 횟수의 참조가 일어난 프레임을 <code>victim frame</code>으로 선정한다.</li>
+<li>어떤 알고리즘이든 정답은 없다. 프로그램 및 시스템 상황에 맞는 알고리즘을 선택하면 된다.</li>
+</ul>
+<h3 id="workload">Workload</h3>
+<ul>
+<li>일반적으로 <code>page replacement algorithm</code>에 의해 참조의 80%가 20%의 프레임에 대해 일어나고, 나머지 20%의 참조가 80%의 프레임에 대해 일어날 때 효율이 좋은 편이다.<img src="/image/OS/hitRatio.png" alt="Workload Hit Ratio" />
+<ul>
+<li>위 그래프는 80-20 Workload에서 각 알고리즘의 성능을 비교한 것이다.</li>
+<li>사실 메모리 크기가 충분하다면 알고리즘에 따른 차이는 없다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="allocation-of-frames">Allocation of Frames</h2>
+<hr />
+<blockquote>
+<p>앞서 언급한 내용들은 프로세스 당 할당되는 프레임이 제한되어 있기 때문에 이에 따라 발생하는 swapping의 횟수를 줄이고자 했다. 본 절에서는 프로세스 당 할당되는 프레임의 개수에 대해 다룬다.</p>
+</blockquote>
+<ul>
+<li>각각의 프로세스들은 최소 프레임 개수가 존재한다.
+<ul>
+<li>이는 컴퓨터 구조에 따라 다르고, 프로세스의 종류에 따라 다르다.</li>
+<li>예시로 IBM370의 경우 MOVE 명령어를 수행하는 데 6 page를 필요로 했다.</li>
+</ul>
+</li>
+<li>이러한 프로세스 별 프레임 할당은 아래와 같은 관점에서 바라볼 수 있다.
+<ul>
+<li>Fixed allocation vs Priority allocation</li>
+<li>Global allocation vs Local allocation</li>
+</ul>
+</li>
+<li><code>FIxed allocation</code>에서는 모든 프로세스가 동일한 양의 프레임을 할당받는다.
+<ul>
+<li><code>Equal allocation</code> : 100개의 프레임이 있고, 5개의 프로세스가 존재한다면 각각의 프로세스는 20프레임씩 할당받을 것이다.</li>
+<li><code>Proportional allocation</code> : 프로세스의 크기에 따라 프레임을 할당하는 방법이다. <code>priority allocation</code>의 일종으로 생각할 수도 있다.</li>
+</ul>
+</li>
+<li><code>Priority allocation</code>프로세스의 priority에 따라 프레임을 할당받는다.(프로세스의 크기는 고려 x)
+<ul>
+<li>어떤 프로세스에서 <code>page fault</code>가 발생했다면 그보다 낮은 프로세스의 <code>frame</code>을 가져다 쓴다.</li>
+</ul>
+</li>
+<li><code>Global replacement</code>방식에서는 프레임의 <code>swapping</code>에 있어 프로세스를 따지지 않는다.
+<ul>
+<li>앞선 <code>Priority allocation</code>을 생각할수 있다.</li>
+<li>이 경우 프로그램의 수행시간을 예측하기 힘들다.</li>
+</ul>
+</li>
+<li><code>Local replacement</code>의 경우 각각의 프로세스 내에서만 <code>swapping</code>이 일어난다.
+<ul>
+<li><code>Global replacement</code>와 비교하여 균일한 수행 시간을 가지게 된다.</li>
+<li>하지만 underutilized memory가 발생할 수 있다.</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

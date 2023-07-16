@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>1764 - 듣보잡 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="1764 - 듣보잡">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/1764-ddeubojja/">
+<meta property="og:url" content="https://js970.github.io/1764-ddeubojja/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-28T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="1764 - 듣보잡">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/1764-ddeubojja/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "1764 - 듣보잡"
+  
+    
+    
+      "datePublished":"2023-02-28T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/1764-ddeubojja/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-28">February 28, 2023</time>
+  	</div>
+  	<h1 class="post-title">1764 - 듣보잡</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 4</li>
+<li>날짜: 2023년 2월 28일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No</li>
+<li>알고리즘 : set</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>set에 듣도 못한 사람들을 추가한다.</li>
+<li>보도 못한 사람들이 set에 포함되어 있다면 이를 듣도 보도 못한 사람들의 set인 nhs에 추가한다.</li>
+<li>nhs의 원소들을 vector컨테이너 ans에 저장한다. ans벡터를 sort한 후 조건에 맞게 출력했다.</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">vector</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">set</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">algorithm</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    ios::</span><span style="color:#bf616a;">sync_with_stdio</span><span>(</span><span style="color:#d08770;">false</span><span>);
+</span><span>    cin.</span><span style="color:#bf616a;">tie</span><span>(</span><span style="color:#d08770;">NULL</span><span>);
+</span><span>    cout.</span><span style="color:#bf616a;">tie</span><span>(</span><span style="color:#d08770;">NULL</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> N, M;
+</span><span>    cin &gt;&gt; N &gt;&gt; M;
+</span><span>    set&lt;string&gt; nh;
+</span><span>    set&lt;string&gt; nhs;
+</span><span>    string name;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N; i++)
+</span><span>    {
+</span><span>        cin &gt;&gt; name;
+</span><span>        nh.</span><span style="color:#bf616a;">insert</span><span>(name);
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; M; i++)
+</span><span>    {
+</span><span>        cin &gt;&gt; name;
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(nh.</span><span style="color:#bf616a;">find</span><span>(name) != nh.</span><span style="color:#bf616a;">end</span><span>())
+</span><span>            nhs.</span><span style="color:#bf616a;">insert</span><span>(name);
+</span><span>    }
+</span><span>    
+</span><span>    vector&lt;string&gt; ans;
+</span><span>    set&lt;string&gt;::iterator iter;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(iter = nhs.</span><span style="color:#bf616a;">begin</span><span>(); iter != nhs.</span><span style="color:#bf616a;">end</span><span>(); iter++)
+</span><span>        ans.</span><span style="color:#bf616a;">push_back</span><span>(*iter);
+</span><span>    </span><span style="color:#bf616a;">sort</span><span>(ans.</span><span style="color:#bf616a;">begin</span><span>(), ans.</span><span style="color:#bf616a;">end</span><span>());
+</span><span>    cout &lt;&lt; ans.</span><span style="color:#bf616a;">size</span><span>() &lt;&lt; endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; ans.</span><span style="color:#bf616a;">size</span><span>(); i++)
+</span><span>        cout &lt;&lt; ans[i] &lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/1764">1764번: 듣보잡</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

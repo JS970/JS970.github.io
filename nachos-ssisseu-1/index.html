@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Nachos(1) | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Nachos(1)">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/nachos-ssisseu-1/">
+<meta property="og:url" content="https://js970.github.io/nachos-ssisseu-1/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-30T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Nachos(1)">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/nachos-ssisseu-1/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Nachos(1)"
+  
+    
+    
+      "datePublished":"2023-03-30T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/nachos-ssisseu-1/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-30">March 30, 2023</time>
+  	</div>
+  	<h1 class="post-title">Nachos(1)</h1>
+  	<div class="post-line"></div>
+  	<h1 id="1">#1</h1>
+<p>KThread.java의 389행의 run함수를 고쳐서 각 Thread가 10번 실행되도록 할 수 있다.</p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">run</span><span>() {
+</span><span>	</span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>; i&lt;</span><span style="color:#d08770;">10</span><span>; i++) {
+</span><span>		</span><span style="color:#ebcb8b;">System</span><span>.out.</span><span style="color:#bf616a;">println</span><span>(&quot;</span><span style="color:#a3be8c;">*** thread </span><span>&quot; + which + &quot;</span><span style="color:#a3be8c;"> looped </span><span>&quot;
+</span><span>		+ i + &quot;</span><span style="color:#a3be8c;"> times</span><span>&quot;);
+</span><span>		currentThread.</span><span style="color:#bf616a;">yield</span><span>();
+</span><span>	}
+</span><span>}
+</span></code></pre>
+<h2 id="ssihaeng-ggyeogwa">실행 결과</h2>
+<p><img src="/image/OS/nachos_practice1_1.png" alt="nachos practice execution1" /></p>
+<h1 id="2">#2</h1>
+<h2 id="kthread-fork">KThread.fork()</h2>
+<h3 id="kodde">코드</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span>    </span><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">fork</span><span>() {
+</span><span>		</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(status == statusNew);
+</span><span>		</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(target != </span><span style="color:#d08770;">null</span><span>);
+</span><span>		
+</span><span>		</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">debug</span><span>(dbgThread,
+</span><span>			  &quot;</span><span style="color:#a3be8c;">Forking thread: </span><span>&quot; + </span><span style="color:#bf616a;">toString</span><span>() + &quot;</span><span style="color:#a3be8c;"> Runnable: </span><span>&quot; + target);
+</span><span>	
+</span><span>		</span><span style="color:#b48ead;">boolean</span><span> intStatus = </span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disable</span><span>();
+</span><span>	
+</span><span>		tcb.</span><span style="color:#bf616a;">start</span><span>(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Runnable</span><span>() </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">			</span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">run</span><span style="color:#eff1f5;">() {
+</span><span style="color:#eff1f5;">			    </span><span style="color:#bf616a;">runThread</span><span style="color:#eff1f5;">();
+</span><span style="color:#eff1f5;">			}
+</span><span style="color:#eff1f5;">		    }</span><span>);
+</span><span>	
+</span><span>		</span><span style="color:#bf616a;">ready</span><span>();
+</span><span>		
+</span><span>		</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">restore</span><span>(intStatus);
+</span><span>    }
+</span></code></pre>
+<h3 id="ddonjja-ggayo">동작 개요</h3>
+<p>fork()메소드는 두 개의 thread가 병렬적으로 실행되도록 동작한다. TCB에 Runnable객체를 추가하여 ready queue에 삽입하고, ready상태로 만든다.</p>
+<h3 id="joggeo-hwagin">조건 확인</h3>
+<ul>
+<li>Lib.assertTrue() method를 사용하여 조건의 상황을 만족시키지 않는다면 assert를 발생시킨다.
+<ul>
+<li>status가 statusNew가 아닌 상황이라면 assert</li>
+<li>target 이 null인 상황이라면 assert</li>
+</ul>
+</li>
+</ul>
+<h3 id="dibbehugg-mesiji-culryeog">디버깅 메시지 출력</h3>
+<ul>
+<li>Lib.debug() method를 사용하여 디버깅 메시지를 출력한다. 이때 파라미터로 전달되는 dbgThread의 값은 KThread.java파일에서 static final로 선언된 <code>t</code>값을 가진다.
+<ul>
+<li>debug메소드에서 파라미터로 사용되는 toString()메소드는 KThread클래스의  이름 및 id값을 string으로 반환하는 역할을 한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="jihyeo-bbyeosu-sseoheo">지역 변수 선언</h3>
+<ul>
+<li>intStatus 지역 변수를 선언한다.
+<ul>
+<li>이 과정에서 Machine.interrupt().disable()메소드를 호출하고 그 반환값으로 insStatus를 초기화한다.</li>
+<li>Machine.interrupt().disable()메소드는 현재 상태를 interrupt = false로 설정하고, 이전 상태를 반환한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="thread-ready">Thread ready</h3>
+<ul>
+<li>tcb.start() 메소드를 통해 본 객체가 가리키는 thread의 실행을 준비한다. 이때 파라미터로 전달되는 Runnable 객체는 abstract method인 run()메소드에서 runThread()메소드를 수행하도록 구현된다.</li>
+<li>ready() 메소드를 통해 객체가 가리키는 thread를 ready상태로 전이시키고 readyQueue에 추가한다.</li>
+</ul>
+<h3 id="ijjeo-ssantae-bbohweo">이전 상태 복원</h3>
+<ul>
+<li>지역 변수 선언 단계에서 Machine.interrupt().disable()메소드를 호출했다. 이때 intStatus 지역 변수를 통해 이전 상태를 저장해 두었는데, fork()메소드를 종료하기 전 Machine.interrupt().restore() 메소드를 사용하여 다시 intStatus상태(이전 상태)로 되돌린다.</li>
+</ul>
+<h2 id="kthread-runthread">KThread.runThread()</h2>
+<h3 id="kodde-1">코드</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span>    </span><span style="color:#b48ead;">private</span><span> void </span><span style="color:#bf616a;">runThread</span><span>() {
+</span><span>		</span><span style="color:#bf616a;">begin</span><span>();
+</span><span>		target.</span><span style="color:#bf616a;">run</span><span>();
+</span><span>		</span><span style="color:#bf616a;">finish</span><span>();
+</span><span>    }
+</span></code></pre>
+<h3 id="ddonjja-ggayo-1">동작 개요</h3>
+<p>KThread클래스 내부에서 사용되는 private method이다. 바로 직전에 다룬 Kthread.fork()메소드에서 호출하는 것을 확인한 바 있다. 현재 thread의 실행 준비, 실행, 실행 종료 과정을 순서대로 수행하도록 동작한다.</p>
+<h3 id="begin-hocul-ssihaeng-jjubi">begin() 호출(실행 준비)</h3>
+<ul>
+<li>begin()메소드에서는 Lib.debug(), Lib.assertTrue()메소드를 호출하여 디버깅 메시지 출력 및 조건 검사를 수행한다.</li>
+<li>이때 KThread가 currentThread가 아니라면 assert한다.</li>
+<li>조건 검사가 끝난 후 현재 thread가 실행되도록 restoreState() 메소드를 사용하여 준비한다.</li>
+<li>restoreState()가 끝나면 Machine.interrupt().enable()메소드를 호출하여 Machine이 interrupt enable 상태가 되도록 변경한다.</li>
+</ul>
+<h3 id="thread-ssihaeng">thread 실행</h3>
+<ul>
+<li>KThread클래스에서 선언한 run메소드를 실행시킨다.</li>
+<li>본 과제의 1번 문항에서 5회 실행되었던 thread를 10회 실행시키도록 바꾸었던 그 부분이다.</li>
+</ul>
+<h3 id="finish-hocul-ssihaeng-jjonryo">finish() 호출(실행 종료)</h3>
+<ul>
+<li>finish()메소드에서는 Lib.debug() 메소드를 호출하여 디버깅 메시지를 출력한다.</li>
+<li>begin()메소드에서 설정한 Machine의 interrupt enable상태를 Machine.interrupt().disable()메소드를 사용하여 interrupt disable상태로 변경한다.</li>
+<li>Machine.autoGrader().finishingCurrentThread()메소드를 호출하여 현재 thread를 종료한다.
+<ul>
+<li>이때 autoGrader객체의 finishingCurrentThread()메소드는 privilege.tcb.authorizeDestroy()메소드를 이용하여 현재 thread가 종료되었다는 것을 autograder에게 명시한다.</li>
+<li>이로써 현재 thread는 적절한 시기에 delete된다.</li>
+</ul>
+</li>
+<li>Lib.assertTrue() 메소드를 사용하여 수행 조건을 확인한다.
+<ul>
+<li>toBeDestroyed != null이라면 assert한다.</li>
+</ul>
+</li>
+<li>toBeDestroyed = currentThread로 값을 초기화한다.
+<ul>
+<li>이를 통해 현재 thread가 적절한 때에 Destroy될 수 있도록 한다.</li>
+</ul>
+</li>
+<li>현재 thread의 status를 Finished로 설정한다.</li>
+<li>sleep()을 호출하여 현재 thread가 다음 scheduled thread에 의해 destroy되도록 한다.</li>
+</ul>
+<h2 id="kthread-yield">KThread.yield()</h2>
+<h3 id="kodde-2">코드</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public static</span><span> void </span><span style="color:#bf616a;">yield</span><span>() {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">debug</span><span>(dbgThread, &quot;</span><span style="color:#a3be8c;">Yielding thread: </span><span>&quot; + currentThread.</span><span style="color:#bf616a;">toString</span><span>());
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(currentThread.status == statusRunning);
+</span><span>	</span><span style="color:#b48ead;">boolean</span><span> intStatus = </span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disable</span><span>();
+</span><span>	currentThread.</span><span style="color:#bf616a;">ready</span><span>();
+</span><span>	</span><span style="color:#bf616a;">runNextThread</span><span>();
+</span><span>	</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">restore</span><span>(intStatus);
+</span><span>}
+</span></code></pre>
+<h3 id="ddonjja-ggayo-2">동작 개요</h3>
+<p>현재 thread가 ready 상태인 다른 thread가 있을 경우 cpu점유권을 양보하도록 한다. 이때 현재 thread는 destroy되는 것이 아닌 ready상태로 전이하며, readyQueue에 삽입되어 다시 스케줄링 될 수 있도록 한다.</p>
+<h3 id="dibbehugg-mesiji-culryeog-mic-joggeo-hwagin">디버깅 메시지 출력 및 조건 확인</h3>
+<ul>
+<li>Lib.debug()메소드를 호출하여 디버깅 메시지를 출력한다.</li>
+<li>Lib.assertTrue()메소드를 호출하여 currentThread의 상태가 running상태가 아니라면 assert를 발생시킨다.
+<ul>
+<li>yeild()메소드 자체가 동작 개요에서 설명했듯이 현재 thread의 cpu사용권을 양보하는 개념으로 구현되었기 때문에 현재 thread가 running이 아니라면 assert</li>
+</ul>
+</li>
+</ul>
+<h3 id="jihyeo-bbyeosu-sseoheo-1">지역 변수 선언</h3>
+<ul>
+<li>fork()메소드에서와 마찬가지로 지역 변수 intStatus에 Machine.interrupt().disable()메소드를 사용하여 이전 상태를 저장하고, interrupt disable상태로 설정한다.</li>
+</ul>
+<h3 id="hyeonjja-thread-ssantae-jjeoi-running-ready">현재 thread 상태 전이(running -&gt; ready)</h3>
+<ul>
+<li>ready()메소드를 사용하여 현재 thread를 ready상태로 전이시키고 readyQueue에 삽입한다.</li>
+</ul>
+<h3 id="daheu-thread-ssihaeng">다음 thread 실행</h3>
+<ul>
+<li>runNextThread()메소드를 호출하여 readyQueue의 다음 thread를 실행시킨다.</li>
+</ul>
+<h3 id="ijjeo-ssantae-bbohweo-1">이전 상태 복원</h3>
+<ul>
+<li>yeild()메소드를 종료하기 전에 Machine.interrupt().restore()메소드를 사용하여 다시 intStatus상태로 복원시킨다.</li>
+</ul>
+<h2 id="kthread-sleep">KThread.sleep()</h2>
+<h3 id="kodde-3">코드</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public static</span><span> void </span><span style="color:#bf616a;">sleep</span><span>() {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">debug</span><span>(dbgThread, &quot;</span><span style="color:#a3be8c;">Sleeping thread: </span><span>&quot; + currentThread.</span><span style="color:#bf616a;">toString</span><span>());
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disabled</span><span>());
+</span><span>
+</span><span>	</span><span style="color:#b48ead;">if </span><span>(currentThread.status != statusFinished)
+</span><span>		currentThread.status = statusBlocked;
+</span><span>
+</span><span>	</span><span style="color:#bf616a;">runNextThread</span><span>();
+</span><span>}
+</span></code></pre>
+<h3 id="ddonjja-ggayo-3">동작 개요</h3>
+<p>이전에 알아본 runThread()메소드 내부에서 호출한 finish()메소드에서 사용한 적 있는 메소드이다.
+sleep()메소드는 현재 thread가 finish 또는 block되었을 경우 현재 thread를 sleep시켜 readyQueue에 삽입되도록 하거나 destroy되도록 하는 역할을 한다.</p>
+<h3 id="dibbehugg-mesiji-culryeog-mic-joggeo-hwagin-1">디버깅 메시지 출력 및 조건 확인</h3>
+<ul>
+<li>Lib.debug(), Lib.assertTrue()메소드를 사용하여 디버깅 메시지를 출력하고, 실행 조건을 확인한다.
+<ul>
+<li>interrupt disabled상태가 아니라면 assert를 발생시킨다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="ssanhwang-pandda">상황 판단</h3>
+<ul>
+<li>동작 개요의 설명과 같이, sleep()메소드는 현재 메소드가 finished thread라면 destroy하고, block된 thread라면 readyQueue로 삽입한다.</li>
+<li>조건문을 통해 현재 thread가 finised 상태인지 아닌지를 판단한다.</li>
+<li>현재 thread가 finished상태가 아니라면 blocked 상태로 판단하고 currentThread의 status를 Blocked로 설정한다.</li>
+</ul>
+<h3 id="daheu-threadssihaeng">다음 thread실행</h3>
+<ul>
+<li>runNextThread()메소드를 수행하여 readyQueue의 다음 thread을 실행시킨다.</li>
+</ul>
+<h2 id="kthread-join">KThread.join()</h2>
+<h3 id="kodde-4">코드</h3>
+<p>본 실습에서 제공된 join()메소드의 코드는 조건 검사를 제외한 아무런 동작도 하지 않아 이상함을 느끼고 직접 nachos프로젝트의 저장소를 찾아가 join()구현부를 따로 찾아보았다. join()메소드의 동작 과정과 소스 코드 분석은 github의 코드를 바탕으로 수행하였다.</p>
+<ul>
+<li>과제 제시 코드</li>
+</ul>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">join</span><span>() {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">debug</span><span>(dbgThread, &quot;</span><span style="color:#a3be8c;">Joining to thread: </span><span>&quot; + </span><span style="color:#bf616a;">toString</span><span>());
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#bf616a;">this </span><span>!= currentThread);
+</span><span>}
+</span></code></pre>
+<ul>
+<li>nachos github 코드(<a href="https://github.com/kanrourou/nachos/blob/master/threads/KThread.java">nachos - KThread.java</a>)</li>
+</ul>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">join</span><span>() {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">debug</span><span>(dbgThread, &quot;</span><span style="color:#a3be8c;">Joining to thread: </span><span>&quot; + </span><span style="color:#bf616a;">toString</span><span>());
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#bf616a;">this </span><span>!= currentThread);
+</span><span>	
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">this</span><span>.status==statusFinished){
+</span><span>		</span><span style="color:#b48ead;">return</span><span>;
+</span><span>	}
+</span><span>	
+</span><span>	</span><span style="color:#b48ead;">boolean</span><span> inStatus=</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disable</span><span>();
+</span><span>	
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#ebcb8b;">KThread</span><span>.currentThread.isJoined);
+</span><span>	</span><span style="color:#b48ead;">else</span><span>{
+</span><span>		joinQueue.</span><span style="color:#bf616a;">waitForAccess</span><span>(currentThread);
+</span><span>		isJoined=</span><span style="color:#d08770;">true</span><span>;
+</span><span>		</span><span style="color:#bf616a;">sleep</span><span>();
+</span><span>	}
+</span><span>	
+</span><span>	</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">restore</span><span>(inStatus);
+</span><span>}
+</span></code></pre>
+<h3 id="ddonjja-ggayo-4">동작 개요</h3>
+<p>join()메소드는 현재 객체의 thread를 다른 thread에서 기다리도록 하는 method이다. 당연하지만 현재 객체의 thread는 현재 실행 중인 thread일 수 없다. </p>
+<h3 id="dibbehugg-mesiji-culryeog-mic-joggeo-hwagin-2">디버깅 메시지 출력 및 조건 확인</h3>
+<ul>
+<li>Lib.debug()메소드를 이용하여 디버깅 메시지를 출력한다.</li>
+<li>동작 개요에서 설명한 것처럼 현재 실행중인 thread에서는 join()메소드를 호출할 수 없으므로 이에 대해 Lib.assertTrue()메소드를 확인하여 실행 조건을 확인한다.</li>
+</ul>
+<h3 id="bbo-ggaeceyi-threadga-imi-finished-ssantaein-ggyeonue-ddahan-ceori">본 객체의 thread가 이미 finished 상태인 경우에 대한 처리</h3>
+<ul>
+<li>본 객체의 thread가 이미 finished상태인 경우 join을 위해 대기할 필요가 없으므로 바로 return 한다.</li>
+</ul>
+<h3 id="jihyeo-bbyeosu-sseoheo-2">지역 변수 선언</h3>
+<ul>
+<li>지역 변수 inStatus를 이용하여 이전 상태를 저장한다. 이때 호출하는 Machine.interrupt().disable()메소드에 의해 interrupt disable된다.</li>
+</ul>
+<h3 id="joinhyebu-hwagin">join여부 확인</h3>
+<ul>
+<li>조건문을 사용하여 join여부를 확인한다.</li>
+<li>isJoined == false인 경우 joinQueue의 waitForAccess() 메소드를 호출한다.
+<ul>
+<li>이때 waitForAccess()메소드의 파라미터로는 currentThread가 들어간다.</li>
+</ul>
+</li>
+<li>isJoined를 true로 초기화한다.</li>
+<li>sleep()을 호출하여 대기한다.</li>
+</ul>
+<h3 id="ijjeo-ssantae-bbohweo-2">이전 상태 복원</h3>
+<ul>
+<li>inStatus를 이용하여 이전 state로 복원한다.</li>
+</ul>
+<h2 id="kthread-runnextthread">KThread.runNextThread()</h2>
+<h3 id="kodde-5">코드</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">private static</span><span> void </span><span style="color:#bf616a;">runNextThread</span><span>() {
+</span><span>	</span><span style="color:#ebcb8b;">KThread</span><span> nextThread = readyQueue.</span><span style="color:#bf616a;">nextThread</span><span>();
+</span><span>	</span><span style="color:#b48ead;">if </span><span>(nextThread == </span><span style="color:#d08770;">null</span><span>)
+</span><span>		nextThread = idleThread;
+</span><span>	
+</span><span>	nextThread.</span><span style="color:#bf616a;">run</span><span>();
+</span><span>}
+</span></code></pre>
+<h3 id="ddonjja-ggayo-5">동작 개요</h3>
+<p>readyQueue의 다음 thread를 실행시킨다.</p>
+<h3 id="daheu-thread-load">다음 thread load</h3>
+<ul>
+<li>local variable nextThread를 선언한다. nextThread에는 readyQueue의 다음 thread가 할당된다.</li>
+<li>만약 loadThread가 null이라면(queue가 비어 있는 상황 등) nextThread로 idleThread를 할당한다.</li>
+</ul>
+<h3 id="loadddoe-nextthreadssihaeng">load된 nextThread실행</h3>
+<ul>
+<li>load된 다음 실행될 thread인 nextThread를 run()메소드를 사용하여 실행시킨다.</li>
+</ul>
+<h2 id="kthread-run">KThread.run()</h2>
+<h3 id="kodde-6">코드</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">private</span><span> void </span><span style="color:#bf616a;">run</span><span>() {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disabled</span><span>());
+</span><span>	</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">yield</span><span>();
+</span><span>	currentThread.</span><span style="color:#bf616a;">saveState</span><span>();
+</span><span>	
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">debug</span><span>(dbgThread, &quot;</span><span style="color:#a3be8c;">Switching from: </span><span>&quot; + currentThread.</span><span style="color:#bf616a;">toString</span><span>()
+</span><span>		  + &quot;</span><span style="color:#a3be8c;"> to: </span><span>&quot; + </span><span style="color:#bf616a;">toString</span><span>());
+</span><span>	currentThread = </span><span style="color:#bf616a;">this</span><span>;
+</span><span>	tcb.</span><span style="color:#bf616a;">contextSwitch</span><span>();
+</span><span>	currentThread.</span><span style="color:#bf616a;">restoreState</span><span>();
+</span><span>}
+</span></code></pre>
+<h3 id="ddonjja-ggayo-6">동작 개요</h3>
+<p>현재 실행중인 thread를 yeild하고 새로운 thread를 실행시킨다. currentThread를 run()메소드를 호출한 객체의 thread로 갱신한다. 이후 context switching을 수행하고 새로운 thread를 실행시킨다.</p>
+<h3 id="ssihaeng-joggeo-hwagin">실행 조건 확인</h3>
+<ul>
+<li>Lib.assertTrue()메소드를 통해 interrupt disabled상태가 아니라면 assert시킨다.</li>
+</ul>
+<h3 id="run-suhaeng-jjubi">run() 수행 준비</h3>
+<ul>
+<li>현재 실행되고 있는 thread에 대해서 yield를 수행한다.</li>
+<li>saveState()메소드를 호출하여 currentTHread가 프로세스 점유를 포기하도록 한다.
+<ul>
+<li>바로 직전 라인에서 yield()를 수행하였지만, currentThread에 대한 갱신은 아직 이루어지지 않았으므로, 이전에 실행되고 있던 thread에 대해 수행되는 구문이다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="dibbehugg-mesiji-culryeog-1">디버깅 메시지 출력</h3>
+<ul>
+<li>Lib.debug()메소드를 호출하여 디버깅 메시지를 출력한다.</li>
+</ul>
+<h3 id="context-switching">context switching</h3>
+<ul>
+<li>currentThread를 yiled()의 호출로 실행되고 있는 thread로 갱신한다.</li>
+<li>tcb.contextSwitch()메소드를 호출하여 context switching 이 일어나도록 한다.
+<ul>
+<li>current TCB를 이전 thread의 tcb에서 새롭게 갱신된 thread의 tcb로 갱신한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="threadssihaeng-jjubi">thread실행 준비</h3>
+<ul>
+<li>context switching까지 끝났으므로 cureentThread에 대해 restoreState() 메소드를 호출하여 thread를 실행시킨다.</li>
+</ul>
+<h2 id="kthread-restorestate">KThread.restoreState()</h2>
+<h3 id="kodde-7">코드</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">protected</span><span> void </span><span style="color:#bf616a;">restoreState</span><span>() {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">debug</span><span>(dbgThread, &quot;</span><span style="color:#a3be8c;">Running thread: </span><span>&quot; + currentThread.</span><span style="color:#bf616a;">toString</span><span>());
+</span><span>	
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disabled</span><span>());
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#bf616a;">this </span><span>== currentThread);
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(tcb == </span><span style="color:#d08770;">TCB</span><span>.</span><span style="color:#bf616a;">currentTCB</span><span>());
+</span><span>
+</span><span>	</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">autoGrader</span><span>().</span><span style="color:#bf616a;">runningThread</span><span>(</span><span style="color:#bf616a;">this</span><span>);
+</span><span>	
+</span><span>	status = statusRunning;
+</span><span>
+</span><span>	</span><span style="color:#b48ead;">if </span><span>(toBeDestroyed != </span><span style="color:#d08770;">null</span><span>) {
+</span><span>		toBeDestroyed.tcb.</span><span style="color:#bf616a;">destroy</span><span>();
+</span><span>		toBeDestroyed.tcb = </span><span style="color:#d08770;">null</span><span>;
+</span><span>		toBeDestroyed = </span><span style="color:#d08770;">null</span><span>;
+</span><span>	}
+</span><span>}
+</span></code></pre>
+<h3 id="ddonjja-ggayo-7">동작 개요</h3>
+<p>현재 thread가 실행될 준비를 하고, 상태를 running으로 전이시킨다. 이전 thread의 종료로 인한 tcb의 destroy리스트가 남아 있다면 destroy를 수행한다.</p>
+<h3 id="dibbehugg-mesiji-culryeog-2">디버깅 메시지 출력</h3>
+<ul>
+<li>Lib.debug()메소드를 호출하여 디버깅 메시지를 출력한다.</li>
+</ul>
+<h3 id="ssihaeng-joggeo-hwagin-1">실행 조건 확인</h3>
+<ul>
+<li>Lib.assertTrue()메소드를 호출하여 실행 조건을 검사한다.
+<ul>
+<li>interrupt disabled 상태가 아니라면 assert한다.</li>
+<li>현재 thread가 실행 중인(currentThread)thread가 아니라면 assert한다.</li>
+<li>현재 tcb가 실행 중인(TCB.currentTCB()메소드를 이용해 확인)TCB가 아니라면 assert 한다.</li>
+</ul>
+</li>
+<li>위의 실행 조건들은 run()메소드에서 restoreState()메소드를 호출하기 전에 했던 일련의 과정들과 일치함을 알 수 있다.</li>
+</ul>
+<h3 id="hyeonjja-threadssihaeng">현재 thread실행</h3>
+<ul>
+<li>Machine.autoGrader().runningThread()메소드에 this(현재 thread)를 파라미터로 입력하여 autoGrader에 현재 thread 정보를 명시한다.
+<ul>
+<li>runningThread()메소드에서는 파라미터로 전달받은 thread객체에 대해 tcb를 매칭하고, currentThread를 갱신한다.</li>
+</ul>
+</li>
+<li>status를 running상태로 갱신한다.</li>
+</ul>
+<h3 id="tobedestroyed-hwagin">toBeDestroyed 확인</h3>
+<ul>
+<li>thread를 가리키는 지역 변수인 toBeDestroyed를 검사하여 null인 경우에는 destroy할 thread가 없음을 의미하므로 별도의 동작 없이 restoreState()를 마친다.</li>
+<li>toBeDestroyed가 null이 아닌 경우 toBeDestroyed thread에 대해 destroy를 수행한다.
+<ul>
+<li>toBeDestroyed.tcb.destroy()를 수행하여 destroy한다.</li>
+<li>destroy가 끝나면 toBeDestroyed.tcb, toBedestroyed는 null로 초기화한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="kthread-savestate">KThread.saveState()</h2>
+<h3 id="kodde-8">코드</h3>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#65737e;">/**
+</span><span style="color:#65737e;">* Prepare this thread to give up the processor. Kernel threads do not
+</span><span style="color:#65737e;">* need to do anything here.
+</span><span style="color:#65737e;">*/
+</span><span style="color:#b48ead;">protected</span><span> void </span><span style="color:#bf616a;">saveState</span><span>() {
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#ebcb8b;">Machine</span><span>.</span><span style="color:#bf616a;">interrupt</span><span>().</span><span style="color:#bf616a;">disabled</span><span>());
+</span><span>	</span><span style="color:#ebcb8b;">Lib</span><span>.</span><span style="color:#bf616a;">assertTrue</span><span>(</span><span style="color:#bf616a;">this </span><span>== currentThread);
+</span><span>}
+</span></code></pre>
+<h3 id="ddonjja-ggayo-8">동작 개요</h3>
+<p>현재 thread가 프로세스 점유를 넘기는 것을 준비하는 메소드이다. 주석의 내용에 따르면, 커널 메소드는 이 부분에서 아무 것도 구현할 필요가 없다고 되어 있어 메소드의 구현부에는 조건 검사밖에 없는 상황이다.</p>
+<h3 id="ssihaeng-joggeo-hwagin-2">실행 조건 확인</h3>
+<ul>
+<li>interrupt disabled 되어 있지 않은 상태라면 Lib.assertTrue()메소드를 이용하여 assert한다.</li>
+<li>동작 개요에서 설명한 대로, 본 메소드는 프로세스 점유를 넘길 준비를 하는 메소드이다. 따라서 currentThread가 현재 thread라면 말이 되지 않는다. -&gt; assert</li>
+</ul>
+<h3 id="cuceug">추측</h3>
+<p>커널 메소드가 아닌 경우에서 svaeState()메소드를 호출한 경우를 가정해 보자. saveState라는 메소드 명에 맞게, 본 메소드는 현재 thread의 context정보를 다시 불러올 수 있도록 저장하는 역할을 할 것이다. 저장된 context는 TCB 자료 구조로 메모리에 저장될 것이다.</p>
+<h1 id="3">#3</h1>
+<ul>
+<li>KThread는 new, ready, running, blocked, finished의 5가지 상태 중 하나의 값을 가진다. (null인 경우는 생각하지 않는다.)</li>
+<li>PingTest클래스에서 구현된 run()메소드는 반복문을 10번 순회하면서 각 순회마다 yield()를 호출하는 구조이다.</li>
+<li>PingTest클래스를 추가하고 이를 실행시키기 위해 ThreadedKernal.java의 selfTest()메소드에 추가한 new KThread(new PingTest(1)).setName(&quot;forked thread&quot;).fork()는 이 자체만으로는 아무런 결과도 출력할 수 없다. 해당 객체의 run()을 수행하는 child process를 ready queue에 올리기만 하고 running상태로 만들지는 못하기 때문이다. 즉 ready상태이지 running상태가 아니므로 이 자체만으로는 실행될 수 없다.</li>
+<li>new KThread(new PingTest(1)).setName(&quot;forked thread&quot;).fork(); 코드를 통해 ready queue에 올라간 thread를 실행시키기 위해서는 KThread의 private method인 runNextThread()를 호출해야 한다. private method 이므로 직접 호출이 불가능하기 때문에 runNextThread()를 호출하는 public method를 찾아보았고, 그 결과 yeild(), sleep()에서 runNextThread()를 호출하는 것을 확인했다.</li>
+<li>mainThread라는 Runnable 구현체를 하나 만들어서, PingTest와 비슷한 구조를 갖지만 출력은 하지 않도록 run()을 작성하였다. 아래는 mainThread 클래스의 코드이다. forked thread의 run()메소드의 반복문과 구별하기 위해 반복문의 반복자로 j를 사용하였다.</li>
+</ul>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">private static class </span><span style="color:#ebcb8b;">mainThread </span><span style="color:#b48ead;">implements </span><span style="color:#a3be8c;">Runnable </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">	</span><span style="color:#8fa1b3;">mainThread</span><span style="color:#eff1f5;">(){}
+</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">run</span><span style="color:#eff1f5;">() {
+</span><span style="color:#eff1f5;">		</span><span style="color:#b48ead;">for </span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">int</span><span style="color:#eff1f5;"> j </span><span>= </span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">; j </span><span>&lt; </span><span style="color:#d08770;">10</span><span style="color:#eff1f5;">; j</span><span>++</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">			</span><span style="color:#ebcb8b;">KThread</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">currentThread</span><span style="color:#eff1f5;">().</span><span style="color:#bf616a;">yield</span><span style="color:#eff1f5;">();
+</span><span style="color:#eff1f5;">		}
+</span><span style="color:#eff1f5;">	}
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<ul>
+<li>그리고 ThreadedKernel.java의 selfTest()메소드에 아래와 같이 코드를 추가했다.</li>
+</ul>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">selfTest</span><span>() {
+</span><span>	mainThread mt = </span><span style="color:#b48ead;">new </span><span style="color:#bf616a;">mainThread</span><span>();
+</span><span>	</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">KThread</span><span>(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">PingTest</span><span>(</span><span style="color:#d08770;">1</span><span>)).</span><span style="color:#bf616a;">setName</span><span>(&quot;</span><span style="color:#a3be8c;">forked thread</span><span>&quot;).</span><span style="color:#bf616a;">fork</span><span>();
+</span><span>	mt.</span><span style="color:#bf616a;">run</span><span>();
+</span><span>}
+</span></code></pre>
+<ul>
+<li>이때 selfTest()메소드에서 mt.run()이 fork()를 호출한 이후에 와야 한다. fork()메소드 호출 이전에 mt.run()이 위치하면 mt thread 중간에 yeild()를 호출하더라도 ready queue는 빈 상황이고, mainThread는 곧바로 다시 실행된다. 결국 mainThread가 종료된 후에 fork()가 일어나게 되므로 #3의 초기 상황과 마찬가지로 ready상태에서 running상태로 전이하지 못해 출력 코드가 실행되지 않는다.</li>
+<li>#3 초기 코드 도식<img src="/image/OS/nachos_practice01_1.png" alt="original code abstraction" /></li>
+<li>#3 코드 추가 이후 도식 <img src="/image/OS/nachos_practice01_2.png" alt="original code abstraction" /></li>
+<li>다음은 nachos를 실행하여 확인한 결과이다.
+<img src="/image/OS/nachos_practice1_3.png" alt="실행결과" /></li>
+<li>mainThread의 반복 횟수를 10회로 설정한 이유는 PingTest의 run() 메소드에서 10번 yield()를 호출하기 때문이다. mainThread의 반복 횟수가 10회 이상이라면 ready queue에서 PingTest가 10번 yield를 실행해도 10번 모두 실행된다. 하지만 10회 미만이라면 mainThread가 모두 실행된 이후 yeild()가 호출되지 않고 thread가 종료되어 forked thread가 실행되지 못해 10번 모두 실행하지 않고 끝나는 결과로 출력된다.</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

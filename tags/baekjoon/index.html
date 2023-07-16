@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>baekjoon | Rounding Off</title>
+
+
+
+<meta property="og:title" content="baekjoon">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/tags/">
+<meta property="og:url" content="https://js970.github.io/tags/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="baekjoon">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/tags/",
+  "@context":"https://schema.org",
+  "@type": "WebPage",
+  "headline": "baekjoon"
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+<div class="tags">
+	<div class="tags-header">
+		<h2 class="tags-header-title">baekjoon</h2>
+		<div class="tags-header-line"></div>
+	</div>
+</div>
+
+<div class="catalogue">
+	<a href="https://js970.github.io/11399-atm/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-03" class="catalogue-time">April  3, 2023</time>
+    <h1 class="catalogue-title">11399 - ATM</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023월 4월 3일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : sort
+
+Solution
+
+문제의 조건에 맞게 구현하기만 하면 되는 매우 간단한 문제이다.
+정렬 알고리즘을 필요로 한다.
+모든 경우의 수에 대해 고려해야 하므로 그리디 알고리즘의 범주에 속한다고 할 수 있다.
+
+
+CPU 스케줄링 알고리즘 중 SJF알고리즘이다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace…</p>
+  </div>
+</a><a href="https://js970.github.io/7576-tomato/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-24" class="catalogue-time">March 24, 2023</time>
+    <h1 class="catalogue-title">7576 - 토마토</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 골드 5
+날짜: 2023년 3월 24일
+상태: Correct
+추가 검토 여부: Todo Implement with Graph Theory(BFS)
+알고리즘 : Graph(BFS), heuristic(?)
+
+
+나중에 BFS를 이용하여 풀이 시도해 볼 것
+
+Solution
+
+보자마자 그래프 문제인 것은 알았지만 어떻게 풀어야 할지 감이 잡히지 않았다.
+그냥 내가 짠 알고리즘대로 풀이에 도전했고, 초기 코드는 시간복잡도로 인한 시간초과 문제가 있었으나 해결했다.
+아래는 내 접근법이다.
+
+오늘…</p>
+  </div>
+</a><a href="https://js970.github.io/2630-ssaejjoni-manddeugi/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-21" class="catalogue-time">March 21, 2023</time>
+    <h1 class="catalogue-title">2630 - 색종이 만들기</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 2
+날짜: 2023년 3월 21일
+상태: Correct
+추가 검토 여부: No 
+알고리즘 : Divide and Conquer
+
+Solution
+
+분할정복을 활용한 recursion을 통해 문제의 요구대로 구현하였다.
+2차원 배열을 계속해서 생성할 수 없으므로 원본 배열에서 왼쪽 위의 인덱스를 넘기는 방식으로 subarray에 대한 순회를 구현했다.
+pair를 사용하여 흰 종이와 파란색 종이의 개수를 셌다.
+2차원 배열 구간 순회의 인덱싱에 있어 숙련도가 부족해 틀린 답이 계속 출…</p>
+  </div>
+</a><a href="https://js970.github.io/2606-baireosse/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-20" class="catalogue-time">March 20, 2023</time>
+    <h1 class="catalogue-title">2606 - 바이러스</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 3
+날짜: 2023년 3월 20일
+상태: Correct
+추가 검토 여부: No 
+알고리즘 : DFS
+
+Solution
+
+그래프를 구현하여 상황을 입력받고, 입력받은 상황에 대하여 DFS탐색을 통해 인접한 노드의 수를 구하면 되는 문제이다.
+아직 Graph및 DFS구현이 서툴러서 많이 틀렸다.
+1260번의 DFS코드를 참고했다.
+
+DFS의 경우 현제 노드, 인접 리스트, 방문 확인 리스트의 입력을 필요로 한다.
+인접 리스트의 경우 1260번과 달리 이중 벡터로 구현했다.
+dfs의 r…</p>
+  </div>
+</a><a href="https://js970.github.io/2579-ggydda-oreugi/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-12" class="catalogue-time">March 12, 2023</time>
+    <h1 class="catalogue-title">2579 - 계단 오르기</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 3
+날짜: 2023년 3월 12일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : Dynamic Programming
+
+Solution
+
+처음 문제를 읽고 동적 프로그래밍 문제인 지 바로 인식하지 못해 문제 풀이에 시간이 걸렸다.
+1칸, 2칸, 3칸, 4칸에 대하여 가능한 경우의 수를 손으로 직접 그려보니 동적 계획법 문제인 것이 바로 인식되었다. 경우를 나누어 배열을 초기화했다.
+
+n번째 계단에 도착했을 때 직전 계단에 이어 연속해서 밟는 경우
+n번째 계단에 도착했을 때…</p>
+  </div>
+</a><a href="https://js970.github.io/1992-kweoddeteuri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-11" class="catalogue-time">March 11, 2023</time>
+    <h1 class="catalogue-title">1992 - 쿼드트리</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 1
+날짜: 2023년 3월 11일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : 분할 정복, 재귀
+
+Solution
+
+compressable함수를 구현하여 2차원 배열의 모든 원소가 같은 원소로 구성되어있는지 확인한다.
+
+하나라도 다른 원소가 포함되어 있다면 false를 반환한다.
+
+
+compress함수를 구현하여 recursion을 통해 입력된 배열에 대해 compress를 수행한다.
+
+만약 모든 원소의 값이 같지 않아서 압축이 되지 않을 경우, 4분할을 통해 comp…</p>
+  </div>
+</a><a href="https://js970.github.io/1931-hoeyissi-bbajjeon/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-10" class="catalogue-time">March 10, 2023</time>
+    <h1 class="catalogue-title">1931 - 회의실 배정</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 1
+날짜: 2023년 3월 10일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : 그리디 알고리즘
+
+Solution
+
+모든 선택에 있어서 선택 가능한 선택지 중 끝나는 시간이 가장 빠른 회의를 선택한다면 가장 많은 회의를 진행할 수 있게 된다.
+이를 알고리즘으로 쉽게 구현하기 위해 pair를 사용했다.
+
+끝나는 시간이 빠른 것을 선택해야 하므로 끝나는 시간을 pair.first로 설정한다.
+이렇게 하면 sort를 이용해 원하는 상태로 한번에 정렬이 가능하다.
+이전에 끝난 …</p>
+  </div>
+</a><a href="https://js970.github.io/1927-coeso-hib/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-03" class="catalogue-time">March  3, 2023</time>
+    <h1 class="catalogue-title">1927 - 최소 힙</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 2
+날짜: 2023년 3월 3일
+상태: Correct
+추가 검토 여부: No 
+알고리즘 : queue, heap
+
+Solution
+
+그냥 priority_queue를 선언하여 시키는 대로 풀면 되는 매우 간단한 문제이다.
+'\n'을 사용하지 않고 endl로 리턴했다가 시간초과를 한 번 봤다. 주의하자
+
+code
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int main()
+{
+    ios::syn…</p>
+  </div>
+</a><a href="https://js970.github.io/1780-jjoniyi-ggasu/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-02" class="catalogue-time">March  2, 2023</time>
+    <h1 class="catalogue-title">1780 - 종이의 개수</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 28일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : 분할정복
+
+Solution
+
+혹시나 하는 마음에 chat GPT에게 문제를 그대로 주었다
+한번에 정답을 맞췄다... 충격적이다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+int N;
+vector&lt;vector&lt;int&gt;&gt; paper;
+
+bool is_all_same(int x…</p>
+  </div>
+</a><a href="https://js970.github.io/1697-ssubaggogjji/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-28" class="catalogue-time">February 28, 2023</time>
+    <h1 class="catalogue-title">1697 - 숨바꼭질</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 1
+날짜: 2023년 2월 28일
+상태: Correct/Retry
+추가 검토 여부: Yes
+알고리즘 : BFS, DFS, DP, Graph
+
+solution
+
+K가 N보다 작을 경우 N은 K로 이동하기 위해 한 칸씩 뒤로 가는 경우밖에 없다. 따라서 K가 N보다 작거나 같은 경우에 대해서는 예외 처리를 한다.
+이제 나머지 경우인 K가 N보다 큰 경우에 대해서만 생각한다.
+N이 K까지 도달하기 위해서는 한 칸 앞으로 가거나 뒤로 가는 연산을 적절히 한 후 가능한 경우 2배 연산까지 …</p>
+  </div>
+</a><a href="https://js970.github.io/1764-ddeubojja/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-28" class="catalogue-time">February 28, 2023</time>
+    <h1 class="catalogue-title">1764 - 듣보잡</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 28일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : set
+
+solution
+
+set에 듣도 못한 사람들을 추가한다.
+보도 못한 사람들이 set에 포함되어 있다면 이를 듣도 보도 못한 사람들의 set인 nhs에 추가한다.
+nhs의 원소들을 vector컨테이너 ans에 저장한다. ans벡터를 sort한 후 조건에 맞게 출력했다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include …</p>
+  </div>
+</a><a href="https://js970.github.io/1620-naneunya-pokesmon-masseteo-idache/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-27" class="catalogue-time">February 27, 2023</time>
+    <h1 class="catalogue-title">1620 - 나는야 포켓몬 마스터 이다솜</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 27일
+상태: Correct/Retry
+추가 검토 여부: No
+알고리즘 : map
+
+solution
+
+한동안 마주치지 않아서 endl의 사용이 시간초과를 야기한다는 것을 간과했다. 이 때문에 많이 틀렸다.
+기본적으로 map 자료구조를 사용해서 해결할 수 있는 문제이다.
+숫자를 key값으로 하는 map과 문자열을 key값으로 가지는 map두 개를 선언해서 문제를 해결했다.
+unordered_map을 사용하면 map을 사용했을 때보다 살짝 빠르게 문제 풀이가…</p>
+  </div>
+</a><a href="https://js970.github.io/1676-paegtoriheo-0yi-ggasu/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-27" class="catalogue-time">February 27, 2023</time>
+    <h1 class="catalogue-title">1676 - 팩토리얼 0의 개수</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 5
+날짜: 2023년 2월 27일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : DP
+
+solution
+
+이전 단계의 값에 특정 조건에 따라 추가 연산을 하면 되는 전형적인 DP문제이다.
+5를 소인수로 몇 개를 가지고 있는지에 따라 0의 개수가 늘어나는 것이 핵심이다. (2는 2칸마다 1개씩 생성(?)되므로 충분하다.)
+펙토리얼 연산이므로 현재의 수가 소인수로 가지는 5의 개수는 이전 단계의 값에 현 단계의 수에 대한 연산을 조건문을 통해 처리하면 된다.
+
+code
+#i…</p>
+  </div>
+</a><a href="https://js970.github.io/1463-1ro-manddeugi/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-26" class="catalogue-time">February 26, 2023</time>
+    <h1 class="catalogue-title">1463 - 1로 만들기</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 3
+날짜: 2023년 2월 26일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : DP
+
+solution
+
+다이나믹 프로그래밍을 이용한다. 이전 단계의 정답을 다음 단계의 정답에 사용할 수 있는 문제이다.
+1, 2, 3에 대해서만 미리 값을 정해준다. 그 이후의 값들에 대한 연산 결과는 해당 수를 3으로 나누거나, 2로 나누거나 1로 뺀 수의 연산값 중 가장 작은 값에 1을 더한 값이다.
+물론 3으로 나누어떨어지거나 2로 나누어 떨어질 경우에만 해당 경우에 대해 고려하고 …</p>
+  </div>
+</a><a href="https://js970.github.io/1389-kebbi-beikeonyi-6ddaggy-bbeocig/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-24" class="catalogue-time">February 24, 2023</time>
+    <h1 class="catalogue-title">1389 - 케빈 베이컨의 6단계 법칙</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 1
+날짜: 2023년 2월 24일
+상태: Correct/Retry
+추가 검토 여부: Yes
+알고리즘 : BFS, Graph, 다익스트라 알고리즘, 플로이드 워셜 알고리즘
+
+solution
+
+1260번 문제와 마찬가지로 chat GPT의 코드를 이용하여 학습했다. chat GPT의 코드를 기반으로 문제의 조건에 맞게 일부 수정하여 제출하였다.
+다익스트라 알고리즘의 구현은 BFS와 유사한 방식으로 구현되었다. 노드를 이동해 가면서 해당 노드의 인접 노드에 대해 정해진 규칙에 따라(다익…</p>
+  </div>
+</a><a href="https://js970.github.io/1260-dfswa-bfs/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-23" class="catalogue-time">February 23, 2023</time>
+    <h1 class="catalogue-title">1260 - DFS와 BFS</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 2
+날짜: 2023년 2월 23일
+상태: Correct/Retry
+추가 검토 여부: Yes
+알고리즘 : DFS, BFS, Graph
+
+solution
+
+
+DFS와 BFS를 조건에 맞게 구현하기만 하면 되는 문제이다.
+
+
+DFS, BFS의 개념은 자료 구조 수업에서 배웠다고 생각했지만 막상 구현하려고 하니 어려움이 많았다.
+
+
+결국 구현의 핵심은 adjacency list와 visited list의 사용이었다.
+
+
+각 블로그 및 교재를 참조하였으나 잘 이해가 되지 않아서… chat …</p>
+  </div>
+</a><a href="https://js970.github.io/1107-rimokeon/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-18" class="catalogue-time">February 18, 2023</time>
+    <h1 class="catalogue-title">1107 - 리모컨</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 골드 5
+날짜: 2023년 2월 18일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : 브루트포스
+
+solution
+
+전역 배열 valid를 만들어서 고장난 버튼을 사용하지 못하도록 한다.
+possible() upward_search(), downward_search()를 구현하였다.
+
+possible은 고장난 버튼 때문에 한번에 채널을 누를 수 없다면 false, 고장난 버튼과 관계없이 채널을 누를 수 있다면 true를 반환한다.
+upward_search는 입력받은 인자에 대…</p>
+  </div>
+</a><a href="https://js970.github.io/1074-z/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-17" class="catalogue-time">February 17, 2023</time>
+    <h1 class="catalogue-title">1074 - Z</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 1
+날짜: 2023년 2월 17일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : 분할정복
+
+solution
+
+입력되는 배열은 행 또는 열의 크기가 $2^n$인 정사각형 형태의 배열이다. 이를 4개의 구역으로 나누는 방식을 재귀적으로 적용하였다.
+4개로 나눠진 각각의 구역은 다시 4개의 서로 다른 구역으로 나눌 수 있다. 이 과정을 2*2배열까지 적용한다.
+이 문제의 입력을 배열로 구현하면 메모리 초과의 발생이 자명하다. 이에 실제로 배열을 구현하지는 않고 배열의 인덱스를…</p>
+  </div>
+</a><a href="https://js970.github.io/1012-yuginong-bbacu/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-16" class="catalogue-time">February 16, 2023</time>
+    <h1 class="catalogue-title">1012 - 유기농 배추</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 2
+날짜: 2023년 2월 16일
+상태: Correct/Retry
+추가 검토 여부: No
+알고리즘 : DFS
+
+solution
+
+pair array를 사용하여 배추가 심어져 있는지의 여부(0, 1)와 벌레가 도달 가능/불가능 여부(true, false)의 정보를 저장했다.
+배열은 N*M의 크기를 가지는 일차원 배열이며 x, y값이 곧 행과 열의 index이므로 이를 이용하여 배열을 참조했다.
+dfs함수를 구현하여 기존의 벌레 도달 지역이 아닌 곳의 배추가 심어져 있다면 ans를 증…</p>
+  </div>
+</a><a href="https://js970.github.io/1003-pibonaci-hamsu/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-12" class="catalogue-time">February 12, 2023</time>
+    <h1 class="catalogue-title">1003 - 피보나치 함수</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 3
+날짜: 2023년 2월 12일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : DP
+
+solution
+
+입력값 범위에 따라 fibo(40)까지만 연산하면 된다.
+fibo(N)에서 사용하는 fibo(1)과 fibo(0)의 호출수는 fibo(N-1)의 fibo(1), fibo(0)의 호출수와 fibo(N-2)의 fibo(1), fibo(0)의 호출수와 같다.
+40개의 경우에 대해 이전 값을 배열에 저장해 두는 방식으로 재귀 없이 직접 참조가 가능하다.
+
+code
+#incl…</p>
+  </div>
+</a><a href="https://js970.github.io/18111-mainkeuraepeuteu/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-12" class="catalogue-time">February 12, 2023</time>
+    <h1 class="catalogue-title">18111 - 마인크래프트</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 2
+날짜: 2023년 2월 12일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : 브루트포스
+
+solution
+
+주어진 입력 범위에 대한 모든 경우의 수를 탐색한다고 했을 때, 500 * 500 * 256 = 64,000,000이므로 완전 탐색을 해도 시간은 충분하다.
+문제에서 놓치기 쉬운 조건들이 많은 편이었다.
+
+같은 시간이 걸릴 경우 가장 높은 높이를 가지는 경우를 정답으로 출력할 것
+블록의 개수가 부족할 경우에는 블록을 쌓을 수 없고 블록을 캐는 것만 가능하다.
+블…</p>
+  </div>
+</a><a href="https://js970.github.io/15829-hashing/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-11" class="catalogue-time">February 11, 2023</time>
+    <h1 class="catalogue-title">15829 - Hashing</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 브론즈 2
+날짜: 2023년 2월 11일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : 정수의 성질
+
+solution
+
+얼핏 생각하면 난감하지만 mod연산의 특징을 이해한다면 쉽게 풀 수 있다.
+mod 1234567891 공간에서 값을 가지기 때문에 31의 50승이라는 말도 안 되는 수임에도 불구하고 연산 과정마다 mod연산을 통해 hash값을 구할 수 있다.
+각각 따로 mod한 값을 이후에 더한 후 mod해도 다 더해서 mod한 값과 같다.
+
+code
+#include &lt…</p>
+  </div>
+</a><a href="https://js970.github.io/10773-jero/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-10" class="catalogue-time">February 10, 2023</time>
+    <h1 class="catalogue-title">10773 - 제로</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 10일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : stack
+
+solution
+
+stack자료구조를 사용해서 0이 입력되면 pop을 수행하고 그 이외의 경우에 대해 push를 수행한다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;stack&gt;
+using namespace std;
+
+int main()
+{
+    int N;
+    cin &gt;&gt; N;
+    int input;
+    stac…</p>
+  </div>
+</a><a href="https://js970.github.io/10989-su-jjeonryeolhagi-3/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-10" class="catalogue-time">February 10, 2023</time>
+    <h1 class="catalogue-title">10989 - 수 정렬하기 3</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 브론즈 1
+날짜: 2023년 2월 10일
+상태: Correct
+추가 검토 여부: Yes
+알고리즘 : 메모리 고려
+
+solution
+
+본 문제의 최대 테스트 케이스의 수는 천만이다.
+short형 배열을 선언한다고 해도 20MB의 메모리 공간을 소모한다. 문제에서 제한한 메모리 공간은 8MB이니 불가능하다.
+입력 최대 크기는 10000이므로 0~10000의 정수의 개수를 세는 배열을 선언한다.
+이 배열의 원소 수만큼 반복하여 출력하면 문제 조건에 부합한다.
+
+code
+#include &lt…</p>
+  </div>
+</a><a href="https://js970.github.io/11651-jjwpyo-jjeonryeolhagi-2/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-10" class="catalogue-time">February 10, 2023</time>
+    <h1 class="catalogue-title">11651 - 좌표 정렬하기 2</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 5
+날짜: 2023년 2월 10일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+pair를 사용해서 문제 조건에 맞게 정렬되어 출력되도록 한다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int N;
+    cin &gt;&gt; N;
+  …</p>
+  </div>
+</a><a href="https://js970.github.io/7568-ddeonci/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-10" class="catalogue-time">February 10, 2023</time>
+    <h1 class="catalogue-title">7568 - 덩치</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 5
+날짜: 2023년 2월 10일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+입력 범위를 생각해 보면 이중 for문을 사용하여 모든 경우에 대해 연산해도 충분하다.
+pair와 이중 for문을 활용하여 한 원소에 대한 다른 모든 원소의 대소관계를 비교하였다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main()
+{
+    int N;
+    cin &g…</p>
+  </div>
+</a><a href="https://js970.github.io/4949-ggyuhyeongjjahin-sessan/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-09" class="catalogue-time">February  9, 2023</time>
+    <h1 class="catalogue-title">4949 - 균형잡힌 세상</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 9일
+상태: Correct/Retry
+추가 검토 여부: Yes
+알고리즘 : stack
+
+solution
+
+입력받은 문자열에 대해서 string헤더의 substr함수를 사용하여 재귀적으로 검사하였다.
+소괄호와 대괄호가 알맞게 열리고 닫힌 경우에 대해 그 안의 모든 문자열을 재귀함수의 입력으로 넣었다.
+결과적으로 정답이었으나 상당히 많은 시행착오가 있었고 적지 않은 시간을 소모했다.
+stack을 사용하여 훨씬 간단한 풀이가 가능하다.
+
+괄호가 열리고 닫히는 …</p>
+  </div>
+</a><a href="https://js970.github.io/1085-jjisaggahyeongesse-talcul/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-07" class="catalogue-time">February  7, 2023</time>
+    <h1 class="catalogue-title">1085 - 직사각형에서 탈출</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 브론즈 3
+날짜: 2023년 2월 7일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+수를 비교하여 출력만 하면 되는 매우 단순한 문제이다.
+
+code
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int x, y, w, h;
+    cin &gt;&gt; x &gt;&gt; y &gt;&gt; w &gt;&gt; h;
+
+    int width, hight;
+    width = (x &lt; w …</p>
+  </div>
+</a><a href="https://js970.github.io/11050-ithan-ggysu-1/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-07" class="catalogue-time">February  7, 2023</time>
+    <h1 class="catalogue-title">11050 - 이항 계수 1</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 브론즈 1
+날짜: 2023년 2월 7일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+이항계수를 구하는 문제이다. 이항계수란 $_nC_k$를 의미한다.
+이항계수를 계산하기 위해서는 factorial연산을 필요로 한다.
+
+직접 구현할 수도 있지만 cmath헤더파일의 tgamma함수를 이용하면 factorial을 쉽게 구할 수 있다.
+tgamma함수는 (인자-1)factorial을 출력한다.
+
+
+
+code
+#include &lt;iostream&gt;
+#include &…</p>
+  </div>
+</a><a href="https://js970.github.io/11650-jjwpyo-jjeonryeolhagi/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-07" class="catalogue-time">February  7, 2023</time>
+    <h1 class="catalogue-title">11650 - 좌표 정렬하기</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 5
+날짜: 2023년 2월 7일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+처음에는 priority_queue자료구조를 이용하여 입력과 동시에 정렬하려고 생각했으나 pair를 사용하여 오름차순으로 정렬해야 하는 상황이었으므로 pair&lt;int,int&gt;배열을 이용하여 입력을 받은 후 sort를 이용하여 정렬하였다.
+pair배열을 sort를 이용해서 정렬했을 때 first에 따라 오름차순으로 정렬하고 first가 같을 경우 second 값에 따라 오름차순…</p>
+  </div>
+</a><a href="https://js970.github.io/11866-yosepusse-munje-0/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-07" class="catalogue-time">February  7, 2023</time>
+    <h1 class="catalogue-title">11866 - 요세푸스 문제 0</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 5
+날짜: 2023년 2월 7일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+이 문제를 해결하기 위해 queue를 사용하여 차례에 맞는 숫자를 pop하는 방식을 사용했다. 차례에 맞지 않는 경우 pop후 다시 push하여 circle을 구현하였다.
+처음에는 deque를 통해 구현하려 했는데, 처음 코드처럼 코딩할 것면 굳이 deque가 아니라 queue로 충분하다…
+이 문제에서 double-free segmentaion fault로 인해서 많은 시간을 사용하였…</p>
+  </div>
+</a><a href="https://js970.github.io/2231-bbuhaehab/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-07" class="catalogue-time">February  7, 2023</time>
+    <h1 class="catalogue-title">2231 - 분해합</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 브론즈 2
+날짜: 2023년 2월 7일
+상태: Correct
+추가 검토 여부: No
+알고리즘 : 정수의 성질
+
+solution
+
+입력값의 경계가 백만이므로 모든 경우에 대해 생각해도 시간은 충분하다.
+큰 정수의 각 자릿수는 아래 코드처럼 구하면 된다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main()
+{
+    int input;
+    cin &gt;&gt; input;
+   …</p>
+  </div>
+</a><a href="https://js970.github.io/2292-bbeojji/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-07" class="catalogue-time">February  7, 2023</time>
+    <h1 class="catalogue-title">2292 - 벌집</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 브론즈 2
+날짜: 2023년 2월 7일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+입력 범위가 완전탐색이 가능한 범위이므로 모든 경우에 대해 조사했다.
+벡터 자료구조를 사용해서 이동해야 하는 포인트를 나타내었다.
+입력값이 이동 포인트 미만일 경우 이동 포인트 벡터의 인덱스 + 1이 총 움직여야 하는 횟수가 된다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main…</p>
+  </div>
+</a><a href="https://js970.github.io/10816-ssuja-kadde-2/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-06" class="catalogue-time">February  6, 2023</time>
+    <h1 class="catalogue-title">10816 - 숫자 카드 2</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 6일
+상태: Correct/Retry
+추가 검토 여부: Yes
+
+solution
+
+algorithm헤더의 lower_bound, upper_bound함수를 사용해야 하는 문제였다.
+
+이진탐색으로 원소를 탬색하는 알고리즘이다. 직접 이진탐색을 통해 구현하려 했으나… 실패했다.
+
+
+map자료구조 사용하여 해결할 수도 있다.(시도해볼 것)
+M에 대한 배열을 구현하지 않고 입력받는 즉시 연산하여 출력하는 방식으로 구현할 수도 있다.
+
+code
+#include &…</p>
+  </div>
+</a><a href="https://js970.github.io/10828-ssetaeg/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-06" class="catalogue-time">February  6, 2023</time>
+    <h1 class="catalogue-title">10828 - 스택</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 6일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+조건에 맞게 stl stack헤더를 사용하여 구현하였다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;stack&gt;
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int N;
+    cin &gt;&gt; N;
+    string …</p>
+  </div>
+</a><a href="https://js970.github.io/10845-kyu/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-06" class="catalogue-time">February  6, 2023</time>
+    <h1 class="catalogue-title">10845 - 큐</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 6일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+queue자료구조를 이용해서 시키는 대로 구현하면 된다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int N;
+    cin &gt;&gt; N;
+    string …</p>
+  </div>
+</a><a href="https://js970.github.io/10866-dde/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-06" class="catalogue-time">February  6, 2023</time>
+    <h1 class="catalogue-title">10866 - 덱</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 6일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+stl의 deque를 사용하여 문제의 조건에 따라 해결하면 된다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;deque&gt;
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int N;
+    cin &gt;&gt; N;
+    de…</p>
+  </div>
+</a><a href="https://js970.github.io/10250-acm-hotel/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-05" class="catalogue-time">February  5, 2023</time>
+    <h1 class="catalogue-title">10250 - ACM 호텔</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 브론즈 3
+날짜: 2023년 2월 5일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+입력된 순서 당 배정될 방의 번호를 계산하는 공식을 만들었다.
+공식에 반례가 있어 한번 틀렸다. 예외 처리를 통해 정답 처리 되었다.
+솔직히 W값은 필요가 없었는데 왜 입력으로 넣는지가 궁금하다.
+
+code
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int testC;
+    int H, W, N;
+    cin…</p>
+  </div>
+</a><a href="https://js970.github.io/10814-naissu-jjeonryeol/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-05" class="catalogue-time">February  5, 2023</time>
+    <h1 class="catalogue-title">10814 - 나이순 정렬</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 5
+날짜: 2023년 2월 5일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+
+priority_queue를 사용하여 나이 순으로 정렬했다.
+
+
+priority_queue에 들어가는 구조체인 info를 정의하였다.
+
+
+나이가 같을 경우 먼저 등록한 순서대로 출력하므로 등록 순서를 나타내는 변수인 idx를 구조체에 추가시켰다.
+
+
+priority_queue는 내림차순 정렬이 기본이고, 나이가 같을 경우 먼저 등록한 순서대로 출력하기 위해서는 cmp구조체를 만들어 …</p>
+  </div>
+</a><a href="https://js970.github.io/2609-coeddaggonhyasuwa-coesoggonbbasu/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-05" class="catalogue-time">February  5, 2023</time>
+    <h1 class="catalogue-title">2609 - 최대공약수와 최소공배수</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 브론즈 1
+날짜: 2023년 2월 5일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+최대공약수, 최소공배수 알고리즘을 묻는 문제였다.
+최대공약수, 최소공배수 모두 유클리드 호제법을 사용하여 알고리즘을 구현할 수 있다.
+유클리드 호제법 알고리즘을 깜빡해서 검색을 했다.
+
+유클리드 호제법은 두 수중 작은 수로 큰 수를 나눈 나머지와 작은 수의 최대공약수를 재귀적으로 구하는 알고리즘이다. 나머지 값이 0이 될때까지 반복한다.
+최소공배수는 두 수의 곱을 최대공약수로 나눈 …</p>
+  </div>
+</a><a href="https://js970.github.io/2798-bbeuraegjjae/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-05" class="catalogue-time">February  5, 2023</time>
+    <h1 class="catalogue-title">2798 - 블랙잭</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 브론즈 2
+날짜: 2023년 2월 5일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+100개의 수 중 3개의 수의 합에 대한 경우의 수를 구하는 연산은 200,000보다 작은 수이고, 이는 3중 for문을 돌려도 문제 없이 구현 가능하다.
+
+code
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int N, M;
+    cin &gt;&gt; N;
+    cin &gt;&gt; M;
+    int …</p>
+  </div>
+</a><a href="https://js970.github.io/4153-jjiggassaggahyeong/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-05" class="catalogue-time">February  5, 2023</time>
+    <h1 class="catalogue-title">4153 - 직각삼각형</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 브론즈 3
+날짜: 2023년 2월 5일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+그냥 세 수를 입력 받아서 가장 큰 수의 제곱이 다른 두 수의 제곱의 합과 같은지를 비교하면 되는 단순한 문제
+pow함수, sort함수의 사용법을 숙지해야 한다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main()
+{
+    int …</p>
+  </div>
+</a><a href="https://js970.github.io/9012-ggwaho/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-05" class="catalogue-time">February  5, 2023</time>
+    <h1 class="catalogue-title">9012 - 괄호</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 5일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+depth라는 변수를 설정하고, 입력받은 문자열에 대해 왼쪽부터 오른쪽까지 문자를 탐색한다.
+좌괄호가 인식되었을 경우 depth를 1만큼 증가시키고, 우괄호가 인식되었을 경우 depth를 1만큼 감소시킨다.
+문자열 판별 연산 중 depth가 음수가 된 경우 이는 필요 없는 우괄호가 입력이 더 된 경우이므로 NO를 출력한다.
+문자열 판별 연산이 끝난 후 depth가 0이 아닌 경우 필요…</p>
+  </div>
+</a><a href="https://js970.github.io/1259-paelrinddemicsu/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-04" class="catalogue-time">February  4, 2023</time>
+    <h1 class="catalogue-title">1259 - 팰린드롬수</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 브론즈 1
+날짜: 2023년 2월 4일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+숫자를 입력받은 뒤 10을 곱하는 과정을 통해 몇 자릿수인지 알아낸 후 동적 할당을 통해 해당 자릿수만큼의 크기를 가지는 배열을 생성했다.
+이 배열의 첫 번째 원소와 마지막 원소를 시작으로, 두 번째 원소와 마지막에서 두 번째 원소 … 순으로 탐색하여 서로 다른 숫자가 있는지 탐색했다.
+이를 바탕으로 요구사항에 맞게 출력했다.
+string으로 입력받은 뒤 algorithm의 reve…</p>
+  </div>
+</a><a href="https://js970.github.io/2751-su-jjeonryeolhagi-2/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-04" class="catalogue-time">February  4, 2023</time>
+    <h1 class="catalogue-title">2751 - 수 정렬하기 2</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 5
+날짜: 2023년 2월 4일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+입력받은 숫자를 오름차순으로 정렬하기만 하면 된다.
+priority_queue를 사용하여 정렬하였다.
+다른 사람의 해답을 보니 algorithm헤더의 sort함수를 이용하여 문제를 훨씬 간단하게 해결하였다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+
+using namespace std;
+
+int main()
+{
+    int N…</p>
+  </div>
+</a><a href="https://js970.github.io/2805-namu-jareugi/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-04" class="catalogue-time">February  4, 2023</time>
+    <h1 class="catalogue-title">2805 - 나무 자르기</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 2
+날짜: 2023년 2월 4일
+상태: Correct/Retry
+추가 검토 여부: Yes
+
+solution
+
+문제를 보자마자 1654번 문제와 마찬가지로 이분 탐색을 이용하여 푸는 문제임을 알았다… 그러나…
+이분 탐색을 제대로 이해하지 못한 채 priority_queue를 사용하여 처음에 시간초과가 발생하여 오답
+이분 탐색의 범위를 잘못 설정한 채 계속 오답
+
+시작점과 끝점 설정을 잘못 설정하였다. 그러나 이분 탐색 분기점 코드의 문제로 의심하고 계속 헛짓거리함
+처음 max, mi…</p>
+  </div>
+</a><a href="https://js970.github.io/2839-sseotang-bbadda/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-04" class="catalogue-time">February  4, 2023</time>
+    <h1 class="catalogue-title">2839 - 설탕 배달</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 4일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+5와 3의 최소공배수인 15를 사용하여 문제를 풀이했다.
+어떤 수가 3으로 나누어 떨어지지 않을 때 그 수에서 5를 빼거나 10을 뺀 수도 3으로 나누어 떨어지지 않는다면 해당 수는 $3x + 5y$의 형태로 나타낼 수 없는 수이다.(x, y는 정수)
+봉지를 최소한으로 사용하는 경우는 5kg짜리 봉지를 최대한으로 사용한 경우이다. 이 경우를 찾기 위해 어떤 수가 3으로 나누어 떨어지고 …</p>
+  </div>
+</a><a href="https://js970.github.io/1966-peurinteo-kyu/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-03" class="catalogue-time">February  3, 2023</time>
+    <h1 class="catalogue-title">1966 - 프린터 큐</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 3
+날짜: 2023년 2월 3일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+deque와 priority_queue를 사용했다.
+deque에는 pair&lt;int, int&gt;가 들어간다.
+pair자료구조는 vector, algorithm헤더에 포함되는 자료구조이다.
+pair.first는 priority정보를, pair.second는 index정보를 저장한다.
+priority_queue는 중복을 허용하는 max heap으로 동작할 수 있으므로 이를 dequ…</p>
+  </div>
+</a><a href="https://js970.github.io/1978-sosu-cajgi/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-03" class="catalogue-time">February  3, 2023</time>
+    <h1 class="catalogue-title">1978 - 소수 찾기</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 5
+날짜: 2023년 2월 3일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+N개의 수를 2부터 $\sqrt{N}$까지 1씩 증가시켜가며 나누어 항상 나머지가 존재한다면 소수, 그렇지 않다면 합성수로 분류한다.
+1은 소수도 합성수도 아니므로 예외처리한다.
+굉장히 간단한 문제이고, 위의 알고리즘으로도 제한시간 내에 문제없이 해결 가능하지만 위의 알고리즘보다 세련된 알고리즘을 찾을 수 있을 것 같다.
+
+code
+#include &lt;iostream&gt;
+#in…</p>
+  </div>
+</a><a href="https://js970.github.io/2108-stucggyhag/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-03" class="catalogue-time">February  3, 2023</time>
+    <h1 class="catalogue-title">2108 - 통계학</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 3
+날짜: 2023년 2월 3일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+N개의 입력 정수에 대해 산술평균, 중앙값, 최빈값, 범위를 구하는 문제이다.
+입력과 동시에 sum을 계산하여 산술평균을 구할 수 있다.
+마찬가지로 입력과 동시에 입력의 최댓값 및 최솟값을 구하여 범위를 바로 구할 수 있다.
+priority_queue를 minheap으로 구현하여 증가하는 순서대로 정렬한다. 이후 N/2번만큼 pop연산을 통해 중강값을 구할 수 있다.
+최빈값을 구하기 위…</p>
+  </div>
+</a><a href="https://js970.github.io/2164-kadde-2/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-03" class="catalogue-time">February  3, 2023</time>
+    <h1 class="catalogue-title">2164 - 카드 2</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 3일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+deque자료구조를 사용하여 문제 상황을 그대로 시뮬레이션 하면 시간제한에 걸리지 않게 문제를 해결할 수 있다.
+
+code
+#include &lt;iostream&gt;
+#include &lt;deque&gt;
+using namespace std;
+
+int main()
+{
+    int N;
+    cin &gt;&gt; N;
+    deque&lt;int&gt; deque;
+    f…</p>
+  </div>
+</a><a href="https://js970.github.io/1920-su-cajgi/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-02" class="catalogue-time">February  2, 2023</time>
+    <h1 class="catalogue-title">1920 - 수 찾기</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2023년 2월 2일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+c++ stl : set을 이용했다.
+set의 insert() method를 사용하여 중복 없이 입력받았다.
+set의 find() method를 사용하여 범위 안에서 수가 존재하는지 판단했다.
+로직은 맞았으나 cout, cin의 사용으로 인해 시간초과가 떴다. 이를 printf, scanf로 바꾸니 정답 처리되었다.
+ssh로 띄운 리눅스에서 긁어다 바로 백준 제출창에 붙여버리면 컴파일 …</p>
+  </div>
+</a><a href="https://js970.github.io/1929-sosu-guhagi/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-02" class="catalogue-time">February  2, 2023</time>
+    <h1 class="catalogue-title">1929 - 소수 구하기</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 3
+날짜: 2023년 2월 2일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+더 좋은 알고리즘이 있었던 것으로 기억하지만 에라토스테네스의 채 알고리즘의 단순 구현 버전으로 풀었다.
+해당 범위 내에서 $start$부터 $\sqrt{end}$까지 1씩 증가시켜가며 나머지를 기반으로 소수 여부를 판별했다. 본 문제는 이 알고리즘으로도 해결되었으나, 이보다 훨씬 진보된 소수 탐색 알고리즘을 본 기억이 난다… 후에 참고하자
+1은 소수가 아닌 것을 깜빡하고 1에 대한 예…</p>
+  </div>
+</a><a href="https://js970.github.io/1874-ssetaeg-suhyeo/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-02-01" class="catalogue-time">February  1, 2023</time>
+    <h1 class="catalogue-title">1874 - 스택 수열</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 3
+날짜: 2023년 2월 1일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+stack자료구조를 사용하여 원하는 입력받은 수열을 만드는 문제이다.
+아래와 같이 경우의 수를 나누어 해결했다.
+
+스텍이 빈 경우 → stack에 규칙에 따라 push
+스텍에 원소가 있는 경우
+
+stack top이 조건을 충족하는 경우 → pop or push
+stack top이 조건을 충족하지 않는 경우 → break
+
+
+
+
+cout &lt;&lt; endl;의 구문에서 endl은 버…</p>
+  </div>
+</a><a href="https://js970.github.io/1654-raensseo-jareugi/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-01-31" class="catalogue-time">January 31, 2023</time>
+    <h1 class="catalogue-title">1654 - 랜선 자르기</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 2
+날짜: 2023년 1월 31일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+이진 탐색을 이용하여 조건을 충족하는 가장 큰 수를 탐색하는 문제이다.
+이진 탐색 구현 과정에서 입력값에 대한 형을 명확히 설정해야 한다.
+
+초기 코드에서 int를 써서 오버플로우가 발생하였고 이를 long long int로 변경하니 정상 동작하였다.
+
+
+무한 루프에 빠져 시간 초과가 발생하는 경우를 잘 생각해야 한다.
+
+step-2의 while문에서 무한 루프가 발생하였다. 양 끝…</p>
+  </div>
+</a><a href="https://js970.github.io/1018-cessepan-dasi-cilhagi/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2022-11-01" class="catalogue-time">November  1, 2022</time>
+    <h1 class="catalogue-title">1018 - 체스판 다시 칠하기</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 4
+날짜: 2022년 11월 1일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+모든 경우의 수를 검색하는 부르트포스 알고리즘 문제였다.
+정답 체스판 배열, 입력된 값을 8x8크기로 자르는 함수, 8x8크기로 조정된 입력과 정답을 비교하는 함수를 이용
+정답 체스판 배열의 경우 8x8크기로 고정하여 전역변수로 선언하였다.
+입력을 8x8크기로 자르는 함수의 경우 동적 할당을 사용하여 새로운 배열을 이중 포인터 형태로 반환한다.
+정답을 비교하는 함수는 8x8크기의 두 …</p>
+  </div>
+</a><a href="https://js970.github.io/1436-hyeonhwaggadog-ssyo/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2022-11-01" class="catalogue-time">November  1, 2022</time>
+    <h1 class="catalogue-title">1436 - 영화감독 숌</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 5
+날짜: 2022년 11월 1일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+10000번째 악마의 숫자까지 세야 한다.
+각 자리 숫자를 나타내는 변수 i, j, k, l을 선언한다. 각 변수는 0에서 9의 값을 가질 수 있다.
+devilnum이 저장되는 set 컨테이너 devilnum을 선언한다.
+4중 for문을 선언하여 i, j, k, l의 값을 바꿔 가며 666이 포함된 수를 set에 넣는다.
+set의 insert를 사용하여 삽입 즉시 크기순으로 정렬되도…</p>
+  </div>
+</a><a href="https://js970.github.io/1094-magddagi/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2022-10-31" class="catalogue-time">October 31, 2022</time>
+    <h1 class="catalogue-title">1094 - 막대기</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 5
+날짜: 2022년 10월 31일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+입력값을 저장하는 변수 X를 설정한다.
+반복문을 이용하여 X에서 2의 거듭제곱 값들 중 입력값보다 작거나 같은 값 중 가장 큰 값을 삔다.
+반복문에서 한번 값을 뺀 후에는 count를 1만큼 증가시키고 continue를 이용해 반복문의 끝으로 이동한다.
+X 가 0이 될 경우의 count값이 정답 출력이다.
+
+code
+#include &lt;iostream&gt;
+using names…</p>
+  </div>
+</a><a href="https://js970.github.io/1181-ddaeo-jjeonryeol/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2022-10-31" class="catalogue-time">October 31, 2022</time>
+    <h1 class="catalogue-title">1181 - 단어 정렬</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 5
+날짜: 2022년 10월 31일
+상태: Correct
+추가 검토 여부: Yes
+
+solution
+
+조건이 많은 문제였다.
+조건 1 : 짧은 길이의 단어를 먼저 출력한다.
+
+단어의 최대 길이가 50이었으므로, 1부터 50까지 반복하는 for문을 사용하여 출력할 때 단어의 길이가 짧은 것부터 출력하도록 하였다.
+
+
+조건 2 : 길이가 같은 경우 알파벳 순으로 출력한다.
+
+조건 2를 만족시키기 위해 set 컨테이너의 insert 메소드를 사용하였다.
+
+
+조건 3 : 알파벳 소문자로 …</p>
+  </div>
+</a><a href="https://js970.github.io/1010-dari-nohgi/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2022-10-30" class="catalogue-time">October 30, 2022</time>
+    <h1 class="catalogue-title">1010 - 다리 놓기</h1>
+    <div class="catalogue-line"></div>
+    <p>
+난이도: 실버 5
+날짜: 2022년 10월 30일
+상태: Correct
+추가 검토 여부: No
+
+solution
+
+문제를 읽어보면 결국 combination계산 한번으로 문제의 정답을 구할 수 있음을 알 수 있다.
+최대 입력이 ${}{30}C{15}$이고 제한 시간은 0.5초이므로 일반적인 재귀 함수 형태로 구현하면 시간 내에 정답을 구할 수 없다.
+조합의 기본 공식인 ${}{n}C{r} = {}{n-1}C{r-1} + {}{n-1}C{r}$을 사용하여 해결한다.
+위 공식을 사용하여 재귀 함수로…</p>
+  </div>
+</a>
+</div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

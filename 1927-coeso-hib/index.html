@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>1927 - 최소 힙 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="1927 - 최소 힙">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/1927-coeso-hib/">
+<meta property="og:url" content="https://js970.github.io/1927-coeso-hib/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-03T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="1927 - 최소 힙">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/1927-coeso-hib/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "1927 - 최소 힙"
+  
+    
+    
+      "datePublished":"2023-03-03T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/1927-coeso-hib/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-03">March  3, 2023</time>
+  	</div>
+  	<h1 class="post-title">1927 - 최소 힙</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 2</li>
+<li>날짜: 2023년 3월 3일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No </li>
+<li>알고리즘 : queue, heap</li>
+</ul>
+<h1 id="solution">Solution</h1>
+<ul>
+<li>그냥 priority_queue를 선언하여 시키는 대로 풀면 되는 매우 간단한 문제이다.</li>
+<li>'\n'을 사용하지 않고 endl로 리턴했다가 시간초과를 한 번 봤다. 주의하자</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">queue</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    ios::</span><span style="color:#bf616a;">sync_with_stdio</span><span>(</span><span style="color:#d08770;">false</span><span>);
+</span><span>    cin.</span><span style="color:#bf616a;">tie</span><span>(</span><span style="color:#d08770;">NULL</span><span>);
+</span><span>    cout.</span><span style="color:#bf616a;">tie</span><span>(</span><span style="color:#d08770;">NULL</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> N;
+</span><span>    cin &gt;&gt; N;
+</span><span>    priority_queue&lt;</span><span style="color:#b48ead;">int</span><span>, vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt;, greater&lt;</span><span style="color:#b48ead;">int</span><span>&gt;&gt; pq;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N; i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">int</span><span> num;
+</span><span>        cin &gt;&gt; num;
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(num == </span><span style="color:#d08770;">0 </span><span>&amp;&amp; !pq.</span><span style="color:#bf616a;">empty</span><span>())
+</span><span>        {
+</span><span>            cout &lt;&lt; pq.</span><span style="color:#bf616a;">top</span><span>() &lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>            pq.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>(num == </span><span style="color:#d08770;">0 </span><span>&amp;&amp; pq.</span><span style="color:#bf616a;">empty</span><span>()) cout &lt;&lt; </span><span style="color:#d08770;">0 </span><span>&lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>        </span><span style="color:#b48ead;">else</span><span> pq.</span><span style="color:#bf616a;">push</span><span>(num);
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/1927">1927번: 최소 힙</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

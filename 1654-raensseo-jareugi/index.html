@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>1654 - 랜선 자르기 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="1654 - 랜선 자르기">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/1654-raensseo-jareugi/">
+<meta property="og:url" content="https://js970.github.io/1654-raensseo-jareugi/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-01-31T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="1654 - 랜선 자르기">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/1654-raensseo-jareugi/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "1654 - 랜선 자르기"
+  
+    
+    
+      "datePublished":"2023-01-31T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/1654-raensseo-jareugi/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-01-31">January 31, 2023</time>
+  	</div>
+  	<h1 class="post-title">1654 - 랜선 자르기</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 2</li>
+<li>날짜: 2023년 1월 31일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: Yes</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>이진 탐색을 이용하여 조건을 충족하는 가장 큰 수를 탐색하는 문제이다.</li>
+<li>이진 탐색 구현 과정에서 입력값에 대한 형을 명확히 설정해야 한다.
+<ul>
+<li>초기 코드에서 int를 써서 오버플로우가 발생하였고 이를 long long int로 변경하니 정상 동작하였다.</li>
+</ul>
+</li>
+<li>무한 루프에 빠져 시간 초과가 발생하는 경우를 잘 생각해야 한다.
+<ul>
+<li>step-2의 while문에서 무한 루프가 발생하였다. 양 끝값 모두에 대한 조건을 설정하니 정상 동작하였다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#65737e;">// input
+</span><span>    </span><span style="color:#b48ead;">int</span><span> number_of_cable;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> required_cable;
+</span><span>    cin &gt;&gt; number_of_cable;
+</span><span>    cin &gt;&gt; required_cable;
+</span><span>    </span><span style="color:#b48ead;">int </span><span>* current_cable_length = </span><span style="color:#b48ead;">new int</span><span>[number_of_cable];
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; number_of_cable; i++)
+</span><span>        cin &gt;&gt; current_cable_length[i];
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// figure longest cable
+</span><span>    </span><span style="color:#b48ead;">long long int</span><span> longest_cable_index = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">1</span><span>; i &lt; number_of_cable; i ++)
+</span><span>        longest_cable_index = (current_cable_length[longest_cable_index] &lt; current_cable_length[i]) ? i : longest_cable_index;
+</span><span>    </span><span style="color:#b48ead;">long long int</span><span> longest_cable_length = current_cable_length[longest_cable_index];
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// step 1 - set bottom edge
+</span><span>    </span><span style="color:#b48ead;">int</span><span> piece = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">long long int</span><span> current_divided_cable = longest_cable_length;
+</span><span>    </span><span style="color:#b48ead;">while</span><span>(piece &lt; required_cable)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; number_of_cable; i++)
+</span><span>            piece += current_cable_length[i] / current_divided_cable;
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(piece &lt; required_cable) 
+</span><span>        {
+</span><span>            current_divided_cable /= </span><span style="color:#d08770;">2</span><span>;
+</span><span>            piece = </span><span style="color:#d08770;">0</span><span>;
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// step 2 - search optimal value from bottom edge to top edge, top edge = bottom edge * 2
+</span><span>    </span><span style="color:#b48ead;">long long int</span><span> previous_diveded_cable = current_divided_cable * </span><span style="color:#d08770;">2</span><span>;
+</span><span>    </span><span style="color:#b48ead;">long long int</span><span> middle_value = (previous_diveded_cable + current_divided_cable) / </span><span style="color:#d08770;">2</span><span>;
+</span><span>    piece = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">while</span><span>((current_divided_cable != middle_value) &amp;&amp; (previous_diveded_cable != middle_value))
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; number_of_cable; i++)
+</span><span>            piece += current_cable_length[i] / middle_value;
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(piece &lt; required_cable)
+</span><span>        {
+</span><span>            previous_diveded_cable = middle_value;
+</span><span>            middle_value = (current_divided_cable + middle_value) / </span><span style="color:#d08770;">2</span><span>;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else
+</span><span>        {
+</span><span>            current_divided_cable = middle_value;
+</span><span>            middle_value = (middle_value + previous_diveded_cable) / </span><span style="color:#d08770;">2</span><span>;
+</span><span>        }
+</span><span>        piece = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// print output
+</span><span>    cout &lt;&lt; current_divided_cable &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<aside>
+💡 리펙토링을 의식하여 코드를 작성하였다. 하지만 그것을 감안하더라도 알고리즘이 지나치게 복잡한 감이 있다. 함수를 구현하고, 필요없는 부분(figure longest cable)을 없엔다면 훨신 단순한 코드로 동작하는 정답을 구현 가능할 것으로 생각된다.
+</aside>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/1654">1654번: 랜선 자르기</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

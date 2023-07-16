@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>프로그래밍언어론 2023-03-07 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="프로그래밍언어론 2023-03-07 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/3-7-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/3-7-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-07T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="프로그래밍언어론 2023-03-07 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/3-7-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "프로그래밍언어론 2023-03-07 수업정리"
+  
+    
+    
+      "datePublished":"2023-03-07T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/3-7-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-07">March  7, 2023</time>
+  	</div>
+  	<h1 class="post-title">프로그래밍언어론 2023-03-07 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>프로그래밍 언어의 역할</li>
+<li>프로그래밍 언어에 대해 공부해야 하는 이유</li>
+<li>수많은 프로그래밍 언어를 어떻게 다루어야 하나?</li>
+<li>Requirements &amp; Constraints</li>
+<li>프로그래밍 언어에 대한 평가</li>
+</ul>
+<h2 id="peuroggeraeonco-heoeoyi-hyeohal">프로그래밍 언어의 역할</h2>
+<hr />
+<ul>
+<li>사람과 기계 사이의 의사 소통이 가능하게 한다.(단방향)</li>
+<li>사람과 사람 사이의 의사소통이 가능하게 한다.(양방향)
+<ul>
+<li>다른 사람이 본인의 코드를 쉽게 이해할 수 있다.</li>
+</ul>
+</li>
+<li>프로그래머가 프로그램을 쉽게 작성할 수 있는가? -&gt; writability</li>
+<li>다른 프로그래머가 자신의 코드를 쉽게 이해할 수 있는가? -&gt; readability
+<ul>
+<li>readability의 향상을 위해 IAL(International Algol Language)가 있다.</li>
+<li>실제로는 거의 사용되지 않았다.</li>
+<li>이후 이 언어의 영향을 받아 Pascal, C등 High Level Language로의 발전이 이루어졌다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="peuroggeraeonco-heoeoreul-ggonbuhaeya-haneun-iyu">프로그래밍 언어를 공부해야 하는 이유</h2>
+<hr />
+<blockquote>
+<p>&quot;The limits of my language mean the limits of my world.&quot; - Wittgenstein(1989~1951) </p>
+</blockquote>
+<ul>
+<li>새로운 언어에 의해 사고가 확장될 수 있다.</li>
+<li>더 효율적으로 문제를 풀어낼 수 있다.</li>
+<li>더 효율적으로 언어를 선택할 수 있다.</li>
+<li>더 효율적으로 언어를 학습할 수 있다.</li>
+<li>더 효율적으로 언어를 사용할 수 있다.</li>
+<li>더 효율적으로 언어를 작성할 수 있다.</li>
+<li>더 효율적으로 관리할 수 있다.</li>
+</ul>
+<h2 id="heoeoe-ddahan-jjeoggeu">언어에 대한 접근</h2>
+<hr />
+<ul>
+<li>프로그래머와 컴퓨터를 잇는 다리 역할을 한다.
+<img src="/image/PL/bridging_the_gap.png" alt="bridging the gap" /></li>
+<li>어떠한 도메인에 사용되는가?
+<ul>
+<li>Scientific, Buisness, AI, Graphics, Embedded Systems, web Applications, System Programming, Script ...</li>
+</ul>
+</li>
+<li>어떠한 패러다임을 따르는가?
+<ul>
+<li>Procedural, Functional, Module-Based, Object-Oriented, Imperative, Declarative ...</li>
+</ul>
+</li>
+<li>어떠한 컴퓨터 구조 모델을 따르는가?
+<ul>
+<li>Imperative(폰 노이만 구조), Functional($\lambda$), Logic(deductive logic) ...</li>
+</ul>
+</li>
+</ul>
+<h2 id="requirements-constraints">Requirements &amp; Constraints</h2>
+<hr />
+<ul>
+<li>프로그래머는 Requirements에 맞는 Programming Language를 선택한다.</li>
+<li>Computer Architecture는 Programming Language에 Constraint를 부여한다.</li>
+<li>이를 도식으로 나타내면 아래와 같다.
+<img src="/image/PL/requirements&amp;constraints.png" alt="Requirements and Constrains" /></li>
+</ul>
+<h2 id="peuroggeraeonco-heoeoe-ddahan-pyeongga">프로그래밍 언어에 대한 평가</h2>
+<hr />
+<ul>
+<li>프로그래밍 언어는 다음과 같은 세 가지의 기본 요구사항이 존재한다.
+<ul>
+<li>Expressiveness - 표현력</li>
+<li>Maintainability - 유지보수성</li>
+<li>Executability - 실행가능성</li>
+</ul>
+</li>
+<li>위의 세 가지 요소가 적절히 섞인(?) 프로그래밍 언어가 좋은 프로그래밍 언어이다.</li>
+<li>프로그래밍 언어의 평가 기준은 다음과 같다.
+<img src="/image/PL/language_evaluation_criteria.png" alt="Language Evaluation Criteria" /></li>
+<li>이런 평가기준은 논쟁 가능성이 높지만 그래도 대부분이 동의하는 기준이다.</li>
+<li>이 이외에도 많은 평가 특성(속성) 을 바탕으로 평가한다.
+<ul>
+<li>Orthogonality</li>
+<li>Abstraction</li>
+<li>Homoiconicity</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

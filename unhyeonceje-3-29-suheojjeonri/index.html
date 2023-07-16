@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>운영체제 2023-03-29 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="운영체제 2023-03-29 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/unhyeonceje-3-29-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/unhyeonceje-3-29-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-29T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="운영체제 2023-03-29 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/unhyeonceje-3-29-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "운영체제 2023-03-29 수업정리"
+  
+    
+    
+      "datePublished":"2023-03-29T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/unhyeonceje-3-29-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-29">March 29, 2023</time>
+  	</div>
+  	<h1 class="post-title">운영체제 2023-03-29 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Thread &amp; Multithreaded Process</li>
+<li>Multicore Programming</li>
+<li>Process vs Thread</li>
+<li>Multithreading Models</li>
+<li>Virtualization</li>
+</ul>
+<h2 id="thread">Thread</h2>
+<hr />
+<h3 id="thread-1">Thread</h3>
+<ul>
+<li>Software적으로 병렬화를 제공하는 방법이다.</li>
+<li>CPU Utilization의 기본 단위이다.
+<ul>
+<li>Single Processer환경에서도 Thread를 이용하면 Concurrency를 보장하여 한 번에 여러 동작을 하는 것처럼 보이게 할 수 있다.</li>
+</ul>
+</li>
+<li>Thread ID, Program Counter, Register set, Stack으로 구성된다.</li>
+<li>프로세스와 비슷하지만, 동일 프로세스의 thread간에는 일부 자원의 공유가 가능하다.
+<ul>
+<li>Code section, data section, other operating system resources</li>
+<li>메모리 절약(운영체제의 역할) 등 이점이 있다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="threadreul-sahyonhahye-heoneun-ijjeo">Thread를 사용하여 얻는 이점</h3>
+<ul>
+<li>Responsiveness - 반응이 빠르다.
+<ul>
+<li>프로세스의 일부가 blocking되는 경우, thread가 없다면 프로세스 전체가 멈춰야 한다. 하지만  thread를 활용한다면 하나의 프로세스 내에서 동시성을 제공할 수 있다.</li>
+</ul>
+</li>
+<li>Resource Sharing
+<ul>
+<li>자원을 공유함으로써 메모리 관점에서도 이득을 볼 수 있다.</li>
+</ul>
+</li>
+<li>Economy
+<ul>
+<li>Thread를 사용함으로써 context switching time을 최소화할 수 있다.
+<ul>
+<li>context switching과정에서 thread간 공유하고 있는 자원이 있기 때문에 context switching에 소모되는 시간을 줄일 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Scalability
+<ul>
+<li>병렬화를 통해 확장성을 증가시킨다.</li>
+<li>multiprocess architecture에서 hardward적인 병렬화 뿐만 아니라 Thread를 통한 소프트웨어적인 병렬화 까지 더해 병렬화의 효과를 극대화할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="multithreaded-process">Multithreaded Process</h3>
+<ul>
+<li>아래 그림은 single thread process를 나타낸 것이다. CPU는 한 번에 하나의 동작만 수행한다.<img src="/image/OS/single_threaded_process.png" alt="Single Thread Process" /></li>
+<li>아래 그림은 multithreaded process를 나타낸 것이다. <img src="/image/OS/multithreaded_process.png" alt="Multithreaded Process" />
+<ul>
+<li>Multithreaded Process는 같은 프로세스 내에서 code, data, files를 공유한다.</li>
+<li>register set, stack은 각 thread가 독립적으로 가진다.</li>
+<li>이러한 multithreaded process로 구성함으로써, single processor내에서도 concurrency를 보장할 수 있다.</li>
+<li>또한 code, data, files에 대한 공유를 통해 메모리 자원을 아낄 수 있으며, context switching에 소모되는 시간을 줄일 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="multicore-programming">Multicore Programming</h2>
+<hr />
+<h3 id="concurrency">Concurrency</h3>
+<ul>
+<li>한 번에 여러 개의 동작(task)를 동시에 수행하는 것을 의미한다.</li>
+<li>multithreaded구성을 통해 Single Processor에서도 concurrency가 보장된다.</li>
+<li>하지만 single core환경에서는 아래와 같이 겉보기에는 동시에 task를 수행하는 것처럼 보여질 수 있으나, 물리적으로는 순서는 뒤바뀌더라도 한 번에 하나의 thread만 실행 가능하다.<img src="/image/OS/single_core.png" alt="Single Core" /></li>
+</ul>
+<h3 id="parallelism">Parallelism</h3>
+<ul>
+<li>parallelism(병렬화)는 system이 한 개 이상의 task를 동시에 처리하는 것을 의미한다.</li>
+<li>multicore system에서 parallel execution은 아래와 같이 이루어진다.<img src="/image/OS/multicore.png" alt="Multi Process" /></li>
+<li>이런 식의 multiprocessor system에서는 아래의 issue에 대해 생각해 봐야 한다.
+<ul>
+<li>Dividing activities - 역할 분담</li>
+<li>Balance - 어떻게 thread를 분배할지 고려</li>
+<li>Data splitting - 데이터 관점에서의 활용</li>
+<li>Data dependency - 데이터 의존성 고려</li>
+<li>Testing &amp; Debugging을 통한 실제 검증</li>
+</ul>
+</li>
+<li>Parallelism은 아래와 같이 두개의 범주로 나눌 수 있다.
+<ul>
+<li>Data parallelism(같은 동작을 수행할 경우)
+<ul>
+<li>멀티코어 상에서 data dependency를 고려해서 각 프로세스에서 같은 operation을 수행하지만 서로 다른 데이터를 처리하도록 병렬화를 구성할 수 있다.</li>
+</ul>
+</li>
+<li>Task parallelism(다른 동작을 수행할 경우)
+<ul>
+<li>각 thread가 unique operation을 수행하도록 서로 다른 task를 각 processor에서 실행하도록 병렬화를 구성할 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="amdahl-s-law">Amdahl's Law</h3>
+<ul>
+<li>프로그램 상에서 병렬화가 불가능한 부분의 비율을 S라고 했을 때 성능 향상을 가늠할 수 있다.
+$$speedup \leq \frac{1}{S+\frac{(1-S)}{N}}$$</li>
+<li>암달의 법칙에 의하면, 멀티코어 환경에서 실행하는 어떤 프로그램의 75%가 병렬화 가능할 경우 최대 성능 향상치는 아래와 같다.$$speedup \leq \frac{1}{0.25+\frac{0.75}{2}} = 1.6$$
+<ul>
+<li>즉, 다른 변수가 없을 떄, single core -&gt; dual core가 되면 성능 향상치는 1.6배이다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="process-vs-thread">Process vs Thread</h2>
+<hr />
+<ul>
+<li>Process 는 기본적으로 independent하여 서로 자원을 공유하지 않는다. 반면 Thread는 code, data영역을 공유하고 있다.</li>
+<li>Process switching은 OS와의 상호작용을 필요로 한다. 반면 ,Thread switching은 OS와의 상호작용 없이 일어날 수 있다.</li>
+<li>같은 코드를 실행하는 프로세스일 경우에도 각각의 프로세스는 독립적인 메모리 공간과 파일 자원을 가진다. 반면, thread는 open files 및 자식 프로세스에 관해 공통 자원을 가진다.</li>
+<li>thread를 사용하지 않는 multi process 실행은 thread를 사용하는 경우보다 더 많은 자원을 소모한다.</li>
+</ul>
+<h2 id="multithreading-models">Multithreading Models</h2>
+<hr />
+<h3 id="user-thread-vs-kernel-thread">User Thread vs Kernel Thread</h3>
+<ul>
+<li>thread는 User Thread와 Kernel Thread가 존재한다.</li>
+<li>User Thread는 user level의 thread library에서 관리되는 thread이다.
+<ul>
+<li>POSIX Pthread(POSIX), WIN32 thread(Windows), Java Thread(JVM)</li>
+</ul>
+</li>
+<li>Kernel Thread는 operating system에서 직접 관리되고 지원하는 thread이다.
+<ul>
+<li>Windows XP/2000, Solaris, Linux, Mac OS X</li>
+</ul>
+</li>
+<li>User level thread만 가지고는 Concurrency를 보장할 수 없다. 자원에 대한 접근을 위해서는 Kernel영역에서 자원을 해야 한다. Kernel level에서 thread를 지원하지 않는다면, User level thread에서 요청을 하더라도 실제 자원에 대한 접근은 한번에 하나밖에 처리하지 못한다.</li>
+</ul>
+<h3 id="biggy">비교</h3>
+<ul>
+<li>User Level Thread는 생성 및 관리가 Kernel Level Thread에 비해 상대적으로 빠르다.</li>
+<li>User Level Thread는 Thread Library에 의해 구현 및 지원되지만, Kernel Level Thread는 Operating System에서 지원한다.</li>
+<li>User Level Thread Operating System위에서 동작하기 때문에 어떤 운영 체제 위에서도 동작한다. 반면 Kernel Level Thread는 각 Operating System에서 지원해 줘야 동작 가능하다.(OS 종속적이다.)</li>
+<li>User Level Thread만으로는 Multithreaded application은 multiprocessing의 효과를 누릴 수 없다. 이를 위해서는 결국 Kernel Level Thread를 지원해야 한다.</li>
+</ul>
+<h3 id="many-to-one-model">Many-to-One Model</h3>
+<p><img src="/image/OS/many_to_one.png" alt="Many-to-One Model" /></p>
+<ul>
+<li>User Tread는 여러 개가 존재하지만, Kernel Thread는 하나만 존재하는 모델</li>
+<li>User Level에서의 병렬화는 가능하지만, Kernel 요청을 처리할 수 있는 Thread가 하나밖에 없어서 병목 현상이 발생한다.</li>
+<li>blocking system call발생 시 모든 프로세스가 block되는 구조이므로 병렬화 자체가 불가능하다.
+<ul>
+<li>multiprocessing의 장점을 전혀 살릴 수 없다. 효율성이 굉장히 떨어진다.</li>
+</ul>
+</li>
+<li>성능은 떨어지지만, Kernel 생성 과정에서의 오버헤드가 낮다는 특징이 있다.</li>
+<li>Solaris Green Threads, GNU Portable Threads가 이 모델을 사용한다.</li>
+</ul>
+<h3 id="one-to-one-model">One-to-One Model</h3>
+<p><img src="/image/OS/one_to_one.png" alt="One-to-One Model" /></p>
+<ul>
+<li>User Thread와 Kernel Thread가 1:1로 매핑되는 모델</li>
+<li>Kernel 자원을 과도하게 많이 사용한다는 단점이 있다.</li>
+<li>Kernel자체의 자원은 제한적일 수 밖에 없으므로, thread생성에 개수 상한이 있다.</li>
+<li>Windows, Linux, Solaris 9~ 에서 이러한 모델을 사용한다.</li>
+<li>그렇게 바람직한 모델은 아니다.</li>
+</ul>
+<h3 id="many-to-many-model">Many-to-Many Model</h3>
+<p><img src="/image/OS/many_to_many.png" alt="Many-to-Many Model" /></p>
+<ul>
+<li>User Thread의 수에 대헤 충분한 Kernel Thread가 존재하는 형태
+<ul>
+<li>User Thread : n, Kernel Thread : m 일때, n &gt; m이다.</li>
+</ul>
+</li>
+<li>Solaris 9이전 버전, Windows의 ThreadFiber package가 이런 모델이다.</li>
+</ul>
+<h3 id="two-level-model">Two-Level Model</h3>
+<p><img src="/image/OS/two-level.png" alt="Two-level Model" /></p>
+<ul>
+<li>Many-to-Many Model의 일종이다.</li>
+<li>independent하게 동작해야 할 경우에 1:1model구조로 동작하고, many-to-many model구조 역시 채택했다. many-to-many의 문제점이기도 한 오버헤드 문제 때문에, 생성 가능한 Kernel Thread의 개수는 제한된다.</li>
+<li>보통 서버 급의 컴퓨터에 사용되는 모델이다.</li>
+<li>IRIX, HP-UX, Tru64 UNIX, Solaris 8이전 모델에 적용된 모델이다.</li>
+</ul>
+<h3 id="thread-ssaensseon-bbanssi">Thread 생성 방식</h3>
+<ul>
+<li>Thread Pools : 여러 개의 thread를 생성해 놓고 pool에 저장하는 방법
+<ul>
+<li>필요할 때마다 생성하면 오버헤드가 발생한다.</li>
+<li>여러 개의 thread를 미리 생성해 놓고 사용한다.</li>
+</ul>
+</li>
+<li>OpenMP : Shared Memory 환경에서 병렬 프로그램을 제공하기 위해 사용하는 thread 생성 방법</li>
+<li>Grand Central Dispatch : Mac OS X, iOS등에서 사용하는 thread 생성 방법</li>
+<li>앞서 설명한 3가지 생성 방식 이외에도 수많은 thread 생성 방법이 존재한다.</li>
+</ul>
+<h2 id="virtualization">Virtualization</h2>
+<hr />
+<ul>
+<li>User Level에서는 웹 브라우저, 게임, 음악 등 수많은 process가 동작한다. 이 모든 process는 system call을 통해 OS에 CPU, Memory, I/O등 hardware resources를 요구한다.</li>
+<li>하드웨어 자원은 제한되어 있다. 하지만 Virtualization(병렬화)를 통해 소프트웨어 관점에서는 마치 동시에 모든 동작을 처리하는 것처럼 보이게 할 수 있다.</li>
+</ul>
+<blockquote>
+<p>The Crux of Problem : <strong>How</strong> to Provide the Illusion of Many CPU's?</p>
+</blockquote>
+<h3 id="interleaving-multiple-process">Interleaving Multiple Process</h3>
+<p><img src="/image/OS/interleaving_multiple_process.png" alt="Interleaving Multiple Process" /></p>
+<ul>
+<li>CPU가 각 thread를 순서대로 실행하는 방법이다.</li>
+<li>성능이 떨어질 수밖에 없으며, 사용자 역시 프로그램이 동시에 실행되고 있다는 느낌을 받을 수 없다.</li>
+<li>CPU에서 Time sharing 이 일어나고 있다고 말할 수 없다.</li>
+</ul>
+<h3 id="virtualizing-the-cpu">Virtualizing the CPU</h3>
+<p><img src="/image/OS/virtualizing_cpu.png" alt="Virtualizing the CPU" /></p>
+<ul>
+<li>OS를 통해 각각의 Process가 각자의 CPU를 가지고 있는 것처럼 동작한다.</li>
+<li>실제 물리적인 자원은 하나지만, 마치 각 프로세스가 동시에 실행되는 것처럼 보이게 한다.</li>
+<li>제어 권한은 OS에서 할당하기 때문에 A, B가 순서대로 실행되지 않는다.
+<ul>
+<li>A, A, B, A, B, B, B, B, A, B, A, B, A, A ... 이런 식으로 두서 없이(?) 동작하는 것처럼 보인다.</li>
+<li>당시의 프로세스 상황, 메모리 상황 등 여러 요인에 의해 결정된다.</li>
+<li>실행 시마다 실행 순서가 달라진다.(상황이 변하기 때문)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>OS creates the <strong>illusion</strong> that each process has its own CPU(and memory)</p>
+</blockquote>
+<h3 id="memory-virtualization">Memory Virtualization</h3>
+<ul>
+<li>CPU Virtualization과 마찬가지로, 실제 하드웨어 상의 메모리 공간은 같지만, OS가 virtualization을 통해 각 프로세스가 각각의 메모리 주소 공간을 가지는 것처럼 보이게 한다.</li>
+<li>아래 프로그램을 여러 개 동시에 실행시켜 보면(./mem &amp;; ./mem &amp;) 서로 다른 프로세스에서 같은 물리적 메모리 공간을 사용하는 것을 확인할 수 있다.</li>
+<li>이는 logical address 가 physical address로 대응되기 때문에 가능하다.</li>
+</ul>
+<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">unistd.h</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">stdio.h</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">stdlib.h</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">common.h</span><span>&quot;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">argc</span><span>, </span><span style="color:#b48ead;">char </span><span>*</span><span style="color:#bf616a;">argv</span><span>[]) 
+</span><span>{
+</span><span>	</span><span style="color:#b48ead;">int </span><span>*p = </span><span style="color:#96b5b4;">malloc</span><span>(sizeof(</span><span style="color:#b48ead;">int</span><span>));
+</span><span>	</span><span style="color:#96b5b4;">assert</span><span>(p != </span><span style="color:#d08770;">NULL</span><span>);
+</span><span>	</span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#a3be8c;">(</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">) address of p : </span><span style="color:#d08770;">%08x</span><span style="color:#96b5b4;">\n</span><span>&quot;, </span><span style="color:#bf616a;">getpid</span><span>(), (</span><span style="color:#b48ead;">unsigned</span><span>)p);
+</span><span>	
+</span><span>	*p = </span><span style="color:#d08770;">0</span><span>;
+</span><span>	</span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">1</span><span>) {
+</span><span>		</span><span style="color:#bf616a;">Spin</span><span>(</span><span style="color:#d08770;">1</span><span>);
+</span><span>		*p = *p + </span><span style="color:#d08770;">1</span><span>;
+</span><span>		</span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#a3be8c;">(</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">) p: </span><span style="color:#d08770;">%d</span><span style="color:#96b5b4;">\n</span><span>&quot;, </span><span style="color:#bf616a;">getpid</span><span>(), *p);
+</span><span>	}
+</span><span>	</span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

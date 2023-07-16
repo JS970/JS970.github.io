@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>소프트웨어시스템설계 2023-03-06 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="소프트웨어시스템설계 2023-03-06 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/3-6-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/3-6-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-06T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="소프트웨어시스템설계 2023-03-06 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/3-6-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "소프트웨어시스템설계 2023-03-06 수업정리"
+  
+    
+    
+      "datePublished":"2023-03-06T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/3-6-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-06">March  6, 2023</time>
+  	</div>
+  	<h1 class="post-title">소프트웨어시스템설계 2023-03-06 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Readability &amp; Understandability</li>
+<li>Refactoring</li>
+</ul>
+<h2 id="readability">Readability</h2>
+<hr />
+<ul>
+<li>local variable, constant등 코드 내의 각 요소들을 쉽게 파악할 수 있는 정도이다.</li>
+<li>readability가 좋은 코드는 변수 등의 위치를 바로바로 파악 가능하다.</li>
+<li>일관성 있는 코드 스타일의 사용을 통해 readability를 보장할 수 있다. (줄바꾸기, 들여쓰기 등)
+<ul>
+<li>코드 스타일은 언어마다 정해진 코드 스타일이 있다. 이를 준수하면 된다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="underatandability">Underatandability</h2>
+<hr />
+<ul>
+<li>Understandability는 코드의 &quot;역할&quot; 을 쉽게 이해할 수 있는 정도이다.</li>
+<li>아래 코드에서 코드를 따로 들여다보지 않고는 doSomething이라는 함수의 기능을 바로 이해할 수 없다. 따라서 아래 코드는 Readable한 코드일지는 몰라도 understandability는 좋지 않다.<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">double[] </span><span style="color:#bf616a;">doSomething</span><span>(</span><span style="color:#b48ead;">int</span><span> x1, </span><span style="color:#b48ead;">int</span><span> x2, </span><span style="color:#b48ead;">int</span><span> x3){
+</span><span>	</span><span style="color:#b48ead;">double</span><span> y[] = </span><span style="color:#b48ead;">new double</span><span>[</span><span style="color:#d08770;">2</span><span>];
+</span><span>	</span><span style="color:#b48ead;">double </span><span style="color:#ebcb8b;">Q </span><span>= x2*x2 - </span><span style="color:#d08770;">4</span><span>*x1*x3;
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#ebcb8b;">Q </span><span>&gt; </span><span style="color:#d08770;">0</span><span>){
+</span><span>		y[</span><span style="color:#d08770;">0</span><span>] = (-x2 + </span><span style="color:#ebcb8b;">Math</span><span>.</span><span style="color:#bf616a;">sqrt</span><span>(</span><span style="color:#ebcb8b;">Q</span><span>)) / (</span><span style="color:#d08770;">2</span><span>*x1);
+</span><span>		y[</span><span style="color:#d08770;">1</span><span>] = (-x2 - </span><span style="color:#ebcb8b;">Math</span><span>.</span><span style="color:#bf616a;">sqrt</span><span>(</span><span style="color:#ebcb8b;">Q</span><span>)) / (</span><span style="color:#d08770;">2</span><span>*x1);
+</span><span>	} </span><span style="color:#b48ead;">else if</span><span>(</span><span style="color:#ebcb8b;">Q </span><span>== </span><span style="color:#d08770;">0</span><span>)
+</span><span>		y[</span><span style="color:#d08770;">0</span><span>] = y[</span><span style="color:#d08770;">1</span><span>] = (-x2) / (</span><span style="color:#d08770;">2</span><span>*x1);
+</span><span>	</span><span style="color:#b48ead;">return</span><span> y;
+</span><span>}
+</span></code></pre>
+</li>
+<li>위 코드를 refactoring을 통해 의미 있는 함수 이름(quadraticEquation(int a, int b, int c))로 바꿔 준다면 understandability를 높일 수 있다.</li>
+<li>switch문의 사용 역시 결국 상황에 따른 복잡한 기능을 구현하는 것이므로 poor understandability라고 할 수 있다. 이렇듯 understandability가 좋지 않은 코드는 주석을 통해 코드의 역할을 설명하게 된다. 하지만 이는 근본적인 해결법이라고 할 수 없다.</li>
+<li>근본적인 해결을 위해서는 refactoring을 통해 코드의 구조를 수정해야 한다.</li>
+</ul>
+<h2 id="refactoring">Refactoring</h2>
+<hr />
+<ul>
+<li>코드 refactoring은 기존 코드의 기능을 유지하면서 변수나 함수의 이름 변경, 함수의 추출, superclass의 추출 등을 통해 코드의 구조를 변경하는 행위이다.</li>
+<li>이를 통해 코드의 질적 향상이 가능하다.</li>
+<li>결과적으로 Refactoring을 통해 코드의 understandability와 modifiability를 높일 수 있다.
+<ul>
+<li>다른 말로 유지 보수성을 높일 수 있다.</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

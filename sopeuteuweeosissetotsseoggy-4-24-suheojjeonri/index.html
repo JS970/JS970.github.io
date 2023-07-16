@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>소프트웨어시스템설계 2023-04-24 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="소프트웨어시스템설계 2023-04-24 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/sopeuteuweeosissetotsseoggy-4-24-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/sopeuteuweeosissetotsseoggy-4-24-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-24T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="소프트웨어시스템설계 2023-04-24 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/sopeuteuweeosissetotsseoggy-4-24-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "소프트웨어시스템설계 2023-04-24 수업정리"
+  
+    
+    
+      "datePublished":"2023-04-24T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/sopeuteuweeosissetotsseoggy-4-24-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-24">April 24, 2023</time>
+  	</div>
+  	<h1 class="post-title">소프트웨어시스템설계 2023-04-24 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>SDLC</li>
+<li>Unit Testing</li>
+<li>JUnit 을 이용한 Unit Testing</li>
+</ul>
+<h2 id="sdlc-software-developement-life-cycle">SDLC(Software Developement Life Cycle)</h2>
+<hr />
+<ul>
+<li>구조도의 그림이 V형태여서 V-model이라고도 한다.<img src="/image/SSD/SDLC.png" alt="SDLC" />
+<ul>
+<li>Acceeptance Testing의 경우에는 defect를 찾는 것이 목적이 아니다. User Requirements에 부합하는지 검사하는 것이 목적이다.</li>
+<li>System Testing, Integration Testing, Unit Testing은 defect를 찾는 것이 목적이다.</li>
+<li>각각의 Test Basis에 맞는 Testing방법을 사용하여 테스트한다.</li>
+</ul>
+</li>
+<li>테스트의 성공은 의미가 없다.
+<ul>
+<li>Test Case를 올바르게 선정하여 Robustness(강건성)을 테스트 하는 것이 목표이다.</li>
+<li>올바르지 않은 입출력, 경계값 등을 이용한다.</li>
+<li>Fail이 Test의 Success를 이끌어 내는 데 도움이 된다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="unit-testing">Unit Testing</h2>
+<hr />
+<ul>
+<li>function, class등의 단위 테스팅에 대한 내용이다.</li>
+<li>어떤 모듈(function, class)이 요구사항의 specification대로 동작하는지 검사하는 과정이다.</li>
+</ul>
+<h3 id="iut-implementation-under-test">IUT(Implementation Under Test)</h3>
+<ul>
+<li>테스트를 위한 코드이다.</li>
+<li>베릴로그 모듈 테스트에서 시스템 베릴로그로 작성한 테스트벤치를 생각하면 이해하기 쉽다.</li>
+</ul>
+<h3 id="unit-testing-framework">Unit Testing Framework</h3>
+<ul>
+<li>본 강의에서는 JUnit을 사용한 실습을 진행한다.</li>
+<li>JUnit
+<ul>
+<li>java의 단위 테스팅 프레임워크이다.</li>
+<li>annotation을 사용하여 before, test, after에 대한 결과를 확인한다.</li>
+</ul>
+</li>
+<li>CppUnit
+<ul>
+<li>c++의 단위 테스팅 프레임워크이다.</li>
+</ul>
+</li>
+<li>MS Unit
+<ul>
+<li>CppUnit과 비슷하다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="junit-tutorial">JUnit Tutorial</h2>
+<hr />
+<h3 id="java-build-pathsseojjeon">Java Build Path설정</h3>
+<ol>
+<li>Project우클릭 후 properties선택</li>
+<li>Java Build Path 선택 후 Libraries tab 선택</li>
+<li>Classpath 선택 후 Add Library 클릭</li>
+<li>JUnit선택, Junit버전 선택</li>
+<li>Apply and Close</li>
+</ol>
+<h3 id="junit-test-tutorial">JUnit Test Tutorial</h3>
+<ol>
+<li>테스트를 위한 Calculator.java를 아래와 같이 작성한다.</li>
+</ol>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">Calculator </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public int </span><span style="color:#8fa1b3;">addTwoNumbersTest</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">number1</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">number2</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">		</span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> number1 </span><span>+</span><span style="color:#eff1f5;"> number2;
+</span><span style="color:#eff1f5;">	}
+</span><span style="color:#eff1f5;"> 
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public int </span><span style="color:#8fa1b3;">multiplyTwoNumbersTest</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">number1</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">number2</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">		</span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> number1 </span><span>*</span><span style="color:#eff1f5;"> number2;
+</span><span style="color:#eff1f5;">	}
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<ol start="2">
+<li>src 폴더를 우클릭한 후 JUnit Test Case 선택<img src="/image/SSD/JUnitTest.png" alt="JUnit Test" /></li>
+<li>CalculatorTest.java를 아래와 같이 작성한다.</li>
+</ol>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">import static </span><span>org.junit.</span><span style="color:#ebcb8b;">Assert</span><span>.*;
+</span><span style="color:#b48ead;">import </span><span>org.junit.</span><span style="color:#ebcb8b;">Test</span><span>;
+</span><span> 
+</span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">CalculatorTest </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">private </span><span style="color:#ebcb8b;">Calculator </span><span style="color:#eff1f5;">calculator </span><span>= </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Calculator</span><span style="color:#eff1f5;">();
+</span><span style="color:#eff1f5;"> 
+</span><span style="color:#eff1f5;">	@</span><span style="color:#bf616a;">Test
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">addTest</span><span style="color:#eff1f5;">() {
+</span><span style="color:#eff1f5;">		</span><span style="color:#bf616a;">assertEquals</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">5</span><span style="color:#eff1f5;">, calculator.</span><span style="color:#bf616a;">addTwoNumbersTest</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">2</span><span style="color:#eff1f5;">, </span><span style="color:#d08770;">3</span><span style="color:#eff1f5;">));
+</span><span style="color:#eff1f5;">	}
+</span><span style="color:#eff1f5;"> 
+</span><span style="color:#eff1f5;">	@</span><span style="color:#bf616a;">Test
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">multiplyTest</span><span style="color:#eff1f5;">() {
+</span><span style="color:#eff1f5;">		</span><span style="color:#bf616a;">assertEquals</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">6</span><span style="color:#eff1f5;">, calculator.</span><span style="color:#bf616a;">multiplyTwoNumbersTest</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">2</span><span style="color:#eff1f5;">, </span><span style="color:#d08770;">3</span><span style="color:#eff1f5;">));
+</span><span style="color:#eff1f5;">	}
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<ol start="4">
+<li>실행<img src="/image/SSD/JUnitTestResult.png" alt="Result" /></li>
+<li>결과 확인<img src="/image/SSD/JUnitResult.png" alt="Result" /></li>
+</ol>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

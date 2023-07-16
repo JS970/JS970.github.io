@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>2751 - 수 정렬하기 2 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="2751 - 수 정렬하기 2">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/2751-su-jjeonryeolhagi-2/">
+<meta property="og:url" content="https://js970.github.io/2751-su-jjeonryeolhagi-2/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-04T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="2751 - 수 정렬하기 2">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/2751-su-jjeonryeolhagi-2/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2751 - 수 정렬하기 2"
+  
+    
+    
+      "datePublished":"2023-02-04T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/2751-su-jjeonryeolhagi-2/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-04">February  4, 2023</time>
+  	</div>
+  	<h1 class="post-title">2751 - 수 정렬하기 2</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 5</li>
+<li>날짜: 2023년 2월 4일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: Yes</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>입력받은 숫자를 오름차순으로 정렬하기만 하면 된다.</li>
+<li>priority_queue를 사용하여 정렬하였다.</li>
+<li>다른 사람의 해답을 보니 algorithm헤더의 sort함수를 이용하여 문제를 훨씬 간단하게 해결하였다.</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">queue</span><span>&gt;
+</span><span>
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> N;
+</span><span>    cin &gt;&gt; N;
+</span><span>    </span><span style="color:#b48ead;">int </span><span>* arr = </span><span style="color:#b48ead;">new int</span><span>[N];
+</span><span>    priority_queue&lt;</span><span style="color:#b48ead;">int</span><span>, vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt;, greater&lt;</span><span style="color:#b48ead;">int</span><span>&gt;&gt; pq;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N; i++)
+</span><span>    {
+</span><span>        </span><span style="color:#96b5b4;">scanf</span><span>(&quot;</span><span style="color:#d08770;">%d</span><span>&quot;, &amp;arr[i]);
+</span><span>        pq.</span><span style="color:#bf616a;">push</span><span>(arr[i]);
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N; i++)
+</span><span>    {
+</span><span>        </span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#d08770;">%d</span><span style="color:#96b5b4;">\n</span><span>&quot;, pq.</span><span style="color:#bf616a;">top</span><span>());
+</span><span>        pq.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<ul>
+<li>
+<p>sort를 활용한 풀이</p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">algorithm</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std; 
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span style="color:#b48ead;">int</span><span> n; </span><span style="color:#96b5b4;">scanf</span><span>(&quot;</span><span style="color:#d08770;">%d</span><span>&quot;,&amp;n);
+</span><span>  </span><span style="color:#b48ead;">int</span><span> num[n];
+</span><span>  </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>; i&lt;n;i++)
+</span><span>    </span><span style="color:#96b5b4;">scanf</span><span>(&quot;</span><span style="color:#d08770;">%d</span><span>&quot;,&amp;num[i]);
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">sort</span><span>(num,num+n);</span><span style="color:#65737e;">//정렬하는 함수
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>; i&lt;n;i++)
+</span><span>    </span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#d08770;">%d</span><span style="color:#96b5b4;">\n</span><span>&quot;,num[i]);
+</span><span>}
+</span></code></pre>
+</li>
+</ul>
+<p><a href="https://www.acmicpc.net/problem/2751">2751번: 수 정렬하기 2</a></p>
+<h1 id="sort">sort()</h1>
+<ul>
+<li>c++의 algorithm헤더에 정의되어 있는 메소드이다.</li>
+<li>기본적으로 배열에 대해 오름차순 정렬을 수행한다.</li>
+<li>배열의 시작점 주소와 마지막 주소+1을 인자로 적으면 정렬이 완료된다.
+<ul>
+<li>10개의 원소가 있는 배열 a를 정렬한다면 다음과 같이 입력한다.</li>
+<li>sort(a, a+10);</li>
+</ul>
+</li>
+<li>priority_queue와 마찬가지로 compare함수를 만들어서 정렬 순서를 설정할 수 있다. 이때 정렬 순서를 나타내는 compare는 sort함수의 세 번쩨 인자로 입력된다.</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

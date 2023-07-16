@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Backtracking - Sum of Subset Problem | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Backtracking - Sum of Subset Problem">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/backtracking-sum-of-subset-problem/">
+<meta property="og:url" content="https://js970.github.io/backtracking-sum-of-subset-problem/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-05-03T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Backtracking - Sum of Subset Problem">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/backtracking-sum-of-subset-problem/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Backtracking - Sum of Subset Problem"
+  
+    
+    
+      "datePublished":"2023-05-03T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/backtracking-sum-of-subset-problem/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-05-03">May  3, 2023</time>
+  	</div>
+  	<h1 class="post-title">Backtracking - Sum of Subset Problem</h1>
+  	<div class="post-line"></div>
+  	<h2 id="backtracking-sum-of-subset">Backtracking - sum of subset</h2>
+<hr />
+<h3 id="sum-of-subset-problem">Sum of Subset Problem</h3>
+<ul>
+<li>집합 S는 s1, s2, ... , sn의 원소로 이루어져 있다.</li>
+<li>W는 자연수이다.</li>
+<li>이때 S의 부분집합의 원소의 합이 W가 되는 모든 경우를 찾아라	</li>
+<li>n개의 수를 원소로 가지는 집합에서 원소의 합이 W가 되도록 하는 부분집합을 구하는 문제</li>
+<li>블랙젝을 생각하면 확 와닿는다.</li>
+</ul>
+<h3 id="promising-function">Promising Function</h3>
+<ul>
+<li>아래는 Sum of Subset문제를 해결하기 위한 promising function 의사 코드이다.</li>
+</ul>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span style="color:#b48ead;">bool </span><span style="color:#8fa1b3;">promising</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">idx</span><span>) {
+</span><span>	</span><span style="color:#b48ead;">return </span><span>(weight + total &gt;= W) &amp;&amp; </span><span style="color:#65737e;">// case 1
+</span><span>	(weight == W || weight + S[idx+</span><span style="color:#d08770;">1</span><span>] &lt;= W); </span><span style="color:#65737e;">// case 2
+</span><span>}
+</span></code></pre>
+<ul>
+<li>weight : 현재까지 선택한 모든 원소의 합</li>
+<li>total : 아직 선택하지 않은 모든 원소의 합</li>
+<li>S[idx] : S를 오름차순으로 정렬했을 때의 idx+1번째 원소</li>
+<li>W : 부분집합의 합이 이 값이 된다면 찾고 있는 경우이다.</li>
+<li>case 1 : weight + total이 W보다 작다면 W에 도달할 수 없는 경우 배제한다.</li>
+<li>case 2 : weight값이 W를 초과하는 경우에 대해 배제한다.</li>
+</ul>
+<h3 id="state-space-tree">State Space Tree</h3>
+<ul>
+<li>집합 S의 원소를 오름차순으로 정렬한다.</li>
+<li>오름차순으로 정렬된 S의 원소에 대해 포함시킬지, 미포함시킬지의 여부를 트리로 구현한다.</li>
+<li>오름차순으로 트리를 구성하는 이유는 작은 원소를 먼저 생각하여 유망성을 판단하는 것이 유리하기 때문이다.</li>
+</ul>
+<h3 id="solution">Solution</h3>
+<ul>
+<li>앞서 구한 promising function을 사용하여 state space tree를 promising function이 true인 노드의 서브트리에 대해서만 재귀적으로 DFS를 통해 탐색한다.</li>
+<li>아래는 탐색 과정을 도식으로 나타낸 것이다.<img src="/image/Algorithm/backtracking_sumofsubset.png" alt="State Space Diagram" /></li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

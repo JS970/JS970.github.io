@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>1780 - 종이의 개수 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="1780 - 종이의 개수">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/1780-jjoniyi-ggasu/">
+<meta property="og:url" content="https://js970.github.io/1780-jjoniyi-ggasu/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-02T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="1780 - 종이의 개수">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/1780-jjoniyi-ggasu/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "1780 - 종이의 개수"
+  
+    
+    
+      "datePublished":"2023-03-02T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/1780-jjoniyi-ggasu/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-02">March  2, 2023</time>
+  	</div>
+  	<h1 class="post-title">1780 - 종이의 개수</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 4</li>
+<li>날짜: 2023년 2월 28일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No</li>
+<li>알고리즘 : 분할정복</li>
+</ul>
+<h1 id="solution">Solution</h1>
+<ul>
+<li>혹시나 하는 마음에 chat GPT에게 문제를 그대로 주었다</li>
+<li>한번에 정답을 맞췄다... 충격적이다.</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">vector</span><span>&gt;
+</span><span>
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int</span><span> N;
+</span><span>vector&lt;vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt;&gt; paper;
+</span><span>
+</span><span style="color:#b48ead;">bool </span><span style="color:#8fa1b3;">is_all_same</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">x</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">y</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">size</span><span>) {
+</span><span>    </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i = x; i &lt; x + size; i++) {
+</span><span>        </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> j = y; j &lt; y + size; j++) {
+</span><span>            </span><span style="color:#b48ead;">if </span><span>(paper[x][y] != paper[i][j]) {
+</span><span>                </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">false</span><span>;
+</span><span>            }
+</span><span>        }
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">true</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">count_paper</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">x</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">y</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">size</span><span>, vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt;&amp; </span><span style="color:#bf616a;">count</span><span>) {
+</span><span>    </span><span style="color:#b48ead;">if </span><span>(</span><span style="color:#bf616a;">is_all_same</span><span>(x, y, size)) {
+</span><span>        count[paper[x][y] + </span><span style="color:#d08770;">1</span><span>]++;
+</span><span>    } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>        </span><span style="color:#b48ead;">int</span><span> next_size = size / </span><span style="color:#d08770;">3</span><span>;
+</span><span>        </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; </span><span style="color:#d08770;">3</span><span>; i++) {
+</span><span>            </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> j = </span><span style="color:#d08770;">0</span><span>; j &lt; </span><span style="color:#d08770;">3</span><span>; j++) {
+</span><span>                </span><span style="color:#bf616a;">count_paper</span><span>(x + i * next_size, y + j * next_size, next_size, count);
+</span><span>            }
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    cin &gt;&gt; N;
+</span><span>    paper.</span><span style="color:#bf616a;">resize</span><span>(N, </span><span style="color:#bf616a;">vector</span><span>&lt;</span><span style="color:#b48ead;">int</span><span>&gt;(N));
+</span><span>    </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N; i++) {
+</span><span>        </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> j = </span><span style="color:#d08770;">0</span><span>; j &lt; N; j++) {
+</span><span>            cin &gt;&gt; paper[i][j];
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt; </span><span style="color:#bf616a;">count</span><span>(</span><span style="color:#d08770;">3</span><span>);
+</span><span>    </span><span style="color:#bf616a;">count_paper</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, N, count);
+</span><span>    </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> c : count) {
+</span><span>        cout &lt;&lt; c &lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/1780">1780번: 종이의 개수</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

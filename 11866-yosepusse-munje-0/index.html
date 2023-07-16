@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>11866 - 요세푸스 문제 0 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="11866 - 요세푸스 문제 0">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/11866-yosepusse-munje-0/">
+<meta property="og:url" content="https://js970.github.io/11866-yosepusse-munje-0/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-07T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="11866 - 요세푸스 문제 0">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/11866-yosepusse-munje-0/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "11866 - 요세푸스 문제 0"
+  
+    
+    
+      "datePublished":"2023-02-07T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/11866-yosepusse-munje-0/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-07">February  7, 2023</time>
+  	</div>
+  	<h1 class="post-title">11866 - 요세푸스 문제 0</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 5</li>
+<li>날짜: 2023년 2월 7일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: Yes</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>이 문제를 해결하기 위해 queue를 사용하여 차례에 맞는 숫자를 pop하는 방식을 사용했다. 차례에 맞지 않는 경우 pop후 다시 push하여 circle을 구현하였다.</li>
+<li>처음에는 deque를 통해 구현하려 했는데, 처음 코드처럼 코딩할 것면 굳이 deque가 아니라 queue로 충분하다…</li>
+<li>이 문제에서 double-free segmentaion fault로 인해서 많은 시간을 사용하였다…
+<ul>
+<li>double-free segmentation fault는 동적할당한 변수 또는 배열에 대해 delete가 두 번 이상 수행될 경우 발생하는 런타임 에러이다.</li>
+<li>c++에서는 복사 생성자를 컴파일러가 자동으로 생성하는 과정에서 자주 발생한다고 한다.(ref참조)</li>
+<li>첫 시도에서 tmp에 pop하기 전의 front를 저장하고, pop수행 후 이 값을 다시 push하는 식으로 구현하였는데 이 과정에서 dobule-free error가 발생했다.</li>
+<li>이를 먼저 push한 후 pop하는 코드로 수정하니 에러가 사라졌다.</li>
+<li>솔직히 정확한 원인에 대해서는 잘 모르겠다. 본 코드에서 직접 동적 할당을 사용한 적도 없고 stl을 사용했는데도 이런 에러가 발생했다.</li>
+<li>심지어 항상 발생하는 것이 아니라 특정 입력에 대해서만 이런 에러가 발생해서 더욱 찾기 힘들었다.</li>
+<li>그냥 이런 상황 자체를 경험적으로 학습해야 할 듯 하다…</li>
+</ul>
+</li>
+</ul>
+<h1 id="code">code</h1>
+<ul>
+<li>오답 코드</li>
+</ul>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">vector</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">deque</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> N, K;
+</span><span>    cin &gt;&gt; N &gt;&gt; K;
+</span><span>    deque&lt;</span><span style="color:#b48ead;">int</span><span>&gt; deque;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N; i++)
+</span><span>        deque.</span><span style="color:#bf616a;">push_back</span><span>(i+</span><span style="color:#d08770;">1</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> idx = K-</span><span style="color:#d08770;">1</span><span>;
+</span><span>    vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt; ans;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; K-</span><span style="color:#d08770;">1</span><span>; i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">int</span><span> tmp = deque.</span><span style="color:#bf616a;">front</span><span>();
+</span><span>        deque.</span><span style="color:#bf616a;">pop_front</span><span>();
+</span><span>        deque.</span><span style="color:#bf616a;">push_back</span><span>(tmp);
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">while</span><span>(deque.</span><span style="color:#bf616a;">size</span><span>() &gt; </span><span style="color:#d08770;">0</span><span>)
+</span><span>    {
+</span><span>        ans.</span><span style="color:#bf616a;">push_back</span><span>(deque.</span><span style="color:#bf616a;">front</span><span>());
+</span><span>        deque.</span><span style="color:#bf616a;">pop_front</span><span>();
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; K-</span><span style="color:#d08770;">1</span><span>; i++)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">int</span><span> tmp = deque.</span><span style="color:#bf616a;">front</span><span>();
+</span><span>            deque.</span><span style="color:#bf616a;">pop_front</span><span>();
+</span><span>            deque.</span><span style="color:#bf616a;">push_back</span><span>(tmp);
+</span><span>        }
+</span><span>    }
+</span><span>    cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">&lt;</span><span>&quot;;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; N-</span><span style="color:#d08770;">1</span><span>; i++)
+</span><span>        cout &lt;&lt; ans[i] &lt;&lt; &quot;</span><span style="color:#a3be8c;">, </span><span>&quot;;
+</span><span>    cout &lt;&lt; ans[i] &lt;&lt; &quot;</span><span style="color:#a3be8c;">&gt;</span><span>&quot; &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>수정 코드(정답)</li>
+</ul>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">vector</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">queue</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> N, K;
+</span><span>    cin &gt;&gt; N &gt;&gt; K;
+</span><span>    queue&lt;</span><span style="color:#b48ead;">int</span><span>&gt; queue;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N; i++)
+</span><span>        queue.</span><span style="color:#bf616a;">push</span><span>(i+</span><span style="color:#d08770;">1</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> idx = K-</span><span style="color:#d08770;">1</span><span>;
+</span><span>    vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt; ans;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; K-</span><span style="color:#d08770;">1</span><span>; i++)
+</span><span>    {
+</span><span>        queue.</span><span style="color:#bf616a;">push</span><span>(queue.</span><span style="color:#bf616a;">front</span><span>());
+</span><span>        queue.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>    }
+</span><span>    
+</span><span>    </span><span style="color:#b48ead;">while</span><span>(queue.</span><span style="color:#bf616a;">size</span><span>() &gt; </span><span style="color:#d08770;">0</span><span>)
+</span><span>    {
+</span><span>        ans.</span><span style="color:#bf616a;">push_back</span><span>(queue.</span><span style="color:#bf616a;">front</span><span>());
+</span><span>        queue.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; K-</span><span style="color:#d08770;">1</span><span>; i++)
+</span><span>        {
+</span><span>            queue.</span><span style="color:#bf616a;">push</span><span>(queue.</span><span style="color:#bf616a;">front</span><span>());
+</span><span>            queue.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>        }
+</span><span>    }
+</span><span>    cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">&lt;</span><span>&quot;;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; N-</span><span style="color:#d08770;">1</span><span>; i++)
+</span><span>        cout &lt;&lt; ans[i] &lt;&lt; &quot;</span><span style="color:#a3be8c;">, </span><span>&quot;;
+</span><span>    cout &lt;&lt; ans[i] &lt;&lt; &quot;</span><span style="color:#a3be8c;">&gt;</span><span>&quot; &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/11866">11866번: 요세푸스 문제 0</a></p>
+<p><a href="https://stackoverflow.com/questions/14063791/double-free-or-corruption-after-queuepush">Double free or corruption after queue::push</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

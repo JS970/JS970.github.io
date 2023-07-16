@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>소프트웨어시스템설계 2023-03-22 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="소프트웨어시스템설계 2023-03-22 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/sopeuteuweeosissetotsseoggy-3-22-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/sopeuteuweeosissetotsseoggy-3-22-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-22T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="소프트웨어시스템설계 2023-03-22 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/sopeuteuweeosissetotsseoggy-3-22-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "소프트웨어시스템설계 2023-03-22 수업정리"
+  
+    
+    
+      "datePublished":"2023-03-22T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/sopeuteuweeosissetotsseoggy-3-22-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-22">March 22, 2023</time>
+  	</div>
+  	<h1 class="post-title">소프트웨어시스템설계 2023-03-22 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Refactoring (end)</li>
+<li>More Refactoring Techniques (1)</li>
+</ul>
+<h2 id="refactoring-example">Refactoring Example</h2>
+<hr />
+<h3 id="refactored-uml">Refactored UML</h3>
+<p><img src="/image/SSD/uml_step3.png" alt="step3" /></p>
+<h3 id="step-1">Step 1</h3>
+<ul>
+<li>응집도를 고려하여 <code>getCharge()</code>함수와  <code>getFrequentRenterPoint()</code> 함수를 Rental 에서 Movie로 이동시켰다.
+<ul>
+<li><code>getCharge()</code> 의 경우 Rental이 아닌 Movie의 attribute를 사용하므로 Move method하여 이동시켰다.</li>
+<li><code>getFrequentRenterPoint()</code> 의 경우 Rental에서는 _daysRented를 사용하고 Movie의 Movie type 을 연산에 필요로 한다. 중요도 면에서 Movie로 옮기는 것이 더 적절하므로 Move method하였다.</li>
+</ul>
+</li>
+<li>이때 <code>getFrequentRenterPoint()</code>의 경우 Rental의 attribute인 _daysRented 의 정보를 method의 연산 과정에 필요로 하여 초기 코드는 this를 인자로 받았다.</li>
+<li>하지만 이는 coupling issue이므로 this를 넘겨주는 대신 int타입 파라미터를 입력받는 식으로 수정했다.</li>
+</ul>
+<h3 id="step-2">Step 2</h3>
+<ul>
+<li>Movie 의 <code>getCharge()</code>는 각기 다른 타입의 영화에 대해 연산하는 방식이 다르다.</li>
+<li>이때 OCP를 충족시키기 위해 ploymorphism 을 사용한다.
+<ul>
+<li>Abstract class Price를 생성한다.</li>
+<li>Price를 superclass로 가지는 ChildrenPrice, RegularPrice, NewReleasePrice를 생성한다.</li>
+</ul>
+</li>
+<li><code>getCharge()</code> 와 <code>getFrequentRenterPoint()</code>를 Price로 Move method한다.
+<ul>
+<li>Price의 subclass에서 해당 타입의 Movie에 대한 가격 정보를 포함하고 있다.</li>
+<li>step1에서와 마찬가지로 Price의 attribute를 사용하기 때문이다.</li>
+<li>Price에서는 원래 switch문으로 구현되었던 <code>getCharge()</code> 를  polymorphism을 통해 smell을 없엘 수 있다.</li>
+</ul>
+</li>
+<li>아래는 Movie의 <code>setPriceCode()</code> 함수의 코드이다.
+<ul>
+<li>아래 코드는 DIP를 위반하고 있다.</li>
+<li>이를 해결하기 위해 Price를 통해 각 subclass에 접근해야 한다.</li>
+<li>객체 생성을 담당하는 새로운 class를 생성한다.</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span> void </span><span style="color:#bf616a;">setPriceCode</span><span>(</span><span style="color:#b48ead;">int</span><span> arg) {
+</span><span>	</span><span style="color:#b48ead;">switch</span><span>(arg) {
+</span><span>		</span><span style="color:#b48ead;">case </span><span style="color:#d08770;">REGULAR</span><span>: _price = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">RegularPrice</span><span>(); </span><span style="color:#b48ead;">break</span><span>;
+</span><span>		</span><span style="color:#b48ead;">case </span><span style="color:#d08770;">CHILDREN</span><span>: _price = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">ChildrenPrice</span><span>(); </span><span style="color:#b48ead;">break</span><span>;
+</span><span>		</span><span style="color:#b48ead;">case </span><span style="color:#d08770;">NEW_RELEASE</span><span>: _price = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">NewReleasePrice</span><span>(); </span><span style="color:#b48ead;">break</span><span>;
+</span><span>		</span><span style="color:#b48ead;">default</span><span>: </span><span style="color:#b48ead;">throw new </span><span style="color:#bf616a;">illegalArgumentException</span><span>(&quot;</span><span style="color:#a3be8c;">Incorrect Price Code</span><span>&quot;);	
+</span><span>	}
+</span><span>}
+</span></code></pre>
+<h3 id="step-3">Step 3</h3>
+<ul>
+<li>Customer의 <code>statement()</code>와 <code>htmlStatement()</code>의 common code를 template method pattern을 사용하여 제거한다.</li>
+<li>이때 subclass의 서로 다른 code를 연산하는 함수를 superclass에 구현한다.
+<ul>
+<li>Refactored UML에서는 Statement class 의 <code>value(Customer)</code> 메소드가 이러한 역할을 하는 것을 확인할 수 있다.</li>
+<li><code>value(Customer)</code>는 template method로 primitive operation에 대한 연산을 수행한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="more-refactoring-techniques">More Refactoring Techniques</h2>
+<hr />
+<p>본 절에서는 리펙토링 실습에서 학습한 리펙토링 기법 이외에 추가적인 리펙토링 기법에 대해서 다룬다.</p>
+<h3 id="introduce-assertion">Introduce Assertion</h3>
+<ul>
+<li>아래 코드에서는 주석을 통해 코드의 특정 위치에서의 요구사항을 정리했다.</li>
+</ul>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">double </span><span style="color:#bf616a;">getExpenseLimit</span><span>() {
+</span><span>	</span><span style="color:#65737e;">// should have either expense limit or a primary project
+</span><span>	</span><span style="color:#b48ead;">return</span><span>(_expenseLimit != </span><span style="color:#d08770;">NULL_EXPENSE</span><span>) ?
+</span><span>			_expenseLimit:
+</span><span>			_primaryProject.</span><span style="color:#bf616a;">fetMemberExpenseLimit</span><span>();
+</span><span>}
+</span></code></pre>
+<ul>
+<li>하지만 java에서 제공하는 assertion 기능을 이용해 주석(smell)을 없엘 수 있다.</li>
+</ul>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">double </span><span style="color:#bf616a;">getExpenseLimit</span><span>() {
+</span><span>	</span><span style="color:#ebcb8b;">Assert</span><span>.</span><span style="color:#bf616a;">isTrue </span><span>(_expenseLimit != </span><span style="color:#d08770;">NULL_EXPENSE </span><span>||
+</span><span>									_primaryProject != </span><span style="color:#d08770;">null</span><span>);
+</span><span>	</span><span style="color:#b48ead;">return</span><span>(_expenseLimit != </span><span style="color:#d08770;">NULL_EXPENSE</span><span>) ?
+</span><span>			_expenseLimit:
+</span><span>			_primaryProject.</span><span style="color:#bf616a;">fetMemberExpenseLimit</span><span>();
+</span><span>}
+</span></code></pre>
+<ul>
+<li>Assert : 개발자 영역, runtime에는 Assert가 발생하면 안된다.</li>
+</ul>
+<h3 id="rename-method">Rename Method</h3>
+<ul>
+<li>메소드의 이름이 해당 메소드의 목적에 맞도록 rename한다.</li>
+</ul>
+<h3 id="encapsulate-downcast">Encapsulate Downcast</h3>
+<ul>
+<li>method의 호출자가  method의 return을 typecast해서 사용해야 한다면, 그냥 처음부터 typecast를 해서 return 한다.</li>
+</ul>
+<h3 id="replace-error-code-with-exception">Replace Error Code with Exception</h3>
+<ul>
+<li>int를 반환하는 함수가, 비정상적인 상황에서 -1등의 에러 코드를 반환하는 경우 이는 결국 flag와 다를 것이 없으므로 smell이다.</li>
+<li>이러한 경우 java 에서는 throws를 활용한 exception handling을 통해 smell을 없에는 것이 가능하다.</li>
+</ul>
+<h3 id="introduce-explaining-variable">Introduce Explaining Variable</h3>
+<ul>
+<li>조건문의 조건 등 직관적이지 않은 코드를 변수로 추출하고 해당 변수에 적절한 이름을 부여하면 가독성을 높일 수 있다.</li>
+</ul>
+<h3 id="encapsulate-field">Encapsulate Field</h3>
+<ul>
+<li>public field를 private로 설정하고 getter, setter를 public으로 만들어 사용한다.</li>
+</ul>
+<h3 id="self-encapsulate-field">Self Encapsulate Field</h3>
+<ul>
+<li>Encapsulate Filed와 마찬가지로 한 클래스 내에서도 private를 직접 건드리지 않고 getter, setter를 이용하여 값을 수정하거나 참조한다.</li>
+</ul>
+<h3 id="encapsulate-collection">Encapsulate Collection</h3>
+<ul>
+<li>아래 코드에서 특정 자료 구조를 사용하여 데이터를 관리하는 구현을 확인할 수 있다.</li>
+</ul>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ebcb8b;">Person</span><span> kent = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Person</span><span>();
+</span><span style="color:#ebcb8b;">Set</span><span> s = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">HashSet</span><span>();
+</span><span>s.</span><span style="color:#bf616a;">add</span><span>(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Course</span><span>(&quot;</span><span style="color:#a3be8c;">Smalltalk Programming</span><span>&quot;, </span><span style="color:#d08770;">false</span><span>));
+</span><span>s.</span><span style="color:#bf616a;">add</span><span>(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Course</span><span>(&quot;</span><span style="color:#a3be8c;">Appreciating Single Malts</span><span>&quot;, </span><span style="color:#d08770;">true</span><span>));
+</span><span>kent.</span><span style="color:#bf616a;">initializeCourses</span><span>(s);
+</span></code></pre>
+<ul>
+<li>하지만 위와 같은 코드의 경우 특정 자료 구조를 활용한 코드이다
+<ul>
+<li><code>Person.initializeCourses(set)</code> 에서 확인할 수 있듯이, set을 파라미터로 입력받고 있다.</li>
+</ul>
+</li>
+<li>이러한 데이터 관리 로직을 Person내부로 이동시키면 fan-out을 줄일 수 있다. 아래는 수정된 코드이다.</li>
+</ul>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ebcb8b;">Person</span><span> kent = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Person</span><span>();
+</span><span>kent.</span><span style="color:#bf616a;">addCourse</span><span>(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Course</span><span>(&quot;</span><span style="color:#a3be8c;">Smalltalk Programming</span><span>&quot;, </span><span style="color:#d08770;">false</span><span>));
+</span><span>kent.</span><span style="color:#bf616a;">addCourse</span><span>(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Course</span><span>(&quot;</span><span style="color:#a3be8c;">Appreciating Single Malts</span><span>&quot;, </span><span style="color:#d08770;">true</span><span>));
+</span></code></pre>
+<ul>
+<li>위 코드는 set에서 tree로 자료 구조를 변경하더라도 코드의 수정이 필요없다.
+<ul>
+<li>Person내부의 데이터 관리 로직만 수정해 주면 된다.</li>
+<li>초기 코드에 비해 fan-out이 3에서 2로 줄어든 것을 확인할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="seperate-query-from-modifier">Seperate Query from Modifier</h3>
+<ul>
+<li>어떤 클래스의 메소드에서
+<ul>
+<li>Return이 void가 아니라면 Query이다.</li>
+<li>attribute를 수정하면 Modifier이다.</li>
+</ul>
+</li>
+<li>이때 한 메소드에서 Query와 Modifier역할은 분리하여 별개의 메소드로 만들어야 한다.
+<ul>
+<li>C++에서 return type이 non-void라면 const member로 선언하여 값의 수정을 막을 수 있다.</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Backtracking | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Backtracking">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/backtracking/">
+<meta property="og:url" content="https://js970.github.io/backtracking/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-05-01T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Backtracking">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/backtracking/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Backtracking"
+  
+    
+    
+      "datePublished":"2023-05-01T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/backtracking/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-05-01">May  1, 2023</time>
+  	</div>
+  	<h1 class="post-title">Backtracking</h1>
+  	<div class="post-line"></div>
+  	<h2 id="backtracking">Backtracking</h2>
+<hr />
+<ul>
+<li>Backtracking을 통해 미로에서 길을 찾는다고 생각해 보자.
+<ol>
+<li>Dead End에 도달할 때까지 경로를 따라간다.</li>
+<li>Dead End에 도달하면 Fork지점까지 되돌아간다(Backtrack).</li>
+<li>1에서 선택한 경로와 다른 경로를 선택한다.</li>
+</ol>
+</li>
+<li>만약 어떤 경로가 Dead End로 도달할 것을 미리 알 수 있는 sign이 있다면?
+<ul>
+<li>특히 이런 sign이 경로의 초반부에서 발견될수록 많은 탐색 시간을 절약할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="backtracking-technique">Backtracking Technique</h3>
+<ul>
+<li>어떤 집합에서 object의 sequence를 선택하는 문제를 해결하는데 사용된다.</li>
+<li>이때, sequence는 어떠한 기준(criterion)을 만족해야 한다.</li>
+<li>DFS가 사용된다.(BFS를 사용할 수도 있다.)</li>
+<li>전치순회(pre order traversal)를 이용한다.</li>
+<li>0-1 knapsack problem등 NP-complete문제를 효율적으로 해결하는데 사용된다.</li>
+</ul>
+<h3 id="backtracking-vs-dynamic-programming">Backtracking vs Dynamic Programming</h3>
+<ul>
+<li>Dynamic programming은 Solution의 부분집합이 생성된다.</li>
+<li>Backtracking은 생성되지 않아야 할 부분집합을 결정하는 technique이다.</li>
+<li>Backtracking은 Large Instance 문제 해결에 효과적이다(항상 해결 가능하지는 않다).</li>
+</ul>
+<h3 id="backtracking-strategy">Backtracking Strategy</h3>
+<ul>
+<li>Solution으로 도달하지 못하는 노드임이 확정되면, 부모노드를 통해 search되지 않은 child를 가지는 노드까지 되돌아간다.
+<ul>
+<li><code>non-promising node</code> : 이 노드에서는 solution에 도달할 수 없다.</li>
+<li><code>promising node</code> : solution에 도달할 확률이 존재한다.</li>
+</ul>
+</li>
+<li>Backtracking에서는 <code>State Space Tree</code>를 <code>Pruning</code>한다.
+<ul>
+<li><code>Pruning</code> 이란 <code>State Space Tree</code>를 순회하는 것을 말한다.
+<ul>
+<li>보통은 DFS를 이용하여 순회한다.</li>
+</ul>
+</li>
+<li><code>Pruning</code> 중 어떤 노드가 <code>non-promising</code>임이 확인되면 Backtracking을 수행한다.</li>
+</ul>
+</li>
+<li>Backtracking의 Search Space인 <code>State Space Tree</code>에서 configuration(x, y)와 Frontier Set F를 이용하여 Backtracking을 수행한다.
+<ul>
+<li>Configuration(x, y)
+<ul>
+<li><code>x</code> : tree에서 search되지 않은 부분, 남아 있는 문제</li>
+<li><code>y</code> : 현재 노드까지 도달하기 위해 선택한 노드의 집합</li>
+<li>초기 configuration은 ($x$, $\phi$)로 설정된다.
+<ul>
+<li>x는 original problem instance이다.</li>
+</ul>
+</li>
+<li>configuration은 additional choice에 따라 새로운 subproblem configuration으로 확장된다.</li>
+<li>Dead End에서는 Backtracking을 통해 다른 configuration으로 돌아간 뒤 탐색을 이어간다.</li>
+</ul>
+</li>
+<li>Frontier Set F
+<ul>
+<li>configuration의 집합이다.</li>
+<li>탐색 대기 노드의 집합으로 생각할 수 있다.</li>
+<li>DFS를 이용한 Backtracking에서는 Stack으로 구현되며, BFS를 이용할 경우 Queue로 구현된다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="backtracking-procedure">Backtracking Procedure</h3>
+<ul>
+<li>의사 코드를 통해 Backtracking Algorithm이 어떻게 구현되는지 알아보자.<pre data-lang="pesudo" style="background-color:#2b303b;color:#c0c5ce;" class="language-pesudo "><code class="language-pesudo" data-lang="pesudo"><span>Algorithm Backtracking(x):
+</span><span>	input(x) : A problem instance x for hard problem
+</span><span>	output : soution for problem or &quot;no solution&quot; 
+</span><span>	F &lt;- {(x, 0)}
+</span><span>	while (F!= 0) do
+</span><span>		F에서 가장 promising한 configuration을 선택한다.
+</span><span>		configuration을 subproblem configurtaion으로 확장한다.
+</span><span>		확장된 configurations에 대해 simple consistency check을 수행한다.
+</span><span>			&quot;Solution Found&quot; : return configuration(xi, yi)
+</span><span>			&quot;Dead end&quot; : 해당 configuration을 버린다(discard)
+</span><span>			&quot;Continue&quot; : F &lt;- F + (xi, yi)
+</span><span>	end
+</span><span>	return &quot;no solution&quot;
+</span></code></pre>
+</li>
+<li>이를 실제로 적용하기 위해서 아래의 사항들에 대한 정의가 필요하다.
+<ol>
+<li>Frontier Set F로부터 The most promising configuration을 선택하는 방법에 대한 정의</li>
+<li>configuration(x, y)를 expend 하여 subproblem configuration을 만드는 방법에 대한 정의
+<ul>
+<li>확장을 통해 모든 feasible configuration을 생성 가능해야 한다.</li>
+</ul>
+</li>
+<li>simple consistency check에 대한 정의가 필요하다.</li>
+</ol>
+</li>
+<li>앞선 절에서 설명했듯이, Frontier set은 DFS의 경우 Stack으로 구현되며, BFS의 경우 Queue로 구현된다.</li>
+<li>아래 그림은 Backtracking과정을 시각적으로 표현한 것이다.
+<ul>
+<li>Example State Space Tree<img src="/image/Algorithm/backtracking_tree.png" alt="Example State Space Tree" />
+<ul>
+<li>붉은  테두리의 노드는 <code>consistency check</code>결과 <code>non-promising</code>으로 확인되는 노드이다.</li>
+<li>파란색 테두리의 노드는 <code>consistency check</code>결과 <code>promising</code>으로 판단되는 노드이다.</li>
+<li>이외의 노드는 <code>Continue</code>를 의미한다.</li>
+</ul>
+</li>
+<li>위 트리에 대한 Backtracking중 Frontier Set F의 변화<img src="/image/Algorithm/frontier_set.png" alt="Frontier Set F" />
+<ul>
+<li>F에서 stack pop된 튜플에 대해 <code>expend</code>를 수행한다.</li>
+<li>이 결과 생성된 모든 subproblem configuration에 대해 <code>consistency check</code>를 수행한다.</li>
+<li>consistency check의 결과에 따라 <code>discard</code>, <code>stack push</code>, <code>return</code>의 동작을 수행한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>이러한 방식으로 tree를 순회하면 stack의 특성상 왼쪽 노드보다 오른쪽 노드해 먼저 consistency check를 수행하게 된다. 하지만 backtracking은 결국 모든 상황에 대한 검사를 수행하기 때문에 최종적으로 정답을 탐색하는 데 문제는 없다.</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

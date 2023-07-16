@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Greedy Algorithm | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Greedy Algorithm">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/greedy-algorithm/">
+<meta property="og:url" content="https://js970.github.io/greedy-algorithm/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-24T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Greedy Algorithm">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/greedy-algorithm/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Greedy Algorithm"
+  
+    
+    
+      "datePublished":"2023-04-24T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/greedy-algorithm/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-24">April 24, 2023</time>
+  	</div>
+  	<h1 class="post-title">Greedy Algorithm</h1>
+  	<div class="post-line"></div>
+  	<h2 id="greedy-algorithm">Greedy Algorithm</h2>
+<hr />
+<ul>
+<li>Greedy Algorithm은 &quot;순간순간 선택의 시점마다 항상 그 상황에서 최선인 선택을 하는&quot; 알고리즘이다.</li>
+<li>아래는 Greedy Algorithm의 예시이다.
+&gt;10원, 50원, 100원, 500원 동전이 무한 개 있다. 코인의 개수를 가장 적게 선택하여 730원을 지불하려면 어떻게 해야 하는가?</li>
+<li>이를 해결하기 위해서는 동전의 선택 시점마다 항상 선택 가능한 동전 중 금액이 가장 큰 동전을 선택하면 된다.</li>
+</ul>
+<h3 id="greedy-algorithm-vs-dynamic-programming">Greedy Algorithm vs Dynamic Programming</h3>
+<ul>
+<li>두 알고리즘 모두 최적화 문제를 풀기 위해 사용된다.</li>
+<li>Greedy Algorithm의 경우 한번 선택된 사항에 대해 재고하지 않는다.</li>
+<li>Greedy Algorithm의 선택은 이전 선택이나 이후 선택에 영향을 받지 않는다.</li>
+<li>Greedy Algorithm의 경우 Locally Optimal하다.
+<ul>
+<li>따라서 Locally Optimal함이 반드시 증명되어야 한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="greedy-approach">Greedy Approach</h3>
+<ol>
+<li>Selection procedure : 현재 상태에서 최선의 해답을 선택한다.</li>
+<li>Feasibility Check : 선택된 해가 문제의 조건을 만족하는지 확인한다.</li>
+<li>Solution Check : 원래 문제가 해결되었는지 검사하고, 해결되지 않았다면 1~3을 반복한다.</li>
+</ol>
+<h2 id="spanning-tree-ssijjan-teuri">Spanning Tree(신장 트리)</h2>
+<hr />
+<ul>
+<li>G = (V, E)인 undirected weighted graph이다.</li>
+<li>V = {v1, v2, v3, v4, v5}</li>
+<li>E = {(v1, v2), (v1, v3), (v2, v4), (v3, v4), (v3, v5), (v4, v5)}</li>
+<li>W : 각 edge의 weight값</li>
+<li>Spanning Tree는 Graph G의 모든 Vertices를 포함하는 Subgraph이다.</li>
+</ul>
+<h3 id="minimum-spanning-tree">Minimum Spanning Tree</h3>
+<ul>
+<li>G = (V, E), T = (V, F)인 undirected graph G, T가 있다. 이때  F가 E의 부분집합일 때 F의 weight 값의 합이 최솟값을 가지는 spanning tree를 Minimum Spanning Tree라고 한다.</li>
+<li>G에 대한 MST를 찾는 데 Greedy Algorithm이 이용된다. 대표적으로 아래와 같은 알고리즘이 있다.
+<ul>
+<li>Prim Algorithm</li>
+<li>Kruskal Algorithm</li>
+<li>Dijkstra Algorithm</li>
+</ul>
+</li>
+</ul>
+<h2 id="0-1-knapsack-problem">0-1 Knapsack Problem</h2>
+<hr />
+<blockquote>
+<p>도둑이 보석 가게에 가방을 들고 물건을 훔치러 침입했다. 각각의 보석은 무게와 가격을 가지며, 가방은 최대 용량 W를 초과하면 터진다. 도둑이 가방의 최대 용량을 초과하지 않으면서 최대한 많은 보석을 훔쳐가려면 어떻게 해야 하는가?</p>
+</blockquote>
+<h3 id="brute-fore-solution">Brute Fore Solution</h3>
+<ul>
+<li>총 n개의 보석 집합의 부분집합의 개수는 2^n개이다.</li>
+<li>모든 부분집합에 대해 가방의 용량 W를 초과하지 않으면서, 최대한 큰 가격을 가지는 보석의 부분집합을 선택한다.</li>
+<li>시간복잡도가 exponential이므로 해결 불가능하다.</li>
+</ul>
+<h3 id="greedy-solution">Greedy Solution</h3>
+<ul>
+<li>가격 / 무게 연산을 통해 profit을 계산한다.</li>
+<li>보석을 profit순서대로 내림차순 정렬한다.</li>
+<li>무게를 초과하지 않을 때까지 profit이 큰 보석부터 가방에 담는다.</li>
+<li>하지만 이 알고리즘은 optimal하지 않다.<img src="/image/Algorithm/greedy_notopt.png" alt="Not Optimal Greedy Solution" /></li>
+<li>0-1 Knapsack문제에 있어서 exponential보다 나은 시간복잡도를 가지는 해결법은 발견되지 않았다.</li>
+<li>그렇다고 해서 exponential보다 나은 시간복잡도를 가지는 것이 불가능하다고 증명되지도 않았다.</li>
+<li>하지만 greedy algorithm은 이 문제의 적절한 해결책이 아니다.</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

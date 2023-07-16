@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>1931 - 회의실 배정 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="1931 - 회의실 배정">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/1931-hoeyissi-bbajjeon/">
+<meta property="og:url" content="https://js970.github.io/1931-hoeyissi-bbajjeon/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-10T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="1931 - 회의실 배정">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/1931-hoeyissi-bbajjeon/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "1931 - 회의실 배정"
+  
+    
+    
+      "datePublished":"2023-03-10T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/1931-hoeyissi-bbajjeon/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-10">March 10, 2023</time>
+  	</div>
+  	<h1 class="post-title">1931 - 회의실 배정</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 1</li>
+<li>날짜: 2023년 3월 10일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No</li>
+<li>알고리즘 : 그리디 알고리즘</li>
+</ul>
+<h1 id="solution">Solution</h1>
+<ul>
+<li>모든 선택에 있어서 선택 가능한 선택지 중 끝나는 시간이 가장 빠른 회의를 선택한다면 가장 많은 회의를 진행할 수 있게 된다.</li>
+<li>이를 알고리즘으로 쉽게 구현하기 위해 pair를 사용했다.
+<ul>
+<li><strong>끝나는 시간이 빠른 것을 선택해야 하므로 끝나는 시간을 pair.first로 설정한다.</strong></li>
+<li>이렇게 하면 sort를 이용해 원하는 상태로 한번에 정렬이 가능하다.</li>
+<li>이전에 끝난 시간보다는 회의가 끝나는 시간이 같거나 뒤여야 하기 때문에 이를 조건문으로 구현하였다. 조건을 만족한다면 회의가 열렸다는 것을 의미하므로 이 때마다 count를 1씩 증가시킨다.</li>
+</ul>
+</li>
+<li>초기 코드에서는 끝나는 시간을 pair.second로 설정해서 정렬을 여러 번 해야 했다.
+<ul>
+<li>결과적으로 시간복잡도가 늘어나서 시간초과가 발생하였다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="code">code</h1>
+<h3 id="cogi-kodde">초기 코드</h3>
+<ul>
+<li>while 문 내부에서 minSecond함수를 수행하는데 이 과정에서 시간복잡도가 O(n^2)으로 늘어나 시간초과 발생의 원인이 되었다.</li>
+</ul>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">algorithm</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">climits</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">pointRenew</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">cmpnum</span><span>, pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">int</span><span>&gt; </span><span style="color:#bf616a;">arr</span><span>[], </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">arrSz</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">currentPoint</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = currentPoint; i &lt; arrSz; i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(arr[i].</span><span style="color:#bf616a;">first </span><span>&gt;= cmpnum &amp;&amp; arr[i].</span><span style="color:#bf616a;">first </span><span>== arr[i].</span><span style="color:#bf616a;">second</span><span>) </span><span style="color:#b48ead;">return</span><span> i+</span><span style="color:#d08770;">1</span><span>;
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>(arr[i].</span><span style="color:#bf616a;">first </span><span>&gt;= cmpnum) </span><span style="color:#b48ead;">return</span><span> i;
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">return </span><span>-</span><span style="color:#d08770;">1</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">minSecond</span><span>(pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">int</span><span>&gt; </span><span style="color:#bf616a;">arr</span><span>[], </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">arrSz</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">currentPoint</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> min = INT_MAX;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = currentPoint; i &lt; arrSz; i++)
+</span><span>        min = (arr[i].</span><span style="color:#bf616a;">second </span><span>&lt; min) ? arr[i].</span><span style="color:#bf616a;">second </span><span>: min;
+</span><span>    </span><span style="color:#b48ead;">return</span><span> min;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    ios::</span><span style="color:#bf616a;">sync_with_stdio</span><span>(</span><span style="color:#d08770;">false</span><span>);
+</span><span>    cin.</span><span style="color:#bf616a;">tie</span><span>(</span><span style="color:#d08770;">NULL</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> N;
+</span><span>    cin &gt;&gt; N;
+</span><span>    pair&lt;</span><span style="color:#b48ead;">int </span><span>,</span><span style="color:#b48ead;">int</span><span>&gt; * arr = </span><span style="color:#b48ead;">new</span><span> pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">int</span><span>&gt;[N];
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N; i++)
+</span><span>        cin &gt;&gt; arr[i].</span><span style="color:#bf616a;">first </span><span>&gt;&gt; arr[i].</span><span style="color:#bf616a;">second</span><span>;
+</span><span>    </span><span style="color:#bf616a;">sort</span><span>(arr, arr+N);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> point = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> min;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> count = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">while</span><span>(point != -</span><span style="color:#d08770;">1 </span><span>&amp;&amp; point &lt; N)
+</span><span>    {
+</span><span>        min = </span><span style="color:#bf616a;">minSecond</span><span>(arr, N, point);
+</span><span>        point = </span><span style="color:#bf616a;">pointRenew</span><span>(min, arr, N, point);
+</span><span>        count++;
+</span><span>    }
+</span><span>    cout &lt;&lt; count &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h3 id="jecul-kodde">제출 코드</h3>
+<ul>
+<li>코드 구현에 있어 우선적으로 고려되어야 하는 회의 종료 시간을 pair.first로 설정하였기 때문에 정렬을 두 번씩 할 필요가 없다.</li>
+</ul>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">algorithm</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">int</span><span> n;
+</span><span>    cin &gt;&gt; n;
+</span><span>    pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">int</span><span>&gt; arr[n];
+</span><span>    </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; n; i++) {
+</span><span>        cin &gt;&gt; arr[i].</span><span style="color:#bf616a;">second </span><span>&gt;&gt; arr[i].</span><span style="color:#bf616a;">first</span><span>;
+</span><span>    }
+</span><span>    </span><span style="color:#bf616a;">sort</span><span>(arr, arr + n);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> count = </span><span style="color:#d08770;">1</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> prev_end_time = arr[</span><span style="color:#d08770;">0</span><span>].</span><span style="color:#bf616a;">first</span><span>;
+</span><span>    </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">1</span><span>; i &lt; n; i++) {
+</span><span>        </span><span style="color:#b48ead;">if </span><span>(arr[i].</span><span style="color:#bf616a;">second </span><span>&gt;= prev_end_time) {
+</span><span>            count++;
+</span><span>            prev_end_time = arr[i].</span><span style="color:#bf616a;">first</span><span>;
+</span><span>        }
+</span><span>    }
+</span><span>    cout &lt;&lt; count &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/1931">1931번: 회의식 배정</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

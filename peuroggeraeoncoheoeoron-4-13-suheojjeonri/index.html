@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>프로그래밍언어론 2023-04-13 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="프로그래밍언어론 2023-04-13 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/peuroggeraeoncoheoeoron-4-13-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/peuroggeraeoncoheoeoron-4-13-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-13T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="프로그래밍언어론 2023-04-13 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/peuroggeraeoncoheoeoron-4-13-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "프로그래밍언어론 2023-04-13 수업정리"
+  
+    
+    
+      "datePublished":"2023-04-13T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/peuroggeraeoncoheoeoron-4-13-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-13">April 13, 2023</time>
+  	</div>
+  	<h1 class="post-title">프로그래밍언어론 2023-04-13 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Review</li>
+<li>Prolog Intro</li>
+<li>SWI-Prolog &amp; Demo</li>
+</ul>
+<h2 id="review">Review</h2>
+<hr />
+<ul>
+<li>Axiomatic System(공리계)
+<ul>
+<li>공리의 유한 집합, 사실(fact)과 추론 규칙(rules)로 구성된다.
+<ul>
+<li>사실(predicate) : 아래와 같이 표현 가능하다. 항상 참이다.$$\frac{true}{fact}$$</li>
+<li>추론 규칙(rules) : 가정(hypothetics) 술어들을 바탕으로 결론 술어를 도출해 내는 규칙이다. 아래와 같이 표현 가능하다.$$\frac{predicate^{\ *}}{predicate}$$$$predicate^{\ *} \models predicate$$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Hoare Logic$${P}\ S\ {Q}$$
+<ul>
+<li>P, S, Q를 묶어서 Hoare Triple이라고 한다.</li>
+<li>P : 사전조건(input spec)</li>
+<li>Q : 사후조건(output spec)</li>
+<li>output spec으로부터 input spec이 derive된다면 올바른 program이다. 이때 input spec P의 최약 사전 조건(weakest Precondition)을 Axiomatic System을 통해 찾을 수 있다.</li>
+<li>output spec으로부터 input spec을 derive 할 수 있음을 증명하기 위해 몇 가지 Axiom을 배웠다.
+<ul>
+<li>Assignment Axiom</li>
+<li>The rule of consequence</li>
+<li>The rule of compostion</li>
+<li>The rule of selection</li>
+<li>The rule of iteration</li>
+</ul>
+</li>
+<li>특히 rule of iteration에서는 Invarient Variable I를 찾는 과정이 중요했다. I가 숨겨져 있으므로 직관적으로 판단하기가 힘들었다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="prolog-intro">Prolog Intro</h2>
+<hr />
+<h3 id="prolog-history">Prolog History</h3>
+<ul>
+<li>1972년에 Alain Colmerauer와 Philippe Roussel이 만든 언어</li>
+<li>1979년에 Kowalski의 논문 Algorithm = Logic + Control, CACM에 의해 널리 알려졌다.</li>
+<li>일본 정부에서 5세대 프로젝트의 기본 언어로 채택하는 등 나름 영향력이 있었다.</li>
+</ul>
+<h3 id="prolog-resources">Prolog Resources</h3>
+<ul>
+<li>Prolog Env
+<ul>
+<li><a href="http://www.swi-prolog.org/">SWI Prolog</a></li>
+<li><a href="http://www.visual-prolog.com/">Visual Prolog</a></li>
+<li><a href="http://www.dobrev.com/">Strawberry Prolog</a></li>
+</ul>
+</li>
+<li>Prolog Docs
+<ul>
+<li><a href="https://www.cpp.edu/~jrfisher/www/prolog_tutorial/contents.html">J.R. Fisher, Prolog Tutorial</a></li>
+<li><a href="https://www.iso.org/standard/73194.html">Prolog part1 - General core</a></li>
+<li><a href="https://pauillac.inria.fr/~deransar/prolog/docs.html">J.P.E. Hudgson, Prolog : The ISO Standard Documents, 1999</a></li>
+</ul>
+</li>
+<li>Prolog Books
+<ul>
+<li><a href="https://www.pearson.com/uk/educators/higher-education-educators/program/Bratko-Prolog-Programming-for-Artificial-Intelligence-4th-Edition">Ivan Bratko, Prolog Programming for Artificial Intelligence, 4th Ed., AddisonWesley, 2012</a></li>
+<li><a href="https://www.learnprolognow.org/">Patrick Blackburn, Johan Bos and Kristina Striegnitz, Learn Proglog Now!, College Publication, 2006</a></li>
+<li><a href="https://www.amzi.com/ExpertSystemsInProlog/index.htm">Dennis Merritt, Building Expert System in Prolog, Springer-Verlag, 1989</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="procedural-language-vs-declarative-language">Procedural Language vs Declarative Language</h3>
+<ul>
+<li>Procedural Language(순차적 프로그래밍 언어) : BASIC, FORTRAN, C++, Pascal, Java ...
+<ul>
+<li>computational step을 하나하나 명시해야 한다.</li>
+<li>이때 computational step이란 instruction, statement, procedure을 통한 계산 과정이다.</li>
+<li>어떻게(how) 문제를 풀어야 하는지 기술한다.</li>
+</ul>
+</li>
+<li>Declarative Language(선언적 프로그래밍 언어) : LISP, Prolog, ML ...
+<ul>
+<li>computational rules를 명시한다.</li>
+<li>fact는 computational rules의 special cases이다.</li>
+<li>무엇(what)을 풀어야 하는지 기술한다.</li>
+</ul>
+</li>
+<li>Procedural Language, Declarative Language가 how와 what의 차이를 보이기는 하지만, 현실에서는 이 둘이 항상 확실히 구별되지는 않는다.
+<ul>
+<li>순차적 언어에도 what에 대한 특징이 있다.(타입 선언)</li>
+<li>선언적 언어에도 how에 대한 특징이 있다.(Prolog의 cut)</li>
+</ul>
+</li>
+</ul>
+<h3 id="computational-model-of-prolog">Computational Model of Prolog</h3>
+<ul>
+<li>1차 술어 계산(1st-order predicate calculus)을 기반으로 한다.</li>
+<li>Rules(규칙) : Horn clause(Horn 절)을 이용하여 표시한다.
+<ul>
+<li>Horn절은 Conjunctive Normal Form으로 생각하면 이해하기 쉽다.</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="Prolog" style="background-color:#2b303b;color:#c0c5ce;" class="language-Prolog "><code class="language-Prolog" data-lang="Prolog"><span>interesting(L) :- lectureByWoo(L), language(L).
+</span></code></pre>
+<ul>
+<li>Fact(사실) : 아무 조건 없이 성립하는 명제</li>
+</ul>
+<pre data-lang="Prolog" style="background-color:#2b303b;color:#c0c5ce;" class="language-Prolog "><code class="language-Prolog" data-lang="Prolog"><span>fact.
+</span></code></pre>
+<ul>
+<li>goal(질의) : 사실인지 확인하고 싶은 명제
+<ul>
+<li>질의의 결과는 참(true)또는 거짓(false)이다.</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="Prolog" style="background-color:#2b303b;color:#c0c5ce;" class="language-Prolog "><code class="language-Prolog" data-lang="Prolog"><span>-? goal.
+</span></code></pre>
+<ul>
+<li>아래는 사실, 규칙, 질의 과정을 포함하는 Prolog 프로그램의 예시이다.</li>
+</ul>
+<pre data-lang="Prolog" style="background-color:#2b303b;color:#c0c5ce;" class="language-Prolog "><code class="language-Prolog" data-lang="Prolog"><span>lectureByWoo(prolog).
+</span><span>lectureByWoo(scheme).
+</span><span>language(prolog).
+</span><span>language(scheme).
+</span><span>
+</span><span>interesting(L) :- lectureByWoo(L), language(L).
+</span></code></pre>
+<ul>
+<li>실행 결과</li>
+</ul>
+<pre data-lang="Prolog" style="background-color:#2b303b;color:#c0c5ce;" class="language-Prolog "><code class="language-Prolog" data-lang="Prolog"><span>?- interesting(prolog).
+</span><span>true.
+</span><span>
+</span><span>?- interesting(scheme).
+</span><span>true.
+</span><span>
+</span><span>?- interesting(cpp).
+</span><span>false.
+</span></code></pre>
+<h2 id="swi-prolog-demo">SWI-Prolog &amp; Demo</h2>
+<hr />
+<ul>
+<li>프로그램 소스 편집</li>
+</ul>
+<pre data-lang="Prolog" style="background-color:#2b303b;color:#c0c5ce;" class="language-Prolog "><code class="language-Prolog" data-lang="Prolog"><span>?- edit(file(&#39;filename.pl&#39;)).
+</span></code></pre>
+<ul>
+<li>프로그램 파일 참조(load)
+<ul>
+<li>두 표현은 같은 표현이다.</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="Prolog" style="background-color:#2b303b;color:#c0c5ce;" class="language-Prolog "><code class="language-Prolog" data-lang="Prolog"><span>?- consult(filename).
+</span><span>
+</span><span>?- [filename].
+</span></code></pre>
+<ul>
+<li>질의(목적의 명시)
+<ul>
+<li>당연하지만 parent rule이 명시되어 있어야 아래와 같은 질의가 가능하다.</li>
+<li>답변에 만족했다면 질의 이후 &quot;Enter&quot; 입력</li>
+<li>답변에 만족하지 않았다면 &quot;;&quot; 를 입력하여 계속 질의</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="Prolog" style="background-color:#2b303b;color:#c0c5ce;" class="language-Prolog "><code class="language-Prolog" data-lang="Prolog"><span>?- parent(X, jim).
+</span></code></pre>
+<ul>
+<li>해석기 종료</li>
+</ul>
+<pre data-lang="Prolog" style="background-color:#2b303b;color:#c0c5ce;" class="language-Prolog "><code class="language-Prolog" data-lang="Prolog"><span>?- halt.
+</span></code></pre>
+<h3 id="basic-swi-prolog-commands">Basic SWI-Prolog Commands</h3>
+<ul>
+<li>아래 명령어들은 SWI에만 특별히 존재하는 명령어이다. 리눅스 명령어에서 따옷 듯 하다.
+<ul>
+<li>pwd : 현재 디렉토리 출력</li>
+<li>cd : 현재 디렉토리 변경</li>
+<li>ls : 현재 디렉토리 파일 list</li>
+<li>help : 특정 topic에 관한 도움말</li>
+<li>edit : 파일 열기</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

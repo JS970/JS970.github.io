@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Greedy Algorithm - Kruskal Algorithm | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Greedy Algorithm - Kruskal Algorithm">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/greedy-algorithm-kruskal-algorithm/">
+<meta property="og:url" content="https://js970.github.io/greedy-algorithm-kruskal-algorithm/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-24T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Greedy Algorithm - Kruskal Algorithm">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/greedy-algorithm-kruskal-algorithm/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Greedy Algorithm - Kruskal Algorithm"
+  
+    
+    
+      "datePublished":"2023-04-24T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/greedy-algorithm-kruskal-algorithm/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-24">April 24, 2023</time>
+  	</div>
+  	<h1 class="post-title">Greedy Algorithm - Kruskal Algorithm</h1>
+  	<div class="post-line"></div>
+  	<h2 id="kruskal-s-algorithm">Kruskal's Algorithm</h2>
+<hr />
+<ol>
+<li>그래프의 개별 노드로 구성된 V개의 subset을 생성한다.</li>
+<li>edge들을 weight에 따라 오름차순으로 정렬한다.</li>
+<li>edge를 선택했을 때 두 개의 서로 다른 V를 연결한다면, 해당 edge를 final edge set에 추가시키고, 두 V를 merge 한다.(이제 두 subset은 하나의 집합으로 인식한다.)</li>
+<li>subset의 집합이 하나만 남을 때까지 3을 반복해서 수행한다.</li>
+</ol>
+<ul>
+<li>다음 그래프에 대해 Kruskal Algorithm을 적용해 보자.                            <img src="/image/Algorithm/graph_ex1.png" alt="Example Graph" />
+<ul>
+<li>위에서 설명한 과정을 차례대로 수행하면 아래 그림과 같다.<img src="/image/Algorithm/kruskal.png" alt="Kruskal Algorithm" /></li>
+</ul>
+</li>
+</ul>
+<h3 id="code">Code</h3>
+<pre data-lang="C++" style="background-color:#2b303b;color:#c0c5ce;" class="language-C++ "><code class="language-C++" data-lang="C++"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">vector</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">algorithm</span><span>&gt;
+</span><span> 
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span> 
+</span><span style="color:#65737e;">// Union-Find 자료구조를 위한 클래스
+</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">UnionFind </span><span style="color:#eff1f5;">{
+</span><span style="color:#b48ead;">private</span><span style="color:#eff1f5;">:
+</span><span style="color:#eff1f5;">    vector&lt;</span><span style="color:#b48ead;">int</span><span style="color:#eff1f5;">&gt; parent;
+</span><span style="color:#eff1f5;">    vector&lt;</span><span style="color:#b48ead;">int</span><span style="color:#eff1f5;">&gt; rank;
+</span><span style="color:#eff1f5;"> 
+</span><span style="color:#b48ead;">public</span><span style="color:#eff1f5;">:
+</span><span style="color:#eff1f5;">    </span><span style="color:#8fa1b3;">UnionFind</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">n</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">        parent.</span><span style="color:#bf616a;">resize</span><span style="color:#eff1f5;">(n);
+</span><span style="color:#eff1f5;">        rank.</span><span style="color:#bf616a;">resize</span><span style="color:#eff1f5;">(n, </span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">);
+</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">for</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">int</span><span style="color:#eff1f5;"> i </span><span>= </span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">; i </span><span>&lt;</span><span style="color:#eff1f5;"> n; i</span><span>++</span><span style="color:#eff1f5;">) parent[i] </span><span>=</span><span style="color:#eff1f5;"> i;
+</span><span style="color:#eff1f5;">    }
+</span><span style="color:#eff1f5;"> 
+</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">find</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">x</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">if</span><span style="color:#eff1f5;">(parent[x] </span><span>!=</span><span style="color:#eff1f5;"> x)
+</span><span style="color:#eff1f5;">            parent[x] </span><span>= </span><span style="color:#bf616a;">find</span><span style="color:#eff1f5;">(parent[x]);
+</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> parent[x];
+</span><span style="color:#eff1f5;">    }
+</span><span style="color:#eff1f5;"> 
+</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">unite</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">x</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">y</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">int</span><span style="color:#eff1f5;"> rootX </span><span>= </span><span style="color:#bf616a;">find</span><span style="color:#eff1f5;">(x);
+</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">int</span><span style="color:#eff1f5;"> rootY </span><span>= </span><span style="color:#bf616a;">find</span><span style="color:#eff1f5;">(y);
+</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">if</span><span style="color:#eff1f5;">(rootX </span><span>!=</span><span style="color:#eff1f5;"> rootY) {
+</span><span style="color:#eff1f5;">            </span><span style="color:#b48ead;">if</span><span style="color:#eff1f5;">(rank[rootX] </span><span>&lt;</span><span style="color:#eff1f5;"> rank[rootY])
+</span><span style="color:#eff1f5;">                parent[rootX] </span><span>=</span><span style="color:#eff1f5;"> rootY;
+</span><span style="color:#eff1f5;">            </span><span style="color:#b48ead;">else if </span><span style="color:#eff1f5;">(rank[rootX] </span><span>&gt;</span><span style="color:#eff1f5;"> rank[rootY])
+</span><span style="color:#eff1f5;">                parent[rootY] </span><span>=</span><span style="color:#eff1f5;"> rootX;
+</span><span style="color:#eff1f5;">            </span><span style="color:#b48ead;">else </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">                parent[rootY] </span><span>=</span><span style="color:#eff1f5;"> rootX;
+</span><span style="color:#eff1f5;">                rank[rootX]</span><span>++</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">            }
+</span><span style="color:#eff1f5;">        }
+</span><span style="color:#eff1f5;">    }
+</span><span style="color:#eff1f5;">}</span><span>;
+</span><span> 
+</span><span style="color:#65737e;">// 간선을 나타내는 클래스
+</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">Edge </span><span style="color:#eff1f5;">{
+</span><span style="color:#b48ead;">public</span><span style="color:#eff1f5;">:
+</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">int</span><span style="color:#eff1f5;"> src, dest, weight;
+</span><span style="color:#eff1f5;"> 
+</span><span style="color:#eff1f5;">    </span><span style="color:#8fa1b3;">Edge</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">src</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">dest</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">weight</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">        </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">-&gt;</span><span style="color:#bf616a;">src </span><span>=</span><span style="color:#eff1f5;"> src;
+</span><span style="color:#eff1f5;">        </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">-&gt;</span><span style="color:#bf616a;">dest </span><span>=</span><span style="color:#eff1f5;"> dest;
+</span><span style="color:#eff1f5;">        </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">-&gt;</span><span style="color:#bf616a;">weight </span><span>=</span><span style="color:#eff1f5;"> weight;
+</span><span style="color:#eff1f5;">    }
+</span><span style="color:#eff1f5;">}</span><span>;
+</span><span> 
+</span><span style="color:#b48ead;">bool </span><span style="color:#8fa1b3;">compare </span><span>(</span><span style="color:#b48ead;">const</span><span> Edge&amp; </span><span style="color:#bf616a;">a</span><span>, </span><span style="color:#b48ead;">const</span><span> Edge&amp; </span><span style="color:#bf616a;">b</span><span>) {
+</span><span>    </span><span style="color:#b48ead;">return</span><span> a.</span><span style="color:#bf616a;">weight </span><span>&lt; b.</span><span style="color:#bf616a;">weight</span><span>;
+</span><span>}
+</span><span> 
+</span><span style="color:#65737e;">// Kruskal 알고리즘으로 최소 신장 트리를 구하는 함수
+</span><span>vector&lt;Edge&gt; </span><span style="color:#8fa1b3;">kruskalMST</span><span>(vector&lt;Edge&gt;&amp; </span><span style="color:#bf616a;">edges</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">V</span><span>) {
+</span><span>    </span><span style="color:#65737e;">// 간선을 가중치의 오름차순으로 정렬
+</span><span>    </span><span style="color:#bf616a;">sort</span><span>(edges.</span><span style="color:#bf616a;">begin</span><span>(), edges.</span><span style="color:#bf616a;">end</span><span>(), compare);
+</span><span> 
+</span><span>    vector&lt;Edge&gt; result; </span><span style="color:#65737e;">// 최소 신장 트리를 저장할 벡터
+</span><span>    UnionFind </span><span style="color:#bf616a;">uf</span><span>(V); </span><span style="color:#65737e;">// Union-Find 자료구조 객체
+</span><span> 
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">const</span><span> Edge&amp; edge : edges) {
+</span><span>        </span><span style="color:#b48ead;">int</span><span> srcRoot = uf.</span><span style="color:#bf616a;">find</span><span>(edge.</span><span style="color:#bf616a;">src</span><span>);
+</span><span>        </span><span style="color:#b48ead;">int</span><span> destRoot = uf.</span><span style="color:#bf616a;">find</span><span>(edge.</span><span style="color:#bf616a;">dest</span><span>);
+</span><span> 
+</span><span>        </span><span style="color:#65737e;">// 사이클을 형성하지 않는다면 간선을 추가하고 Union-Find자료구조를 업데이트
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(srcRoot != destRoot) {
+</span><span>            result.</span><span style="color:#bf616a;">push_back</span><span>(edge);
+</span><span>            uf.</span><span style="color:#bf616a;">unite</span><span>(srcRoot, destRoot);
+</span><span>        }
+</span><span>    }
+</span><span> 
+</span><span>    </span><span style="color:#b48ead;">return</span><span> result;
+</span><span>}
+</span><span> 
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">int</span><span> V, E;
+</span><span>    cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">정점 개수와 간선 개수를 입력하세요: </span><span>&quot;;
+</span><span>    cin &gt;&gt; V &gt;&gt; E;
+</span><span> 
+</span><span>    vector&lt;Edge&gt; edges;
+</span><span>    cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">간선 정보를 입력하세요 (출발 정점, 도착 정점, 가중치):</span><span>&quot; &lt;&lt; endl;
+</span><span>    </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; E; i++) {
+</span><span>        </span><span style="color:#b48ead;">int</span><span> src, dest, weight;
+</span><span>        cin &gt;&gt; src &gt;&gt; dest &gt;&gt; weight;
+</span><span>        edges.</span><span style="color:#bf616a;">emplace_back</span><span>(src, dest, weight);
+</span><span>    }
+</span><span> 
+</span><span>    vector&lt;Edge&gt; mst = </span><span style="color:#bf616a;">kruskalMST</span><span>(edges, V);
+</span><span> 
+</span><span>    cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">최소 신장 트리의 간선 정보:</span><span>&quot; &lt;&lt; endl;
+</span><span>    </span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">const</span><span> Edge&amp; edge : mst) {
+</span><span>        cout &lt;&lt; edge.</span><span style="color:#bf616a;">src </span><span>&lt;&lt; &quot;</span><span style="color:#a3be8c;"> - </span><span>&quot; &lt;&lt; edge.</span><span style="color:#bf616a;">dest </span><span>&lt;&lt; &quot;</span><span style="color:#a3be8c;"> : </span><span>&quot; &lt;&lt; edge.</span><span style="color:#bf616a;">weight </span><span>&lt;&lt; endl;
+</span><span>    }
+</span><span> 
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h3 id="kruskal-vs-prim">Kruskal vs Prim</h3>
+<ul>
+<li>Kruskal Algorithm의 경우 모든 edge를 정렬하는 과정이 필요하다. 이때 정렬에 걸리는 시간복잡도는 mlogm이다.</li>
+<li>모든 vertex가 연결된 n개의 정점을 가지는 그래프의 경우 n(n-1)/2개의 edge를 가질 수 있다.</li>
+<li>따라서 kruskal algorithm의 worst case는 아래와 같다.$$\Theta(\frac{n(n-1)}2 \times log(\frac{n(n-1)}2)) = \Theta(n^2log(n^2)) = \Theta(2n^2log(n)) = \Theta(n^2log(n))$$</li>
+<li>V개의 vertex중 최소 edge 개수는 n-1개이다. 이때의 시간복잡도는 아래와 같다.$$\Theta((n-1)log(n-1)) = \Theta(nlogn)$$</li>
+<li>Prim Algorithm의 시간복잡도는 아래와 같다.$$\Theta(n^2)$$</li>
+<li>따라서 edge의 개수가 많을 경우에는 Prim Algorithm이 더 빠르고, edge의 개수가 적을 경우에는 Kruskal Algorithm이 더 빠르다.</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

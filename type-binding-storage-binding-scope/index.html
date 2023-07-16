@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Type Binding, Storage Binding, Scope | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Type Binding, Storage Binding, Scope">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/type-binding-storage-binding-scope/">
+<meta property="og:url" content="https://js970.github.io/type-binding-storage-binding-scope/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-05-12T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Type Binding, Storage Binding, Scope">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/type-binding-storage-binding-scope/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Type Binding, Storage Binding, Scope"
+  
+    
+    
+      "datePublished":"2023-05-12T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/type-binding-storage-binding-scope/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-05-12">May 12, 2023</time>
+  	</div>
+  	<h1 class="post-title">Type Binding, Storage Binding, Scope</h1>
+  	<div class="post-line"></div>
+  	<h2 id="type-binding-storage-binding-scope">Type Binding, Storage Binding, Scope</h2>
+<hr />
+<h3 id="type">Type</h3>
+<ul>
+<li><code>Type</code>은 <code>Value Set</code> + <code>Operation Set</code> 으로 생각할 수 있다.</li>
+<li><code>Value Set</code> : 가질 수 있는 값의 집합</li>
+<li><code>Operation Set</code> : 해당 타입의 값들에 대해 적용 가능한 연산자의 집합</li>
+<li>예를 들어 C/C++에서 <code>char</code>타입의 경우 아래와 같은 <code>Value Set</code>, <code>Operation Set</code>을 가진다.
+<ul>
+<li><code>Value Set</code> : 8비트 범위의 이진수</li>
+<li><code>Operator Set</code> : 단항 -, +, 이항 -, +, *, /, 등의 연산자를 지원한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="type-binding">Type Binding</h3>
+<ul>
+<li>타입 바인딩을 두 가지 기준으로 구분해 볼 수 있다.</li>
+<li>어떻게 타입이 식별되는가 : <code>명시적(explicit)</code>, <code>암묵적(implicit</code></li>
+<li>바인딩이 일어나는 시점은 언제인가 : <code>정적(static)</code>, <code>동적(dynamic)</code></li>
+<li>이러한 기준에 의해 언어를 간단히 분류해 보면 아래와 같다.<img src="/image/PL/typeBinding.png" alt="Type Binding" />
+<ul>
+<li>동적 바인딩 된 경우에는 오류 검사가 힘들다.</li>
+</ul>
+</li>
+<li>타입 바인딩은 변수보다 명칭(function name, class name)에 대한 바인딩을 생각하는 경우가 많다.</li>
+<li>하지만 동적 바인딩에서 변수에 대한 타입 바인딩이 실행 시간에 결정될 수 있다는 점에 차이가 없다.</li>
+</ul>
+<h3 id="static-typing">Static Typing</h3>
+<ul>
+<li>일반적으로 translation time에 타입이 결정된다.</li>
+<li>타입은 명시적으로 선얼될 수도, 암시적으로 선언될 수도 있다.
+<ul>
+<li>타입의 명시적 선언 예시로는 C언어의 명시적 타입 선언이 있다.</li>
+<li>타입의 암시적 선언 예시로는 BASIC의 <code>$</code>를 이용한 문자열 변수 암시적 선언이 있다.</li>
+</ul>
+</li>
+<li>이러한 방식을 가질 경우 <code>정적 타입 언어(statically typed language</code>라고 한다.</li>
+</ul>
+<h3 id="dynamic-typing">Dynamic Typing</h3>
+<ul>
+<li>타입은 assignment연산을 통해 결정된다.</li>
+<li>아래는 동적 타입 언어 APL의 예시이다.<pre data-lang="APL" style="background-color:#2b303b;color:#c0c5ce;" class="language-APL "><code class="language-APL" data-lang="APL"><span>LIST &lt;- 2 4 6 8
+</span><span>LIST &lt;- 10.2
+</span></code></pre>
+<ul>
+<li>1행에서의 LIST는 정수 배열이다.</li>
+<li>2행에서의 LIST는 부동 소수점 변수이다.</li>
+</ul>
+</li>
+<li>동적 타입 바인딩의 단점
+<ul>
+<li>형 검사(type check)가 힘들다.</li>
+<li>실행 시간 중 오류가 발생할 확률이 비교적 높다.</li>
+</ul>
+</li>
+<li>동적 타입 바인딩의 장점
+<ul>
+<li>범용 프로그래밍(generic programming)등 유연성이 높은 프로그래밍이 가능하다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="type-inference-taib-curon">Type Inference(타입 추론)</h3>
+<ul>
+<li>정적으로 바인딩 되었다고 하더라도 아래의 경우와 같이 타입 정의가 생략될 수 있다.</li>
+<li>ML<pre data-lang="ML" style="background-color:#2b303b;color:#c0c5ce;" class="language-ML "><code class="language-ML" data-lang="ML"><span>fun times10(x) = </span><span style="color:#d08770;">10 </span><span>* x;
+</span></code></pre>
+<ul>
+<li>time10의 반환값은 정수형으로 <code>inference</code>된다.</li>
+</ul>
+</li>
+<li>Java(Java7 ~)<pre data-lang="Java" style="background-color:#2b303b;color:#c0c5ce;" class="language-Java "><code class="language-Java" data-lang="Java"><span style="color:#ebcb8b;">List</span><span>&lt;</span><span style="color:#ebcb8b;">Integer</span><span>&gt; list2 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">ArrayList</span><span>&lt;&gt;();
+</span></code></pre>
+<ul>
+<li>위 경우 생성자로 사용되는 ArrayList의 타입은 Java에서 <code>inference</code>하여 <code>Integer</code>로 설정된다.</li>
+</ul>
+</li>
+<li>C++(C++11 ~)<pre data-lang="C++" style="background-color:#2b303b;color:#c0c5ce;" class="language-C++ "><code class="language-C++" data-lang="C++"><span>string s &quot;</span><span style="color:#a3be8c;">HELLO</span><span>&quot;;
+</span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">auto</span><span> c: s)
+</span><span>	cout &lt;&lt; c &lt;&lt; endl;
+</span></code></pre>
+<ul>
+<li>변수 <code>c</code>의 타입은 <code>s</code>에 의해 <code>char</code>로 <code>inference</code>된다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="storage-binding">Storage Binding</h3>
+<ul>
+<li><code>Allocation</code> : 사용 가능한 메모리로부터 <code>memory cell</code>을 가져오는 것</li>
+<li><code>Deallocation</code> : 할당된 <code>memory cell</code>을 사용 가능한 메모리에서 제거하는 것</li>
+<li><code>Lifetime of a variable</code> : 변수가 <code>memory cell</code>에 존재하는 시간</li>
+<li>일반적인 실행 시간의 메모리 구조는 아래와 같다.<img src="/image/PL/storageBinding.png" alt="Storage Binding" /></li>
+</ul>
+<h3 id="static-variables">Static Variables</h3>
+<ul>
+<li>정적 변수는 실행 시간 이전에 <code>memoy cell</code>이 바인딩된다.</li>
+<li><code>storage binding</code>이 실행 시간 중 변경되지 않는다.</li>
+<li>대표적으로 C, C++, Java에서 <code>static</code>키워드를 사용하여 선언한 변수가 <code>static variable</code>이다.</li>
+<li><code>static variable</code>을 사용하여 서브프로그램을 <code>history sensitive</code>하게 구현할 수 있다.</li>
+<li>로컬 변수를 사용한 재귀가 불가능하다는 단점이 있다.(old FORTRAN)</li>
+</ul>
+<h3 id="scope">Scope</h3>
+<ul>
+<li>변수의 <code>scope</code>는 변수가 <code>visible</code>한 <code>statement</code>의 범위를 말한다.</li>
+<li><code>statement</code>에서 변수가 참조될 수 있다면 변수는 <code>visible</code>하다고 말한다.</li>
+<li>프로그램에서 <code>non-local variable</code>이란 <code>visible</code>하지만 그곳에 선언되지 않은 변수를 의미한다.</li>
+<li>프로그래밍 언어에서 <code>Scope Rule</code>이란 변수 선언과 참조 사이의 관계를 정의한 것이다.
+<ul>
+<li>특히 <code>non-local variable</code>에서 중요하게 다뤄진다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="block">Block</h3>
+<ul>
+<li><code>local variable</code>을 선언할 수 있는 코드 영역이다.</li>
+<li><code>Block</code>단위로 <code>storage allocation</code>된다.</li>
+<li>여러 <code>Block</code>이 섞여서 프로그램을 구성하는 프로그래밍 언어를 <code>Block-Structured Language</code>라고 한다.</li>
+<li>서브프로그램을 구성하지 않는 <code>Block</code>을 <code>Nonprocedural Block</code>이라고 한다.</li>
+<li><code>Nonprocedural Block</code>예시이다.<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>declare TEMP: integer;
+</span><span>begin
+</span><span>	TEMP := FIRST;
+</span><span>	FIRST := SECOND;
+</span><span>	SECOND := THIRD;
+</span><span>end
+</span></code></pre>
+</li>
+<li>Pascal, Modula-2는 <code>Nonprocedural Block</code>을 지원하지 않는다.</li>
+</ul>
+<h3 id="static-scope">Static Scope</h3>
+<ul>
+<li>변수들이 실행 시간 이전에 정적으로 결정되는 <code>Scope</code>이다.</li>
+<li>프로그램 텍스트에 기반한다.</li>
+<li>자신으로 부터 가장 가까운 scope의 변수를 사용한다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">int</span><span> a = </span><span style="color:#d08770;">3</span><span>;
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">add1</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">a</span><span>) {
+</span><span>	</span><span style="color:#b48ead;">return</span><span> a + </span><span style="color:#d08770;">1</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>	</span><span style="color:#bf616a;">add1</span><span>(</span><span style="color:#d08770;">10</span><span>);
+</span><span>	</span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>위 프로그램의 add1에서는 해당 <code>scope</code>에서 가장 가까운 형식 매개변수인 10을 참조하여 11을 반환한다.</li>
+<li>위 프로그램에서 처럼 지역 변수에 의해 비지역 변수가 사용할 수 없는 지점을 <code>Scope Hole</code>이라 한다.</li>
+</ul>
+</li>
+<li><code>Static Ancestor</code> : 상위의 모든 <code>Scope</code>를 지칭한다.</li>
+<li><code>Static Parent</code> : 바로 상위의 <code>Scope</code>를 지칭한다.</li>
+<li>Ada, C++등 특정 언어에서는 <code>Scope Hole</code>에서 가려진 변수를 접근할 수 있는 방법을 제공한다.
+<ul>
+<li>Ada에서 x가 hidden variable인 경우 접근하는 방법<pre data-lang="Ada" style="background-color:#2b303b;color:#c0c5ce;" class="language-Ada "><code class="language-Ada" data-lang="Ada"><span>big.x
+</span></code></pre>
+</li>
+<li>C++에서 x가 hidden variable인 경우 접근하는 방법<pre data-lang="C++" style="background-color:#2b303b;color:#c0c5ce;" class="language-C++ "><code class="language-C++" data-lang="C++"><span>::x
+</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="static-scope-example">Static Scope Example</h3>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>program main;
+</span><span>	procedure A;
+</span><span>		procedure C;
+</span><span>			begin ... end;
+</span><span>		procedure D;
+</span><span>			begin ... end;
+</span><span>		begin {A}
+</span><span>		...
+</span><span>		end;  {A}
+</span><span>	procedure B;
+</span><span>		procedure E;
+</span><span>			begin ... end;
+</span><span>		begin {B}
+</span><span>		...
+</span><span>		end;  {B}
+</span><span>	begin {main}
+</span><span>	...
+</span><span>	end.  {main}
+</span></code></pre>
+<ul>
+<li>위 프로그램에서 호출 가능성을 그래프로 나타내면 아래와 같다.<img src="/image/PL/callGraph.png" alt="Call Graph" />
+<ul>
+<li>main에서는 재귀 호출이 불가능하다.</li>
+<li>A, B, C, D, E는 서브프로그램이므로 재귀 호출이 가능하다.</li>
+<li>B, D는 각각 A, C이후에 선언된 서브프로그램이므로 A, C에 접근할 수 있지만 그 역은 불가능하다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="dynamic-scope">Dynamic Scope</h3>
+<ul>
+<li><code>Scope</code>는 서브프로그램의 호출 순서에 따라 결정된다.</li>
+<li><code>Static Scope</code>는 공간에 의한 관계를 가지지만, <code>Dynamic Scope</code>는 일시적인 관계를 가진다.</li>
+<li>LISP에서 나온 개념이며 일반적으로 사용되지는 않는다.
+<ul>
+<li>MaCarthy본인도 잘못 설계했음을 시인했다...</li>
+</ul>
+</li>
+</ul>
+<h3 id="evaluations-of-scoping-rules">Evaluations of Scoping Rules</h3>
+<ul>
+<li>Static Scope 장점
+<ul>
+<li>Static type checking이 가능하므로 reliable하다.</li>
+<li>type information을 이용하여 신속한 코드 생성이 가능하다.</li>
+<li>가독성이 좋다.</li>
+</ul>
+</li>
+<li>Static Scope 단점
+<ul>
+<li>변수 및 프로시저는 실제 필요한 범위보다 더 <code>visible</code>하다.</li>
+<li>조금의 참조 기능의 사용만으로 전체 프로그램이 변경될 수 있다.</li>
+</ul>
+</li>
+<li>Dynamic Scope 장점
+<ul>
+<li>특정 상황에서 파라미터 전달을 생략할 수 있다.</li>
+</ul>
+</li>
+<li>Dynamic Scope 단점
+<ul>
+<li>프로시저 호출자의 지역 변수는 피호출 프로시저에서 항상 <code>visible</code>하다.</li>
+<li>Static type checking을 적용할 수가 없다.</li>
+<li>프로그램 가독성이 좋지 않다.</li>
+<li>구현 역시 쉽지 않다(bad writability).</li>
+</ul>
+</li>
+</ul>
+<h3 id="scope-and-lifetime">Scope and Lifetime</h3>
+<ul>
+<li><code>Scope</code>와 <code>Lifetime</code>은 밀접한 관계가 있다. 하지만 엄연히 구분하여야 한다.</li>
+<li><code>Local Scope</code>의 <code>Lifetime</code>은 <code>Stack-Dynamic</code>이다.
+<ul>
+<li>물론, C계열 언어에서의 <code>static</code>변수 등 예외도 있다.</li>
+</ul>
+</li>
+<li><code>Global Scope</code>의 <code>Lifetime</code>은 <code>Static</code>이다.</li>
+<li><code>Lifetime</code>을 고려했을 때 아래와 같이 유용하게 생각할 수 있다.
+<ul>
+<li>C계열 언어에서 main()실행 전에 에러가 날 경우 높은 확률로 <code>static</code>의 선언에 문제가 발생한 것이다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="referencing-environment">Referencing Environment</h3>
+<ul>
+<li>참조 공간(Referencing Environment)란 <code>Scope Rule</code>을 다른 관점에서 본 것이다.</li>
+<li>프로그램 상에서 <code>visivle</code>한 <code>namespace</code>를 지칭한다.</li>
+<li><code>Static Scope Language</code>에서의 참조 공간은 아래와 같다.
+<ul>
+<li>지역 변수</li>
+<li>모든 <code>ancestor scope</code>의 <code>visible</code>한 변수</li>
+</ul>
+</li>
+<li><code>Dynamic Scope Language</code>에서의 참조 공간은 아래와 같다.
+<ul>
+<li>모든 실행 중인 프로그램에서 <code>visible</code>한 변수</li>
+</ul>
+</li>
+<li><code>Static Scope Ref Environment</code> 예시<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>program main;
+</span><span>	var a, b: integer;
+</span><span>procedure sub1;
+</span><span>	var x, y: integer;
+</span><span>	begin {sub1}
+</span><span>	..{1}..
+</span><span>	end;  {sub1}
+</span><span>procedure sub2;
+</span><span>	var x: integer;
+</span><span>	procedure sub3;
+</span><span>		var x: integer;
+</span><span>		begin {sub3}
+</span><span>		..{2}..
+</span><span>		end;  {sub3}
+</span><span>	begin {sub2}
+</span><span>	..{3}..
+</span><span>	end;  {sub2}
+</span><span>begin {main}
+</span><span>..{4}..
+</span><span>end.  {main}	
+</span></code></pre>
+<ul>
+<li>{1} : sub1's {x, y}, main's {a, b}</li>
+<li>{2} : sub3's {x}, main's {a, b}</li>
+<li>{3} : sub2's {x}, main's {a, b}</li>
+<li>{4} : main's {a, b}</li>
+</ul>
+</li>
+<li><code>Dynamic Scope Ref Environment</code> 예시<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>void sub1() {
+</span><span>	int a, b;
+</span><span>	..{1}..
+</span><span>}
+</span><span>
+</span><span>void sub2() {
+</span><span>	int b, c;
+</span><span>	..{2}..
+</span><span>	sub1();
+</span><span>}
+</span><span>
+</span><span>void main() {
+</span><span>	int c, d;
+</span><span>	..{3}..
+</span><span>	sub2();
+</span><span>}
+</span></code></pre>
+<ul>
+<li>{1} : sub1's {a, b}, sub2's {c}, main's {d}</li>
+<li>{2} : sub2's {b, c}, main's {d}</li>
+<li>{3} : main's {c, d}s</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

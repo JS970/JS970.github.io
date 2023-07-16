@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Computer Algorithm | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Computer Algorithm">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/tags/">
+<meta property="og:url" content="https://js970.github.io/tags/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Computer Algorithm">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/tags/",
+  "@context":"https://schema.org",
+  "@type": "WebPage",
+  "headline": "Computer Algorithm"
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+<div class="tags">
+	<div class="tags-header">
+		<h2 class="tags-header-title">Computer Algorithm</h2>
+		<div class="tags-header-line"></div>
+	</div>
+</div>
+
+<div class="catalogue">
+	<a href="https://js970.github.io/computational-complexity/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-06-10" class="catalogue-time">June 10, 2023</time>
+    <h1 class="catalogue-title">Computational Complexity</h1>
+    <div class="catalogue-line"></div>
+    <p>Computational Complexity
+
+Intractability
+Three General Categories of Problems
+</p>
+  </div>
+</a><a href="https://js970.github.io/searching/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-06-09" class="catalogue-time">June  9, 2023</time>
+    <h1 class="catalogue-title">Searching</h1>
+    <div class="catalogue-line"></div>
+    <p>Searching
+
+Binary Search
+
+탐색이란 key값으로 정렬된 공간에서 목표로 하는 key값을 찾는 것을 의미한다.
+Binary search는 이진 탐색이며, 탐색 공간의 중간값과 배교하여 탬색 공간을 절반으로 줄여 가며 목표로 하는 key값과 일치할 때까지 탐색을 하는 방법이다.
+tree자료구조를 사용하여 binary search와 sequential search의 탐색 횟수를 비교하면 아래와 같다.
+
+Binary Search
+Sequential Search
+tree의 depth가 …</p>
+  </div>
+</a><a href="https://js970.github.io/sorting/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-06-08" class="catalogue-time">June  8, 2023</time>
+    <h1 class="catalogue-title">Sorting</h1>
+    <div class="catalogue-line"></div>
+    <p>Sorting
+
+Sort
+
+record를 key값에 따라 재배치하는 것을 의미한다.
+두 개의 key를 비교하여 sort를 수행하는 알고리즘은 아래와 같은 연산을 수행해야 한다.
+
+두 key를 비교한다.
+key값을 복사한다.
+
+
+
+Insertion Sort
+
+배열을 sorted와 unsorted의 두 연속된 부분으로 나눈다. 
+초기값은 sorted는 빈 배열, unsorted는 전체 배열이다.
+unsorted의 첫 번째 원소를 sorted의 첫 번째 원소와 비교한다.
+sorted의 원소보다 unso…</p>
+  </div>
+</a><a href="https://js970.github.io/branch-bound-traveling-salesperson-problem/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-06-04" class="catalogue-time">June  4, 2023</time>
+    <h1 class="catalogue-title">Branch &amp; Bound - Traveling Salesperson Problem</h1>
+    <div class="catalogue-line"></div>
+    <p>Branch &amp; Bound - Traveling Salesperson Problem
+
+
+아래의 조건을 만족하면서 총 이동 거리가 최소가 되는 최적 경로를 찾는 문제이다.
+
+주어진 city(노드)에서 출발한다.
+모든 city(노드)를 정확히 한 번씩 방문한다.
+다시 처음 시작한 city(노드)로 돌아온다.
+
+
+
+Bound 및 문제 해결 전략
+
+수업시간에 다룬 Bound방법에 대해서는 제대로 이해를 못해서 인터넷에서 따로 찾았다.
+
+
+노드에서 가장 weight가 작은 edge를 두 개 선택하여…</p>
+  </div>
+</a><a href="https://js970.github.io/branch-bound/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-06-04" class="catalogue-time">June  4, 2023</time>
+    <h1 class="catalogue-title">Branch &amp; Bound</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Branch &amp; Bound
+Branch &amp; Bound - 0-1 Knapsack Problem
+
+Branch &amp; Bound
+
+Backtracking vs Branch &amp; Bound
+
+Backtracking
+
+노드를 추가한 뒤 non-promising임이 확인되면 Backtracking을 수행한다.
+preorder traversal을 이용한다.
+최적화 문제와 비 최적화 문제 모두에 사용된다.
+
+
+Branch &amp; Bound
+
+노드에서 더 이상 최적해를 찾…</p>
+  </div>
+</a><a href="https://js970.github.io/backtracking-0-1-knapsack-problem/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-03" class="catalogue-time">May  3, 2023</time>
+    <h1 class="catalogue-title">Backtracking - 0-1 Knapsack Problem</h1>
+    <div class="catalogue-line"></div>
+    <p>Backtracking - 0-1 Knapsack Problem
+
+
+0-1 Knapsack problem에 대해서는 Greedy Algorithm에서 다루었다. 본 단에서는  Backtracking 알고리즘을 사용하여 0-1 Knapsack problem을 해결하는 방법에 대해 다룬다. 가방에 최대 담을 수 있는 무게는 16, 각 물건들의 가격과 무게는 (40$, 2), (30$, 5), (50$, 10), (10$, 5) 이다.
+
+Promising Function
+
+profit : 현재 노드까지…</p>
+  </div>
+</a><a href="https://js970.github.io/backtracking-n-queen-s-problem/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-03" class="catalogue-time">May  3, 2023</time>
+    <h1 class="catalogue-title">Backtracking - N-Queen&#x27;s Problem</h1>
+    <div class="catalogue-line"></div>
+    <p>Backtracking - N-queen's problem
+
+N-Queen's Problem
+
+N x N의 체스보드에서 N개의 퀸들이 서로를 공격하지 않도록 배치시키는 방법을 구하는 문제
+Sequence : N개의 Queen이 배치되는 위치에 대한 sequence
+Set : Queen이 위치 가능한 N*N의 공간
+Criterion : 어떠한 두 개의 Queen도 같은 행, 열, 대각선상에 존재할 수 없다.
+
+4-Queens Problem Solution
+
+
+아래는 위 chessboard에 대해 B…</p>
+  </div>
+</a><a href="https://js970.github.io/backtracking-sum-of-subset-problem/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-03" class="catalogue-time">May  3, 2023</time>
+    <h1 class="catalogue-title">Backtracking - Sum of Subset Problem</h1>
+    <div class="catalogue-line"></div>
+    <p>Backtracking - sum of subset
+
+Sum of Subset Problem
+
+집합 S는 s1, s2, ... , sn의 원소로 이루어져 있다.
+W는 자연수이다.
+이때 S의 부분집합의 원소의 합이 W가 되는 모든 경우를 찾아라	
+n개의 수를 원소로 가지는 집합에서 원소의 합이 W가 되도록 하는 부분집합을 구하는 문제
+블랙젝을 생각하면 확 와닿는다.
+
+Promising Function
+
+아래는 Sum of Subset문제를 해결하기 위한 promising function 의사 코드이…</p>
+  </div>
+</a><a href="https://js970.github.io/backtracking/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-01" class="catalogue-time">May  1, 2023</time>
+    <h1 class="catalogue-title">Backtracking</h1>
+    <div class="catalogue-line"></div>
+    <p>Backtracking
+
+
+Backtracking을 통해 미로에서 길을 찾는다고 생각해 보자.
+
+Dead End에 도달할 때까지 경로를 따라간다.
+Dead End에 도달하면 Fork지점까지 되돌아간다(Backtrack).
+1에서 선택한 경로와 다른 경로를 선택한다.
+
+
+만약 어떤 경로가 Dead End로 도달할 것을 미리 알 수 있는 sign이 있다면?
+
+특히 이런 sign이 경로의 초반부에서 발견될수록 많은 탐색 시간을 절약할 수 있다.
+
+
+
+Backtracking Technique
+
+어떤 집합…</p>
+  </div>
+</a><a href="https://js970.github.io/greedy-algorithm-dijkstra-algorithm/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-26" class="catalogue-time">April 26, 2023</time>
+    <h1 class="catalogue-title">Greedy Algorithm - Dijkstra Algorithm</h1>
+    <div class="catalogue-line"></div>
+    <p>Review
+
+
+Prim's Algorithm vs Kruskal Algorithm
+
+Prim's Algorithm Time Complexity : n*n
+Kruskal's Algorithm Time Complexity : m*log m(n-1 &lt;= m &lt;= n(n-1)/2)
+Sparse graph : Kruskal Algorithm
+
+Kruskal Algorithm(n*log n) is faster than Prim's Algorithm
+
+
+Highly connected graph :…</p>
+  </div>
+</a><a href="https://js970.github.io/greedy-algorithm-kruskal-algorithm/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-24" class="catalogue-time">April 24, 2023</time>
+    <h1 class="catalogue-title">Greedy Algorithm - Kruskal Algorithm</h1>
+    <div class="catalogue-line"></div>
+    <p>Kruskal's Algorithm
+
+
+그래프의 개별 노드로 구성된 V개의 subset을 생성한다.
+edge들을 weight에 따라 오름차순으로 정렬한다.
+edge를 선택했을 때 두 개의 서로 다른 V를 연결한다면, 해당 edge를 final edge set에 추가시키고, 두 V를 merge 한다.(이제 두 subset은 하나의 집합으로 인식한다.)
+subset의 집합이 하나만 남을 때까지 3을 반복해서 수행한다.
+
+
+다음 그래프에 대해 Kruskal Algorithm을 적용해 보자.       …</p>
+  </div>
+</a><a href="https://js970.github.io/greedy-algorithm-prim-algorithm/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-24" class="catalogue-time">April 24, 2023</time>
+    <h1 class="catalogue-title">Greedy Algorithm - Prim Algorithm</h1>
+    <div class="catalogue-line"></div>
+    <p>Prim's Algorithm
+
+
+그래프에서 하나의 꼭짓점을 선택한다.
+꼭짓점과 edge를 구성하는 vertex중 edge의 weight이 가장 작은 vertex를 선택한다.
+2에서의 vertices와 edge를 구성하는 vertex중 edge의 weight이 가장 작은 vertex를 선택한다.
+더 이상 선택되지 않은 vertex가 없을 때까지 1~3을 반복한다.
+
+
+Code
+/* Code by https://4legs-study.tistory.com/m/112 */
+#include &lt;ios…</p>
+  </div>
+</a><a href="https://js970.github.io/greedy-algorithm/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-24" class="catalogue-time">April 24, 2023</time>
+    <h1 class="catalogue-title">Greedy Algorithm</h1>
+    <div class="catalogue-line"></div>
+    <p>Greedy Algorithm
+
+
+Greedy Algorithm은 &quot;순간순간 선택의 시점마다 항상 그 상황에서 최선인 선택을 하는&quot; 알고리즘이다.
+아래는 Greedy Algorithm의 예시이다.
+&gt;10원, 50원, 100원, 500원 동전이 무한 개 있다. 코인의 개수를 가장 적게 선택하여 730원을 지불하려면 어떻게 해야 하는가?
+이를 해결하기 위해서는 동전의 선택 시점마다 항상 선택 가능한 동전 중 금액이 가장 큰 동전을 선택하면 된다.
+
+Greedy Algorithm…</p>
+  </div>
+</a><a href="https://js970.github.io/keompyuteo-algorijjeu-4-9-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-09" class="catalogue-time">April  9, 2023</time>
+    <h1 class="catalogue-title">컴퓨터 알고리즘 2023-04-09 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Sequence Alignment
+Dynamic Programming - Needleman-Wunsch algorithm
+
+Sequence Alignment
+
+
+An alignment is an assignment of gaps to positions 0, ..., M in x, and 0, ..., N in y, so as to line up each letter in one sequence with either a letter or a gap in the other sequence
+…</p>
+  </div>
+</a><a href="https://js970.github.io/keompyuteo-algorijjeu-4-5-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-05" class="catalogue-time">April  5, 2023</time>
+    <h1 class="catalogue-title">컴퓨터 알고리즘 2023-04-05 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Dynamic Programming - Optimal Binary Search Trees(2)
+
+Dynamic Programming - Optimal Binary Search Trees(2)
+
+
+컴퓨터 알고리즘 4.3 수업정리에서 이어짐
+
+How to find Optimal BST?
+
+앞서 살펴본 알고리즘에 의하면, Optimal BST의 Average Search Time은 구할 수 있지만 Optimal BST가 무엇인지는 알 수 없다.
+Optimal BST를 구하기 위해서는 Opti…</p>
+  </div>
+</a><a href="https://js970.github.io/keompyuteo-algorijjeu-4-3-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-03" class="catalogue-time">April  3, 2023</time>
+    <h1 class="catalogue-title">컴퓨터 알고리즘 2023-04-03 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Dynamic Programming - Optimal Binary Search Trees(1)
+
+Dynamic Programming - Optimal Binary Search Trees(1)
+
+Binary Search Tree
+
+Binary tree의 각 노드는 하나의 key값을 포함하며, 왼쪽 subtree에 위치한 key값은 오른쪽 subtree에 위치한 key값과 비교해 같거나 작은 key값을 가진다.
+Binary Tree의 Attribute로 Depth, Balanced, Sea…</p>
+  </div>
+</a><a href="https://js970.github.io/keompyuteo-algorijjeu-3-29-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-29" class="catalogue-time">March 29, 2023</time>
+    <h1 class="catalogue-title">컴퓨터 알고리즘 2023-03-29 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Dynamic Programming - Binomial Coefficient
+Dynamic Programming - Floyd's Algorithm
+
+Dynamic Programming - Binomial Coefficient
+
+
+Dynamic Programming을 통해 이항 계수를 구하는 알고리즘에 대해 알아보자
+Combination 연산의 성질 중 다음과 같은 성질이 있다.$$_nC_k = {n-1}C{k-1} + _{n-1}C_k$$
+이를 이용하여 Combination의 계산이 …</p>
+  </div>
+</a><a href="https://js970.github.io/keompyuteo-algorijjeu-3-27-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-27" class="catalogue-time">March 27, 2023</time>
+    <h1 class="catalogue-title">컴퓨터 알고리즘 2023-03-27 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Divide &amp; Conquer - Matrix multiplication
+Strassen's trick &amp; algorithm
+Dynamic Programming
+
+Divide &amp; Conquer - Matrix multiplication
+
+
+N*N 행렬 A, B의 곱셈에 Divide &amp; Conquer를 적용하면 아래와 같다.$$C = A\times B,\ \begin{bmatrix}C_{11}&amp;C_{12}\C_{21}&amp;C_{22}\ \end{bm…</p>
+  </div>
+</a><a href="https://js970.github.io/keompyuteo-algorijjeu-3-20-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-20" class="catalogue-time">March 20, 2023</time>
+    <h1 class="catalogue-title">컴퓨터 알고리즘 2023-03-20 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Divide and Conquer - Quicksort
+
+Divide and Conquer - Quicksort
+
+Quicksort Algorithm(퀵 정렬)
+
+배열은 재귀적으로 두 개의 partition으로 나눠진다.(Divide)
+
+배열은 pivot값을 기준으로 pivot값보다 작은 partition, pivot값보다 크거나 같은partition의 두 개의 sub-arrays로 나눠진다.
+
+
+나눠진 두 개의 partition배열에 대해서 정렬이 이루어진다.(Conquer)
+Merg…</p>
+  </div>
+</a><a href="https://js970.github.io/keompyuteo-algorijjeu-3-15-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-15" class="catalogue-time">March 15, 2023</time>
+    <h1 class="catalogue-title">컴퓨터 알고리즘 2023-03-15 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Divide and Conquer - Binary Search
+Divide and Conquer - Merge Sort
+
+Divide and Conquer - Binary Search
+
+Binary Search(이진 탐색)
+
+오름차순으로 정렬된 크기 n의 배열에 찾고자 하는 key값 x의 위치를 특정한다.
+항상 중간값과 비교하여 x값이 중간값이라면 그 값의 index를 반환하고
+key 값이 중간값보다 작다면 중간값 기준 왼쪽의 subarray에 대하여 Binary Search, key값…</p>
+  </div>
+</a><a href="https://js970.github.io/keompyuteo-algorijjeu-3-13-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-13" class="catalogue-time">March 13, 2023</time>
+    <h1 class="catalogue-title">컴퓨터 알고리즘 2023-03-13 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Big $O$, Big $\Theta$, Big $\Omega$ 
+
+Big $O$, Big $\Theta$, Big $\Omega$
+
+Big $O$
+주어진 복잡도 함수 f(n)에 대하여, n이 임의의 수 N 보다 크거나 같을 때, g(n)이 f(n)에 어떠한 상수 c를 곱한 것보다 작거나 같다면 아래와 같이 표현한다. 그리고 g(n) is oh of f(n) 이라고 읽는다.
+$$g(n) \leq c * f(n),\ g(n) \in O(f(n))$$ 
+
+임의의 수 N보다 n이 커야 한다는…</p>
+  </div>
+</a><a href="https://js970.github.io/keompyuteo-algorijjeu-3-8-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-08" class="catalogue-time">March  8, 2023</time>
+    <h1 class="catalogue-title">컴퓨터 알고리즘 2023-03-08 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+알고리즘이란?
+Recursion
+알고리즘의 분석
+
+알고리즘이란?
+
+
+문제(problem)는 &quot;정답을 요구하는 질문&quot;이다.
+
+배열을 크기 순으로 정렬해라
+값 x가 배열 S에 존재하는지 판단해라
+25번째 피보나치 수열은?
+
+
+알고리즘은 &quot;target computer&quot;에서 소프트웨어 개발자가 주어진 입력에 대한 출력을 생성하기 위해 작성한 &quot;logic&quot; 이다.
+알고리즘에서 중요하게 여겨지는 요소는 아래와 같다.
+
+Correctness
+Co…</p>
+  </div>
+</a>
+</div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

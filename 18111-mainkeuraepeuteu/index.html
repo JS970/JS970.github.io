@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>18111 - 마인크래프트 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="18111 - 마인크래프트">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/18111-mainkeuraepeuteu/">
+<meta property="og:url" content="https://js970.github.io/18111-mainkeuraepeuteu/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-12T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="18111 - 마인크래프트">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/18111-mainkeuraepeuteu/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "18111 - 마인크래프트"
+  
+    
+    
+      "datePublished":"2023-02-12T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/18111-mainkeuraepeuteu/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-12">February 12, 2023</time>
+  	</div>
+  	<h1 class="post-title">18111 - 마인크래프트</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 2</li>
+<li>날짜: 2023년 2월 12일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No</li>
+<li>알고리즘 : 브루트포스</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>주어진 입력 범위에 대한 모든 경우의 수를 탐색한다고 했을 때, 500 * 500 * 256 = 64,000,000이므로 완전 탐색을 해도 시간은 충분하다.</li>
+<li>문제에서 놓치기 쉬운 조건들이 많은 편이었다.
+<ul>
+<li>같은 시간이 걸릴 경우 가장 높은 높이를 가지는 경우를 정답으로 출력할 것</li>
+<li>블록의 개수가 부족할 경우에는 블록을 쌓을 수 없고 블록을 캐는 것만 가능하다.</li>
+<li>블록을 캐면 전체 블록의 수가 그만큼 증가한다.</li>
+</ul>
+</li>
+<li>숨은 조건도 있었다.
+<ul>
+<li>블록을 쌓거나 캐는 순서는 정해진 바가 없다. 탐색 연산 중 일시적으로 전체 블록이 0 미만으로 떨어지더라도 순서를 조정하여 바로잡을 수 있다.</li>
+<li>구현에서는 이중 for문을 사용하여 범위 안에서 가질 수 있는 모든 높이 값에 대해 걸리는 시간을 탐색했다. 이때 입력값을 저장하는 배열을 내림차순으로 정렬하여 블록을 먼저 캐고 난 후 쌓는 순서로 탐색하도록 설정했다. 이렇게 하면 전체 블록이 0미만으로 떨어질 경우 100% 문제 조건에 부합하지 않는다.</li>
+</ul>
+</li>
+<li>혹시 모를 시간 초과를 방지하기 위해 입력값으로 주어지는 높이의 최솟값과 최댓값을 구하여 탐색 범위를 한정했다.</li>
+<li>블록 값이 음수로 떨어진 경우에 대해서 쓰레기 값이 결과값 pair에 저장되는 것을 막기 위해 vaild라는 bool변수를 추가했다.</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">algorithm</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    ios::</span><span style="color:#bf616a;">sync_with_stdio</span><span>(</span><span style="color:#d08770;">false</span><span>);
+</span><span>    cin.</span><span style="color:#bf616a;">tie</span><span>(</span><span style="color:#d08770;">NULL</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> N, M, B;
+</span><span>    cin &gt;&gt; N &gt;&gt; M &gt;&gt; B;
+</span><span>    </span><span style="color:#b48ead;">int </span><span>* arr = </span><span style="color:#b48ead;">new int</span><span>[N*M];
+</span><span>    </span><span style="color:#b48ead;">int</span><span> max_arg = -</span><span style="color:#d08770;">1</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> min_arg = </span><span style="color:#d08770;">257</span><span>;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N*M; i++)
+</span><span>    {
+</span><span>        cin &gt;&gt; arr[i];
+</span><span>        max_arg = (max_arg &lt; arr[i]) ? arr[i] : max_arg;
+</span><span>        min_arg = (min_arg &gt; arr[i]) ? arr[i] : min_arg;
+</span><span>    }
+</span><span>    </span><span style="color:#bf616a;">sort</span><span>(arr, arr+N*M, </span><span style="color:#bf616a;">greater</span><span>&lt;</span><span style="color:#b48ead;">int</span><span>&gt;());
+</span><span>    
+</span><span>    </span><span style="color:#b48ead;">int</span><span> time = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> block = B;
+</span><span>    </span><span style="color:#b48ead;">bool</span><span> valid = </span><span style="color:#d08770;">true</span><span>;
+</span><span>    pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">int</span><span>&gt; ans;
+</span><span>    ans.</span><span style="color:#bf616a;">first </span><span>= -</span><span style="color:#d08770;">1</span><span>;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = min_arg; i &lt;= max_arg; i++)
+</span><span>    {
+</span><span>        block = B;
+</span><span>        time = </span><span style="color:#d08770;">0</span><span>;
+</span><span>        valid = </span><span style="color:#d08770;">true</span><span>;
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j = </span><span style="color:#d08770;">0</span><span>; j &lt; N*M; j++)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(arr[j] &gt;= i)
+</span><span>            {
+</span><span>                time += (arr[j]-i) * </span><span style="color:#d08770;">2</span><span>;
+</span><span>                block += (arr[j]-i);
+</span><span>            }
+</span><span>            </span><span style="color:#b48ead;">else
+</span><span>            {
+</span><span>                </span><span style="color:#b48ead;">if</span><span>(i - arr[j] &gt; block) valid = </span><span style="color:#d08770;">false</span><span>;
+</span><span>                </span><span style="color:#b48ead;">else
+</span><span>                {
+</span><span>                    time += (i-arr[j]) * </span><span style="color:#d08770;">1</span><span>;
+</span><span>                    block -= (i-arr[j]);
+</span><span>                }
+</span><span>            }
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(ans.</span><span style="color:#bf616a;">first </span><span>== -</span><span style="color:#d08770;">1 </span><span>&amp;&amp; valid)
+</span><span>        {
+</span><span>            ans.</span><span style="color:#bf616a;">first </span><span>= time;
+</span><span>            ans.</span><span style="color:#bf616a;">second </span><span>= i;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>(ans.</span><span style="color:#bf616a;">first </span><span>&gt; time &amp;&amp; valid)
+</span><span>        {
+</span><span>            ans.</span><span style="color:#bf616a;">first </span><span>= time;
+</span><span>            ans.</span><span style="color:#bf616a;">second </span><span>= i;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>(ans.</span><span style="color:#bf616a;">first </span><span>== time &amp;&amp; valid)
+</span><span>        {
+</span><span>            ans.</span><span style="color:#bf616a;">first </span><span>= time;
+</span><span>            ans.</span><span style="color:#bf616a;">second </span><span>= (i &lt; ans.</span><span style="color:#bf616a;">second</span><span>) ? ans.</span><span style="color:#bf616a;">second </span><span>: i;
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    cout &lt;&lt; ans.</span><span style="color:#bf616a;">first </span><span>&lt;&lt; &quot; &quot; &lt;&lt; ans.</span><span style="color:#bf616a;">second </span><span>&lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/18111">18111번: 마인크래프트</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

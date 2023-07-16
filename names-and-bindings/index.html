@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Names and Bindings | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Names and Bindings">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/names-and-bindings/">
+<meta property="og:url" content="https://js970.github.io/names-and-bindings/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-05-11T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Names and Bindings">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/names-and-bindings/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Names and Bindings"
+  
+    
+    
+      "datePublished":"2023-05-11T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/names-and-bindings/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-05-11">May 11, 2023</time>
+  	</div>
+  	<h1 class="post-title">Names and Bindings</h1>
+  	<div class="post-line"></div>
+  	<h2 id="names-and-bindings">Names and Bindings</h2>
+<hr />
+<h3 id="name">Name</h3>
+<ul>
+<li><code>Name</code>은 프로그램에서 식별자 역할을 한다.</li>
+<li><code>Name</code>은 자료 구조, 타입, 함수, 특수 기능 등 여러 <code>namespace</code>에 속할 수 있다.</li>
+<li>문법적으로는 <code>Name</code>을 lexeme의 instance라고 말할 수 있다.</li>
+<li>프로그래밍 언어 설계에 있어서 <code>Name</code>의 디자인 시 고려 사항으로는 아래와 같은 것들이 있다.
+<ul>
+<li>case sensitive?</li>
+<li>최대로 가질 수 있는 길이</li>
+<li>Special Words의 존재
+<ul>
+<li><code>Keyword</code>, <code>Reserved Word</code>, <code>Predefined Word</code>가 있다.</li>
+<li><code>Keyword</code> : 특정 문맥에서만 특별하게 사용되는 단어</li>
+<li><code>Reserved Word</code> : 사용자 지정 <code>name</code>으로 사용할 수 없는 단어</li>
+<li><code>Predefined Word</code> : <code>Reserved Word</code>는 아니지만 시스템에서 이미 정의된 단어</li>
+<li>어떤 프로그래밍 언어에서는 <code>Keyword</code>가 <code>Reserved Word</code>가 아닐 수 있다.
+<ul>
+<li><code>FORTRAN</code>에서는 아래와 같은 코딩이 가능하다.</li>
+</ul>
+<pre data-lang="FORTRAN" style="background-color:#2b303b;color:#c0c5ce;" class="language-FORTRAN "><code class="language-FORTRAN" data-lang="FORTRAN"><span>INTEGER REAL
+</span><span>REAL INTEGER
+</span><span>REAL = 3
+</span><span>INTEGER = 3.4
+</span></code></pre>
+</li>
+</ul>
+</li>
+<li>connector(연결 문자), special symbol등의 허용 여부
+<ul>
+<li>Pascal, Modula-2는 연결 문자를 허용하지 않았다.</li>
+<li>FORTRAN 77은 연결 문자로 공백을 사용했다.</li>
+<li>대부분의 프로그래밍 언어들(C, COBOL, FORTRAN 90, ...)은 <code>_</code>을 연결 문자로 사용한다.</li>
+</ul>
+</li>
+<li>첫 글자 대소문자의 의미(상수, 변수를 구분하는 데 사용되기도 한다)
+<ul>
+<li>Haskell : 타입 이름은 반드시 capitalized되어야 한다.</li>
+<li>Prolog : 변수 이름은 반드시 capitalized되어야 한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="variable">Variable</h3>
+<ul>
+<li>변수는 메모리 블럭의 추상체로 볼 수 있다.</li>
+<li>변수는 <code>name</code>, <code>address</code>, <code>value</code>, <code>type</code>, <code>lifetime</code>, <code>scope</code>의 여섯 가지 <code>속성</code>값을 가진다.</li>
+<li>대부분의 변수는 <code>name</code>을 가진다. 하지만 동적 할당 변수 등 <code>name</code>을 가지지 않는 변수도 있다.</li>
+<li><code>address</code>는 변수와 관련된 메모리 주소이다. 변수의 <code>name</code>이 같다고 하더라도 <code>address</code>가 다를 수 있다.
+<ul>
+<li>파라미터 타입에 따른 차이, scope(local, global)에 따른 차이</li>
+</ul>
+</li>
+</ul>
+<h3 id="binding">Binding</h3>
+<ul>
+<li><code>binding</code>이란 <code>name</code>과 <code>속성(attribute)</code>을 연관 짓는 것을 말한다.</li>
+<li>앞서 살펴본 변수에서와 같이 <code>name</code>자체가 <code>속성</code>일수도 있다.</li>
+<li>더 넓은 관점에서 생각한다면 <code>프로그램 구성 요소</code>와 <code>속성</code>의 연관 짓는 것이라고 생각할 수 있다.</li>
+</ul>
+<h3 id="binding-time">Binding Time</h3>
+<ul>
+<li><code>binding</code>이 일어나는 시점을 바인딩 시간이라고 한다.</li>
+<li>언어 구성요소마다 바인딩 시간이 다를 수 있다.
+<ul>
+<li>예약어와 일반어의 바인딩 시간은 다르다.</li>
+</ul>
+</li>
+<li>언어의 같은 구성요소라고 하더라도 속성에 따라 바인딩 시간이 다를 수 있다.
+<ul>
+<li>동적 할당 여부, 글로벌 변수(static) 여부</li>
+</ul>
+</li>
+<li>바인딩 시각은 다음과 같이 분류할 수 있다.
+<ol>
+<li>언어 정의 시점 : <code>Reserved Word</code>의 경우 언어 정의 시점에 바인딩이 일어난다고 볼 수 있다.</li>
+<li>언어 구현 시점 : <code>sizeof(int)</code>등의 함수를 생각해 볼 수 있다.</li>
+<li>프로그램 번역 시점 : 컴파일 시점에 바인딩이 일어나는 경우이다.</li>
+<li>프로그램 링크 시점 : 라이브러리 함수는 이 시점에 바인딩이 일어난다.</li>
+<li>프로그램 적재 시점 : 정적 변수의 주소는 이 시점에 바인딩이 일어난다.</li>
+<li>프로그램 수행 시점 : runtime에 바인딩이 일어나는 모든 경우가 해당된다.</li>
+</ol>
+<ul>
+<li>프로그램 수행 이전 시점에 일어나는 <code>binding</code>을 <code>early binding(static binding)</code>이라고 한다.</li>
+<li>프로그램 수행 시점에 일어나는 <code>binding</code>은 <code>late binding(dynamic binding)</code>이라고 한다.</li>
+</ul>
+</li>
+<li>다음 C언어 프로그램이 주어졌을 때 바인딩 시점에 대해 생각해 보자.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">static int</span><span> X; 
+</span><span style="color:#b48ead;">int</span><span> Y;
+</span><span style="color:#bf616a;">scanf</span><span>(&quot;</span><span style="color:#d08770;">%d</span><span>&quot;, &amp;X);
+</span><span>X = X + </span><span style="color:#d08770;">10</span><span>;
+</span></code></pre>
+<ul>
+<li>변수 X의 타입 : 컴파일 타임(Program translation time)</li>
+<li>변수 X의 값 : runtime(Program execution time)</li>
+<li>기본타입에 관한 +의 의미 : Language definition time</li>
+<li>프로그램 코드 상에서의 +의 의미 : 컴파일 타임(Program translation time)</li>
+<li>숫자 10의 의미 : Language definition time</li>
+<li>숫자 10의 내부 표현 형태(2's complement 등) : Language implementation time</li>
+<li>scanf 호출 시 수행될 내용 : Program link edit time</li>
+<li>변수 X의 주소 : Program load time</li>
+<li>변수 Y의 주소 : runtime(Program execution time)</li>
+</ul>
+</li>
+</ul>
+<h3 id="early-binding">Early Binding</h3>
+<ul>
+<li>번역 전에 파악할 수 있는 정보가 많다.</li>
+<li>다양한 정보로 프로그램의 잠재적 오류를 사전에 검사할 수 있다.</li>
+<li>실행파일의 효율을 높일 수 있도록 번역할 수 있다.</li>
+<li>컴파일 방식과 잘 어울린다.</li>
+</ul>
+<h3 id="late-binding">Late Binding</h3>
+<ul>
+<li>가능한 한 프로그래머의 선택을 늦은 시점까지 연기할 수 있다.</li>
+<li>범용 프로그래밍(generic programming)과 같은 유연한 프로그래밍 기법을 사용하기 쉽다.</li>
+<li>실행 시간에 오류를 발견하는 경우가 많다(오류 검사가 늦다).</li>
+<li>인터프리터 방식과 잘 어울린다.</li>
+</ul>
+<h3 id="aliases-name-binding">Aliases(Name Binding)</h3>
+<ul>
+<li><code>L-value</code> : 변수의 주소, assignment 연산의 좌측에 위치하는 값이다.
+<ul>
+<li>C언어에서 <code>&amp;</code>를 적용할 수 있는 값이다.</li>
+</ul>
+</li>
+<li><code>R-value</code> : 실제 content의 값, assignment 연산의 우측에 위치하는 값이다.</li>
+<li><code>Alias</code> : 하나의 메모리 공간에 대해 두 개 이상의 <code>name</code>이 존재하는 것이다.
+<ul>
+<li>가독성에 좋지 않다.</li>
+<li>효율성의 이유로 사용된 기능이다.</li>
+</ul>
+</li>
+<li><code>Alias</code>의 원인으로는 아래와 같은 것들이 있다.
+<ul>
+<li>EQUIVALENCE in FORTRAN</li>
+<li>union in C/C++</li>
+<li>varient records in Pascal and Ada</li>
+<li>parameter passing</li>
+<li>pointers and references</li>
+</ul>
+</li>
+<li>아래 프로그램은 <code>Alias</code>로 인해 가독성이 떨어진 프로그램의 예시이다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">stdio.h</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">math.h</span><span>&gt;
+</span><span>
+</span><span style="color:#b48ead;">union </span><span>{
+</span><span>	</span><span style="color:#b48ead;">int</span><span> x;
+</span><span>	</span><span style="color:#b48ead;">int</span><span> y;
+</span><span>} a;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>	a.</span><span style="color:#bf616a;">x </span><span>= </span><span style="color:#d08770;">3</span><span>;
+</span><span>	a.</span><span style="color:#bf616a;">y </span><span>= </span><span style="color:#d08770;">4</span><span>;
+</span><span>	a.</span><span style="color:#bf616a;">x </span><span>*= a.</span><span style="color:#bf616a;">x</span><span>;
+</span><span>	a.</span><span style="color:#bf616a;">y </span><span>*= a.</span><span style="color:#bf616a;">y</span><span>;
+</span><span>	</span><span style="color:#b48ead;">int</span><span> z = (</span><span style="color:#b48ead;">int</span><span>) </span><span style="color:#96b5b4;">sqrt</span><span>(a.</span><span style="color:#bf616a;">x </span><span>+ a.</span><span style="color:#bf616a;">y</span><span>);
+</span><span>	
+</span><span>	</span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#a3be8c;">z : </span><span style="color:#d08770;">%d</span><span style="color:#96b5b4;">\n</span><span>&quot;, z);
+</span><span>	</span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>언뜻 생각하면 5가 출력될 것이라고 생각할 수 있지만 union자료 구조는 메모리 효율성을 위해 하나의 메모리 공간에 여러 변수를 저장하는 자료 구조이다.</li>
+<li>따라서 최종 출력은 22가 출력된다.(4*4*16 + 512, sqrt(512) = 22)</li>
+<li>서로 다른 변수명들이 같은 메모리 공간을 가리키고 있어서 이러한 문제가 발생한다.</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

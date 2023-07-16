@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>소프트웨어시스템설계 2023-04-03 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="소프트웨어시스템설계 2023-04-03 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/sopeuteuweeosissetotsseoggy-4-3-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/sopeuteuweeosissetotsseoggy-4-3-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-03T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="소프트웨어시스템설계 2023-04-03 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/sopeuteuweeosissetotsseoggy-4-3-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "소프트웨어시스템설계 2023-04-03 수업정리"
+  
+    
+    
+      "datePublished":"2023-04-03T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/sopeuteuweeosissetotsseoggy-4-3-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-03">April  3, 2023</time>
+  	</div>
+  	<h1 class="post-title">소프트웨어시스템설계 2023-04-03 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Interface vs Abstract Class</li>
+<li>RobotStrategy Review</li>
+<li>Observer Pattern</li>
+</ul>
+<h2 id="interfacs-vs-abstract-class">Interfacs vs Abstract Class</h2>
+<hr />
+<ul>
+<li>java에서는 C++과 달리 abstract method가 없어도 Abstract Class로 선언이 가능하다.
+<ul>
+<li>이렇게 선언할 결우 인스턴스 추상 메소드는 없지만 인스턴스 생성은 불가능한 추상 클래스가 된다.</li>
+</ul>
+</li>
+<li>Concrete Class에서 조금이라도 중복되는 동작이 있다면 Abstract Class를 사용해서 코드 중복을 피할 수 있다.</li>
+<li>하지만 유지보수 관점에서 보수적으로 접근했을 경우, 새로운 클래스의 선언이 이루어졌을 때, 이전의 클래스들과 공통되는 부분이 없다면 올바른 상속이 불가능하다는 문제가 발생할 수 있다. 따라서 Strategy Pattern의 적용에 있어서는 Abstract Class보다는 Interface가 더 적합하다고 볼 수 있다.</li>
+<li>하지만 당연히 Abstract Class로 구현했을 때의 장점 또한 존재하므로(code duplication이 없음) 따로 정답이 정해져 있다기 보다는 상황에 따라 적절하게 선택하는 것이 바람직하다.</li>
+</ul>
+<h2 id="robotstrategy-review">RobotStrategy Review</h2>
+<hr />
+<p><img src="/image/SSD/RobotStrategy.png" alt="RobotStrategy" /></p>
+<ul>
+<li>위 UML에서 MoveOptionList, AttackOptionList는 굳이 필요 없는 class이다.
+<ul>
+<li>requirement수준에서 비슷한 레벨의 사항들을 class로 구현하는데, 위 UML에서 해당 클래스들은 <em>Robot</em>, <em>Attack</em>, <em>Move</em> 와 같은 레벨이라고 볼 수 없다.</li>
+</ul>
+</li>
+<li>또한, List를 별개의 클래스로 만들어서 관리를 한다고 하더라도 private멤버로 벡터를 가지며 <em>Move</em>, <em>Attack</em> 에 화살표만으로 association을 표시하는 것은 문제가 있다.
+<ul>
+<li>association의 표시에서 *를 사용하여 여러 개의 <em>Move</em>, <em>Attack</em> 을 참조한다는 것을 표시하는 것으로 충분하다.</li>
+</ul>
+</li>
+<li>어찌 됬든 TaeKwonV, Atom, Sunguard등 Concrete Class에서 직접 <em>Move</em>, <em>Attack</em> 의 Concrete Class로 구현하지 않는 것이 주 목적이었다. 이를 인터페이스나 추상 클래스를 통해서가 아니라 직접 association하게 되면 명백한 OCP위반이다.</li>
+</ul>
+<h2 id="observer-pattern">Observer Pattern</h2>
+<hr />
+<ul>
+<li>어떤 데이터가 실시간으로 업데이트 되어야 할 경우 클래스 간 서로 물리게 되는 문제가 발생한다.
+<ul>
+<li>데이터를 참조하는 클래스에서는 데이터를 참조하기 위해 엔티티 클래스에 association 한다.</li>
+<li>엔티티 클래스에서는 데이터를 사용하는 클래스에 실시간 업데이트를 위해 association 한다.</li>
+</ul>
+</li>
+<li>데이터를 참조하는 클래스에서 엔티티 클래스로의 association은 문제가 되지 않는다.</li>
+<li>하지만 엔티티 클래스에서 데이터를 사용하는 클래스로의 association은 OCP를 위반한다.
+<ul>
+<li>새롭게 데이터를 사용하는 클래스가 생성되었을 경우 엔티티 클래스에서 해당 클래스를 가리키는 인스턴스를 필요로 한다. 결국 이는 코드 수정을 요구하기 때문에 OCP위반이다.</li>
+</ul>
+</li>
+<li>직접 Control Class에 association하지 않으면서 데이터를 실시간으로 갱신하기 위해서는 Behavioral Pattern의 Observer Pattern을 적용하면 된다.</li>
+<li>아래는 Observer Pattern을 적용하는 UML이다.
+<img src="/image/SSD/observer_pattern.png" alt="Observer Pattern" />
+<ul>
+<li>ConcreteEntity가 <em>AbstractEntity</em> 를 구현하도록 설계하여 SRP를 준수한다.
+<ul>
+<li>SRP : ConcreteEntity의 구현에 있어 단일 목적만을 가지고 구현해야 한다.</li>
+</ul>
+</li>
+<li><em>AbstractEntity</em> 는 Obserber 인터페이스에 association한다. 이를 통해 데이터의 변경이 일어났을 경우 update()를 호출하여 데이터를 참조하는 클래스들의 인터페이스에 알릴 수 있다.</li>
+<li>데이터의 변경이 발생하였을 때, 데이터를 참조하는 클래스들은 Observer Interface를 구현하였으므로 <em>AbstractEntity</em> 의 update()호출에 의해 데이터를 실시간 변경을 업데이트 할 수 있다.</li>
+<li>또한 각 Control클래스가 Observer인터페이스를 구현하면서 DIP, ISP를 준수한다.
+<ul>
+<li>ISP : Interface Segregation Principle : 인터페이스를 쪼개서 필요한 기능만 구현</li>
+<li>DIP : Dependency Inversion Principle : 상위 모듈은 하위 모듈에 의존하면 안되고, 추상화는 실제 구현에 의존해서는 안된다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

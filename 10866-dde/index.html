@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>10866 - 덱 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="10866 - 덱">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/10866-dde/">
+<meta property="og:url" content="https://js970.github.io/10866-dde/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-06T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="10866 - 덱">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/10866-dde/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "10866 - 덱"
+  
+    
+    
+      "datePublished":"2023-02-06T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/10866-dde/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-06">February  6, 2023</time>
+  	</div>
+  	<h1 class="post-title">10866 - 덱</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 4</li>
+<li>날짜: 2023년 2월 6일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>stl의 deque를 사용하여 문제의 조건에 따라 해결하면 된다.</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">deque</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    ios::</span><span style="color:#bf616a;">sync_with_stdio</span><span>(</span><span style="color:#d08770;">false</span><span>);
+</span><span>    cin.</span><span style="color:#bf616a;">tie</span><span>(</span><span style="color:#d08770;">NULL</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> N;
+</span><span>    cin &gt;&gt; N;
+</span><span>    deque&lt;</span><span style="color:#b48ead;">int</span><span>&gt; deque;
+</span><span>    string cmd;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> arg;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N; i++)
+</span><span>    {
+</span><span>        cin &gt;&gt; cmd;
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(cmd == &quot;</span><span style="color:#a3be8c;">push_front</span><span>&quot;)
+</span><span>        {
+</span><span>            cin &gt;&gt; arg;
+</span><span>            deque.</span><span style="color:#bf616a;">push_front</span><span>(arg);
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>(cmd == &quot;</span><span style="color:#a3be8c;">push_back</span><span>&quot;)
+</span><span>        {
+</span><span>            cin &gt;&gt; arg;
+</span><span>            deque.</span><span style="color:#bf616a;">push_back</span><span>(arg);
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>(cmd == &quot;</span><span style="color:#a3be8c;">pop_front</span><span>&quot;)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(deque.</span><span style="color:#bf616a;">empty</span><span>()) cout &lt;&lt; -</span><span style="color:#d08770;">1 </span><span>&lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>            </span><span style="color:#b48ead;">else
+</span><span>            {
+</span><span>                cout &lt;&lt; deque.</span><span style="color:#bf616a;">front</span><span>() &lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>                deque.</span><span style="color:#bf616a;">pop_front</span><span>();
+</span><span>            }
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>(cmd == &quot;</span><span style="color:#a3be8c;">pop_back</span><span>&quot;)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(deque.</span><span style="color:#bf616a;">empty</span><span>()) cout &lt;&lt; -</span><span style="color:#d08770;">1 </span><span>&lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>            </span><span style="color:#b48ead;">else
+</span><span>            {
+</span><span>                cout &lt;&lt; deque.</span><span style="color:#bf616a;">back</span><span>() &lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>                deque.</span><span style="color:#bf616a;">pop_back</span><span>();
+</span><span>            }
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>(cmd == &quot;</span><span style="color:#a3be8c;">size</span><span>&quot;)
+</span><span>        {
+</span><span>            cout &lt;&lt; deque.</span><span style="color:#bf616a;">size</span><span>() &lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>(cmd == &quot;</span><span style="color:#a3be8c;">empty</span><span>&quot;)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(deque.</span><span style="color:#bf616a;">empty</span><span>()) cout &lt;&lt; </span><span style="color:#d08770;">1 </span><span>&lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>            </span><span style="color:#b48ead;">else</span><span> cout &lt;&lt; </span><span style="color:#d08770;">0 </span><span>&lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>(cmd == &quot;</span><span style="color:#a3be8c;">front</span><span>&quot;)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(deque.</span><span style="color:#bf616a;">empty</span><span>()) cout &lt;&lt; -</span><span style="color:#d08770;">1 </span><span>&lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>            </span><span style="color:#b48ead;">else
+</span><span>            {
+</span><span>                cout &lt;&lt; deque.</span><span style="color:#bf616a;">front</span><span>() &lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>            }
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">else if</span><span>(cmd == &quot;</span><span style="color:#a3be8c;">back</span><span>&quot;)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(deque.</span><span style="color:#bf616a;">empty</span><span>()) cout &lt;&lt; -</span><span style="color:#d08770;">1 </span><span>&lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>            </span><span style="color:#b48ead;">else
+</span><span>            {
+</span><span>                cout &lt;&lt; deque.</span><span style="color:#bf616a;">back</span><span>() &lt;&lt; &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;;
+</span><span>            }
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/10866">10866번: 덱</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>프로그래밍언어론 2023-04-18 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="프로그래밍언어론 2023-04-18 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/peuroggeraeoncoheoeoron-4-18-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/peuroggeraeoncoheoeoron-4-18-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-18T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="프로그래밍언어론 2023-04-18 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/peuroggeraeoncoheoeoron-4-18-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "프로그래밍언어론 2023-04-18 수업정리"
+  
+    
+    
+      "datePublished":"2023-04-18T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/peuroggeraeoncoheoeoron-4-18-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-18">April 18, 2023</time>
+  	</div>
+  	<h1 class="post-title">프로그래밍언어론 2023-04-18 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Extended BNF</li>
+<li>Syntax Chart</li>
+<li>Recursive-Descent Parser</li>
+</ul>
+<h2 id="extended-bnf">Extended BNF</h2>
+<hr />
+<ul>
+<li>BNF(Backus-Naur-Form에서 추가로 몇 가지 meta-symbol이 추가된 표기법이다.</li>
+<li>$\epsilon, \lambda$ 등 아무 것도 없음을 나타낼 경우 그냥 공백으로 표기한다.</li>
+</ul>
+<h3 id="optional-elements">optional Elements</h3>
+<ul>
+<li>[ ... ]
+<ul>
+<li>&lt;number&gt; ::= &lt;digits&gt;[.&lt;digits&gt;]</li>
+<li>숫자의 옵션으로 소수점및 소수 부분을 포함할 수 있다는 규칙이다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="alternative-elements">Alternative Elements</h3>
+<ul>
+<li>( ... | ... | ... )
+<ul>
+<li>&lt;signed number&gt; ::= ( + | - ) &lt;number&gt;</li>
+<li>부호가 있는 정수는 '+' 또는 '-'의 nonterminal을 &lt;number&gt;에 left-associative하게 가진다는 규칙이다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="sequence-of-elements">Sequence of Elements</h3>
+<ul>
+<li>{ ... } or ${ ... }^*$ or ${ ... }^+$</li>
+<li>*, +를 활용한 표기는 non-standard이다.</li>
+<li>&lt;identifier&gt; ::= &lt;letter&gt; { &lt;letter&gt; | &lt;digit&gt; }</li>
+<li>식별자는 &lt;letter&gt;뒤에 &lt;letter&gt;또는 &lt;digit&gt;이 복수로 위치할 수 있다는 규칙이다.</li>
+</ul>
+<h2 id="syntax-chart">Syntax Chart</h2>
+<hr />
+<ul>
+<li>Syntax Diagram, Railroad Diagram이라고도 한다.</li>
+<li>syntactic rules를 도식으로 나타낸 것이다.</li>
+<li>LHS(EBNF의 좌항)는 시작 화살표의 좌측에 위치한다.</li>
+<li>아래 예시는 &lt;expr&gt; ::= { ('+' | '-') } 을 Syntax Chart로 나타낸 것이다.<img src="/image/PL/railroad_diagram.png" alt="Railroad Diagram" /></li>
+</ul>
+<h3 id="pascal-if-then-else-railroad-diagram">Pascal if-then-else Railroad Diagram</h3>
+<p><img src="/image/PL/pascal_railroad_diagram.png" alt="Pascal Railroad Diagram" /></p>
+<ul>
+<li>위의 Railroad Diagram으로부터 역으로 EBNF를 뽑아낼 수 있다.</li>
+</ul>
+<pre data-lang="EBNF" style="background-color:#2b303b;color:#c0c5ce;" class="language-EBNF "><code class="language-EBNF" data-lang="EBNF"><span>&lt;if else then&gt; := &#39;if&#39; &lt;boolean expression&gt; &#39;then&#39; &lt;compound&gt; 
+</span><span>					( &lt;else if&gt; | &lt;else&gt; ) &#39;end&#39;
+</span></code></pre>
+<h2 id="recursive-descent-parser">Recursive-Descent Parser</h2>
+<hr />
+<ul>
+<li>parser란 string을 tree(generalized list)로 바꾸는 프로그램이다.
+<ul>
+<li>주어진 문법에 대해서 parser는 syntax를 check한다.</li>
+</ul>
+</li>
+<li>Parser Generator
+<ul>
+<li>YACC(Bison)</li>
+<li>AntLR</li>
+<li>CUP</li>
+</ul>
+</li>
+<li>Parser를 직접 만들수도 있다.</li>
+</ul>
+<h3 id="recursive-descent-parser-1">Recursive-Descent Parser</h3>
+<ul>
+<li>순환 하강 구문분석기</li>
+<li>parse tree의 위쪽 노드에서부터 하강하면서 이동하여 검사한다.</li>
+<li>한 노드에서 재귀적으로 이동하여 검사할 수도 있다.</li>
+</ul>
+<h3 id="transform-grammar-to-recursive-descent-parser">Transform Grammar to Recursive-Descent Parser</h3>
+<ul>
+<li>문법은 left-factored해야 하며, EBNF를 사용하여 left-recursion을 제거해야 한다.</li>
+<li>모든 논터미널 기호에 대해 right-hand side의 production rule을 simulation하는 subprogram을 생성해야 한다.</li>
+<li>토큰 등 터미널 기호에 대해서는 match(eat up)를 통해 symbol처리를 한다.</li>
+<li>Global variable LA(lookahead)를 사용하여 현재 토큰을 저장한다.
+<ul>
+<li>추가적인 속성 문법을 위한 변수를 선언해야 할 수도 있다.</li>
+</ul>
+</li>
+<li>yylex()
+<ul>
+<li>다음 토큰을 반환한다.</li>
+</ul>
+</li>
+<li>match(int t)
+<ul>
+<li>(인자로 받은 토큰에 대해) 검사 후 전진</li>
+<li>현재 토큰에 대해 처리한다.</li>
+<li>문법에 부합하면 전진</li>
+</ul>
+</li>
+<li>아래는 matching parentheses에 대한 grammar를 검사하는 parser이다.
+<ul>
+<li>우선 문법을 정의한다.</li>
+</ul>
+<pre data-lang="EBNF" style="background-color:#2b303b;color:#c0c5ce;" class="language-EBNF "><code class="language-EBNF" data-lang="EBNF"><span>A := eof | L A
+</span><span>L := S &#39;newline&#39;
+</span><span>S := (S)S | ;
+</span></code></pre>
+<ul>
+<li>이를 바탕으로 위에서 설명한 규칙에 맞게 C언어로 parser를 작성하면 아래와 같다.</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">stdio.h</span><span>&gt;
+</span><span> 
+</span><span style="color:#b48ead;">int</span><span> LA;
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">yylex</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#96b5b4;">getchar</span><span>();
+</span><span>}
+</span><span> 
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">match</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">t</span><span>) {
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(LA == t) LA = </span><span style="color:#bf616a;">yylex</span><span>();
+</span><span>    </span><span style="color:#b48ead;">else </span><span style="color:#96b5b4;">fprintf</span><span>(stderr, &quot;</span><span style="color:#a3be8c;">Syntax Error</span><span style="color:#96b5b4;">\n</span><span>&quot;);
+</span><span>}
+</span><span> 
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">S</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(LA == &#39;</span><span style="color:#a3be8c;">(</span><span>&#39;) {
+</span><span>        </span><span style="color:#bf616a;">match</span><span>(&#39;</span><span style="color:#a3be8c;">(</span><span>&#39;);
+</span><span>        </span><span style="color:#bf616a;">S</span><span>();
+</span><span>        </span><span style="color:#bf616a;">match</span><span>(&#39;</span><span style="color:#a3be8c;">)</span><span>&#39;);
+</span><span>        </span><span style="color:#bf616a;">S</span><span>();
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">else
+</span><span>    ;
+</span><span>}
+</span><span> 
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">L</span><span>() {
+</span><span>    </span><span style="color:#bf616a;">S</span><span>(); </span><span style="color:#bf616a;">match</span><span>(&#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;);
+</span><span>}
+</span><span> 
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">A</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(LA == EOF)
+</span><span>    ;
+</span><span>    </span><span style="color:#b48ead;">else </span><span>{
+</span><span>        </span><span style="color:#bf616a;">L</span><span>(); </span><span style="color:#bf616a;">A</span><span>();
+</span><span>    }
+</span><span>}
+</span><span> 
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    LA = </span><span style="color:#bf616a;">yylex</span><span>();
+</span><span>    </span><span style="color:#bf616a;">A</span><span>();
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>실행 결과
+<img src="/image/PL/paresr_execute.png" alt="matching parentheses execution" /></li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

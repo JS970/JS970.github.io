@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Virtual Memory Management Strategy(2) | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Virtual Memory Management Strategy(2)">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/virtual-memory-management-strategy-2/">
+<meta property="og:url" content="https://js970.github.io/virtual-memory-management-strategy-2/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-05-23T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Virtual Memory Management Strategy(2)">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/virtual-memory-management-strategy-2/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Virtual Memory Management Strategy(2)"
+  
+    
+    
+      "datePublished":"2023-05-23T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/virtual-memory-management-strategy-2/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-05-23">May 23, 2023</time>
+  	</div>
+  	<h1 class="post-title">Virtual Memory Management Strategy(2)</h1>
+  	<div class="post-line"></div>
+  	<h2 id="thrashing">Thrashing</h2>
+<hr />
+<ul>
+<li>프로세스에 충분한 <code>page frame</code>이 할당되지 않으면 <code>page fault rate</code>가 높아지게 된다.</li>
+<li><code>page fault</code>가 발생하게 되면 새로운 페이지를 로드하기 위해 기존의 프레임을 backing store에 <code>swap out</code>해야 한다.</li>
+<li>하지만 다시 이 데이터를 필요로 할 경우 또 <code>swapping</code>이 일어나게 된다.</li>
+<li>이러한 악순환은 CPU utilization을 낮추게 된다. 이에 운영체제는 multiprogramming의 강도를 높여 CPU utilization을 높이려고 시도한다.</li>
+<li>하지만 이는 한계가 있다.<img src="/image/OS/thrashing.png" alt="Thrashing" />
+<ul>
+<li>과도한 multiprogramming으로 인해 <code>swapping</code>의 빈도가 오히려 늘어나게 되면서 어떠한 프로세스의 <code>page fault</code>가 급격하게 증가하여 오히려 성능을 하락시크는 요인이 된다.</li>
+<li>이를 <code>Thrashing</code>이라고 한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="thrashing-bbanji">Thrashing 방지</h3>
+<ul>
+<li><code>Thrashing</code>이 일어나는 것을 방지하기 위해서 프로세스는 <strong>충분한</strong> <code>page frame</code>을 확보해야 한다.
+<ul>
+<li>이때 &quot;충분&quot; 하다는 것은 어떻게 알 수 있을까?</li>
+<li>프로세스 실행의 <code>Locality model</code>을 사용한다.</li>
+</ul>
+</li>
+<li><code>Locality</code>란 함께 실행되는 <code>pages</code>의 집합을 의미한다.
+<ul>
+<li>함수 호출을 생각하면 된다.</li>
+<li>프로세스는 <code>locality</code>에서 <code>locality</code>로 이동한다고 생각할 수 있다. </li>
+<li>즉, 어떤 시점에 필요한 page는 <code>locality</code>를 가진다.</li>
+<li>또한 <code>locality</code>는 중복될 수도 있다.</li>
+</ul>
+</li>
+<li><code>Thrashing</code>이 일어나는 궁극적인 원인은 다음과 같이 정리할 수 있다.
+<ul>
+<li><strong>The size of the current locality &gt; The size of allocated frame</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="working-set">Working Set</h3>
+<ul>
+<li><code>Working-Set</code>이란 <code>locality</code>에 기반한 <code>Thrashing</code>해결 모델이다.
+$$\Delta \equiv the\ working\ set\ window$$
+<ul>
+<li>단위 시간 당 <code>page</code>의 참조 횟수를 의미한다.
+$$WS_i \equiv the\ working\ set\ of\ Process\ P_i$$</li>
+<li>프로세스 Pi의 <code>working Set</code>을 의미한다.</li>
+<li>이는 시간에 따라 변할 수 있다.</li>
+<li><code>working set</code>은 interval timer와 reference bit을 이용하여 측정한다.</li>
+<li>interval timer의 interrupt마다 reference bit을 set한다.</li>
+<li>만약 reference bit을 확인했을 때 1로 set되어 있다면 <code>working set</code>으로 간주한다.
+$$WSS_i\equiv the\ size\ of\ WS_i$$</li>
+<li>WSi의 크기를 의미한다.</li>
+<li>만약 델타 값이 너무 작다면 WSSi는 <code>locality</code>를 반영할 수 없을 것이다.</li>
+<li>만약 델타 값이 너무 크다면 몇 개의 <code>locality</code>를 합친 상태로 표현할 것이다.</li>
+<li>만댝 델타 값이 무한대라면 전체 프로그램을 포함해 버릴 것이다.</li>
+<li>WSi값이 시간에 따라 변할 수 있으므로 WSSi값 역시 변할 수 있다.
+$$D\equiv the\ total\ demand\ for\ frames = \sum WSS_i$$</li>
+<li>D값은 프로세스가 요구하는 <code>page frame</code>의 개수를 의미한다.</li>
+</ul>
+</li>
+<li>만약 D &gt; m(Number of frame available)이라면 <code>Thrashing</code>이 발생하게 된다.
+<ul>
+<li>이때, 프로세스를 suspend하여 <code>Thrashing</code>을 막아야 한다.</li>
+</ul>
+</li>
+<li>일반적으로 <code>working set</code>에서의 <code>page fault rate</code>가 아래와 같은 비율로 측정되면 <code>working set</code>이 적절히 설정되었다고 본다.<img src="/image/OS/pfr.png" alt="Page Fault Rate" />
+<ul>
+<li>2% 정도의 구간에서 빈번하게 <code>page fault</code>가 발생한다. 이를 완전히 없에는 것은 불가능하다.</li>
+<li>98% 정도의 구간에서 높지 않은 비율로 <code>page fault</code>가 발생한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="pff-page-fault-frequency">PFF(page-fault frequency)</h3>
+<ul>
+<li><code>Working-Set</code>방법보다 훨씬 직관적인 방법이다.</li>
+<li><code>page fault</code>가 일어나는 비율을 측정하여 이 정도에 따라 프레임 개수를 조절한다.<img src="/image/OS/pff.png" alt="PFF" />
+<ul>
+<li>upper bound 이상으로 <code>page fault</code>가 발생하면 프로세스에 할당하는 <code>page frame</code>의 개수를 늘린다.</li>
+<li>lower bound 이하로 <code>page fault</code>가 발생하면 프로세스에 할당하는 <code>page frame</code>의 개수를 줄인다.</li>
+<li>중간 값일 경우 현 상황을 유지한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="memory-mapped-files">Memory-Mapped Files</h2>
+<hr />
+<ul>
+<li>disk file을 <code>physical memory</code>에 1 : 1매핑하여 사용한다.</li>
+<li>이를 <code>MMIO(Memory Mapped IO)</code>라고 한다. 당연히 일반 disk file의 로딩 속도보다 훨씬 빠르다.<img src="/image/OS/mmio.png" alt="MMIO" /></li>
+</ul>
+<h2 id="kernel-memory-allocation">Kernel Memory Allocation</h2>
+<hr />
+<ul>
+<li>Kernel memory allocation은 앞서 살펴본 user memory allocation과는 차이가 있다.
+<ul>
+<li>kernel은 다양한 크기의 자료 구조에 대한 메모리를 요청한다.</li>
+<li>어떤 kernel메모리는 contiguous allocation을 요구한다.</li>
+</ul>
+</li>
+<li><strong>Buddy System</strong>과 <strong>Slab allocation</strong>이 일반적인 구조로 알려져 있다.</li>
+</ul>
+<h3 id="buddy-system">Buddy System</h3>
+<p><img src="/image/OS/buddySystem.png" alt="Buddy System" /></p>
+<ul>
+<li>물리적으로 연속된 메모리 할당을 한다.</li>
+<li>2의 거듭제곱 크기의 메모리를 할당한다.
+<ul>
+<li>만약 33크기의 메모리 할당이 필요하다면 실제로는 64크기가 할당된다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="slab-allocation">Slab allocation</h3>
+<p><img src="/image/OS/slabAllocation.png" alt="Slab Allocation" /></p>
+<ul>
+<li>user memory allocation의 heirarchical memory allocation과 유사하다.</li>
+<li><code>cache</code>가 <code>slab</code>을 가리키는 형태이다.</li>
+</ul>
+<h2 id="other-issues">Other Issues</h2>
+<hr />
+<ul>
+<li><code>page size</code>에 따른 관점들, 정답은 없다. 상황에 따라 적절한 지점을 찾아야 한다.
+<ul>
+<li>Fragmentation : <code>page</code> 크기가 작을 수록 internal fragmentation이 적을 것이다.</li>
+<li>Table size : <code>page table</code>의 크기를 작게 유지하기 위해서는 상대적으로 큰 <code>page</code>를 가져야 한다.</li>
+<li>I/O Overhead : <code>page</code>가 클수록 지연시간이 길어진다.</li>
+<li>Locality : <code>page</code>가 작을수록 locality측면에서 좋다.</li>
+</ul>
+</li>
+<li><code>TLB</code>
+<ul>
+<li>용량이 클수록 비싸진다.</li>
+<li><code>page size</code>가 클수록 fragmentation문제가 많이 발생한다.</li>
+<li>여러 개의 <code>page size</code>를 관리하기 위해서는 OS가 <code>TLB</code>까지 관리해야 한다.
+<ul>
+<li>이 결과 OS의 관리 범위가 늘어난다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

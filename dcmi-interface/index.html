@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Mbed-CLI | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Mbed-CLI">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/dcmi-interface/">
+<meta property="og:url" content="https://js970.github.io/dcmi-interface/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-07-16T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Mbed-CLI">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/dcmi-interface/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Mbed-CLI"
+  
+    
+    
+      "datePublished":"2023-07-16T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/dcmi-interface/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-07-16">July 16, 2023</time>
+  	</div>
+  	<h1 class="post-title">Mbed-CLI</h1>
+  	<div class="post-line"></div>
+  	<h2 id="digital-camera-interface-dcmi-ran">Digital Camera Interface(DCMI)란?</h2>
+<hr />
+<blockquote>
+<p>The digital camera is a synchronous parallel interface able to receive a high-speed data flow from an external 8, 10, 12 or 14 bit CMOS camera module. It supports different data formats(YCbCr4:2:2/RGB565 progressive video, JPEG). This interface is for use with black &amp; white cameras(also X24, X5) and it is assumed that all preprocessing like resizing is performed in the camera module.</p>
+</blockquote>
+<ul>
+<li>디지털 카메라는 외장 8, 10, 12, 14비트 CMOS Camera module로부터 high-speed data flow를 수신 가능한 동기식 병렬 인터페이스이다.</li>
+<li>YCbCr4:2:2/RGB565 progressive video, JPEG포멧을 지원한다.</li>
+<li>이 인터페이스는 흑백 카메라, X24, X5등의 카메라에 사용되며, 크기 조정과 같은 모든 전처리 과정은 카메라 모듈에서 수행된다고 가정한다.</li>
+</ul>
+<h3 id="cuga-jjeonbo">추가 정보</h3>
+<ul>
+<li><code>CMOS</code> : Complementary Metal-Oxide-Semiconductor, 일반적으로 디지털 카메라 센서, 메모리 칩, 마이크로프로세서 등에서 널리 사용된다. 빛을 전기 신호로 변환하는 기능을 가지고 있으며, 이 신호는 카메라 사용자가 사진이나 동영상을 볼 수 있도록 한다. 즉 그냥 디지털 카메라의 이미지 센서를 의미한다고 생각하면 된다.</li>
+<li>STM32보드에서는 2017년에 DCMI인터페이스가 소개되기 전까지 카메라 사용에 문제가 있었지만, Aruducam에서 제공하는 SPI카메라 모듈을 이용하여 카메라의 사용이 가능하기는 하다.
+<ul>
+<li><a href="https://www.arducam.com/spi-camera-modules-for-all-stm32-boards/">SPI camera</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="dcmi-functional-overview">DCMI functional overview</h2>
+<hr />
+<blockquote>
+<p>The digital camera interface is a synchronous parallel interface that can receive high-speed(up to 54 Mbytes/s) data flows. It consists of up to 14 data lines and a pixel clock line. The pixel clock has a programmable polarity, so that data can be captured on either the rising or the falling edge of the pixel clock.
+The data are packed into a 32-bit data register(DCMI_DR) and then transferred through a general-purpose DMA channel. The image buffer is managed by the DMA, not by the camera interface.
+The data received from the camera can be organized in lines/frames or can be a sequence of JPEG images. To enable JPEG image reception, the JPEG bit must be set.
+The data flow is synchronized either by hardware using the optional DCMI_HSYNC and DCMI_VSYNC signals or by synchronization codes embedded in the data flow.</p>
+</blockquote>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

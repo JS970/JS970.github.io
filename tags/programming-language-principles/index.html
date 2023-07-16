@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Programming Language Principles | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Programming Language Principles">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/tags/">
+<meta property="og:url" content="https://js970.github.io/tags/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Programming Language Principles">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/tags/",
+  "@context":"https://schema.org",
+  "@type": "WebPage",
+  "headline": "Programming Language Principles"
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+<div class="tags">
+	<div class="tags-header">
+		<h2 class="tags-header-title">Programming Language Principles</h2>
+		<div class="tags-header-line"></div>
+	</div>
+</div>
+
+<div class="catalogue">
+	<a href="https://js970.github.io/subprogram-implementation/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-06-12" class="catalogue-time">June 12, 2023</time>
+    <h1 class="catalogue-title">Subprogram Implementation</h1>
+    <div class="catalogue-line"></div>
+    <p>Subprogram Linkage
+
+서브프로그램 연결
+
+서브프로그램 호출 - call
+서브프로그램 복귀 - return
+
+서브프로그램 호출 시 해야 할 작업
+
+data 처리
+
+호출하는 서브프로그램의 상태 저장
+인수 전달 작업
+복귀할 주소 전달
+
+
+control
+
+호출되는 프로그램으로 분기
+
+
+
+서브프로그램 복귀 시 해야 할 작업
+
+data 처리
+
+필요에 따라 형식인수 값 복사(outer parameter)
+함수의 경우, 결과 값 전달
+호출한 서브프로그램의 상태 복귀
+
+
+control
+
+호출한 서브…</p>
+  </div>
+</a><a href="https://js970.github.io/subprograms/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-06-01" class="catalogue-time">June  1, 2023</time>
+    <h1 class="catalogue-title">Subprograms</h1>
+    <div class="catalogue-line"></div>
+    <p>Subprogram Concepts
+
+
+Program = Algorithm + Data Structure(Wirth 저) 에서 Algorithm이 Control Flow를 담당한다.
+그렇다면 Data Structure의 Flow는 어떻게 처리될까?
+
+Data Structure을 처리하는 Subprogram을 통해 Data Flow가 관리될 수 있다.
+
+
+
+Subprogram
+
+전체 프로그램에 포함된 독립적인 작은 프로그램
+함수(function)과 프로시저(procedure)가 있다.
+
+함수 : 반…</p>
+  </div>
+</a><a href="https://js970.github.io/expression-and-statement-level-control-structure/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-30" class="catalogue-time">May 30, 2023</time>
+    <h1 class="catalogue-title">Expression and Statement Level Control Structure</h1>
+    <div class="catalogue-line"></div>
+    <p>Control Flow(제어 구조)
+
+Control flow란?
+
+제어분과 제어문에 의해 제어되는 문장의 집합
+구조화 프로그래밍에서 모든 순서도는 선택구조 와 반복구조 만으로 표현이 가능하다.(prime component)
+
+구조화 프로그래밍이란?
+
+
+위에서 아래로의 수행 흐름을 순차적 수행 흐름이라고 한다.
+괄호, goto문, 문장 레이블 등을 통해 수행 흐름을 명시적으로 표기한다.
+표현식 내에서의 수행 흐름, 문장 사이의 수행 흐름, 단위 프로그램(sub program, thread)사이의 수…</p>
+  </div>
+</a><a href="https://js970.github.io/expressions-and-assignments/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-23" class="catalogue-time">May 23, 2023</time>
+    <h1 class="catalogue-title">Expressions and Assignments</h1>
+    <div class="catalogue-line"></div>
+    <p>Expressions
+
+
+expression에는 표현식과 대입문이 있다.
+표현식은 값을 표현한다.
+대입문은 변수의 값을 변경하거나 메모리의 위치를 변경한다.
+
+어느 위치를 변경할 것인가 : L-value
+어떤 값으로 변경할 것인가 : R-value
+
+
+
+설계 고려 사항
+
+대입 기호가 대칭인가?
+
+a = a+1(대칭)
+a := a+1(비대칭)
+
+
+대입 기호가 연산자인가, 아니면 그냥 문장을 만드는가?
+
+a = b = c = 3.14 : c에 3.14 대입, b에 c대입, a에 b대입(C)
+a = b…</p>
+  </div>
+</a><a href="https://js970.github.io/types/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-16" class="catalogue-time">May 16, 2023</time>
+    <h1 class="catalogue-title">Types</h1>
+    <div class="catalogue-line"></div>
+    <p>Concept of Type
+
+
+Type은 어떤 프로그래밍 언어의 좋고 나쁨을 가리는 척도가 될 수 있다.
+
+Scalar(단순) vs Composite(복합)
+
+Scalar타입은 atomic values를 나타낸다.
+Composite타입은 atomic타입을 unit으로 가지는 타입이다.
+
+Primitive(기본) vs User-defined(사용자 정의)
+
+Primitive타입은 language에서 지원하는 타입이다.
+User-defined타입은 사용자에 의해 새롭게 정의된 타입이다.
+
+Funda…</p>
+  </div>
+</a><a href="https://js970.github.io/lua/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-15" class="catalogue-time">May 15, 2023</time>
+    <h1 class="catalogue-title">Lua</h1>
+    <div class="catalogue-line"></div>
+    <p>Lua Intro
+
+About Lua
+
+단순하고 쉬운 구문을 가진다.
+Python과 유사하지만 들여쓰기 언어는 아니다.(인덴트 무시해도 됨)
+Hybrid implementation 방식으로 구현되어 속도 역시 Python과 비교했을 때 훨씬 빠르다.
+동적 타입 언어이며, garbage collection을 통한 자동 메모리 관리 기능이 있다.
+ANSI C로 작성되었으며 엔진이 공개되어 있다.
+
+Env Setting
+
+Download Page
+At Terminal(Mac tested)
+
+별도의 환경…</p>
+  </div>
+</a><a href="https://js970.github.io/type-binding-storage-binding-scope/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-12" class="catalogue-time">May 12, 2023</time>
+    <h1 class="catalogue-title">Type Binding, Storage Binding, Scope</h1>
+    <div class="catalogue-line"></div>
+    <p>Type Binding, Storage Binding, Scope
+
+Type
+
+Type은 Value Set + Operation Set 으로 생각할 수 있다.
+Value Set : 가질 수 있는 값의 집합
+Operation Set : 해당 타입의 값들에 대해 적용 가능한 연산자의 집합
+예를 들어 C/C++에서 char타입의 경우 아래와 같은 Value Set, Operation Set을 가진다.
+
+Value Set : 8비트 범위의 이진수
+Operator Set : 단항 -, +, 이항 -, +,…</p>
+  </div>
+</a><a href="https://js970.github.io/names-and-bindings/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-11" class="catalogue-time">May 11, 2023</time>
+    <h1 class="catalogue-title">Names and Bindings</h1>
+    <div class="catalogue-line"></div>
+    <p>Names and Bindings
+
+Name
+
+Name은 프로그램에서 식별자 역할을 한다.
+Name은 자료 구조, 타입, 함수, 특수 기능 등 여러 namespace에 속할 수 있다.
+문법적으로는 Name을 lexeme의 instance라고 말할 수 있다.
+프로그래밍 언어 설계에 있어서 Name의 디자인 시 고려 사항으로는 아래와 같은 것들이 있다.
+
+case sensitive?
+최대로 가질 수 있는 길이
+Special Words의 존재
+
+Keyword, Reserved Word, Predefin…</p>
+  </div>
+</a><a href="https://js970.github.io/prolog/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-05-04" class="catalogue-time">May  4, 2023</time>
+    <h1 class="catalogue-title">Prolog</h1>
+    <div class="catalogue-line"></div>
+    <p>Prolog Intro
+
+Prolog History
+
+1972년에 Alain colmerauer와 Philippe Roussel이 만들었다.
+1979년에 Kowalski의 논문 Algorithm = Logic + Control에서 소개된 이후 널리 알려졌다.
+일본 정부에서 5세대 프로젝트의 기본 언어로 채택되는 등 나름 영향력이 있었다.
+
+Prolog Resources
+
+Prolog Env
+
+SWI Prolog
+Visual Prolog
+Strawberry Prolog
+
+
+Prolog Docs
+
+J…</p>
+  </div>
+</a><a href="https://js970.github.io/peuroggeraeoncoheoeoron-4-18-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-18" class="catalogue-time">April 18, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-04-18 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Extended BNF
+Syntax Chart
+Recursive-Descent Parser
+
+Extended BNF
+
+
+BNF(Backus-Naur-Form에서 추가로 몇 가지 meta-symbol이 추가된 표기법이다.
+$\epsilon, \lambda$ 등 아무 것도 없음을 나타낼 경우 그냥 공백으로 표기한다.
+
+optional Elements
+
+[ ... ]
+
+&lt;number&gt; ::= &lt;digits&gt;[.&lt;digits&gt;]
+숫자의 옵션으로 소수점및 소수 부…</p>
+  </div>
+</a><a href="https://js970.github.io/peuroggeraeoncoheoeoron-4-13-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-13" class="catalogue-time">April 13, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-04-13 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Review
+Prolog Intro
+SWI-Prolog &amp; Demo
+
+Review
+
+
+Axiomatic System(공리계)
+
+공리의 유한 집합, 사실(fact)과 추론 규칙(rules)로 구성된다.
+
+사실(predicate) : 아래와 같이 표현 가능하다. 항상 참이다.$$\frac{true}{fact}$$
+추론 규칙(rules) : 가정(hypothetics) 술어들을 바탕으로 결론 술어를 도출해 내는 규칙이다. 아래와 같이 표현 가능하다.$$\frac{predicate^{\…</p>
+  </div>
+</a><a href="https://js970.github.io/peuroggeraeoncoheoeoron-4-11-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-11" class="catalogue-time">April 11, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-04-11 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+PL Review
+Axiomatic System
+
+PL Review
+
+
+Programming Language는 Syntax와 Semantic으로 나타내어진다.
+Syntax : CFG(Grammar)로 표기
+Semantic
+
+Static Semantic
+
+Attribute Grammar : 속성 문법, (문법 규칙 + 속성 계산 규칙)을 통해 컴파일 이전에 의미에 대한 정의를 끝낸다.
+
+
+Dynamic Semantic
+
+Operational Semantics : 추상기계의 상태변화로 의미…</p>
+  </div>
+</a><a href="https://js970.github.io/peuroggeraeoncoheoeoron-4-6-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-06" class="catalogue-time">April  6, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-04-06 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Scheme(2)
+Lab - Tail Recursive Factorial
+
+Scheme(2)
+
+
+3.30 Scheme에서 이어짐
+
+
+Scheme은 LISP를 모태로 하는 함수형 프로그래밍 언어이다.
+LISP과 마찬가지로 Eval - Apply model을 따른다.
+
+Eval - Apply
+
+Scheme은 리스트로 함수 적용을 나타낸다.
+수식은 상수이거나 함수 적용 형태, 둘 중 하나이다.
+함수와 인수를 모두 계산하고(Eval), 함수를 적용한다(Apply).
+' 기호를 사용하여 Eval…</p>
+  </div>
+</a><a href="https://js970.github.io/peuroggeraeoncoheoeoron-4-4-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-04-04" class="catalogue-time">April  4, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-04-04 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Language - Syntax Review
+Language - Semantics
+
+Language - Syntax Review
+
+
+프로그래밍 언어의 설계는 Syntax와 Semantics로 나눌 수 있다.
+
+문법의 표기
+
+Syntax는 CFG또는 BNF표기를 통해 나타낼 수 있으며 둘은 동치이다.
+어떤 문법 G는 {N, T, P, S}인데 이때 P(Production Rule)을 CFG, BNF로 표기한다.
+
+구문 트리
+
+Production Rule에 따라 derivation 과정을 …</p>
+  </div>
+</a><a href="https://js970.github.io/peuroggeraeoncoheoeoron-3-30-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-30" class="catalogue-time">March 30, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-03-30 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Review
+Scheme
+
+Review
+
+
+3.28 수업정리에서 이어짐
+
+
+Grammar : (N, T, P, S)
+
+N : non-terminal set
+T : terminal set
+P : production rules
+S : start symbols
+다음 수식에서 N과 (N, T)의 합집합에 대한 kleene closure가 times되었다. -&gt; CFG$$P \subseteq N \times (N \cup T)^* $$
+
+
+문법을 표현하는 방법으로는 CFG로 표기하는 방법과…</p>
+  </div>
+</a><a href="https://js970.github.io/peuroggeraeoncoheoeoron-3-28-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-28" class="catalogue-time">March 28, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-03-28 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+review
+Syntax &amp; Grammar
+Grammar Example
+Ambiguity
+
+review
+
+
+프로그래밍언어론 3.28 수업정리에서 이어진다.
+
+
+Basic은 1980년대의 Micro PC, GUI 등의 환경 및 GW Basic, Apple Basic을 거쳐 Visual Basic이 되었다.
+SNOBOL(문자열 처리 언어) 는 Perl에 영향을 주었다.
+LISP(심볼 처리), APL(행렬, 벡터 연산)은 이후 Haskell, ML, Scala, clojure등 함수형…</p>
+  </div>
+</a><a href="https://js970.github.io/peuroggeraeoncoheoeoron-3-23-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-23" class="catalogue-time">March 23, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-03-23 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+시대별 정리
+BASIC 실습(II)
+
+Late 1950's ~ Early 1960's
+
+
+Target machine들은 일괄 처리 환경을 가지고 있었다.
+작업 제출과 결과 수령 사이의 간격(turnaround time)이 컷다. -&gt; 1~2days 
+
+Languages (Big - 4)
+
+FORTRAN(1957) - 기본적인 제어 구조 제시
+ALGOL(1958) - 블록 구조 제시
+LISP(1959) - 기호 계산
+COBOL(1960) - record
+
+1960's
+
+
+Target…</p>
+  </div>
+</a><a href="https://js970.github.io/peuroggeraeoncoheoeoron-3-21-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-21" class="catalogue-time">March 21, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-03-21 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+Simula I(1962) and Simula 67
+Smalltalk(1972)
+Traditional C(K&amp;R C) (1972)
+Objective-C(1984)
+C++(1985)
+Java(1995)
+JavaScript(1995) and PHP(1994)
+Perl(1987), Python(1991), Ruby(1990)
+
+Simula I(1962) and Simula 67
+
+
+SIMUlation Language -&gt; SIMULA
+Ole-Johan Dahl에 의해 1962년 …</p>
+  </div>
+</a><a href="https://js970.github.io/peuroggeraeoncoheoeoron-3-16-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-16" class="catalogue-time">March 16, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-03-16 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+IAL(ALGOL)(1958)
+COBOL(1960)
+APL(1962), SNOBOL(1962)
+PL/I(1964), C(1972)
+BASIC(1964)
+
+IAL(ALGOL)(1958)
+
+IAL
+
+International Algorithmic Language
+FORTRAN을 만든 사람인 John Backus등 유럽과 미국의 여러 사람들의 합작으로 만들어졌다.
+이 언어의 탄생 배경은 당시 사용되던 FORTRAN이 IBM 타겟 머신에서만 동작하였고, 이에 알고리즘 기술용 언어로 개발되었다.
+…</p>
+  </div>
+</a><a href="https://js970.github.io/peuroggeraeoncoheoeoron-3-14-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-14" class="catalogue-time">March 14, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-03-14 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+컴파일러, 인터프리터, 하이브리드 방식의 Implementation
+FORTRAN(1957)
+LISP(1959)
+
+Implementation
+
+컴파일러 방식
+
+인터프리터 방식
+
+Hybrid 방식
+
+
+서로 다른 ISA를 지원하는 하드웨어에서 작동하는 VM을 통해 인터프리터 방식의 Programming Language구현이 가능하다. 대표적으로 Java의 byte code가 있다. Java에서의 VM은 JVM이 된다.
+
+FORTRAN(1957)
+
+FORTRAN은 초기 과학 연산 등에 사용되…</p>
+  </div>
+</a><a href="https://js970.github.io/3-9-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-09" class="catalogue-time">March  9, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-03-09 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+프로그래밍 언어의 평가기준(속성)
+프로그래밍 언어 설계의 trade-off
+Programming Languages as Virtual Computers
+프로그래밍 언어의 구현 방법
+프로그래밍 환경
+
+프로그래밍 언어의 속성
+
+
+Writability - 프로그램을 쉽게 구현할 수 있는가?
+Readability - 가독성이 높은가?
+Efficiency - 컴파일 시간이 오래 걸리지는 않는가?(효율적인가?)
+Reliability - 신뢰성
+Portability - 이식성 -&gt; 여러 플랫폼…</p>
+  </div>
+</a><a href="https://js970.github.io/3-7-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-07" class="catalogue-time">March  7, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-03-07 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+프로그래밍 언어의 역할
+프로그래밍 언어에 대해 공부해야 하는 이유
+수많은 프로그래밍 언어를 어떻게 다루어야 하나?
+Requirements &amp; Constraints
+프로그래밍 언어에 대한 평가
+
+프로그래밍 언어의 역할
+
+
+사람과 기계 사이의 의사 소통이 가능하게 한다.(단방향)
+사람과 사람 사이의 의사소통이 가능하게 한다.(양방향)
+
+다른 사람이 본인의 코드를 쉽게 이해할 수 있다.
+
+
+프로그래머가 프로그램을 쉽게 작성할 수 있는가? -&gt; writability
+다른 프로그래머…</p>
+  </div>
+</a><a href="https://js970.github.io/3-2-suheojjeonri/" class="catalogue-item">
+  <div>
+    <span class="catalogue-pinned">Pinned &middot;</span>
+    <time datetime="2023-03-02" class="catalogue-time">March  2, 2023</time>
+    <h1 class="catalogue-title">프로그래밍언어론 2023-03-02 수업정리</h1>
+    <div class="catalogue-line"></div>
+    <p>Flow
+
+안전한 프로그래밍 언어?
+프로그래밍 언어에 대한 담론
+프로그래밍 언어와 패러다임
+추상화란?
+프로그램, 프로세스, 프로세서
+
+안전한 프로그래밍 언어?
+
+교수님이 상담을 하는 상황을 가정해 보자, 상담을 위해 대기하고 있는 교수님의 오피스에 호랑이가 들어온다면? 매우 위험한 상황이다. 또한 한국어를 구사하지 못해 의사소통이 이루어지지 않는 사람이 들어오는 경우에도 상담이라는 목적을 달성할 수 없게 된다. 프로그래밍 언어에서도 마찬가지이다. 어떤 함수에 매개변수로 적절한 타입이 들어가지 않는…</p>
+  </div>
+</a>
+</div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

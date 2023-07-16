@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Secondary-Storage Structure | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Secondary-Storage Structure">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/secondary-storage-structure/">
+<meta property="og:url" content="https://js970.github.io/secondary-storage-structure/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-06-12T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Secondary-Storage Structure">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/secondary-storage-structure/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Secondary-Storage Structure"
+  
+    
+    
+      "datePublished":"2023-06-12T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/secondary-storage-structure/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-06-12">June 12, 2023</time>
+  	</div>
+  	<h1 class="post-title">Secondary-Storage Structure</h1>
+  	<div class="post-line"></div>
+  	<h2 id="overview-of-mass-storage-structure">Overview of Mass Storage Structure</h2>
+<hr />
+<blockquote>
+<p>많은 Secondary Storage가 존재하지만 본 절에서는 HDD등 Magnetic disk에 대해서 다룬다.</p>
+</blockquote>
+<ul>
+<li>아래는 기본적인 하드디스크의 구조이다.<img src="/image/OS/hdd.png" alt="HDD" /></li>
+<li>I/O에 소요되는 시간은 아래와 같이 나타낼 수 있다.$$T_{I/O} = T_{seek} + T_{rotation} + T_{transfer}$$
+<ul>
+<li>I/O 소요시간 = 탐색시간 + 회전시간 + 전송시간</li>
+</ul>
+</li>
+<li>이 중에서 운영 체제 범위에서 줄일 수 있는 것은 탐색시간 밖에 없다.
+<ul>
+<li>회전시간은 HDD의 영역이고, 전송시간은 하드웨어 버스에 의해 결정된다.</li>
+<li>탐색시간은 <code>Disk Scheduling</code>을 통해 줄일 수 있다.</li>
+</ul>
+</li>
+<li>전송률을 식으로 나타내면 아래와 같다.$$R_{I/O} = \frac{Size_{transfer}}{T_{I/O}}$$</li>
+</ul>
+<h2 id="disk-scheduling">Disk Scheduling</h2>
+<hr />
+<ul>
+<li>디스크 암을 움직여 데이터에 접근하는 과정에는 많은 지연시간이 있다.</li>
+<li>운영 체제는 <code>Disk Scheduling</code>을 통해 Seek Time을 최소화 하는 것이 목적이다.</li>
+<li>회전 속도, 버스의 대역폭에 대해서는 고려하지 않는다.</li>
+<li>아래는 <code>Disk Scheduling</code>알고리즘이 고려해야 할 사항이다.
+<ul>
+<li>주어진 I/O request를 어떠한 순서로 처리할 것인가?</li>
+<li>Scheduling을 통해 순서만 바뀔 뿐 요청된 동작은 모두 수행되어야 한다.</li>
+<li><del>일반적이지는 않지만, 오히려 일을 하지 않는 것이 더 도움이 될때도 있다.</del></li>
+</ul>
+</li>
+<li><code>Disk Scheduling Algorithm</code>으로는 아래와 같은 것들이 있다.
+<ul>
+<li>FCFS</li>
+<li>SSTF</li>
+<li>SCAN</li>
+<li>C-SCAN</li>
+<li>C-Look</li>
+</ul>
+</li>
+<li>경우에 따라 적절한 <code>Disk Scheduling Algorithm</code>을 선택하는 것이 중요하다. </li>
+<li>결국 request에 의해 성능은 변하기 때문에 정답은 없다.</li>
+<li>일반적으로 SSTF, Look방식이 Best Effort로 가장 많이 사용된다.</li>
+<li>또한, 최근에는 마이크로커널을 지향하기 때문에 본 포스트에서 다루는 내용은 최신 운영체제에는 포함되지 않을 수 있다. 본 포스트의 기능은 보통은 하드웨어 레벨에서 별도의 기능으로 구현된다.</li>
+</ul>
+<h3 id="fcfs">FCFS</h3>
+<ul>
+<li>First Come First Serve(== do nothing)</li>
+<li>로드가 적을 때는 그나마 낫다</li>
+<li>하지만 로드가 많을 경우 효율이 좋지 않다.</li>
+<li>아래는 주어진 request에 따른 처리 과정이다.<img src="/image/OS/diskFCFS.png" alt="FCFS" />
+<ul>
+<li>53번 실린더에서 탐색을 시작하며 총 이동 거리는 640실린더를 이동해야 한다.</li>
+<li>위 그래프에서 가로로 중복되는 부분들은 전부 의미 없는 이동이라고 봐야 한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="sstf">SSTF</h3>
+<ul>
+<li>Shortest-Seek-Time-First</li>
+<li>현재 실린더 위치에서 가장 가까운 실린더의 request를 처리한다.</li>
+<li><code>starvation</code>을 야기할 수 있다.</li>
+<li>아래는 주어진 request에 따른 처리 과정이다.<img src="/image/OS/SSTF.png" alt="SSTF" />
+<ul>
+<li>53번 실린더에서 탐색을 시작하며 총 이동 거리는 236실린더를 이동해야 한다.</li>
+<li>FCFS방식에 비해 가로로 중복되는 부분이 많이 줄었다.</li>
+<li>경계값에 대한 의미 없는 탐색을 하지 않는다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="scan">SCAN</h3>
+<ul>
+<li>디스크 암이 실린더의 시작부터 끝까지 이동하면서 그 사이의 request를 처리한다.</li>
+<li>elevator algorithm이라고 부르기도 한다.</li>
+<li>아래는 주어진 request에 따른 처리 과정이다.<img src="/image/OS/SCAN.png" alt="SCAN" />
+<ul>
+<li>53번 실린더에서 시작하여 총 236실린더를 이동한다.</li>
+<li>경계값에 대한 무의미한 탐색이 있다.</li>
+<li>request마다 처리되는 데 걸리는 시간이 다르며 이를 예측하기 힘들다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="c-scan">C-SCAN</h3>
+<ul>
+<li>Circular SCAN방식이다.</li>
+<li>0번부터 199번 실린더 까지 탐색을 마친 뒤 바로 되돌아 가는 것이 아닌 다시 0번부터 199번으로 탐색을 한다.</li>
+<li>속도는 SCAN에 비해 느리지만 request 응답 지연을 예측할 수 있다는 장점이 있다.</li>
+<li>하지만 여전히 경계값에 대한 의미 없는 탐색을 수행한다.</li>
+<li>아래는 주어진 request에 따른 처리 과정이다.<img src="/image/OS/CSCAN.png" alt="C-SCAN" /></li>
+</ul>
+<h3 id="look-c-look">Look/C-Look</h3>
+<ul>
+<li>SCAN방식과 SSTF방식의 장점을 합친 것이다.</li>
+<li>SCAN방식과 달리 request 대상 실린더의 경계값에 대해서만 순회한다.
+<ul>
+<li>SSTF방식과 마찬가지로 경계값에 대한 의미 없는 탐색을 하지 않는다.</li>
+</ul>
+</li>
+<li>아래는 주어진 request에 대해 C-Look으로 <code>disk scheduling</code>을 수행한 것이다.<img src="/image/OS/CLOOK.png" alt="C-Look" /></li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

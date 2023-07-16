@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Synchronization(1) | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Synchronization(1)">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/synchronization-1/">
+<meta property="og:url" content="https://js970.github.io/synchronization-1/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-11T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Synchronization(1)">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/synchronization-1/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Synchronization(1)"
+  
+    
+    
+      "datePublished":"2023-04-11T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/synchronization-1/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-11">April 11, 2023</time>
+  	</div>
+  	<h1 class="post-title">Synchronization(1)</h1>
+  	<div class="post-line"></div>
+  	<h2 id="critical-section-problem">Critical Section Problem</h2>
+<hr />
+<h3 id="the-problem-of-concurrency-ddonsisseon-munje">The Problem of Concurrency(동시성 문제)</h3>
+<ul>
+<li>아래와 같은 프로그램에서, OS는 한 번에 여러 작업에 대해서 연산한다.(juggling)<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">stdio.h</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">stdlib.h</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">common.h</span><span>&quot;
+</span><span>
+</span><span>volitale </span><span style="color:#b48ead;">int</span><span> counter = </span><span style="color:#d08770;">0</span><span>;
+</span><span style="color:#b48ead;">int</span><span> loops;
+</span><span>
+</span><span style="color:#b48ead;">void</span><span> worker*(</span><span style="color:#b48ead;">void </span><span>* arg) {
+</span><span>	</span><span style="color:#b48ead;">int</span><span> i;
+</span><span>	</span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; loops; i++)
+</span><span>		counter++;
+</span><span>	</span><span style="color:#b48ead;">return</span><span> null;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">argc</span><span>, </span><span style="color:#b48ead;">char</span><span>* </span><span style="color:#bf616a;">argv</span><span>[]){
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(argc != </span><span style="color:#d08770;">2</span><span>) {
+</span><span>		</span><span style="color:#96b5b4;">fprintf</span><span>(stderr, &quot;</span><span style="color:#a3be8c;">usage: threads &lt;value&gt;</span><span style="color:#96b5b4;">\n</span><span>&quot;);
+</span><span>		</span><span style="color:#96b5b4;">exit</span><span>(</span><span style="color:#d08770;">1</span><span>);
+</span><span>	}
+</span><span>	loops = </span><span style="color:#96b5b4;">atoi</span><span>(argv[</span><span style="color:#d08770;">1</span><span>]);
+</span><span>	pthread_t p1, p2;
+</span><span>	</span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#a3be8c;">Initial value : </span><span style="color:#d08770;">%d</span><span style="color:#96b5b4;">\n</span><span>&quot;, counter);
+</span><span>
+</span><span>	</span><span style="color:#bf616a;">Pthread_create</span><span>(&amp;p1, </span><span style="color:#d08770;">NULL</span><span>, worker, </span><span style="color:#d08770;">NULL</span><span>);
+</span><span>	</span><span style="color:#bf616a;">Pthread_create</span><span>(&amp;p2, </span><span style="color:#d08770;">NULL</span><span>, worker, </span><span style="color:#d08770;">NULL</span><span>);
+</span><span>	</span><span style="color:#bf616a;">Pthread_join</span><span>(p1, </span><span style="color:#d08770;">NULL</span><span>);
+</span><span>	</span><span style="color:#bf616a;">Pthread_join</span><span>(p2, </span><span style="color:#d08770;">NULL</span><span>);
+</span><span>	</span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#a3be8c;">Final value : </span><span style="color:#d08770;">%d</span><span style="color:#96b5b4;">\n</span><span>&quot;, counter);
+</span><span>	</span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<ul>
+<li>위 코드를 실행시키면 p1과 p2가 동시에 실행된다.</li>
+</ul>
+</li>
+<li>위 프로그램을 실행시키면 1000회 정도의 적은 횟수의 loops값을 가질 때는 예상한 대로 동작할 수도 있다.
+<ul>
+<li>Result : Initial value = 0, Final value = 2000</li>
+</ul>
+</li>
+<li>하지만 loops값을 100000정도의 큰 수로 갖는다면 예상하지 못한 결과가 발생한다.
+<ul>
+<li>Result : Initial value = 0, Final value = 143012</li>
+<li>심지어 실행 시마다 Final value가 달라진다.</li>
+</ul>
+</li>
+<li>이러한 문제가 발생하는 이유는 <code>concurrency issue</code>때문이다.</li>
+</ul>
+<h3 id="background-of-concurrency-issue">Background of Concurrency Issue</h3>
+<ul>
+<li>앞서 살펴본 <code>concurrency issue</code>가 발생하는 원인은 <code>shared variable</code>에 대한 연산이 <code>atomic operation</code>이 아니기 때문에 일어난다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span>counter++;
+</span></code></pre>
+</li>
+<li>위 부분을 instruction level에서 살펴보면 아래와 같다.
+<ul>
+<li>당연하지만 그냥 예시일 뿐이다. 실제로는 아래보다 적은 연산으로도 해당 구문의 구현이 가능하다, 또한 이는 target machine의 ISA에 따라 다르다. <code>councurrency issue</code>의 이해 관점에서 참고하자.</li>
+</ul>
+<pre data-lang="asm" style="background-color:#2b303b;color:#c0c5ce;" class="language-asm "><code class="language-asm" data-lang="asm"><span style="color:#8fa1b3;">MOVE R1</span><span>, </span><span style="color:#8fa1b3;">counter</span><span style="color:#65737e;">        ; get the value of counter into R1
+</span><span style="color:#b48ead;">ADD  </span><span style="color:#8fa1b3;">R1</span><span>, </span><span style="color:#d08770;">1</span><span style="color:#65737e;">              ; increase R1
+</span><span style="color:#8fa1b3;">MOVE counter</span><span>, </span><span style="color:#8fa1b3;">R1</span><span style="color:#65737e;">        ; save the results in counter
+</span></code></pre>
+<ul>
+<li>machine instruction은 atomic operation이다. 하지만 high level language(C, C++, ...)에서의 statement는 이러한 instruction들이 모인 추상화 수준이 높은 operation이다.</li>
+<li>실제 연산은 machine instruction으로 일어난다. 두 thread에서 각각의 statement를 번갈아 가며 실행하지만, 실제로는 instruction level에서 번갈아 가며 실행하는 것이다.</li>
+<li>이 과정에서 statement는 순차적으로 실행된 것 처럼 보여 문제가 없는 것처럼 보일 수 있으나, machine instruction level에서는 각 연산 간의 동기화 문제가 발생할 수 있다.</li>
+</ul>
+</li>
+<li>좀 더 직관적으로 이해하기 위해 살펴보자 동작을 살펴보자.
+<ul>
+<li>counter의 초기값은 5이다.</li>
+<li>P1은 counter 값을 1만큼 증가시킨다.(counter++)</li>
+<li>P2는 counter 값을 1만큼 감소시킨다.(counter--)</li>
+<li>이런 실행 환경에서 프로시저 실행이 P1, P2의 순서로 일어난다고 가정하자. 이를 instruction level에서 표현하면 아래와 같다.
+<ul>
+<li>P1 : register1 = counter [r1 = 5]</li>
+<li>P1 : register1 = register1 + 1 [r1 = 6]</li>
+<li>P2 : register2 = counter [r1 = 5]</li>
+<li>P2 : register2 = register2 - 1 [r2 = 4]</li>
+<li>P1 : counter = register1 [counter = 6]</li>
+<li>P2 : counter = register2 [counter = 4]</li>
+</ul>
+</li>
+<li>프로시저 P1, P2는 순서대로 실행되었다. (P1이 P2보다 먼저 실행되었으며, 먼저 종료되었다.)</li>
+<li>하지만 instruction level에서 살펴보면 counter값에 5+1-1 = 5가 아닌 4가 저장된 것을 확인할 수 있다.</li>
+</ul>
+</li>
+<li>즉, 이 상황의 근본적인 원인은 각 프로시저가 atomic operation이 아니라는 것이다.
+<ul>
+<li>P1, P2는 각각 3개의 atomic operation으로 구성된다.</li>
+</ul>
+</li>
+<li>이러한 상황을 <code>Race Condition</code>이라고 한다.
+<ul>
+<li>P1, P2가 명령어 실행 순서에 대해 <strong>&quot;Race&quot;</strong> 하는 상황임</li>
+</ul>
+</li>
+</ul>
+<h3 id="solution">Solution</h3>
+<ul>
+<li><code>Race Condition</code>에 의한 <code>Concurrency Issue</code>를 해결하기 위해서는 <code>Critical Section</code>에 대한 처리를 해 주면 된다.</li>
+<li><code>Critical Section</code>이란 각 프로시저의 공유 변수에 대한 연산이 일어나는 영역이다.</li>
+<li><code>Critical Section</code>에 진입하기 전(<code>Entry Section</code>), Critical Section을 탈출한 후(<code>Exit Section</code>)에 대한 처리를 통해 어떠한 두 개의 프로세스도 동시에 <code>Critical Section</code>에 대해 접근할 수 없도록 하면 <code>Race Condition</code>에 의한 <code>Concurrency Issue</code>를 해결할 수 있다.
+<ul>
+<li><code>Entry Section</code>에서는 <code>Critical Section</code>에 대한 진입 허가 요청을 한다.</li>
+<li><code>Exit Section</code>에서는 <code>Critical Section</code> 접근 권한을 반환하는 동작을 한다.</li>
+</ul>
+</li>
+<li>아래는 <code>Critical Section</code>에 대한 대표적인 해결법이다.
+<ul>
+<li>Semaphore</li>
+<li>Lock</li>
+<li>Monitor</li>
+</ul>
+</li>
+<li><code>Critical Section</code>의 해결법은 다수 존재하지만 반드시 아래 세 가지 요건을 충족해야 한다. 세 가지 요건을 만족하는 것을 보임으로써 유효한 <code>Critical Section Solution</code>임을 증명할 수 있다.
+<ul>
+<li><code>Mutual Exclusion</code> : <code>Critical Section</code>으로의 접근은 항상 한 개의 프로세스만 가능하다.</li>
+<li><code>Progress(진행조건)</code> : <code>Critical Section</code>에 접근중인 프로세스가 없을 경우, 임의의 프로세스가 <code>Critical Section</code>접근을 요청하면 <strong>지연 없이</strong> 바로 <code>Critical Section</code>으로의 접근이 허용되어야 한다.<strong>(절대로 접근이 지연되면 안된다)</strong></li>
+<li><code>Bounded waiting</code> : <code>Critical Section</code>으로의 접근을 기다리는 프로시저들은 반드시 유한시간 대기 후 접근이 보장되어야 한다.
+<ul>
+<li>얼마나 대기하는지는 중요하지 않다. N개의 프로세스가 <code>Critical Section</code>접근을 요청한 상황이라면 최소한 N-1개의 프로세스가 실행된 후에는 <code>Critical Section</code>에 대한 접근이 가능해야 함을 의미한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="peterson-s-solution">Peterson's Solution</h2>
+<hr />
+<h3 id="peterson-s-solution-1">Peterson's Solution</h3>
+<blockquote>
+<p>Critical Section에 대한 Software-based Solution이다.</p>
+</blockquote>
+<ul>
+<li>LOAD/STORE는 atomic opetaion이라고 가정하자.</li>
+<li>Critical Section을 공유하는 프로시저들은 아래의 두 변수를 사용한다.
+<ul>
+<li>turn : 누가 critical section에 접근할 수 있는지를 저장한다.</li>
+<li>flag[i] : 프로세스 i가 critical section에 접근할 준비가 되었음을 나타낸다.</li>
+</ul>
+<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">int</span><span> turn;
+</span><span>boolean flag[i];
+</span></code></pre>
+</li>
+<li>아래는 Pi와 Pj에 대한 <code>Peterson's Solution</code>을 적용한 예시이다.
+<ul>
+<li>Pi의 관점에서는 Pj가 실행중일 때는 while문을 이용해 Pj의 <code>Critical Section</code>접근 권한이 유효한 동안 무한 대기한다. Pj의 경우 반대로 동작한다.</li>
+<li><code>Exit Section</code>에서는 접근 권한을 반환하여 while문에서 대기중이던 상대 프로세스가 <code>Critical Section</code>으로 진입할 수 있도록 한다.</li>
+<li>Procedure <code>i</code><pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#65737e;">// Procedure : Pi
+</span><span style="color:#b48ead;">do </span><span>{
+</span><span>	</span><span style="color:#65737e;">/* Entry Section */
+</span><span>	flag[i] = </span><span style="color:#d08770;">TRUE</span><span>;
+</span><span>	turn = j;
+</span><span>	</span><span style="color:#b48ead;">while</span><span>(flag[j] == </span><span style="color:#d08770;">TRUE </span><span>&amp;&amp; turn == j);
+</span><span>
+</span><span>	</span><span style="color:#65737e;">// critical section
+</span><span>
+</span><span>	</span><span style="color:#65737e;">/* Exit Section */
+</span><span>	flag[i] = </span><span style="color:#d08770;">FALSE</span><span>;
+</span><span>
+</span><span>	</span><span style="color:#65737e;">// remainder section
+</span><span>} </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">TRUE</span><span>)
+</span></code></pre>
+</li>
+<li>Procedure <code>j</code><pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#65737e;">// Procedure : Pj
+</span><span style="color:#b48ead;">do </span><span>{
+</span><span>	</span><span style="color:#65737e;">/* Entry Section */
+</span><span>	flag[j] = </span><span style="color:#d08770;">TRUE</span><span>;
+</span><span>	turn = i;
+</span><span>	</span><span style="color:#b48ead;">while</span><span>(flag[i] == </span><span style="color:#d08770;">TRUE </span><span>&amp;&amp; turn == i);
+</span><span>
+</span><span>	</span><span style="color:#65737e;">// critical section
+</span><span>
+</span><span>	</span><span style="color:#65737e;">/* Exit Section */
+</span><span>	flag[j] = </span><span style="color:#d08770;">FALSE</span><span>;
+</span><span>
+</span><span>	</span><span style="color:#65737e;">// remainder section
+</span><span>} </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#d08770;">TRUE</span><span>)
+</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="proof-of-peterson-s-solution">Proof of Peterson's Solution</h3>
+<ul>
+<li><code>Peterson's Solution</code>은 아래의 세 가지 조건을 만족하므로 유효한 <code>Critical Section Solution</code>이다.</li>
+</ul>
+<ol>
+<li><code>Mutual Exclusion</code>조건을 만족하는가?
+<ul>
+<li>두 개의 프로세스가 <code>critical section</code>에 접근하려 한다고 하자.</li>
+<li>프로세스 <code>i</code>가 <code>critical section</code>으로 진입하기 위한 조건은 아래와 같다.
+<ul>
+<li><code>flag[i] == TRUE &amp;&amp; flag[j] == FALSE &amp;&amp; turn == i</code></li>
+</ul>
+</li>
+<li>프로세스 <code>j</code>가 <code>critical section</code>으로 진입하기 위한 조건은 아래와 같다.
+<ul>
+<li><code>flag[j] == TRUE &amp;&amp; flag[i] == FALSE &amp;&amp; turn == j</code></li>
+</ul>
+</li>
+<li>위의 두 조건의 경우에만 프로세스 <code>i</code>, <code>j</code>가 각각 <code>critical section</code>에 진입 가능하다.</li>
+<li>두 조건을 제외하고는 프로세스 <code>i</code>, <code>j</code>모두 <code>critical section</code>에 진입할 수 없다.</li>
+<li>두 조건은 서로 일치하는 조건이 아니므로 두 프로세스가 동시에 <code>critical section</code>에 진입할 수 없다.</li>
+<li>따라서 <code>Peterson's Solution</code>은 <code>Mutual Exclusion</code>조건을 만족한다.</li>
+</ul>
+</li>
+<li><code>Progress</code>조건을 만족하는가?
+<ul>
+<li>프로세스 <code>j</code>가 준비되지 않은 경우 프로세스 <code>i</code>는 즉시 <code>critical section</code>에 진입할 수 있다.
+<ul>
+<li>프로세스 <code>j</code>가 준비되지 않은 경우란 <code>flag[j] == fasle</code>인 경우를 말한다.</li>
+<li>동일한 이유로 프로세스 <code>i</code>가 준비되지 않은 경우에도 프로세스 <code>j</code>가 즉시 <code>critical section</code>에 진입할 수 있다.</li>
+</ul>
+</li>
+<li>프로세스 <code>j</code>가 준비된 상태이고, 프로세스 <code>j</code>의 while루프를 순회하면서 대기 중이라고 하자.
+<ul>
+<li>이 경우 <code>turn == i</code>라면 프로세스 <code>i</code>는 지연 없이 <code>critical section</code>에 진입할 수 있다.</li>
+<li>마찬가지로 <code>turn == j</code>라면 프로세스 <code>j</code>는 지연 없이 <code>critical section</code>에 진입할 수 있다.</li>
+</ul>
+</li>
+<li>위의 두 상황에 대해 대기 중인 프로세스가 없을 경우, 지연 없이 프로세스가 <code>critical section</code>에 진입 가능함을 확인 가능하다.</li>
+<li>대기 중인 프로세스는 <code>critical section</code>에서 실행중인 프로세스가 <code>Exit Section</code>에서 플래그 값을 변경하면 그 즉시 <code>critical section</code>으로 진입할 수 있다.</li>
+<li>따라서 <code>Peterson's Solution</code>은 <code>Progress</code>조건을 만족한다.</li>
+</ul>
+</li>
+<li><code>Bounded Waiting</code>조건을 만족하는가?
+<ul>
+<li>프로세스 <code>j</code>의 플래그가 true로 설정된 후, trun값을 i로 갱신한다.</li>
+<li>while문의 조건에 의해 프로세스 <code>j</code>의 <code>critical section</code>접근이 종료된 후에 프로세스 <code>i</code>가 대기중인 상황이라면, 그 즉시 <code>critical section</code>으로 진입할 수 있다.</li>
+<li>프로세스 <code>i</code>는 최악의 경우에도 프로세스 <code>j</code>가 한 번 실행된 이후에 실행이 보장된다.</li>
+<li>따라서 <code>Peterson's Solution</code>은 <code>Bounded Waiting</code>을 보장한다.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>사실 대부분의 critical section solution은 Mutual Exclusion 조건은 만족시킨다. Progress조건과 Bounded Waiting조건을 만족시키는지 자세히 살펴보는 것이 중요하다.</p>
+</blockquote>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>STM32F746G-disco Tutorial | Rounding Off</title>
+
+
+
+<meta property="og:title" content="STM32F746G-disco Tutorial">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/stm32f746g-disco-tutorial/">
+<meta property="og:url" content="https://js970.github.io/stm32f746g-disco-tutorial/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-06-24T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="STM32F746G-disco Tutorial">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/stm32f746g-disco-tutorial/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "STM32F746G-disco Tutorial"
+  
+    
+    
+      "datePublished":"2023-06-24T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/stm32f746g-disco-tutorial/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-06-24">June 24, 2023</time>
+  	</div>
+  	<h1 class="post-title">STM32F746G-disco Tutorial</h1>
+  	<div class="post-line"></div>
+  	<blockquote>
+<p>본 글에서는 STM32F746G-disco 개발 보드를 이용하여 O'REILLY의 TinyML도서의 예제를 실행해 볼 것이다.</p>
+</blockquote>
+<p><img src="/image/TinyML/book.png" alt="TinyML Book" /></p>
+<h3 id="jjubimul">준비물</h3>
+<ul>
+<li>STM32F746G-disco(마이크로컨트롤러 개발보드)</li>
+<li>Make(builder) 3.8.2이상</li>
+<li>mercurial(파이썬 버전 에러(python@3.11) 발생 시 버전 5.9.3을 명시하면 해결됨)</li>
+<li><a href="https://os.mbed.com/docs/mbed-os/v6.16/introduction/index.html">Mbed CLI</a> - 운영 체제에 맞게 설치할 것, <a href="https://github.com/ARMmbed/mbed-cli-osx-installer/releases/tag/v0.0.10">macOS X</a>
+<ul>
+<li>아니면 <code>pip</code>을 통해 설치할 수도 있다.<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">pip</span><span> install mbed-cli
+</span></code></pre>
+</li>
+</ul>
+</li>
+<li><del><a href="https://www.st.com/en/development-tools/stm32-software-development-tools/products.html">STM32CubeIDE</a>(이클립스 베이스의 통합개발환경)</del>
+<ul>
+<li>본 책의 예제 실습에서는 사용되지 않는다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="ggabba-bodde-tesseteu">개발 보드 테스트</h3>
+<ul>
+<li>새로운 프로젝트를 생성한 뒤 board select에서 STM32F746G-disco보드를 선택하고 Hello World예제를 실행시켜 보았다.<img src="/image/TinyML/helloWorld.png" alt="Hello World" /></li>
+</ul>
+<h2 id="sainpa-yeceug-modde-ssaensseon-chapter-4">사인파 예측 모델 생성(Chapter 4)</h2>
+<hr />
+<ul>
+<li><a href="https://colab.research.google.com/github/yunho0130/tensorflow-lite/blob/master/tensorflow/lite/micro/examples/hello_world/create_sine_model_ko.ipynb">책의 코드</a>를 직접 쳐 보면서 익혔다.</li>
+<li>그래프를 그리는 코드, 양자화 모델을 검증하기 위한 코드, 파일 크기 측정을 위한 코드는 생략했다.<pre data-linenos data-lang="Python" style="background-color:#2b303b;color:#c0c5ce;" class="language-Python "><code class="language-Python" data-lang="Python"><table><tbody><tr><td>1</td><td><span style="color:#65737e;">## 종속성 로드
+</span></td></tr><tr><td>2</td><td><span style="color:#65737e;"># TensorFlow는 오픈소스 라이브러리다.
+</span></td></tr><tr><td>3</td><td><span style="color:#65737e;"># 참조: 아래의 코드는 텐서플로우 2버전을 사용함.
+</span></td></tr><tr><td>4</td><td><span style="color:#b48ead;">import </span><span>tensorflow </span><span style="color:#b48ead;">as </span><span>tf
+</span></td></tr><tr><td>5</td><td><span style="color:#96b5b4;">print</span><span>(tf.__version__)
+</span></td></tr><tr><td>6</td><td><span>
+</span></td></tr><tr><td>7</td><td><span style="color:#65737e;"># 수학 연산에 필요한 Numpy
+</span></td></tr><tr><td>8</td><td><span style="color:#b48ead;">import </span><span>numpy </span><span style="color:#b48ead;">as </span><span>np
+</span></td></tr><tr><td>9</td><td><span>
+</span></td></tr><tr><td>10</td><td><span style="color:#65737e;"># 그래프 생성에 필요한 Matplotlib
+</span></td></tr><tr><td>11</td><td><span style="color:#b48ead;">import </span><span>matplotlib.pyplot </span><span style="color:#b48ead;">as </span><span>plt
+</span></td></tr><tr><td>12</td><td><span>
+</span></td></tr><tr><td>13</td><td><span style="color:#65737e;"># 파이썬의 수학 라이브러리
+</span></td></tr><tr><td>14</td><td><span style="color:#b48ead;">import </span><span>math
+</span></td></tr><tr><td>15</td><td><span>
+</span></td></tr><tr><td>16</td><td><span style="color:#65737e;">## 데이터 생성하기
+</span></td></tr><tr><td>17</td><td><span>
+</span></td></tr><tr><td>18</td><td><span style="color:#65737e;"># 아래의 값만큼 데이터 샘플을 생성한다.
+</span></td></tr><tr><td>19</td><td><span style="color:#bf616a;">SAMPLES </span><span>= </span><span style="color:#d08770;">1000
+</span></td></tr><tr><td>20</td><td><span>
+</span></td></tr><tr><td>21</td><td><span style="color:#65737e;"># 시드 값을 지정하여 이 노트북에서 실행할 때마다 다른 랜덤 값을 얻게 한다.
+</span></td></tr><tr><td>22</td><td><span style="color:#65737e;"># 어떤 숫자든 사용할 수 있다.
+</span></td></tr><tr><td>23</td><td><span>np.random.</span><span style="color:#bf616a;">seed</span><span>(</span><span style="color:#d08770;">9730</span><span>)
+</span></td></tr><tr><td>24</td><td><span>
+</span></td></tr><tr><td>25</td><td><span style="color:#65737e;"># 사인파 진폭의 범위인 0-2π 내에서 균일하게 분포된 난수 집합을 생성한다.
+</span></td></tr><tr><td>26</td><td><span>x_values = np.random.</span><span style="color:#bf616a;">uniform</span><span>(</span><span style="color:#bf616a;">low</span><span>=</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#bf616a;">high</span><span>=</span><span style="color:#d08770;">2</span><span>*math.pi, </span><span style="color:#bf616a;">size</span><span>=</span><span style="color:#bf616a;">SAMPLES</span><span>)
+</span></td></tr><tr><td>27</td><td><span>
+</span></td></tr><tr><td>28</td><td><span style="color:#65737e;"># 값을 섞어서 생성된 값들이 순서를 따르지 않도록 한다.
+</span></td></tr><tr><td>29</td><td><span>np.random.</span><span style="color:#bf616a;">shuffle</span><span>(x_values)
+</span></td></tr><tr><td>30</td><td><span>
+</span></td></tr><tr><td>31</td><td><span style="color:#65737e;"># 해당 사인값을 계산한다.
+</span></td></tr><tr><td>32</td><td><span>y_values = np.</span><span style="color:#bf616a;">sin</span><span>(x_values)
+</span></td></tr><tr><td>33</td><td><span>
+</span></td></tr><tr><td>34</td><td><span style="color:#65737e;">## 노이즈 추가
+</span></td></tr><tr><td>35</td><td><span style="color:#65737e;"># 사인 함수에 의해 직접 생성되었으므로 부드러운 곡선으로 나타난다. 
+</span></td></tr><tr><td>36</td><td><span style="color:#65737e;"># 그러나 머신 러닝 모델은 보다 복잡한 실제 데이터에서 패턴을 알아낼 수 있다. 
+</span></td></tr><tr><td>37</td><td><span style="color:#65737e;"># 이를 위해 데이터에 약간의 노이즈를 추가하여 보다 실제와 비슷한 데이터를 만들어 보자.
+</span></td></tr><tr><td>38</td><td><span style="color:#65737e;"># 본 단에서는 각 값에 임의의 노이즈를 추가한 다음 새 그래프를 그린다.
+</span></td></tr><tr><td>39</td><td><span>
+</span></td></tr><tr><td>40</td><td><span style="color:#65737e;"># 각 y값에 임의의 작은 숫자를 추가한다.
+</span></td></tr><tr><td>41</td><td><span>y_values += </span><span style="color:#d08770;">0.1 </span><span>* np.random.</span><span style="color:#bf616a;">randn</span><span>(*y_values.shape)
+</span></td></tr><tr><td>42</td><td><span>
+</span></td></tr><tr><td>43</td><td><span style="color:#65737e;">## 데이터 분할
+</span></td></tr><tr><td>44</td><td><span style="color:#65737e;"># 실제 데이터와 비슷한 노이즈가 추가된 데이터 세트가 생성되었다.
+</span></td></tr><tr><td>45</td><td><span style="color:#65737e;"># 이 데이터는 모델의 훈련에 사용할 것이다.
+</span></td></tr><tr><td>46</td><td><span style="color:#65737e;"># 평가에 사용할 데이터를 확보하기 위해 훈련을 시작하기 전에 데이터를 분할하자.
+</span></td></tr><tr><td>47</td><td><span style="color:#65737e;"># vaildation data로 20%, test data로 20%, 나머지 60%은 training data로 분할하자.
+</span></td></tr><tr><td>48</td><td><span>
+</span></td></tr><tr><td>49</td><td><span style="color:#65737e;"># 각 항목의 인덱스를 계산한다.
+</span></td></tr><tr><td>50</td><td><span style="color:#bf616a;">TRAIN_SPLIT </span><span>= </span><span style="color:#bf616a;">int</span><span>(</span><span style="color:#d08770;">0.6 </span><span>* </span><span style="color:#bf616a;">SAMPLES</span><span>)
+</span></td></tr><tr><td>51</td><td><span style="color:#bf616a;">TEST_SPLIT </span><span>= </span><span style="color:#bf616a;">int</span><span>(</span><span style="color:#d08770;">0.2 </span><span>* </span><span style="color:#bf616a;">SAMPLES </span><span>+ </span><span style="color:#bf616a;">TRAIN_SPLIT</span><span>)
+</span></td></tr><tr><td>52</td><td><span>
+</span></td></tr><tr><td>53</td><td><span style="color:#65737e;"># np.split을 사용하여 데이터를 세 부분으로 자른다.
+</span></td></tr><tr><td>54</td><td><span style="color:#65737e;"># np.split의 두 번째 인수는 데이터가 분할되는 인덱스 배열이며, 
+</span></td></tr><tr><td>55</td><td><span style="color:#65737e;"># 두 개의 인덱스를 사용하므로 데이터는 총 세 개의 덩어리로 나뉠 것이다.
+</span></td></tr><tr><td>56</td><td><span>x_train, x_test, x_validate = np.</span><span style="color:#bf616a;">split</span><span>(x_values, (</span><span style="color:#bf616a;">TRAIN_SPLIT</span><span>, </span><span style="color:#bf616a;">TEST_SPLIT</span><span>))
+</span></td></tr><tr><td>57</td><td><span>y_train, y_test, y_validate = np.</span><span style="color:#bf616a;">split</span><span>(y_values, (</span><span style="color:#bf616a;">TRAIN_SPLIT</span><span>, </span><span style="color:#bf616a;">TEST_SPLIT</span><span>))
+</span></td></tr><tr><td>58</td><td><span>
+</span></td></tr><tr><td>59</td><td><span style="color:#65737e;"># 분할한 데이터를 합쳤을 때 원래의 사이즈와 같은지 재확인한다.
+</span></td></tr><tr><td>60</td><td><span style="color:#b48ead;">assert</span><span>(x_train.size + x_validate.size + x_test.size) == </span><span style="color:#bf616a;">SAMPLES
+</span></td></tr><tr><td>61</td><td><span>
+</span></td></tr><tr><td>62</td><td><span style="color:#65737e;">## 모델 설계
+</span></td></tr><tr><td>63</td><td><span style="color:#65737e;"># 입력값 x를 받아 출력값 sin(x)를 예측하는 모델을 만든다.
+</span></td></tr><tr><td>64</td><td><span style="color:#65737e;"># regression(회귀)을 사용하는 모델이다.
+</span></td></tr><tr><td>65</td><td><span style="color:#65737e;"># 먼저 두 개의 레이어를 정의하자. 
+</span></td></tr><tr><td>66</td><td><span style="color:#65737e;"># 첫 번째 레이어는 단일 입력(x값)을 가져와 16개의 뉴런을 통해 활성화된다.
+</span></td></tr><tr><td>67</td><td><span style="color:#65737e;"># 이 입력에 따라 각 뉴런은 내부 상태에 따라 어느 정도까지 활성화 된다.
+</span></td></tr><tr><td>68</td><td><span style="color:#65737e;"># 뉴런의 활성화 정도는 숫자로 표현된다.
+</span></td></tr><tr><td>69</td><td><span style="color:#65737e;"># 첫 번째 레이어의 활성화 정도는 두 번째 레이어에 입력으로 공급된다.
+</span></td></tr><tr><td>70</td><td><span style="color:#65737e;"># 이 입력에 자체 가중치와 바이어스를 적용하고 활성화 정도를 계산하여 y값으로 출력한다.
+</span></td></tr><tr><td>71</td><td><span>
+</span></td></tr><tr><td>72</td><td><span style="color:#65737e;"># 간단한 모델 구조를 만들기 위해 케라스를 사용한다.
+</span></td></tr><tr><td>73</td><td><span style="color:#b48ead;">from </span><span>tensorflow.keras </span><span style="color:#b48ead;">import </span><span>layers
+</span></td></tr><tr><td>74</td><td><span>model_2 = tf.keras.</span><span style="color:#bf616a;">Sequential</span><span>()
+</span></td></tr><tr><td>75</td><td><span>
+</span></td></tr><tr><td>76</td><td><span style="color:#65737e;"># 첫 번째 레이어는 스칼라 입력을 받아 16개의 뉴런을 통해 전달하고,
+</span></td></tr><tr><td>77</td><td><span style="color:#65737e;"># 뉴런은 &#39;relu&#39; 활성화 함수에 따라 활성화 여부를 결정한다.
+</span></td></tr><tr><td>78</td><td><span>model_2.</span><span style="color:#bf616a;">add</span><span>(layers.</span><span style="color:#bf616a;">Dense</span><span>(</span><span style="color:#d08770;">16</span><span>, </span><span style="color:#bf616a;">activation</span><span>=&#39;</span><span style="color:#a3be8c;">relu</span><span>&#39;, </span><span style="color:#bf616a;">input_shape</span><span>=(</span><span style="color:#d08770;">1</span><span>,)))
+</span></td></tr><tr><td>79</td><td><span>
+</span></td></tr><tr><td>80</td><td><span style="color:#65737e;"># 새로운 두 번째 레이어는 네트워크가 더 복잡한 표현을 배우는 데 도움을 준다.
+</span></td></tr><tr><td>81</td><td><span>model_2.</span><span style="color:#bf616a;">add</span><span>(layers.</span><span style="color:#bf616a;">Dense</span><span>(</span><span style="color:#d08770;">16</span><span>, </span><span style="color:#bf616a;">activation</span><span>=&#39;</span><span style="color:#a3be8c;">relu</span><span>&#39;))
+</span></td></tr><tr><td>82</td><td><span>
+</span></td></tr><tr><td>83</td><td><span style="color:#65737e;"># 단일 값을 출력해야 하기 때문에 최종 레이어는 단일 뉴런으로 구성된다.
+</span></td></tr><tr><td>84</td><td><span>model_2.</span><span style="color:#bf616a;">add</span><span>(layers.</span><span style="color:#bf616a;">Dense</span><span>(</span><span style="color:#d08770;">1</span><span>))
+</span></td></tr><tr><td>85</td><td><span>
+</span></td></tr><tr><td>86</td><td><span style="color:#65737e;"># 표준 옵티마이저 및 손실 함수를 사용하여 회귀 모델을 컴파일한다.
+</span></td></tr><tr><td>87</td><td><span>model_2.</span><span style="color:#bf616a;">compile</span><span>(</span><span style="color:#bf616a;">optimizer</span><span>=&#39;</span><span style="color:#a3be8c;">rmsprop</span><span>&#39;, </span><span style="color:#bf616a;">loss</span><span>=&#39;</span><span style="color:#a3be8c;">mse</span><span>&#39;, </span><span style="color:#bf616a;">metrics</span><span>=[&#39;</span><span style="color:#a3be8c;">mae</span><span>&#39;])
+</span></td></tr><tr><td>88</td><td><span>
+</span></td></tr><tr><td>89</td><td><span style="color:#65737e;"># 모델 훈련
+</span></td></tr><tr><td>90</td><td><span>history_2 = model_2.</span><span style="color:#bf616a;">fit</span><span>(x_train, y_train, </span><span style="color:#bf616a;">epochs</span><span>=</span><span style="color:#d08770;">600</span><span>, </span><span style="color:#bf616a;">batch_size</span><span>=</span><span style="color:#d08770;">16</span><span>,
+</span></td></tr><tr><td>91</td><td><span>                        </span><span style="color:#bf616a;">validation_data</span><span>=(x_validate, y_validate))
+</span></td></tr><tr><td>92</td><td><span>
+</span></td></tr><tr><td>93</td><td><span style="color:#65737e;"># 테스트 데이터셋의 손실 계산 및 출력
+</span></td></tr><tr><td>94</td><td><span>loss = model_2.</span><span style="color:#bf616a;">evaluate</span><span>(x_test, y_test)
+</span></td></tr><tr><td>95</td><td><span>
+</span></td></tr><tr><td>96</td><td><span style="color:#65737e;"># 테스트 데이터셋 기반으로 예측
+</span></td></tr><tr><td>97</td><td><span>predictions = model_2.</span><span style="color:#bf616a;">predict</span><span>(x_test)
+</span></td></tr><tr><td>98</td><td><span>
+</span></td></tr><tr><td>99</td><td><span style="color:#65737e;"># 실제값에 대한 예측 그래프
+</span></td></tr><tr><td>100</td><td><span>plt.</span><span style="color:#bf616a;">clf</span><span>()
+</span></td></tr><tr><td>101</td><td><span>plt.</span><span style="color:#bf616a;">title</span><span>(&#39;</span><span style="color:#a3be8c;">Comparison of predictions and actual values</span><span>&#39;)
+</span></td></tr><tr><td>102</td><td><span>plt.</span><span style="color:#bf616a;">plot</span><span>(x_test, y_test, &#39;</span><span style="color:#a3be8c;">b.</span><span>&#39;, </span><span style="color:#bf616a;">label</span><span>=&#39;</span><span style="color:#a3be8c;">Actual</span><span>&#39;)
+</span></td></tr><tr><td>103</td><td><span>plt.</span><span style="color:#bf616a;">plot</span><span>(x_test, predictions, &#39;</span><span style="color:#a3be8c;">r.</span><span>&#39;, </span><span style="color:#bf616a;">label</span><span>=&#39;</span><span style="color:#a3be8c;">Predicted</span><span>&#39;)
+</span></td></tr><tr><td>104</td><td><span>plt.</span><span style="color:#bf616a;">legend</span><span>()
+</span></td></tr><tr><td>105</td><td><span>plt.</span><span style="color:#bf616a;">show</span><span>()
+</span></td></tr><tr><td>106</td><td><span>
+</span></td></tr><tr><td>107</td><td><span style="color:#65737e;">## TensorFlow Lite로 변환
+</span></td></tr><tr><td>108</td><td><span style="color:#65737e;"># 앞서 생성한 모델을 마이크로컨트롤러에 배포하기 위해 양자화를 수행한다.
+</span></td></tr><tr><td>109</td><td><span style="color:#65737e;"># 양자화를 통해 모델 가중치의 정밀도를 낮추어 정확도에 큰 영향을 미치지
+</span></td></tr><tr><td>110</td><td><span style="color:#65737e;"># 않으면서 메모리를 절약할 수 있다.
+</span></td></tr><tr><td>111</td><td><span style="color:#65737e;"># 양자화를 통해 모델 추론에 필요한 계산이 더 간단해지기 때문에 경량화 뿐만 아니라
+</span></td></tr><tr><td>112</td><td><span style="color:#65737e;"># 실행속도 역시 빨라진다.
+</span></td></tr><tr><td>113</td><td><span>
+</span></td></tr><tr><td>114</td><td><span style="color:#65737e;"># 양자화하여 모델을 텐서플로우 라이트 형식으로 변환
+</span></td></tr><tr><td>115</td><td><span>converter = tf.lite.TFLiteConverter.</span><span style="color:#bf616a;">from_keras_model</span><span>(model_2)
+</span></td></tr><tr><td>116</td><td><span>converter.optimizations = [tf.lite.Optimize.</span><span style="color:#bf616a;">OPTIMIZE_FOR_SIZE</span><span>]
+</span></td></tr><tr><td>117</td><td><span>tflite_model = converter.</span><span style="color:#bf616a;">convert</span><span>()
+</span></td></tr><tr><td>118</td><td><span>
+</span></td></tr><tr><td>119</td><td><span style="color:#65737e;"># 모델 저장
+</span></td></tr><tr><td>120</td><td><span style="color:#96b5b4;">open</span><span>(&quot;</span><span style="color:#a3be8c;">sine_model_quantized.tflite</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">wb</span><span>&quot;).</span><span style="color:#bf616a;">write</span><span>(tflite_model)
+</span></td></tr></tbody></table></code></pre>
+</li>
+<li>위 프로그램을 실행시키면 tflite파일이 생성된다. 이를 마이크로컨트롤러에서 사용할 수 있도록 c언어로 변환해야 한다. </li>
+<li>아래 명령어를 입력하여 학습 모델을 cc파일로 변환한다.<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">xxd -i</span><span> sine_modelquantized.tflite &gt; sine_model_quantized.cc
+</span></code></pre>
+</li>
+<li>c언어로 변환된 파일은 다음과 같다.<img src="/image/TinyML/convertedModel.png" alt="converted model" /></li>
+</ul>
+<h2 id="aepeulrikeissyeo-gucug-chapter-5">애플리케이션 구축(Chapter 5)</h2>
+<hr />
+<h3 id="modde-tesseteu">모델 테스트</h3>
+<ul>
+<li><a href="https://github.com/yunho0130/tensorflow-lite/tree/master/tensorflow/lite/micro/examples/hello_world">책의 코드</a>를 클론하여 진행했다.</li>
+<li>아래는 책의 내용을 바탕으로 앞서 생성한 모델에 대해 테스트를 수행하는 코드를 분석한 것이다.<pre data-linenos data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><table><tbody><tr><td>1</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/examples/hello_world/sine_model_data.h</span><span>&quot;
+</span></td></tr><tr><td>2</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/kernels/all_ops_resolver.h</span><span>&quot;
+</span></td></tr><tr><td>3</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/micro_error_reporter.h</span><span>&quot;
+</span></td></tr><tr><td>4</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/micro_interpreter.h</span><span>&quot;
+</span></td></tr><tr><td>5</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/testing/micro_test.h</span><span>&quot;
+</span></td></tr><tr><td>6</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/schema/schema_generated.h</span><span>&quot;
+</span></td></tr><tr><td>7</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/version.h</span><span>&quot;
+</span></td></tr><tr><td>8</td><td><span>
+</span></td></tr><tr><td>9</td><td><span>TF_LITE_MICRO_TESTS_BEGIN
+</span></td></tr><tr><td>10</td><td><span>
+</span></td></tr><tr><td>11</td><td><span style="color:#bf616a;">TF_LITE_MICRO_TEST</span><span>(LoadModelAndPerformInference) {
+</span></td></tr><tr><td>12</td><td><span>  </span><span style="color:#65737e;">// 로깅(logging)을 위한 객체 생성
+</span></td></tr><tr><td>13</td><td><span>  tflite::MicroErrorReporter micro_error_reporter;
+</span></td></tr><tr><td>14</td><td><span>  tflite::ErrorReporter* error_reporter = &amp;micro_error_reporter;
+</span></td></tr><tr><td>15</td><td><span>
+</span></td></tr><tr><td>16</td><td><span>  </span><span style="color:#65737e;">// 모델을 사용 가능한 데이터 구조에 매핑한다.
+</span></td></tr><tr><td>17</td><td><span>  </span><span style="color:#65737e;">// 복사, 파싱을 포함하지 않는 가벼운 작업이다.
+</span></td></tr><tr><td>18</td><td><span>  </span><span style="color:#b48ead;">const</span><span> tflite::Model* model = ::tflite::</span><span style="color:#bf616a;">GetModel</span><span>(g_sine_model_data);
+</span></td></tr><tr><td>19</td><td><span>  </span><span style="color:#65737e;">// 현재 사용중인 텐서플로 라이트 라이브러리의 버전과 
+</span></td></tr><tr><td>20</td><td><span>  </span><span style="color:#65737e;">// 모델의 텐서플로 라이트 라이브러리의 버전에 대해 검사를 수행한다. 
+</span></td></tr><tr><td>21</td><td><span>  </span><span style="color:#65737e;">// 버전이 일치하지 않아도 진행은 되지만 아래의 에러 메시지를 출력한다.
+</span></td></tr><tr><td>22</td><td><span>  </span><span style="color:#b48ead;">if </span><span>(model-&gt;</span><span style="color:#bf616a;">version</span><span>() != TFLITE_SCHEMA_VERSION) {
+</span></td></tr><tr><td>23</td><td><span>    </span><span style="color:#bf616a;">TF_LITE_REPORT_ERROR</span><span>(error_reporter,
+</span></td></tr><tr><td>24</td><td><span>                         &quot;</span><span style="color:#a3be8c;">Model provided is schema version </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;"> not equal </span><span>&quot;
+</span></td></tr><tr><td>25</td><td><span>                         &quot;</span><span style="color:#a3be8c;">to supported version </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">.</span><span style="color:#96b5b4;">\n</span><span>&quot;,
+</span></td></tr><tr><td>26</td><td><span>                         model-&gt;</span><span style="color:#bf616a;">version</span><span>(), TFLITE_SCHEMA_VERSION);
+</span></td></tr><tr><td>27</td><td><span>  }
+</span></td></tr><tr><td>28</td><td><span>
+</span></td></tr><tr><td>29</td><td><span>  </span><span style="color:#65737e;">// 필요한 모든 operation 구현을 가져온다.
+</span></td></tr><tr><td>30</td><td><span>  tflite::ops::micro::AllOpsResolver resolver;
+</span></td></tr><tr><td>31</td><td><span>
+</span></td></tr><tr><td>32</td><td><span>  </span><span style="color:#65737e;">// 입력, 출력, 중간 배열에 사용할 메모리 영역을 생성한다.
+</span></td></tr><tr><td>33</td><td><span>  </span><span style="color:#65737e;">// 모델 최솟값을 찾으려면 시행착오가 필요하다.
+</span></td></tr><tr><td>34</td><td><span>  </span><span style="color:#65737e;">// 이 메모리 영역은 모델의 입력, 출력, 중간 텐서를 저장하는 데 사용된다.
+</span></td></tr><tr><td>35</td><td><span>  </span><span style="color:#65737e;">// 이 영역을 텐서 아레나(tensor_arena) 라고 부른다.
+</span></td></tr><tr><td>36</td><td><span>  </span><span style="color:#65737e;">// 본 예제에서는 크기가 2048바이트인 배열을 할당했다.
+</span></td></tr><tr><td>37</td><td><span>  </span><span style="color:#b48ead;">const int</span><span> tensor_arena_size = </span><span style="color:#d08770;">2 </span><span>* </span><span style="color:#d08770;">1024</span><span>;
+</span></td></tr><tr><td>38</td><td><span>  uint8_t tensor_arena[tensor_arena_size];
+</span></td></tr><tr><td>39</td><td><span>
+</span></td></tr><tr><td>40</td><td><span>  </span><span style="color:#65737e;">// 모델을 실행하기 위한 인터프리터를 빌드한다. 
+</span></td></tr><tr><td>41</td><td><span>  </span><span style="color:#65737e;">// 앞서 선언한 인스턴스가 파라미터로 사용되는 것을 확인할 수 있다.
+</span></td></tr><tr><td>42</td><td><span>  tflite::MicroInterpreter </span><span style="color:#bf616a;">interpreter</span><span>(model, resolver, tensor_arena,
+</span></td></tr><tr><td>43</td><td><span>                                       tensor_arena_size, error_reporter);
+</span></td></tr><tr><td>44</td><td><span>
+</span></td></tr><tr><td>45</td><td><span>  </span><span style="color:#65737e;">// 모델의 텐서에 대한 tensor_arena의 메모리를 할당한다.
+</span></td></tr><tr><td>46</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(interpreter.</span><span style="color:#bf616a;">AllocateTensors</span><span>(), </span><span style="color:#d08770;">kTfLiteOk</span><span>);
+</span></td></tr><tr><td>47</td><td><span>
+</span></td></tr><tr><td>48</td><td><span>  </span><span style="color:#65737e;">// 모델의 입력 텐서에 대한 포인터 얻기
+</span></td></tr><tr><td>49</td><td><span>  TfLiteTensor* input = interpreter.</span><span style="color:#bf616a;">input</span><span>(</span><span style="color:#d08770;">0</span><span>);
+</span></td></tr><tr><td>50</td><td><span>
+</span></td></tr><tr><td>51</td><td><span>  </span><span style="color:#65737e;">// 입력이 예상하는 속성을 갖는지 확인
+</span></td></tr><tr><td>52</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_NE</span><span>(nullptr, input);
+</span></td></tr><tr><td>53</td><td><span>  </span><span style="color:#65737e;">// dims 속성은 텐서 모양을 알려준다. 각 차원마다 원소는 하나다.
+</span></td></tr><tr><td>54</td><td><span>  </span><span style="color:#65737e;">// 입력은 한 개의 요소를 포함하는 2D 텐서이므로 dims의 크기는 2다.
+</span></td></tr><tr><td>55</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(</span><span style="color:#d08770;">2</span><span>, input-&gt;dims-&gt;size);
+</span></td></tr><tr><td>56</td><td><span>  </span><span style="color:#65737e;">// 각 원소의 값은 해당 텐서의 길이를 제공한다.
+</span></td></tr><tr><td>57</td><td><span>  </span><span style="color:#65737e;">// 두 개의 단일 원소 텐서(하나가 다른 하나에 포함됨)를 갖는지 확인한다.
+</span></td></tr><tr><td>58</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(</span><span style="color:#d08770;">1</span><span>, input-&gt;dims-&gt;data[</span><span style="color:#d08770;">0</span><span>]);
+</span></td></tr><tr><td>59</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(</span><span style="color:#d08770;">1</span><span>, input-&gt;dims-&gt;data[</span><span style="color:#d08770;">1</span><span>]);
+</span></td></tr><tr><td>60</td><td><span>  </span><span style="color:#65737e;">// 입력은 32비트 부동소수점 값이다.
+</span></td></tr><tr><td>61</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(</span><span style="color:#d08770;">kTfLiteFloat32</span><span>, input-&gt;type);
+</span></td></tr><tr><td>62</td><td><span>
+</span></td></tr><tr><td>63</td><td><span>  </span><span style="color:#65737e;">// 입력값 텐서 제공
+</span></td></tr><tr><td>64</td><td><span>  input-&gt;data.</span><span style="color:#bf616a;">f</span><span>[</span><span style="color:#d08770;">0</span><span>] = </span><span style="color:#d08770;">0.</span><span>;
+</span></td></tr><tr><td>65</td><td><span>
+</span></td></tr><tr><td>66</td><td><span>  </span><span style="color:#65737e;">// 입력값으로 모델을 실행하고 성공 여부를 확인한다.
+</span></td></tr><tr><td>67</td><td><span>  TfLiteStatus invoke_status = interpreter.</span><span style="color:#bf616a;">Invoke</span><span>();
+</span></td></tr><tr><td>68</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(</span><span style="color:#d08770;">kTfLiteOk</span><span>, invoke_status);
+</span></td></tr><tr><td>69</td><td><span>
+</span></td></tr><tr><td>70</td><td><span>  </span><span style="color:#65737e;">// 모델의 출력 텐서에 대한 포인터를 얻는다.
+</span></td></tr><tr><td>71</td><td><span>  </span><span style="color:#65737e;">// 입력 텐서의 경우와 마찬가지로 예상되는 속성을 갖는지 확인한다.
+</span></td></tr><tr><td>72</td><td><span>  TfLiteTensor* output = interpreter.</span><span style="color:#bf616a;">output</span><span>(</span><span style="color:#d08770;">0</span><span>);
+</span></td></tr><tr><td>73</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(</span><span style="color:#d08770;">2</span><span>, output-&gt;dims-&gt;size);
+</span></td></tr><tr><td>74</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(</span><span style="color:#d08770;">1</span><span>, input-&gt;dims-&gt;data[</span><span style="color:#d08770;">0</span><span>]);
+</span></td></tr><tr><td>75</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(</span><span style="color:#d08770;">1</span><span>, input-&gt;dims-&gt;data[</span><span style="color:#d08770;">1</span><span>]);
+</span></td></tr><tr><td>76</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(</span><span style="color:#d08770;">kTfLiteFloat32</span><span>, output-&gt;type);
+</span></td></tr><tr><td>77</td><td><span>
+</span></td></tr><tr><td>78</td><td><span>  </span><span style="color:#65737e;">// 텐서의 출력값을 획득
+</span></td></tr><tr><td>79</td><td><span>  </span><span style="color:#b48ead;">float</span><span> value = output-&gt;data.</span><span style="color:#bf616a;">f</span><span>[</span><span style="color:#d08770;">0</span><span>];
+</span></td></tr><tr><td>80</td><td><span>  </span><span style="color:#65737e;">// 출력값과 예상 값의 차이가 0.05범위에 있는지 확인
+</span></td></tr><tr><td>81</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_NEAR</span><span>(</span><span style="color:#d08770;">0.</span><span>, value, </span><span style="color:#d08770;">0.05</span><span>);
+</span></td></tr><tr><td>82</td><td><span>
+</span></td></tr><tr><td>83</td><td><span>  </span><span style="color:#65737e;">// 모델이 작동하고 있음을 추가로 검증하기 위해 3회의 추론을 더 실행한다.
+</span></td></tr><tr><td>84</td><td><span>  </span><span style="color:#65737e;">// 추론 - 1
+</span></td></tr><tr><td>85</td><td><span>  input-&gt;data.</span><span style="color:#bf616a;">f</span><span>[</span><span style="color:#d08770;">0</span><span>] = </span><span style="color:#d08770;">1.</span><span>;
+</span></td></tr><tr><td>86</td><td><span>  invoke_status = interpreter.</span><span style="color:#bf616a;">Invoke</span><span>();
+</span></td></tr><tr><td>87</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(</span><span style="color:#d08770;">kTfLiteOk</span><span>, invoke_status);
+</span></td></tr><tr><td>88</td><td><span>
+</span></td></tr><tr><td>89</td><td><span>  value = output-&gt;data.</span><span style="color:#bf616a;">f</span><span>[</span><span style="color:#d08770;">0</span><span>];
+</span></td></tr><tr><td>90</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_NEAR</span><span>(</span><span style="color:#d08770;">0.841</span><span>, value, </span><span style="color:#d08770;">0.05</span><span>);
+</span></td></tr><tr><td>91</td><td><span>
+</span></td></tr><tr><td>92</td><td><span>  </span><span style="color:#65737e;">// 추론 - 2
+</span></td></tr><tr><td>93</td><td><span>  input-&gt;data.</span><span style="color:#bf616a;">f</span><span>[</span><span style="color:#d08770;">0</span><span>] = </span><span style="color:#d08770;">3.</span><span>;
+</span></td></tr><tr><td>94</td><td><span>  invoke_status = interpreter.</span><span style="color:#bf616a;">Invoke</span><span>();
+</span></td></tr><tr><td>95</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(</span><span style="color:#d08770;">kTfLiteOk</span><span>, invoke_status);
+</span></td></tr><tr><td>96</td><td><span>
+</span></td></tr><tr><td>97</td><td><span>  value = output-&gt;data.</span><span style="color:#bf616a;">f</span><span>[</span><span style="color:#d08770;">0</span><span>];
+</span></td></tr><tr><td>98</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_NEAR</span><span>(</span><span style="color:#d08770;">0.141</span><span>, value, </span><span style="color:#d08770;">0.05</span><span>);
+</span></td></tr><tr><td>99</td><td><span>
+</span></td></tr><tr><td>100</td><td><span>  </span><span style="color:#65737e;">// 추론 - 3
+</span></td></tr><tr><td>101</td><td><span>  input-&gt;data.</span><span style="color:#bf616a;">f</span><span>[</span><span style="color:#d08770;">0</span><span>] = </span><span style="color:#d08770;">5.</span><span>;
+</span></td></tr><tr><td>102</td><td><span>  invoke_status = interpreter.</span><span style="color:#bf616a;">Invoke</span><span>();
+</span></td></tr><tr><td>103</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_EQ</span><span>(</span><span style="color:#d08770;">kTfLiteOk</span><span>, invoke_status);
+</span></td></tr><tr><td>104</td><td><span>
+</span></td></tr><tr><td>105</td><td><span>  value = output-&gt;data.</span><span style="color:#bf616a;">f</span><span>[</span><span style="color:#d08770;">0</span><span>];
+</span></td></tr><tr><td>106</td><td><span>  </span><span style="color:#bf616a;">TF_LITE_MICRO_EXPECT_NEAR</span><span>(-</span><span style="color:#d08770;">0.959</span><span>, value, </span><span style="color:#d08770;">0.05</span><span>);
+</span></td></tr><tr><td>107</td><td><span>}
+</span></td></tr><tr><td>108</td><td><span>
+</span></td></tr><tr><td>109</td><td><span>TF_LITE_MICRO_TESTS_END
+</span></td></tr></tbody></table></code></pre>
+</li>
+<li>이 코드는 결국 마이크로컨트롤러에서 실행되도록 설계되었지만 개발 시스템에서 테스트를 빌드하고 실행하는 것 역시 가능하다.
+<ul>
+<li>이를 통해 코드 작성과 디버깅이 훨씬 쉬워진다.</li>
+<li>PC는 마이크로컨트롤러와 비교하여 출력을 로깅하고 코드를 검토하기에 훨씬 편리하므로 효율이 좋다.</li>
+</ul>
+</li>
+<li>Make를 사용하여 테스트를 실행한 결과는 아래와 같다.<img src="/image/TinyML/test.png" alt="test" /></li>
+</ul>
+<h3 id="modde-jjeohyonhagi">모델 적용하기</h3>
+<blockquote>
+<p>프로젝트 파일 구조는 아래와 같다.</p>
+</blockquote>
+<ul>
+<li><code>constants.h</code>, <code>constants.cc</code> : 프로그램 동작을 정의하는 데 중요한 영향을 미치는 다양한 상수를 포함하는 파일</li>
+<li><code>main.cc</code> : 애플리케이션의 메인 함수<pre data-linenos data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><table><tbody><tr><td>1</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/examples/hello_world/main_functions.h</span><span>&quot;
+</span></td></tr><tr><td>2</td><td><span style="color:#65737e;">// standard C entry point를 준수하는 시스템의 default main 함수이다.
+</span></td></tr><tr><td>3</td><td><span style="color:#65737e;">// FreeRTOS, ESP32등 다른 requirements를 요구하는 기기의 경우 그에 맞게 구조를 변경해야 한다.
+</span></td></tr><tr><td>4</td><td><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">argc</span><span>, </span><span style="color:#b48ead;">char</span><span>* </span><span style="color:#bf616a;">argv</span><span>[]) {
+</span></td></tr><tr><td>5</td><td><span>  </span><span style="color:#bf616a;">setup</span><span>();
+</span></td></tr><tr><td>6</td><td><span>  </span><span style="color:#b48ead;">while </span><span>(</span><span style="color:#d08770;">true</span><span>) {
+</span></td></tr><tr><td>7</td><td><span>    </span><span style="color:#bf616a;">loop</span><span>();
+</span></td></tr><tr><td>8</td><td><span>  }
+</span></td></tr><tr><td>9</td><td><span>}
+</span></td></tr></tbody></table></code></pre>
+</li>
+<li><code>main_functions.h</code>, <code>main_functions.cc</code> : 프로그램에 필요한 모든 초기화를 수행하는 <code>setup()</code>함수와 프로그램의 핵심 로직을 포함하고 루프를 순회하면서 상태 머신을 구동하도록 설계된 <code>loop()</code>함수를 정의하는 파일 쌍이다. 이 함수들은 프로그램이 시작될 때 <code>main.cc</code>에 의해 호출된다.<pre data-linenos data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><table><tbody><tr><td>1</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/examples/hello_world/main_functions.h</span><span>&quot;
+</span></td></tr><tr><td>2</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/examples/hello_world/constants.h</span><span>&quot;
+</span></td></tr><tr><td>3</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/examples/hello_world/output_handler.h</span><span>&quot;
+</span></td></tr><tr><td>4</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/examples/hello_world/sine_model_data.h</span><span>&quot;
+</span></td></tr><tr><td>5</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/kernels/all_ops_resolver.h</span><span>&quot;
+</span></td></tr><tr><td>6</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/micro_error_reporter.h</span><span>&quot;
+</span></td></tr><tr><td>7</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/micro/micro_interpreter.h</span><span>&quot;
+</span></td></tr><tr><td>8</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/schema/schema_generated.h</span><span>&quot;
+</span></td></tr><tr><td>9</td><td><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">tensorflow/lite/version.h</span><span>&quot;
+</span></td></tr><tr><td>10</td><td><span>
+</span></td></tr><tr><td>11</td><td><span style="color:#65737e;">// main_functions.cc 내에서 사용할 전역 변수를 설정한다.
+</span></td></tr><tr><td>12</td><td><span style="color:#65737e;">// main_functions.cc 내에서는 어느 곳에서나 접근할 수 있다.
+</span></td></tr><tr><td>13</td><td><span style="color:#65737e;">// 프로젝트 내의 다른 파일에서는 접근할 수 없다.
+</span></td></tr><tr><td>14</td><td><span style="color:#65737e;">// 이러한 선언을 통해 두 개의 서로 다른 파일이 동일한 이름의 변수를 정의하여
+</span></td></tr><tr><td>15</td><td><span style="color:#65737e;">// 발생 가능한 문제를 방지할 수 있다.
+</span></td></tr><tr><td>16</td><td><span>namespace {
+</span></td></tr><tr><td>17</td><td><span>tflite::ErrorReporter* error_reporter = nullptr;
+</span></td></tr><tr><td>18</td><td><span style="color:#b48ead;">const</span><span> tflite::Model* model = nullptr;
+</span></td></tr><tr><td>19</td><td><span>tflite::MicroInterpreter* interpreter = nullptr;
+</span></td></tr><tr><td>20</td><td><span>TfLiteTensor* input = nullptr;
+</span></td></tr><tr><td>21</td><td><span>TfLiteTensor* output = nullptr;
+</span></td></tr><tr><td>22</td><td><span style="color:#b48ead;">int</span><span> inference_count = </span><span style="color:#d08770;">0</span><span>;
+</span></td></tr><tr><td>23</td><td><span>
+</span></td></tr><tr><td>24</td><td><span style="color:#65737e;">// 입력, 출력, 중간 배열에 사용할 메모리 영역을 생성한다.(텐서 아레나)
+</span></td></tr><tr><td>25</td><td><span>constexpr </span><span style="color:#b48ead;">int </span><span style="color:#d08770;">kTensorArenaSize </span><span>= </span><span style="color:#d08770;">2 </span><span>* </span><span style="color:#d08770;">1024</span><span>;
+</span></td></tr><tr><td>26</td><td><span>uint8_t tensor_arena[</span><span style="color:#d08770;">kTensorArenaSize</span><span>];
+</span></td></tr><tr><td>27</td><td><span>}  </span><span style="color:#65737e;">// namespace
+</span></td></tr><tr><td>28</td><td><span>
+</span></td></tr><tr><td>29</td><td><span style="color:#65737e;">// 프로그램이 처음 시작될 때 호출되고 그 이후로는 호출되지 않는다.
+</span></td></tr><tr><td>30</td><td><span style="color:#65737e;">// 추론을 시작하기 전에 수행해야 하는 모든 일회성 작업을 수행하기 위해 필요하다.
+</span></td></tr><tr><td>31</td><td><span style="color:#65737e;">// 로깅을 설정하고, 모델을 로드하며, 인터프리터를 설정하고 메모리를 할당한다.
+</span></td></tr><tr><td>32</td><td><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">setup</span><span>() {
+</span></td></tr><tr><td>33</td><td><span>  </span><span style="color:#65737e;">// 로깅(logging) 설정
+</span></td></tr><tr><td>34</td><td><span>  </span><span style="color:#b48ead;">static</span><span> tflite::MicroErrorReporter micro_error_reporter;
+</span></td></tr><tr><td>35</td><td><span>  error_reporter = &amp;micro_error_reporter;
+</span></td></tr><tr><td>36</td><td><span>
+</span></td></tr><tr><td>37</td><td><span>  </span><span style="color:#65737e;">// 모델을 사용 가능한 데이터 구조에 매핑한다.
+</span></td></tr><tr><td>38</td><td><span>  model = tflite::</span><span style="color:#bf616a;">GetModel</span><span>(g_sine_model_data);
+</span></td></tr><tr><td>39</td><td><span>  </span><span style="color:#b48ead;">if </span><span>(model-&gt;</span><span style="color:#bf616a;">version</span><span>() != TFLITE_SCHEMA_VERSION) {
+</span></td></tr><tr><td>40</td><td><span>    </span><span style="color:#bf616a;">TF_LITE_REPORT_ERROR</span><span>(error_reporter,
+</span></td></tr><tr><td>41</td><td><span>                         &quot;</span><span style="color:#a3be8c;">Model provided is schema version </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;"> not equal </span><span>&quot;
+</span></td></tr><tr><td>42</td><td><span>                         &quot;</span><span style="color:#a3be8c;">to supported version </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">.</span><span>&quot;,
+</span></td></tr><tr><td>43</td><td><span>                         model-&gt;</span><span style="color:#bf616a;">version</span><span>(), TFLITE_SCHEMA_VERSION);
+</span></td></tr><tr><td>44</td><td><span>    </span><span style="color:#b48ead;">return</span><span>;
+</span></td></tr><tr><td>45</td><td><span>  }
+</span></td></tr><tr><td>46</td><td><span>
+</span></td></tr><tr><td>47</td><td><span>  </span><span style="color:#65737e;">// 필요한 모든 Operator(Op)구현을 가져온다.
+</span></td></tr><tr><td>48</td><td><span>  </span><span style="color:#b48ead;">static</span><span> tflite::ops::micro::AllOpsResolver resolver;
+</span></td></tr><tr><td>49</td><td><span>
+</span></td></tr><tr><td>50</td><td><span>  </span><span style="color:#65737e;">// 모델을 실행할 인터프리터를 빌드한다.
+</span></td></tr><tr><td>51</td><td><span>  </span><span style="color:#b48ead;">static</span><span> tflite::MicroInterpreter </span><span style="color:#bf616a;">static_interpreter</span><span>(
+</span></td></tr><tr><td>52</td><td><span>      model, resolver, tensor_arena, </span><span style="color:#d08770;">kTensorArenaSize</span><span>, error_reporter);
+</span></td></tr><tr><td>53</td><td><span>  interpreter = &amp;static_interpreter;
+</span></td></tr><tr><td>54</td><td><span>
+</span></td></tr><tr><td>55</td><td><span>  </span><span style="color:#65737e;">// 모델 텐서를 텐서 아레나의 메모리에 할당한다.
+</span></td></tr><tr><td>56</td><td><span>  TfLiteStatus allocate_status = interpreter-&gt;</span><span style="color:#bf616a;">AllocateTensors</span><span>();
+</span></td></tr><tr><td>57</td><td><span>  </span><span style="color:#b48ead;">if </span><span>(allocate_status != </span><span style="color:#d08770;">kTfLiteOk</span><span>) {
+</span></td></tr><tr><td>58</td><td><span>    </span><span style="color:#bf616a;">TF_LITE_REPORT_ERROR</span><span>(error_reporter, &quot;</span><span style="color:#a3be8c;">AllocateTensors() failed</span><span>&quot;);
+</span></td></tr><tr><td>59</td><td><span>    </span><span style="color:#b48ead;">return</span><span>;
+</span></td></tr><tr><td>60</td><td><span>  }
+</span></td></tr><tr><td>61</td><td><span>
+</span></td></tr><tr><td>62</td><td><span>  </span><span style="color:#65737e;">// 입력 텐서, 출력 텐서에 대한 포인터를 획득한다.
+</span></td></tr><tr><td>63</td><td><span>  </span><span style="color:#65737e;">// 아직 출력이 작성되지 않았지만 메모리 영역 자체는 존재하기 때문에 이런 식의 초기화도 문제없다. 
+</span></td></tr><tr><td>64</td><td><span>  input = interpreter-&gt;</span><span style="color:#bf616a;">input</span><span>(</span><span style="color:#d08770;">0</span><span>);
+</span></td></tr><tr><td>65</td><td><span>  output = interpreter-&gt;</span><span style="color:#bf616a;">output</span><span>(</span><span style="color:#d08770;">0</span><span>);
+</span></td></tr><tr><td>66</td><td><span>
+</span></td></tr><tr><td>67</td><td><span>  </span><span style="color:#65737e;">// 추론을 실행할 횟수를 기록하기 위한 변수
+</span></td></tr><tr><td>68</td><td><span>  inference_count = </span><span style="color:#d08770;">0</span><span>;
+</span></td></tr><tr><td>69</td><td><span>}
+</span></td></tr><tr><td>70</td><td><span>
+</span></td></tr><tr><td>71</td><td><span style="color:#65737e;">// 애플리케이션 로직이 구현된 부분이다. 
+</span></td></tr><tr><td>72</td><td><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">loop</span><span>() {
+</span></td></tr><tr><td>73</td><td><span>  </span><span style="color:#65737e;">// 모델에 공급할 x값을 계산한다.
+</span></td></tr><tr><td>74</td><td><span>  </span><span style="color:#65737e;">// 현재 inference_count를 주기당 추론 횟수와 비교하여
+</span></td></tr><tr><td>75</td><td><span>  </span><span style="color:#65737e;">// 모델이 학습된 지정 가능한 x값 범위 내에서 위치를 결정하고
+</span></td></tr><tr><td>76</td><td><span>  </span><span style="color:#65737e;">// 이를 사용하여 값을 계산한다.
+</span></td></tr><tr><td>77</td><td><span>  </span><span style="color:#b48ead;">float</span><span> position = static_cast&lt;</span><span style="color:#b48ead;">float</span><span>&gt;(inference_count) /
+</span></td></tr><tr><td>78</td><td><span>                   static_cast&lt;</span><span style="color:#b48ead;">float</span><span>&gt;(</span><span style="color:#d08770;">kInferencesPerCycle</span><span>);
+</span></td></tr><tr><td>79</td><td><span>  </span><span style="color:#b48ead;">float</span><span> x_val = position * </span><span style="color:#d08770;">kXrange</span><span>;
+</span></td></tr><tr><td>80</td><td><span>
+</span></td></tr><tr><td>81</td><td><span>  </span><span style="color:#65737e;">// 계산한 x값을 모델의 입력 텐서에 넣기
+</span></td></tr><tr><td>82</td><td><span>  input-&gt;data.</span><span style="color:#bf616a;">f</span><span>[</span><span style="color:#d08770;">0</span><span>] = x_val;
+</span></td></tr><tr><td>83</td><td><span>
+</span></td></tr><tr><td>84</td><td><span>  </span><span style="color:#65737e;">// 추론을 실행하고 오류가 있다면 error report를 발생시킨다.
+</span></td></tr><tr><td>85</td><td><span>  TfLiteStatus invoke_status = interpreter-&gt;</span><span style="color:#bf616a;">Invoke</span><span>();
+</span></td></tr><tr><td>86</td><td><span>  </span><span style="color:#b48ead;">if </span><span>(invoke_status != </span><span style="color:#d08770;">kTfLiteOk</span><span>) {
+</span></td></tr><tr><td>87</td><td><span>    </span><span style="color:#bf616a;">TF_LITE_REPORT_ERROR</span><span>(error_reporter, &quot;</span><span style="color:#a3be8c;">Invoke failed on x_val: </span><span style="color:#d08770;">%f</span><span style="color:#96b5b4;">\n</span><span>&quot;,
+</span></td></tr><tr><td>88</td><td><span>                         static_cast&lt;</span><span style="color:#b48ead;">double</span><span>&gt;(x_val));
+</span></td></tr><tr><td>89</td><td><span>    </span><span style="color:#b48ead;">return</span><span>;
+</span></td></tr><tr><td>90</td><td><span>  }
+</span></td></tr><tr><td>91</td><td><span>
+</span></td></tr><tr><td>92</td><td><span>  </span><span style="color:#65737e;">// 모델의 출력 텐서가 예상한 y값 읽기
+</span></td></tr><tr><td>93</td><td><span>  </span><span style="color:#b48ead;">float</span><span> y_val = output-&gt;data.</span><span style="color:#bf616a;">f</span><span>[</span><span style="color:#d08770;">0</span><span>];
+</span></td></tr><tr><td>94</td><td><span>
+</span></td></tr><tr><td>95</td><td><span>  </span><span style="color:#65737e;">// 결과를 출력한다. 개발 보드에 맞춰 HandleOutput 함수를 커스텀 구현할 수 있다.
+</span></td></tr><tr><td>96</td><td><span>  </span><span style="color:#bf616a;">HandleOutput</span><span>(error_reporter, x_val, y_val);
+</span></td></tr><tr><td>97</td><td><span>
+</span></td></tr><tr><td>98</td><td><span>  </span><span style="color:#65737e;">// Inference_counter를 증가시키고 사이클당 최대 추론 수에 도달하면 리셋
+</span></td></tr><tr><td>99</td><td><span>  inference_count += </span><span style="color:#d08770;">1</span><span>;
+</span></td></tr><tr><td>100</td><td><span>  </span><span style="color:#b48ead;">if </span><span>(inference_count &gt;= </span><span style="color:#d08770;">kInferencesPerCycle</span><span>) inference_count = </span><span style="color:#d08770;">0</span><span>;
+</span></td></tr><tr><td>101</td><td><span>}
+</span></td></tr></tbody></table></code></pre>
+</li>
+<li><code>output_handler.h</code>, <code>output_handler.cc</code> : 추론이 실행될 때마다 출력을 표시하는 데 사용할 수 있는 함수를 정의하는 파일, 기본 구현은 결과를 화면에 출력한다. 이 구현을 재정의하면 다른 장치에서 다른 작업을 수행할 수 있다.</li>
+<li><code>sine_model_data.h</code>, <code>sine_model_data.cc</code> : Tensorflow Lite for Microcontroller를 통해 변환된 기계학습 모델이다.</li>
+</ul>
+<h2 id="stm32f746g-discoe-bbapohagi-chapter-6">STM32F746G-disco에 배포하기(Chapter 6)</h2>
+<hr />
+<blockquote>
+<p>LCD를 사용할 예정이므로 output_hanlder를 수정해 주어야 한다.</p>
+</blockquote>
+<ul>
+<li><code>LCD_DISCO_F746NG.h</code>, <code>LCD_DISCO_F746NG.cc</code>가 필요하다. <a href="https://os.mbed.com/teams/ST/code/LCD_DISCO_F746NG/">여기</a>에서 다운로드 받을 수 있다.
+<ul>
+<li>제공되는 파일은 <code>.cpp</code>파일이긴 하지만 본질적으로 <code>.cc</code>와 <code>.cpp</code> 는 아무 차이가 없다.</li>
+</ul>
+</li>
+<li>본 예제는 Makefile을 제공하여 Mbed 프로젝트를 자동으로 생성할 수 있다.<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">make -f</span><span> tensorflow/lite/micro/tools/make/Makefile </span><span style="color:#96b5b4;">\ </span><span>TARGET=mbed TAGS=&quot;</span><span style="color:#a3be8c;">CMSIS disco_f746ng</span><span>&quot; generate_hello_world_mbed_project
+</span></code></pre>
+</li>
+<li>아래 폴더로 이동한다.<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#96b5b4;">cd</span><span> tensorflow/lite/micro/tools/make/gen/mbed_cortex-m4/prj/hello_world/mbed
+</span></code></pre>
+</li>
+<li><code>mbed</code>명령어를 프로그램의 루트 디렉터리를 설정한다.<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">mbed</span><span> config root .
+</span></code></pre>
+</li>
+<li>종속성을 다운로드한다.<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">mbed</span><span> deploy
+</span></code></pre>
+</li>
+<li>기본적으로 Mbed는 C++98을 사용하여 프로젝트를 빌드한다. 그러나 텐서플로 라이트에는 C++11이 필요하므로 아래의 코드를 실행하여 C++11을 사용하도록 Mbed 설정 파일을 수정해야 한다.<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">python -c </span><span>&#39;</span><span style="color:#a3be8c;">import fileinput, glob;
+</span><span style="color:#a3be8c;">	for filename in glob.glob(&quot;mbed-os/tools/profiles/*.json&quot;):
+</span><span style="color:#a3be8c;">		for line in fileinput.input(filename, inplace=True):
+</span><span style="color:#a3be8c;">		    print(line.replace(&quot;\&quot;-std=gnu++98\&quot;&quot;,&quot;\&quot;-std=c++11\&quot;, \&quot;-fpermissive\&quot;&quot;))</span><span>&#39;
+</span></code></pre>
+</li>
+<li>아래 명령을 실행하여 컴파일을 수행한다.<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">mbed</span><span> compile</span><span style="color:#bf616a;"> -m</span><span> DISCO_F746NG</span><span style="color:#bf616a;"> -t</span><span> GCC_ARM
+</span></code></pre>
+<ul>
+<li>파이썬 버전 문제(계속 homebrew의 python@3.11이 인식되어 에러가 발생했다, 삭제하여 해결함), 각종 dependency문제, 허가되지 않은 개발자 문제 등등 다양한 이슈가 있어 매끄럽게 진행되지는 못했다.
+<ul>
+<li>이유는 모르겠지만 계속 brew의 python을 가져온다... 이를 확인하는 명령어는 아래와 같다.<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">brew</span><span> list | </span><span style="color:#bf616a;">grep</span><span> python
+</span></code></pre>
+</li>
+<li>확인 결과 <code>python@3.11</code>이 설치되어 있다면... 잠시 삭제하자(vim등 다른 프로그램에 영향이 가지만 나중에 다시 깔면 된다.)<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">brew</span><span> uninstall</span><span style="color:#bf616a;"> --ignore-dependencies</span><span> python@3.11
+</span></code></pre>
+</li>
+</ul>
+</li>
+<li>아래 에러는 다음 markupsafe의 버전 문제로 발생하는 에러이다. 버전에 맞게 에러 이미지 아래의 명령어를 입력하면 해결된다.<img src="/image/TinyML/importerror.png" alt="ImportError" /><pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">pip</span><span> install markupsafe==2.0.1
+</span></code></pre>
+</li>
+</ul>
+</li>
+<li>아래는 컴파일이 완료된 화면이다.<img src="/image/TinyML/compile.png" alt="Compile Complete" /></li>
+<li>컴파일되어 생성된 바이너리 파일은 ./BUILD/DISCO_F746NG/GCC_ARM/mbed.bin에 있다.</li>
+<li>아래 명령어를 입력하여 보드에 배포한다.(그냥 복사하면 된다)<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">cp</span><span> ./mbed.bin /Volumes/DIS_F746NG
+</span></code></pre>
+</li>
+<li>아래는 바이너리 파일을 보드에 배포한 후 프로그램이 실행되는 모습이다.<a href="https://www.youtube.com/watch?v=yCAvoseXeo8"><img src="https://www.youtube.com/watch?v=yCAvoseXeo8" alt="sine example" /></a></li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

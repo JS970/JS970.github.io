@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>2108 - 통계학 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="2108 - 통계학">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/2108-stucggyhag/">
+<meta property="og:url" content="https://js970.github.io/2108-stucggyhag/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-03T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="2108 - 통계학">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/2108-stucggyhag/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2108 - 통계학"
+  
+    
+    
+      "datePublished":"2023-02-03T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/2108-stucggyhag/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-03">February  3, 2023</time>
+  	</div>
+  	<h1 class="post-title">2108 - 통계학</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 3</li>
+<li>날짜: 2023년 2월 3일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>N개의 입력 정수에 대해 산술평균, 중앙값, 최빈값, 범위를 구하는 문제이다.</li>
+<li>입력과 동시에 sum을 계산하여 산술평균을 구할 수 있다.</li>
+<li>마찬가지로 입력과 동시에 입력의 최댓값 및 최솟값을 구하여 범위를 바로 구할 수 있다.</li>
+<li>priority_queue를 minheap으로 구현하여 증가하는 순서대로 정렬한다. 이후 N/2번만큼 pop연산을 통해 중강값을 구할 수 있다.</li>
+<li>최빈값을 구하기 위해서 -4000 ~ 4000의 정수를 나타내는 배열인 arr[8001]을 선언하였다. 각 배열은 index + 4000에 해당하는 정수값이 몇 번 입력되었는지를 저장한다.</li>
+<li>문제 조건에서 최빈값이 여러 개일 경우에는 두 번째로 작은 값을 출력하여야 한다고 했으므로 이를 쉽게 탐색하기 위해 priority_queue를 이용한다.</li>
+<li>priority_queue를 사용하여 arr배열에서 가장 큰 값을 가지는 index를 탐색한다.</li>
+<li>위의 priority_queue에서 가장 큰 값을 pop한 이후에도 이 다음 priority_queue의 top이 이전 값과 같다면 최빈값이 여러 개 있는 경우이므로 이들 중 두 번째로 작은 값을 찾기 위해 priority_queue를 하나 더 선언한다.</li>
+<li>pop을 사용하여 두 번째로 작은 priority_queue의 원소를 탐색한다.</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">queue</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">cmath</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> N;
+</span><span>    cin &gt;&gt; N;
+</span><span>    </span><span style="color:#b48ead;">int </span><span>* data = </span><span style="color:#b48ead;">new int</span><span>[N];
+</span><span>    </span><span style="color:#b48ead;">int</span><span> sum = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> max = -</span><span style="color:#d08770;">4001</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> min = </span><span style="color:#d08770;">4001</span><span>;
+</span><span>    priority_queue&lt;</span><span style="color:#b48ead;">int</span><span>, vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt;, greater&lt;</span><span style="color:#b48ead;">int</span><span>&gt;&gt; pq;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> arr[</span><span style="color:#d08770;">8001</span><span>] = {</span><span style="color:#d08770;">0</span><span>, };
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N; i++)
+</span><span>    {
+</span><span>        </span><span style="color:#96b5b4;">scanf</span><span>(&quot;</span><span style="color:#d08770;">%d</span><span>&quot;, &amp;data[i]);
+</span><span>        sum += data[i];
+</span><span>        pq.</span><span style="color:#bf616a;">push</span><span>(data[i]);
+</span><span>        arr[data[i]+</span><span style="color:#d08770;">4000</span><span>]++;
+</span><span>        max = (data[i] &gt; max) ? data[i] : max;
+</span><span>        min = (data[i] &lt; min) ? data[i] : min;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">double</span><span> mean = </span><span style="color:#96b5b4;">floor</span><span>(((</span><span style="color:#b48ead;">double</span><span>)sum / (</span><span style="color:#b48ead;">double</span><span>)N) + </span><span style="color:#d08770;">0.5</span><span>);
+</span><span>    cout &lt;&lt; (</span><span style="color:#b48ead;">int</span><span>)mean &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N/</span><span style="color:#d08770;">2</span><span>; i++) pq.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>    cout &lt;&lt; pq.</span><span style="color:#bf616a;">top</span><span>() &lt;&lt; endl;
+</span><span>
+</span><span>    priority_queue&lt;</span><span style="color:#b48ead;">int</span><span>&gt; pq2;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; </span><span style="color:#d08770;">8001</span><span>; i++)
+</span><span>        pq2.</span><span style="color:#bf616a;">push</span><span>(arr[i]);
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(pq2.</span><span style="color:#bf616a;">top</span><span>() == </span><span style="color:#d08770;">0</span><span>) pq2.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>    </span><span style="color:#b48ead;">int</span><span> fv = pq2.</span><span style="color:#bf616a;">top</span><span>();
+</span><span>    pq2.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(pq2.</span><span style="color:#bf616a;">top</span><span>() == fv)
+</span><span>    {
+</span><span>        priority_queue&lt;</span><span style="color:#b48ead;">int</span><span>, vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt;, greater&lt;</span><span style="color:#b48ead;">int</span><span>&gt;&gt; pq3;
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; </span><span style="color:#d08770;">8001</span><span>; i++)
+</span><span>        {
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(arr[i] == fv)
+</span><span>                pq3.</span><span style="color:#bf616a;">push</span><span>(i);
+</span><span>        }
+</span><span>        pq3.</span><span style="color:#bf616a;">pop</span><span>();
+</span><span>        cout &lt;&lt; pq3.</span><span style="color:#bf616a;">top</span><span>() - </span><span style="color:#d08770;">4000 </span><span>&lt;&lt; endl;
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">else
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">int</span><span> idx;
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; </span><span style="color:#d08770;">8001</span><span>; i++)
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(arr[i] == fv)
+</span><span>                idx = i;
+</span><span>        cout &lt;&lt; idx - </span><span style="color:#d08770;">4000 </span><span>&lt;&lt; endl;
+</span><span>    }
+</span><span>
+</span><span>    cout &lt;&lt; max - min &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/2108">2108번: 통계학</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

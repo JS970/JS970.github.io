@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Memory Management(1) | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Memory Management(1)">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/memory-management-1/">
+<meta property="og:url" content="https://js970.github.io/memory-management-1/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-05-11T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Memory Management(1)">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/memory-management-1/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Memory Management(1)"
+  
+    
+    
+      "datePublished":"2023-05-11T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/memory-management-1/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-05-11">May 11, 2023</time>
+  	</div>
+  	<h1 class="post-title">Memory Management(1)</h1>
+  	<div class="post-line"></div>
+  	<blockquote>
+<p>Synchronization, Deadlock 에서는 프로세스의 자원 공유에 관해 다뤘다면, 이번 글에서는 메모리 공유에 대해 다룬다. </p>
+</blockquote>
+<h2 id="memory-management-backgrounds">Memory Management Backgrounds</h2>
+<hr />
+<h3 id="address-space">Address Space</h3>
+<ul>
+<li>운영 체제가 생성하는 physical memory의 추상체가 <code>Address Space</code>이다.</li>
+<li><code>Program Code</code>, <code>Heap</code>,<code> Stack</code>영역으로 구분된다.                                                  <img src="/image/OS/addressSpace.png" alt="Address Space" />
+<ul>
+<li><code>Program Code</code> : 명령어들이 위치하는 공간</li>
+<li><code>Heap</code> : 동적 할당 메모리, C언어에서의 <code>malloc</code>, Java계열에서의 <code>new</code>로 할당되는 공간</li>
+<li><code>Stack</code> : <code>return address</code>, <code>value</code>등이 위치하는 공간. 
+<ul>
+<li><code>value</code>에는 <code>local variable</code>, <code>arguments</code>가 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Address Space</code>는 <code>Address Translation Mechanism</code>을 통해 physical memory로 할당된다.<img src="/image/OS/ATM.png" alt="Address Translation Mechanism" /></li>
+</ul>
+<h3 id="memory-virtualization">Memory Virtualization</h3>
+<ul>
+<li>Virtual Address
+<ul>
+<li>모든 실행 중인 프로그램의 주소는 <code>virtual</code>이다.</li>
+<li>운영 체제(CPU)는 <code>virtual address</code>를 <code>physical address</code>로 변환하는 동작을 한다.</li>
+<li><code>virtual address</code>는 <code>logical address</code>라고도 하며, <code>physical address</code>로 bound된다.</li>
+<li><code>virtual address</code>와 <code>physical address</code>는 컴파일 타임및 load-time에는 같은 의미를 지닌다.</li>
+<li>프로그램 실행 시 <code>virtual address</code>와 <code>physical address</code>의 binding이 일어난다.
+<ul>
+<li>당연히 프로그램 실행 시에는 두 주소값의 차이가 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Memory Virtualization
+<ul>
+<li>운영 체제는 각각의 프로세스마다 가상 메모리 공간을 부여한다.</li>
+<li>이를 통해 각각의 프로세스는 메모리 공간 전체를 사용하는 것처럼 보인다.</li>
+</ul>
+</li>
+<li>Memory Virtualization을 통해 <code>Transparency</code>, <code>Efficiency</code>, <code>Protection</code>을 기대할 수 있다.
+<ul>
+<li><code>Transparency</code> : 프로세스는 메모리가 공유되고 있다는 사실을 고려하지 않는다.</li>
+<li><code>Efficiency</code> : 단편화(fragmentation) 문제를 최소화 할 수 있다.</li>
+<li><code>Protection</code> : 다른 프로세스 및 OS가 메모리 공간을 침범하는 것을 방지한다. 마찬가지로, 프로세스가 다른 프로세스에 영향을 미치며 종료되지 않도록 한다. 협력 프로세스의 경우에는 일부 메모리를 공유할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="static-relocation">Static Relocation</h3>
+<ul>
+<li>Software-based relocation이다.</li>
+<li>context switching에 의해 프로그램이 binding되는 <code>physical address</code>의 주소가 바뀔 수 있다.</li>
+<li>이때 Memory Space를 통재로 다른 <code>physical address</code>에 relocate하는 것이 <code>static relocation</code>이다.</li>
+<li>하드웨어의 지원이 없어도 된다는 장점이 있다.</li>
+<li>하지만 아래와 같은 단점이 존재한다.
+<ul>
+<li>의도치 않게 다른 프로세스의 메모리를 읽을 수 있다.</li>
+<li>OS를 포함한 다른 메모리 영역을 침범할 수 있다.</li>
+<li>External Fragmentation(외부 단편화)이 발생하여 메모리가 낭비될 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="dynamic-relocation">Dynamic Relocation</h3>
+<ul>
+<li>Hardware-based relocation이다.</li>
+<li><code>MMU(Memory Management Unit)</code>가 모든 메모리 참조 명령어에 대해 address translation을 수행한다.</li>
+<li>하드웨어에 의해 <code>protection</code>이 강제된다.
+<ul>
+<li>만약 <code>virtual address</code>가 유효하지 않다면, <code>MMU</code>에서 예외 처리를 한다.</li>
+<li>이는 운영 체제가 <code>MMU</code>에 유효한 <code>virtual address</code>에 대한 정보를 넘겨주기 때문에 가능하다.</li>
+</ul>
+</li>
+<li><code>MMU</code>의 구조에 대해 간단히 살펴보자<img src="/image/OS/MMU.png" alt="MMU" />
+<ul>
+<li><code>reallocation register</code>는 <code>base register</code>라고도 한다.</li>
+<li>위 도식에서 확인할 수 있듯이, 유저 프로그램은 오직 <code>logical address</code>에 대해서만 관여하고, <code>physical address</code>에는 접근하지 않는다. 실제로 <code>physical address</code>에 대한 정보도 알 수 없다.</li>
+<li>이 모든 과정은 실행 시간(execution time)에 일어난다.</li>
+</ul>
+</li>
+<li><code>MMU</code>는 운영 체제에서 가장 중요한 역할 중 하나인 프로세스 보호(운영체제, user processes)를 수행한다.
+<ul>
+<li>이를 수행하기 위해 <code>base register</code>와 <code>limit register</code>를 사용한다.</li>
+<li><code>base register</code>에는 프로세스 메모리의 시작 주소가 저장되어 있다.</li>
+<li><code>limit register</code>에는 프로세스 메모리의 크기가 저장된다.</li>
+<li>즉, <code>base register value</code> ~ <code>base register value + limit register value</code> 가 프로세스가 할당된 공간을 의미한다.</li>
+<li>위와 같은 레지스터를 활용하여 하드웨어 레벨에서 메모리에 할당된 각각의 프로세스가 서로의 영역을 침범하지 않게 한다.<img src="/image/OS/baseAndLimit.png" alt="Base and Limit Register" />
+<ul>
+<li>위 그림에서 <code>bound register</code>는 <code>limit register</code>를 의미한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="os-issues-for-memory-virtualizing">OS Issues for Memory Virtualizing</h3>
+<ul>
+<li>운영 체제는 <code>base-and-bound</code>접근을 구현하도록 동작해야 한다.
+<ul>
+<li><code>bound register</code>와 <code>limit register</code>를 사용하는 접근을 의미한다.</li>
+</ul>
+</li>
+<li>구체적으로는 아래와 같은 동작을 수행해야 한다.
+<ol>
+<li>프로세스가 실행될 때 <code>physical memory</code>의 Free Space를 찾아야 한다.
+<ul>
+<li>사용중이지 않은 <code>physical memory</code>공간을 저장하는 <code>free list</code>를 이용한다.</li>
+</ul>
+</li>
+<li>프로세스가 종료될 때 <code>physical memory</code>에 대한 해제가 필요하다.
+<ul>
+<li><code>free list</code>에 사용했던 메모리 공간을 추가해야 한다.</li>
+</ul>
+</li>
+<li>context-switch가 일어날 때 <code>base-bound pair</code>를 저장해야 한다.
+<ul>
+<li><code>PCB(process control block)</code>에 해당 <code>base-bound pair</code>를 저장해야 한다.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="dynamic-loading">Dynamic Loading</h3>
+<ul>
+<li><code>Dynamic Loading</code>이란 호출될 때까지는 data를 loading하지 않고 있다가 호출 되면 load하는 것이다.
+<ul>
+<li>메모리 공간의 utilization을 높일 수 있다.</li>
+<li>특히 대용량의 코드가 빈번하지 않게 처리될 경우에 유용하다.</li>
+<li>운영 체제의 지원이 필요 없다. 프로그램 디자인을 통해 구현 가능하다.</li>
+</ul>
+</li>
+<li><code>Dynamic Loading</code>에 의해 Linking역시 execution time 까지 연기된다. 
+<ul>
+<li>이것을 <code>Dynamic linking</code>이라 한다.</li>
+<li><code>stub</code>코드를 사용하여 구현한다.</li>
+<li>특히 라이브러리를 사용할 때 유용하다.</li>
+<li>이러한 라이브러리의 사용을 공유 라이브러리(<code>shared libraries</code>)라고 한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="swapping">Swapping</h3>
+<ul>
+<li><code>Swapping</code>이란 backing store(HDD, SSD)와 main memory간에 프로세스를 교체하는 것을 말한다.
+<ul>
+<li>main memory 에서 backing store로 가는 것을 <code>swap out</code>이라고 한다.</li>
+<li>backing store에서 main memory로 오는 것을 <code>swap in</code>이라고 한다.</li>
+<li><code>swap in</code>을 통해 프로세스는 연속적으로 실행될 수 있다.</li>
+</ul>
+</li>
+<li><code>Swaping</code>의 핵심은 전송 시간이다.
+<ul>
+<li>backing store의 write/read속도가 매우 느리기 때문에 <code>swap</code>되는 정보량에 따라 전송 시간이 차이난다.</li>
+<li>결국 <code>swap</code>을 최소화 하는 것이 핵심이다.</li>
+</ul>
+</li>
+<li><code>Swapping</code>의 특징으로는 아래와 같은 것들이 있다.
+<ul>
+<li>운영 체제의 지원이 필요 없다.</li>
+<li>프로그래머가 직접 코드나 데이터를 필요에 의해 옮기는 것이 가능하다.</li>
+</ul>
+</li>
+<li><code>Swapping</code>은 <code>process level swapping</code>과 <code>page level swapping</code>이 있다.
+<ul>
+<li><code>process level swapping</code>에서는 프로세스가 main memory와 backing store간에 <code>swapping</code>된다.</li>
+<li><code>page level swapping</code>에서는 <code>page</code>단위로 <code>swapping</code>된다.</li>
+</ul>
+</li>
+<li><code>process level swapping</code>은 전체 프로세스가 <code>swapping</code>되므로 시간이 많이 소모된다.</li>
+<li><code>page level swapping</code>은 <code>swapping</code>에 대한 예측이 가능하다는 장점이 있다.</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

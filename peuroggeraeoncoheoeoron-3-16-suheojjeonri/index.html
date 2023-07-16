@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>프로그래밍언어론 2023-03-16 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="프로그래밍언어론 2023-03-16 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/peuroggeraeoncoheoeoron-3-16-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/peuroggeraeoncoheoeoron-3-16-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-16T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="프로그래밍언어론 2023-03-16 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/peuroggeraeoncoheoeoron-3-16-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "프로그래밍언어론 2023-03-16 수업정리"
+  
+    
+    
+      "datePublished":"2023-03-16T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/peuroggeraeoncoheoeoron-3-16-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-16">March 16, 2023</time>
+  	</div>
+  	<h1 class="post-title">프로그래밍언어론 2023-03-16 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>IAL(ALGOL)(1958)</li>
+<li>COBOL(1960)</li>
+<li>APL(1962), SNOBOL(1962)</li>
+<li>PL/I(1964), C(1972)</li>
+<li>BASIC(1964)</li>
+</ul>
+<h2 id="ial-algol-1958">IAL(ALGOL)(1958)</h2>
+<hr />
+<h3 id="ial">IAL</h3>
+<ul>
+<li>International Algorithmic Language</li>
+<li>FORTRAN을 만든 사람인 John Backus등 유럽과 미국의 여러 사람들의 합작으로 만들어졌다.</li>
+<li>이 언어의 탄생 배경은 당시 사용되던 FORTRAN이 IBM 타겟 머신에서만 동작하였고, 이에 알고리즘 기술용 언어로 개발되었다.</li>
+<li>출판, 논문, 발표 등에 사용되었다.</li>
+<li>기계어로 바꿀 수 있었다.(mechanically translatable into machine languages)</li>
+</ul>
+<h3 id="heoeojjeo-teugjjin-algol-58">언어적 특징(ALGOL 58)</h3>
+<ul>
+<li>정형화된 <code>type</code> 개념을 사용하였다.(mode)</li>
+<li>식별자의 가변 길이를 지원했다.</li>
+<li>입력 파라미터와 출력 파라미터를 구분했다.</li>
+<li>compund statement(start ... end) -&gt; 블록</li>
+<li>조건 분기문에 else if 구문이 추가되었다.</li>
+<li>따로 I/O가 존재하지 않았다. 컴파일러 구현이 힘들어질 것이라고 생각하여 machine dependent하게 설계하였다.</li>
+</ul>
+<h3 id="heoeojjeo-teugjjin-algol-60">언어적 특징(ALGOL 60)</h3>
+<ul>
+<li>BNF(Backus - Naur - Form)의 구문 표기법을 채택했다.</li>
+<li>compund statement -&gt; block statement(local scope)</li>
+<li>pass by name, pass by value의 인자 전달 방식을 지원한다.</li>
+<li>재귀 프로시저, stck-dynamic array를 지원했다.</li>
+<li>하지만 여전히 따로 I/O는 존재하지 않으며, String handling이 없었다.</li>
+</ul>
+<h3 id="pyeongga">평가</h3>
+<ul>
+<li>BNF 방식의 채택</li>
+<li>첫 번째 machine-independent language</li>
+<li>복합문, 블록 구조를 처음으로 제안했다.</li>
+<li>I/O operation이 없어서 이식성이 떨어졌다.</li>
+<li>call by name방식 등 너무 flexible한 특징이 많아서 가독성이 좋지 않았다.</li>
+<li>널리 사용되지는 않았다(FORTRAN이 있어서...)</li>
+</ul>
+<h2 id="cobol-1960">COBOL(1960)</h2>
+<hr />
+<ul>
+<li>Business Computing Environment로 개발되었다(common businiess oriented language).</li>
+<li>IBM에서는 동일한 목적으로 COMTRAN을 설계했었다.</li>
+<li>사무용으로 미 해군에 의해 개발되었다.</li>
+<li>60년대에 발표되었으나 50년대에 개발했으므로 BIG-4에 포함된다.</li>
+<li>FLOW-MATIC에 기반했다.
+<ul>
+<li>FLOW-MATIC(on UNIVAC)</li>
+</ul>
+</li>
+</ul>
+<h3 id="heoeojjeo-teugjjin">언어적 특징</h3>
+<ul>
+<li>수학 연산자로 영문 이름을 사용했다(ADD, SUB ...)</li>
+<li>Data부분과 Code부분이 완전히 분리되었다.</li>
+<li>모든 선언(statement)은 동사로 시작한다.</li>
+</ul>
+<h3 id="design-goal">Design Goal</h3>
+<ul>
+<li>최대한 간단한 영어와 비슷하게(자연어와 비슷하게) 보이게 만들었다.</li>
+<li>덜 효율적이더라도 더 사용하기 쉽게 만들었다.</li>
+<li>Must not be biased by implementation problems</li>
+</ul>
+<h3 id="pyeongga-1">평가</h3>
+<ul>
+<li>High-level language에서 macro의 개념을 처음으로 제시했다.</li>
+<li>계층적 자료 구조가 처음으로 구현되었다.(구조체 -&gt; record)</li>
+<li>30자 이상의 긴 이름을 지원했다.</li>
+<li>데이터 분할 및 파일 레코드에 대한 강력한 지원을 했다.</li>
+<li>여전히 lagacy code로 널리 사용중이다.</li>
+</ul>
+<h2 id="apl-1962-snobol-1962">APL(1962), SNOBOL(1962)</h2>
+<hr />
+<h3 id="apl">APL</h3>
+<ul>
+<li>A Programming Language</li>
+<li>Matrix, Array 연산에 강했다.</li>
+<li>초기에는 HDL(Hardware Description Language)로 개발되었다.</li>
+<li>Writability는 좋은데 readability는 좋지 않았다.(프로그램 가독성이 많이 떨어졌다)</li>
+<li>후속인 APL2는 1984년에 IBM에서 개발되었으며, 2021susdp Log-On Software로 소유권이 매각되었다. 현재는 채험판만 무료로 사용 가능하다.</li>
+</ul>
+<h3 id="snobol">SNOBOL</h3>
+<ul>
+<li>&quot;StriNg Oriented and symBOlic Language&quot;</li>
+<li>string manipulation language로 개발되었다.</li>
+<li>string pattern matching을 위한 강력한 operation을 제공한다.</li>
+<li>이 언어에서 유래한 SNOWBOL이라는 언어도 있다.</li>
+</ul>
+<h2 id="basic-1964">BASIC(1964)</h2>
+<hr />
+<ul>
+<li>non-science student도 배우기 쉽고, 사용하기 쉽게 개발되었다.</li>
+<li>&quot;pleasant and friendly&quot;하게 개발되었다.</li>
+<li>과제 등의 제출을 위해 결과물이 빠르게 나오도록 개발되었다.</li>
+<li>무료이다.</li>
+<li>User time이 Computer time보다 중요하게 여겼다.
+<ul>
+<li>이전의 패러다임에서는 computer time이 더 중요하게 여겨졌다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="pyeongga-2">평가</h3>
+<ul>
+<li>time-sharing environment개념을 도입한 첫 번째 언어이다.</li>
+<li>코드가 거의 기계어 수준이었다.(structure of the program is very poor)</li>
+</ul>
+<h3 id="apple-ii-emulator-for-windows-reul-stuchan-basic-programming-ceheom">APPLE II Emulator(for Windows) 를 통한 BASIC Programming 체험</h3>
+<p><img src="/image/PL/result.png" alt="BASIC code" />
+<img src="/image/PL/result2.png" alt="result" /></p>
+<h2 id="pl-i-1964">PL/I(1964)</h2>
+<hr />
+<ul>
+<li>1964년 당시 기준으로 Scientific Computing -&gt; IBM1620, 7090을 target machine 으로 FORTRAN으로 작업했다.(user group : SHARE)</li>
+<li>Business Computer영역에서는 IBM1401, 7080을 target machine으로 COBOL이 사용되었다.(user group : GUIDE)</li>
+<li>이러한 상황 속에서 새로운 Universal Computing Environment가 필요했다.(Scienticif, Business 특화가 아닌 Universal)
+<ul>
+<li>a new computer to support both kinds of applications</li>
+<li>a new language to support both kinds of applications</li>
+</ul>
+</li>
+</ul>
+<h3 id="pyeongga-3">평가</h3>
+<ul>
+<li>동시 작업의 지원(concurrent tasks)</li>
+<li>예외 처리 지원(exception handling)</li>
+<li>재귀 프로시저 지원(ALGOL에서도 사용되었다.)</li>
+<li>pointer data type사용</li>
+<li>배열의 cross section 을 지원했다.
+<ul>
+<li>A(*, I) , B(*, 2, *) 와 같은 표현으로 배열 자르기를 지원했다</li>
+</ul>
+</li>
+<li>너무 크고 너무 복잡했다.</li>
+<li>실제로 scientific, business분야에서 다 사용되기는 했으므로 부분적인 성공(?) 으로 보기도 한다.</li>
+</ul>
+<h2 id="c-1972">C(1972)</h2>
+<hr />
+<ul>
+<li>Dennis Ritchie에 의해 Bell연구소에서 1972년 개발되었다.</li>
+<li>시스템 프로그래밍을 위해 개발되었다(UNIX)</li>
+<li>B언어에 기반하여 설계되었다.</li>
+<li>ALGOL 68, BCPL의 영향을 받은 언어이다.</li>
+<li>이후 글에서 다시 다룬다.</li>
+</ul>
+<h3 id="pyeongga-4">평가</h3>
+<ul>
+<li>complete type checking이 부족했다</li>
+<li>Flexible</li>
+<li>UNIX를 통해 광범위하게 사용되었다</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

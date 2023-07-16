@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>2579 - 계단 오르기 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="2579 - 계단 오르기">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/2579-ggydda-oreugi/">
+<meta property="og:url" content="https://js970.github.io/2579-ggydda-oreugi/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-12T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="2579 - 계단 오르기">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/2579-ggydda-oreugi/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2579 - 계단 오르기"
+  
+    
+    
+      "datePublished":"2023-03-12T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/2579-ggydda-oreugi/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-12">March 12, 2023</time>
+  	</div>
+  	<h1 class="post-title">2579 - 계단 오르기</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 실버 3</li>
+<li>날짜: 2023년 3월 12일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No</li>
+<li>알고리즘 : Dynamic Programming</li>
+</ul>
+<h1 id="solution">Solution</h1>
+<ul>
+<li>처음 문제를 읽고 동적 프로그래밍 문제인 지 바로 인식하지 못해 문제 풀이에 시간이 걸렸다.</li>
+<li>1칸, 2칸, 3칸, 4칸에 대하여 가능한 경우의 수를 손으로 직접 그려보니 동적 계획법 문제인 것이 바로 인식되었다. 경우를 나누어 배열을 초기화했다.
+<ul>
+<li>n번째 계단에 도착했을 때 직전 계단에 이어 연속해서 밟는 경우</li>
+<li>n번째 계단에 도착했을 때 직전 계단을 건너뛰고 두 칸 이전의 계단에서 이어 밟는 경우</li>
+</ul>
+</li>
+<li>상황을 크게 위의 두 가지 경우로 나누어 생각할 수 있다.</li>
+<li>pair를 사용하여 first에는 직전 계단에 연속해서 밟는 점수를 저장했다. second에는 두 칸 이전의 계단에서 이어 밟았을 때의 점수를 저장했다.
+<ul>
+<li>직전 계단에서 이어 밟았을 경우, 직전 계단 이전의 계단을 밟은 경우라면 3칸을 연속해서 밟은 상황이 되기 때문에 이를 생각해서 직전 계단의 second와 n번째 계단의 점수를 더해야 한다. first는 고려하지 않는다.</li>
+<li>두 칸 이전의 계단에서 이어 밟았을 경우에는, 두 칸 이전의 계단이 이전 계단에서 어떻게 넘어왔는지는 중요하지 않으므로 first, second중 큰 값에 대해 n번째 계단의 점수를 더해 second에 저장했다.</li>
+</ul>
+</li>
+<li>설명이 복잡하여 아래의 그림으로 간단하게 정리해 보았다. 결과적으로 65보다 75가 크기 때문에 테스트 케이스에서의 정답인 75를 출력하게 된다.
+<img src="/image/baekjoon/2579/2579logic.png.png" alt="logic-2579" /></li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">utility</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> N;
+</span><span>    cin &gt;&gt; N;
+</span><span>    </span><span style="color:#b48ead;">int </span><span>* arr = </span><span style="color:#b48ead;">new int</span><span>[N];
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; N; i++)
+</span><span>        cin &gt;&gt; arr[i];
+</span><span>    
+</span><span>    pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">int</span><span>&gt; * ans = </span><span style="color:#b48ead;">new</span><span> pair&lt;</span><span style="color:#b48ead;">int</span><span>, </span><span style="color:#b48ead;">int</span><span>&gt;[N];
+</span><span>    ans[</span><span style="color:#d08770;">0</span><span>].</span><span style="color:#bf616a;">first </span><span>= arr[</span><span style="color:#d08770;">0</span><span>]; ans[</span><span style="color:#d08770;">0</span><span>].</span><span style="color:#bf616a;">second </span><span>= arr[</span><span style="color:#d08770;">0</span><span>];
+</span><span>    ans[</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">first </span><span>= arr[</span><span style="color:#d08770;">1</span><span>] + arr[</span><span style="color:#d08770;">0</span><span>]; ans[</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">second </span><span>= arr[</span><span style="color:#d08770;">1</span><span>];
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">2</span><span>; i &lt; N; i++)
+</span><span>    {
+</span><span>        ans[i].</span><span style="color:#bf616a;">first </span><span>= ans[i-</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">second </span><span>+ arr[i];
+</span><span>        ans[i].</span><span style="color:#bf616a;">second </span><span>= (ans[i-</span><span style="color:#d08770;">2</span><span>].</span><span style="color:#bf616a;">first </span><span>&lt; ans[i-</span><span style="color:#d08770;">2</span><span>].</span><span style="color:#bf616a;">second</span><span>) ? ans[i-</span><span style="color:#d08770;">2</span><span>].</span><span style="color:#bf616a;">second </span><span>+ arr[i] : ans[i-</span><span style="color:#d08770;">2</span><span>].</span><span style="color:#bf616a;">first </span><span>+ arr[i];
+</span><span>    }
+</span><span>    
+</span><span>    
+</span><span>    </span><span style="color:#b48ead;">int</span><span> answer = ans[N-</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">first </span><span>&lt; ans[N-</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">second </span><span>? ans[N-</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">second </span><span>: ans[N-</span><span style="color:#d08770;">1</span><span>].</span><span style="color:#bf616a;">first</span><span>;
+</span><span>    cout &lt;&lt; answer &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/2579">2579번: 계단 오르기</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

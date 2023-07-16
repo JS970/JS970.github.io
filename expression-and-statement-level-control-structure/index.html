@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Expression and Statement Level Control Structure | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Expression and Statement Level Control Structure">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/expression-and-statement-level-control-structure/">
+<meta property="og:url" content="https://js970.github.io/expression-and-statement-level-control-structure/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-05-30T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Expression and Statement Level Control Structure">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/expression-and-statement-level-control-structure/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Expression and Statement Level Control Structure"
+  
+    
+    
+      "datePublished":"2023-05-30T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/expression-and-statement-level-control-structure/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-05-30">May 30, 2023</time>
+  	</div>
+  	<h1 class="post-title">Expression and Statement Level Control Structure</h1>
+  	<div class="post-line"></div>
+  	<h2 id="control-flow-jeeo-gujo">Control Flow(제어 구조)</h2>
+<hr />
+<h3 id="control-flowran">Control flow란?</h3>
+<ul>
+<li>제어분과 제어문에 의해 제어되는 문장의 집합</li>
+<li>구조화 프로그래밍에서 모든 순서도는 <code>선택구조</code> 와 <code>반복구조</code> 만으로 표현이 가능하다.(prime component)
+<ul>
+<li>구조화 프로그래밍이란?<img src="/image/PL/structure_programming.png" alt="Structure Programming" /></li>
+</ul>
+</li>
+<li>위에서 아래로의 수행 흐름을 순차적 수행 흐름이라고 한다.</li>
+<li>괄호, goto문, 문장 레이블 등을 통해 수행 흐름을 명시적으로 표기한다.</li>
+<li>표현식 내에서의 수행 흐름, 문장 사이의 수행 흐름, 단위 프로그램(sub program, thread)사이의 수행 흐름이 있다.</li>
+</ul>
+<h3 id="control-flowyi-jjonryu">Control flow의 종류</h3>
+<ul>
+<li>수식 수준의 Control flow
+<ul>
+<li>Short-Circuit Evaluation</li>
+</ul>
+</li>
+<li>문장 수준의 Control flow
+<ul>
+<li>Statement-Level Control Structure</li>
+<li>Goto Controversy</li>
+<li>Guarded Commands</li>
+</ul>
+</li>
+</ul>
+<h2 id="short-circuit-evaluation">Short-Circuit Evaluation</h2>
+<hr />
+<ul>
+<li>수식 수준에서의 control flow(제어 구조)</li>
+</ul>
+<h3 id="ddaraghoero-ggyssa">단락회로 계산</h3>
+<ul>
+<li>연산항 전부를 계산하지 않은 상태에서 연산식의 결과를 계산하는 것이다.</li>
+<li>대개 논리식이나 조건 연산자에 적용된다.<pre data-lang="Python" style="background-color:#2b303b;color:#c0c5ce;" class="language-Python "><code class="language-Python" data-lang="Python"><span>A * (B / </span><span style="color:#d08770;">13 </span><span>- </span><span style="color:#d08770;">1</span><span>), (A &gt;= </span><span style="color:#d08770;">0</span><span>) and (B &lt; </span><span style="color:#d08770;">10</span><span>)
+</span></code></pre>
+<ul>
+<li>단락회로 계산을 지원할 경우 위 수식에서는 <strong>A가 0 이상일 경우 and이후로는 연산할 필요가 없다</strong>.</li>
+</ul>
+</li>
+<li><code>Pascal</code> 은 단락회로 계산을 지원하지 않는다.</li>
+<li><code>C</code>, <code>C++</code>, <code>Java</code>, <code>Modula-2</code> 는 논리곱, 논리합에 대한 단락회로 계산을 지원한다.</li>
+<li><code>Ada</code>는 프로그래머가 단락회로 계산 여부를 선택할 수 있다.</li>
+<li>단락회로를 사용함으로써 간결한 표현이 가능하다.<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">while </span><span>(index &lt;= listlen) and (list[index] &lt;&gt; key) do </span><span style="color:#d08770;">...
+</span></code></pre>
+</li>
+<li>하지만 부대효과가 있는 연산항에 대해서는 결과 예측이 힘들다는 단점이 있다.<pre data-lang="Python" style="background-color:#2b303b;color:#c0c5ce;" class="language-Python "><code class="language-Python" data-lang="Python"><span>(a &gt; b) || (b++ / </span><span style="color:#d08770;">3</span><span>)
+</span></code></pre>
+<ul>
+<li>위 예시에서는 증감연산자의 실행 여부가 직관적이지 않다는 문제가 있다. 이는 프로그램의 결과 예측을 힘들게 한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="ddaibmun">대입문</h3>
+<ul>
+<li>변수 값을 (동적으로) 지정하는 문장이다.</li>
+<li><code>=</code> 또는 <code>:=</code> 를 사용한다.</li>
+<li>대입 기호가 관계 연산과 겹지정되면 혼란을 초래할 수 있다.<pre data-lang="PL/I" style="background-color:#2b303b;color:#c0c5ce;" class="language-PL/I "><code class="language-PL/I" data-lang="PL/I"><span>A = B = C
+</span></code></pre>
+<ul>
+<li>위 수식에서 B = C는 비교연산으로 사용되었고,  A = ~에서의 =는 대입 연산으로 사용되었다.</li>
+</ul>
+</li>
+<li>대입문으로는 아래와 같은 구문들이 존재한다.
+<ul>
+<li>단순 대입문(BASIC, C)<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span>a = a + </span><span style="color:#d08770;">3</span><span>;
+</span></code></pre>
+</li>
+<li>다중 목적지(PL/I)<pre data-lang="PL/I" style="background-color:#2b303b;color:#c0c5ce;" class="language-PL/I "><code class="language-PL/I" data-lang="PL/I"><span>a, b = 0;
+</span></code></pre>
+</li>
+<li>조건 목적지(C++)<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span>flag ? a : b = </span><span style="color:#d08770;">0</span><span>;
+</span></code></pre>
+<ul>
+<li>C, Java에서는 지원하지 않는다.</li>
+<li>옛날 C언어에서는 지원했다.</li>
+</ul>
+</li>
+<li>복합 대입문(C, C++, Java, Python)<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span>a += </span><span style="color:#d08770;">3</span><span>;
+</span></code></pre>
+</li>
+<li>다중 대입문(Python, Lua)<pre data-lang="Lua" style="background-color:#2b303b;color:#c0c5ce;" class="language-Lua "><code class="language-Lua" data-lang="Lua"><span style="color:#bf616a;">a</span><span>, </span><span style="color:#bf616a;">b </span><span>= </span><span style="color:#d08770;">3</span><span>, </span><span style="color:#d08770;">4</span><span>;
+</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ddaib-hyeossassi">대입 연산식</h3>
+<ul>
+<li>대입 연산을 문장으로 간주하지 않고 표현식으로 간주한다.</li>
+<li>C, C++, Java에서 이러한 방식을 채택했다.</li>
+<li>Python에서도 <code>walrus operator</code>(<code>:=</code>)형태로 채택했다.<pre data-lang="Python" style="background-color:#2b303b;color:#c0c5ce;" class="language-Python "><code class="language-Python" data-lang="Python"><span style="color:#b48ead;">while</span><span>(line := </span><span style="color:#96b5b4;">input</span><span>()):
+</span></code></pre>
+<ul>
+<li>위 경우에는 괄호가 선택이다.</li>
+</ul>
+<pre data-lang="Python" style="background-color:#2b303b;color:#c0c5ce;" class="language-Python "><code class="language-Python" data-lang="Python"><span>buf = (line := </span><span style="color:#96b5b4;">input</span><span>())
+</span></code></pre>
+<ul>
+<li>위 경우에는 괄호가 필수이다.</li>
+</ul>
+</li>
+<li>대입 연산의 결과 치환된 값을 반환한다.</li>
+<li>대입 연산식을 사용할 경우 간결한 표현을 할 수 있다는 장점이 있다.</li>
+<li>하지만 표현식에서 부대효과가 발생한다는 단점이 있다.<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span>a = b = c = </span><span style="color:#d08770;">3.14
+</span></code></pre>
+<ul>
+<li>a, b, c의 type에 따라 결과가 달라진다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="statement-level-control-structure">Statement-Level Control Structure</h2>
+<hr />
+<ul>
+<li>문장 수준의 흐름 제어로는 <code>순차 구조</code>, <code>선택 구조</code>, <code>반복 구조</code> 가 있다.</li>
+</ul>
+<h3 id="gujohwa-peuroggeraeonco">구조화 프로그래밍</h3>
+<ul>
+<li>프로그램 구조를 계층적으로 설계한다.</li>
+<li>계층 구조는 프로그램 코드에 그대로 반영된다.</li>
+<li>문장의 공간적 배치 순서가 수행 순서에 대응된다.
+<ul>
+<li>Readability 보장</li>
+</ul>
+</li>
+<li>한 문장은 단일 목적으로만 사용해야한다.
+<ul>
+<li>Readability, Debugging, 유지보수성 측면에서 유리하다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="sseotaegmun">선택문</h3>
+<ul>
+<li>둘 이상의 경로 중 하나를 선택할 수 있도록 하는 제어문</li>
+<li>기본 제어 구조 중 하나이다.</li>
+<li>아래는 선택문 유형 도식이다.<img src="/image/PL/selection.png" alt="Selection" />
+<ul>
+<li>3 방향 선택문이 사용되는 언어로는 FORTRAN이 있다.(음, 0, 양)</li>
+<li>C++20에서 <code>&lt;=&gt;</code>연산자를 통해 3 방향 선택문이 구현되었다.</li>
+</ul>
+</li>
+<li>설계 고려 사항
+<ul>
+<li>조건식의 형태와 타입</li>
+<li>선택 가능한 형태로는 어떠한 형태가 있는가?(양방향, 단방향, 3방향)</li>
+<li>중첩된 선택구조의 해석 방법(dnagling else)</li>
+</ul>
+</li>
+</ul>
+<h3 id="sseotaegmunyi-jjunceob-dangling-else">선택문의 중첩(dangling else)</h3>
+<pre data-lang="Python" style="background-color:#2b303b;color:#c0c5ce;" class="language-Python "><code class="language-Python" data-lang="Python"><span style="color:#b48ead;">if </span><span style="color:#96b5b4;">sum</span><span> = </span><span style="color:#d08770;">0 </span><span>then
+</span><span>	</span><span style="color:#b48ead;">if </span><span>count = </span><span style="color:#d08770;">0 </span><span>then
+</span><span>		result </span><span style="background-color:#bf616a;color:#2b303b;">:=</span><span> </span><span style="color:#d08770;">0
+</span><span style="color:#b48ead;">else
+</span><span>	result </span><span style="background-color:#bf616a;color:#2b303b;">:=</span><span> </span><span style="color:#d08770;">1
+</span></code></pre>
+<ul>
+<li>마지막에 사용된 else 구문이 중첩된 if문과 짝을 이루는지, 상위에 있는 if문과 짝을 이루는지 구분할 규칙이 필요하다.</li>
+<li>해결책(규칙)으로는 아래와 같은 방법이 있다.
+<ul>
+<li>근거리 우선 : 짝이 없는 가장 가까운 앞쪽 if와 짝을 이룬다.(Pascal, C, C++, Java)</li>
+<li>직접 중첩 금지 : if문이 중첩되려면 복합문을 사용해야 한다.(Algol 60)
+<ul>
+<li>복합문은 begin - end 블럭을 의미한다.</li>
+</ul>
+</li>
+<li>종결어 사용 : if의 종결어(end if, fi 등)를 사용하여 끝을 나타낸다.(FORTRAN 90, Ada, Lua)</li>
+</ul>
+</li>
+</ul>
+<h3 id="banbbomun">반복문</h3>
+<ul>
+<li>반복 구조를 나타내기 위한 두 가지 방법으로 반복문과 재귀 호출이 있다.</li>
+<li>반복 구조로는 아래와 같은 세 가지 구조가 있다.
+<ul>
+<li>counter-controlled repetition(계수기에 따른 반복 구조) : 횟수에 따라 반복하는 for문</li>
+<li>condition-controlled repetition(조건에 따른 반복 구조) : while, do-while, repeat-until
+<ul>
+<li>보통은 셋 다 지원하거나 두 가지 이상 지원하는데 특이하게 python은 while만 지원한다.</li>
+</ul>
+</li>
+<li>repetion over data structure(자료 구조에 대한 반복 구조) : foreach, for-in
+<ul>
+<li>range-based for loop이다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>반복문 설계 고려 사항으로는 아래와 같은 사항이 있다.
+<ul>
+<li>제어 부분이 반복문의 어디에 위치하는가?</li>
+<li>break기능을 지원하는가?
+<ul>
+<li>Java의 경우 labeled break를 지원하다.(원하는 계층까지 break)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="goto-controversy">GOTO controversy</h2>
+<hr />
+<ul>
+<li>무조건 분기 GOTO에 대한 논란이다.</li>
+<li>Dijkstra에 의해 제기된 논란이다.
+<ul>
+<li>GOTO문을 사용하면 스파게티 코드가 양산되고, 이에 따라 가독성이 떨어지게 되며 결과적으로 프로그램이 엉망이 된다.</li>
+</ul>
+</li>
+<li>무조건 분기를 지원하지 않는 언어 : Modula-2, CLU, Euclid, Gypsy, Java</li>
+<li>하지만 이후로 Donald Knuth는 GOTO로 인한 문제점을 만들지 않는 방법에 대해 기술하였고 Frank Rubin은 아예 Dijkstra의 GOTO에 대한 문제 제기 자체를 해롭다고 비판했다.</li>
+</ul>
+<h2 id="guarded-commands">guarded commands</h2>
+<hr />
+<ul>
+<li>Dijkstra가 제시했다. 조건부 명령어라고도 한다.</li>
+<li>조건을 만족할 때 해당 문장을 수행한다.</li>
+<li>프로그램 수행 흐름에서 비결정성을 강조한다.(non-determination)
+<ul>
+<li>a와 b두 정수 중 최솟값을 반환하는 함수에 대해 생각해 보자. 이 경우 a와 b가 같을 경우는 중요한 고려사항이 아니다. 따라서 코드에서는 a&lt;=b, a&gt;=b등으로 기술해도 아무런 상관이 없다. 이러한 경우에 대해 Dijkstra는 코드의 비결정성을 강조했다. </li>
+</ul>
+</li>
+<li>프로그램 증명과 깊은 관련이 있다.
+<ul>
+<li>GOTO를 포함할 경우 프로그램 증명이 거의 불가능하다.</li>
+<li>선택 구조와 사전 검사 반복 구조만 허용된다면 증명이 가능하다.
+<ul>
+<li>if, do만 있다면 프로그램 증명이 간단해진다.</li>
+</ul>
+</li>
+<li>조건이 붙은 병령어만 허용한다면 프로그램 증명이 용이하다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="sseotaeg-gumun">선택 구문</h3>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>if&lt;조건&gt; -&gt; &lt;문장&gt;
+</span><span>[]&lt;조건 -&gt; &lt;문장&gt;
+</span><span>[]&lt;조건 -&gt; &lt;문장&gt;
+</span><span>[]&lt;조건 -&gt; &lt;문장&gt;
+</span><span>...
+</span><span>[]&lt;조건 -&gt; &lt;문장&gt;
+</span><span>fi
+</span></code></pre>
+<ol>
+<li>모든 조건식을 계산한다.</li>
+<li>참인 것 중 하나를 무작위로 선택하여 수행한다.(코드의 비결정성)</li>
+<li>참인 것이 없다면 수행 오류이다.</li>
+</ol>
+<h3 id="banbbo-gumun">반복 구문</h3>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>do&lt;조건&gt; -&gt; 문장
+</span><span>[]&lt;조건 -&gt; &lt;문장&gt;
+</span><span>[]&lt;조건 -&gt; &lt;문장&gt;
+</span><span>[]&lt;조건 -&gt; &lt;문장&gt;
+</span><span>...
+</span><span>[]&lt;조건 -&gt; &lt;문장&gt;
+</span><span>od
+</span></code></pre>
+<ol>
+<li>모든 조건식을 계산한다.</li>
+<li>참인 것 중 하나를 무작위로 선택하여 수행한 후 1부터 반복한다.</li>
+<li>참이 것이 없다면 종료한다.</li>
+</ol>
+<h3 id="joggeobu-myeongryeongeoyi-yesi">조건부 명령어의 예시</h3>
+<ul>
+<li>선택 구문<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>if x &gt;= y -&gt; max := x
+</span><span>[] y &gt;= x -&gt; max := y
+</span></code></pre>
+</li>
+<li>반복 구문<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>do q1 &gt; q2 -&gt; temp := q1; q1 := q2; q2 := temp // swap(q1, q2)
+</span><span>[] q2 &gt; q3 -&gt; temp := q2; q2 := q3; q3 := temp // swap(q2, q3)
+</span><span>[] q3 &gt; q4 -&gt; temp := q3; q3 := q4; q4 := temp // swap(q3, q4)
+</span><span>od
+</span></code></pre>
+</li>
+<li>결국 위 반복 구문의 의미는 아래의 조건을 만족할 때까지 q1, q2, q3, q4를 정렬하는 것이다.	$$(q1 \leq q2)\  \wedge \ (q2 \leq q3)\ \wedge \ (q3 \leq q4)$$ </li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>Types | Rounding Off</title>
+
+
+
+<meta property="og:title" content="Types">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/types/">
+<meta property="og:url" content="https://js970.github.io/types/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-05-16T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="Types">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/types/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Types"
+  
+    
+    
+      "datePublished":"2023-05-16T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/types/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-05-16">May 16, 2023</time>
+  	</div>
+  	<h1 class="post-title">Types</h1>
+  	<div class="post-line"></div>
+  	<h2 id="concept-of-type">Concept of Type</h2>
+<hr />
+<ul>
+<li>Type은 어떤 프로그래밍 언어의 좋고 나쁨을 가리는 척도가 될 수 있다.</li>
+</ul>
+<h3 id="scalar-ddassu-vs-composite-bbohab">Scalar(단순) vs Composite(복합)</h3>
+<ul>
+<li><code>Scalar</code>타입은 atomic values를 나타낸다.</li>
+<li><code>Composite</code>타입은 atomic타입을 unit으로 가지는 타입이다.</li>
+</ul>
+<h3 id="primitive-gibbo-vs-user-defined-sahyonja-jjeonyi">Primitive(기본) vs User-defined(사용자 정의)</h3>
+<ul>
+<li><code>Primitive</code>타입은 language에서 지원하는 타입이다.</li>
+<li><code>User-defined</code>타입은 사용자에 의해 새롭게 정의된 타입이다.</li>
+</ul>
+<h3 id="fundamental-gico-vs-derived-yudo-compound">Fundamental(기초) vs Derived(유도, Compound)</h3>
+<ul>
+<li><code>Fundamental</code>타입은 그 자체로 정의되는 타입이다.</li>
+<li><code>Derived</code>타입은 <code>Compound</code>타입이라고도 하며, <code>Fundamental</code>타입 또는 <code>Derived</code>타입을 이용하여 정의된다.</li>
+<li>integer 변수의 경우 <code>Fundamental</code>타입이다.
+<ul>
+<li>정수형 변수는 그 자체로 정의된다.</li>
+</ul>
+</li>
+<li>포인터 변수의 경우 <code>Compound</code>타입이다.
+<ul>
+<li><code>int *</code>는 <code>int</code>라는 <code>Fundamental</code>타입에 의해 정의된다.</li>
+<li><code>int **</code>는 <code>int *</code>라는 <code>Compound</code>타입에 의해 정의된다.</li>
+<li><code>int *a[]</code>는 <code>int *</code>라는 <code>Compund</code>타입에 의해 정의된다.</li>
+</ul>
+</li>
+<li><code>Compound</code>타입은 타입 구조가 생성되며, 트리로 표현 가능하다.
+<ul>
+<li><code>int *</code>, <code>int **</code>, <code>int *a[]</code>의 트리를 나타내면 아래와 같다.<img src="/image/PL/compoundTree.png" alt="Compound Tree" /></li>
+</ul>
+</li>
+</ul>
+<h3 id="bburyu-yesi">분류 예시</h3>
+<ul>
+<li><code>pointer</code>타입의 경우 <code>Compound</code>타입이지만 <code>Composite</code>타입은 아니다.</li>
+<li><code>enum</code>타입 역시 <code>Compound</code>타입이지만 <code>Composite</code>타입은 아니다.</li>
+</ul>
+<h2 id="primitive-types">Primitive Types</h2>
+<hr />
+<ul>
+<li><code>Primitive</code>데이터 타입은 다른 타입으로 정의되지 않는 타입을 의미한다.</li>
+<li>일반적으로 하드웨어에 의해 지원된다.(그렇지 않은 경우도 있다.)</li>
+</ul>
+<h3 id="integer">Integer</h3>
+<ul>
+<li><code>integer</code>타입은 일반적으로 하드웨어를 반영하여 정의된다.</li>
+<li><code>integer</code>타입의 크기는 하드웨어의 버스 사이즈를 word로 하여 정의된다.
+<ul>
+<li>byte, word, long word, quad word등</li>
+</ul>
+</li>
+<li>일반적으로 <code>2's complement</code>를 사용하여 정수를 표기한다.
+<ul>
+<li>정수를 표기하는 방법은 크게 <code>Sign-Magnitude</code>, <code>1's complement</code>, <code>2's complement</code>가 있다.</li>
+<li><code>Sign-Magnitude</code>는 부호 비트를 설정하여 표기하는 방법으로, 덧셈 연산에서 직관성이 떨어진다. 또한 0을 표기하는 방법이 2개 존재한다는 문제점이 있다.</li>
+<li><code>1's complement</code>는 이진수의 1의 보수 형태로 0과 1을 반전시켜 연산하는 방법이다. 덧셈 연산은 직관적이지만 여전히 0을 표기하는 방법이 2개 존재한다.</li>
+<li><code>2's complement</code>는 1의 보수 표기에 1을 더한 값이다. 덧셈 연산은 직관적이며 unique zero를 가진다.</li>
+</ul>
+</li>
+<li><code>2's complemtnt</code>가 일반적인 <code>integer</code>타입을 표기하는 방법이라고는 하지만, 항상 그런 것은 아니다. 이는 구현의 영역(언어 설계)이므로 임의로 추측해서는 안된다.</li>
+</ul>
+<h3 id="floating-point">Floating Point</h3>
+<ul>
+<li>실수를 의미하지는 않는다. 실수의 근사값을 표기하는 방법이다.</li>
+<li>IEEE754표준을 따른다.</li>
+<li>1비트의 signed bit, 8(or 11)비트의 exponent(지수부)비트, 23(or 52)비트의 fraction(mentisa, 가수부)비트를 통해 32(or 64)비트 환경에서 실수의 근사값을 표기한다.</li>
+</ul>
+<h3 id="others">Others</h3>
+<ul>
+<li><code>Decimal</code> 
+<ul>
+<li>business application에서 사용된다.</li>
+<li>10진수 형태로 구성된다.</li>
+<li>1282를 표현하기 위해선 한 자리당 4비트가 필요하므로 총 16비트가 필요하다.</li>
+<li>제한된 범위 내에서 정확성을 보장한다는 장점이 있다.</li>
+<li>하지만 범위가 제한되며, 메모리를 낭비한다는 단점이 있다.</li>
+</ul>
+</li>
+<li><code>Boolean</code>
+<ul>
+<li>bit로 구현할 수 있지만 보통은 byte로 구성한다.</li>
+<li>readability를 상승시킨다.</li>
+</ul>
+</li>
+<li><code>Character</code>
+<ul>
+<li>ASCII : 7bit를 사용하여 알파벳 계열 문자를 ㅍ현한다.</li>
+<li>Unicode : 16bit를 사용하여 international character를 표현할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="character-string">Character String</h2>
+<hr />
+<h3 id="design-issues">Design issues</h3>
+<ul>
+<li>배열의 일종으로 볼 수도 있고(C), primitive type으로 볼 수도 있다(C++).
+<ul>
+<li>c의 경우 String은 Character String이므로, 길이를 구하기 위해 배열을 순회해야 한다.</li>
+<li>str.length()가 for 문 안에서 사용되었다면 nested loop이므로 O(n)이 아닐 수 있음에 유의</li>
+<li>이 때문에 가장 앞 비트에 크기를 저장하는 인코딩을 사용하기도 한다.</li>
+</ul>
+</li>
+<li>길이가 가변적인지, 고정적인지 생각해야 한다.
+<ul>
+<li><code>FORTRAN</code>, <code>Ada</code>, <code>COBOL</code>은 static length를 가진다.</li>
+<li><code>C</code>, <code>C++</code>, <code>PL/I</code>은 limited dynamic하게 배열의 크기를 가진다.</li>
+<li><code>SNOBOL4</code>의 경우 dynamic한 배열의 크기를 가진다.</li>
+<li>static length는 dynamic length방식에 비해 inexpensive하게 사용할 수 있다. 따라서 상황을 고려하여 dynamic length을 지원해야 할 가지가 있는지 생각해 봐야 한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="string-operations">String Operations</h3>
+<ul>
+<li>assignment : 대입 연산</li>
+<li>comparison : 비교 연산</li>
+<li>concatenation : string합치기</li>
+<li>sub-string reference : sub-string 참조</li>
+<li>pattern matching : 패턴 매칭</li>
+</ul>
+<h3 id="implementation-of-string">Implementation of string</h3>
+<p><img src="/image/PL/descriptors.png" alt="Descriptors" /></p>
+<ul>
+<li>static length를 가지도록 구현한다면 compile time descriptor로 충분히 구현 가능하다.</li>
+<li>limited dynamic length로 구현한다면 run-time descriptor를 필요로 할 수 있다.
+<ul>
+<li>C언어의 경우 string타입을 위한 run-time descriptor를 가지지는 않는다.</li>
+</ul>
+</li>
+<li>dynamic length로 구현할 결우 run-time descriptor가 필요하다.
+<ul>
+<li>allocation, deallocation비용이 발생한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="user-defined-ordinal-types">User-Defined Ordinal Types</h2>
+<hr />
+<h3 id="ordinal-type">Ordinal Type</h3>
+<ul>
+<li>0또는 양의 정수를 포함하는 범위의 집합</li>
+<li>서수(순서)로 사용된다.</li>
+<li><code>integer</code>, <code>character</code>, <code>boolean</code>은 Ordinal Type이다.</li>
+</ul>
+<h3 id="cardinal-type">Cardinal Type</h3>
+<ul>
+<li>기수(값, 양)로 사용된다.</li>
+</ul>
+<h3 id="user-defined-ordinal-type">User-Defined Ordinal Type</h3>
+<ul>
+<li>Enumeration Type
+<ul>
+<li>Enum 내부에서 정의된 값을 가지므로 <code>Compound</code>타입이다.</li>
+<li>하지만 atomic value를 가지므로 <code>Composit</code>타입은 아니다.</li>
+</ul>
+</li>
+<li>Subrange Type
+<ul>
+<li>ordinal type이 연속적으로 정렬된 것
+<ul>
+<li>아래는 Pascal예시이다.<pre data-lang="Pascal" style="background-color:#2b303b;color:#c0c5ce;" class="language-Pascal "><code class="language-Pascal" data-lang="Pascal"><span style="color:#b48ead;">type
+</span><span>	index = </span><span style="color:#d08770;">1</span><span>..</span><span style="color:#d08770;">100</span><span>;
+</span></code></pre>
+</li>
+</ul>
+</li>
+<li><code>readablilty</code>, <code>reliability</code>의 관점에서 pros가 있다.</li>
+<li><code>realiability</code>의 경우 범위를 초과했을 경우 컴파일 타임의 검사가 가능하다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="array">Array</h2>
+<hr />
+<ul>
+<li><code>Composit</code>타입이다.</li>
+<li>indexing을 통해서 원소에 접근한다.</li>
+</ul>
+<h3 id="design-issues-1">Design issues</h3>
+<ul>
+<li>Subscript Type &amp; range checking
+<ul>
+<li><code>FORTRAN</code>, <code>C</code>는 integer만 subscript type으로 허용한다.</li>
+<li><code>Pascal</code>, <code>Ada</code>는 어떤 ordinal type이든 허용한다.</li>
+</ul>
+</li>
+<li>The Maximum Number of Subscripts
+<ul>
+<li><code>C</code>, <code>C++</code> 은 1차원 배열 접근을 지원한다. 즉, A[i][j] 같은 방식으로 다차원 배열을 구현한다.</li>
+<li><code>BASIC</code>, <code>FORTRAN</code>의 경우 A[i, j]와 같은 다차원 배열 접근을 지원한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="array-categories">Array Categories</h3>
+<ul>
+<li>Static
+<ul>
+<li>subscript의 범위 및 storage binding이 static이다.</li>
+<li><code>FORTRAN</code>에서 이런 방법을 사용한다.</li>
+</ul>
+</li>
+<li>Fixed Stack-dynamic</li>
+<li>Stack-dynamic</li>
+<li>Heap-dynamic
+<ul>
+<li><code>java</code>에서 이런 방법을 사용한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="conformant-array">Conformant Array</h3>
+<ul>
+<li><code>Open Array</code>와 상반되는 개념이다.</li>
+<li><code>BASIC</code>, <code>Pascal</code>에서는 index range가 type의 일부였다. 아래의 두 배열은 서로 다른 타입이다.</li>
+</ul>
+<pre data-lang="Pascal" style="background-color:#2b303b;color:#c0c5ce;" class="language-Pascal "><code class="language-Pascal" data-lang="Pascal"><span style="color:#b48ead;">VAR
+</span><span>    MyArray1 : </span><span style="color:#b48ead;">ARRAY</span><span> [</span><span style="color:#d08770;">1</span><span>..</span><span style="color:#d08770;">10</span><span>] </span><span style="color:#b48ead;">OF</span><span> INTEGER;
+</span><span>    MyArray2 : </span><span style="color:#b48ead;">ARRAY</span><span> [</span><span style="color:#d08770;">1</span><span>..</span><span style="color:#d08770;">20</span><span>] </span><span style="color:#b48ead;">OF</span><span> INTEGER;
+</span></code></pre>
+<ul>
+<li>이에 불편함을 느껴 Conformant array의 개념이 등장하였다.
+<ul>
+<li>아래의 <code>C</code>코드에서 두 배열은 서로 같은 타입이다.</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">int</span><span> MyArray1[</span><span style="color:#d08770;">10</span><span>];
+</span><span style="color:#b48ead;">int</span><span> MyArray2[</span><span style="color:#d08770;">20</span><span>];
+</span></code></pre>
+<ul>
+<li>처음 살펴봤던 <code>Pascal</code>에서도 ISO Standard에 따른 Conformant array를 지원한다.</li>
+<li>아래는 <code>Pascal</code>의 conformant array이다.</li>
+</ul>
+<pre data-lang="Pascal" style="background-color:#2b303b;color:#c0c5ce;" class="language-Pascal "><code class="language-Pascal" data-lang="Pascal"><span style="color:#b48ead;">PROCEDURE </span><span style="color:#8fa1b3;">MyProc</span><span>(</span><span style="color:#b48ead;">VAR</span><span> x : </span><span style="color:#b48ead;">ARRAY</span><span> [low..high : INTEGER] </span><span style="color:#b48ead;">OF</span><span> INTEGER);
+</span></code></pre>
+<h3 id="open-array">Open Array</h3>
+<ul>
+<li>ISO 표준은 <code>conformant array</code>이지만, 표준이 재정되기 전에 배열의 index range를 전달하기 위한 방법으로 사용되었다.</li>
+<li>lower bound 에 대한 정보는 알 수 없다.</li>
+<li>upper bound에 대한 정보는 High라는 함수를 사용하여 얻을 수 있었다.</li>
+<li><code>C</code>, <code>C++</code>의 배열 역시 open array의 일종으로 볼 수 있다.</li>
+<li><code>java</code>의 배열도 유사하나 <code>java</code>의 배열은 객체이다.</li>
+</ul>
+<h3 id="array-operations">Array Operations</h3>
+<ul>
+<li>배열 연산자는 배열을 unit으로 동작한다.</li>
+<li>전체 배열이 연산의 피연산자가 된다.</li>
+<li>FORTRAN 90
+<ul>
+<li>element wise array operations 지원</li>
+<li>Intrinsic functions for array operators
+<ul>
+<li>matrix multiplication</li>
+<li>matrix transpose</li>
+<li>vector dot product</li>
+</ul>
+</li>
+<li>slice
+<ul>
+<li>row slice, column slice</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Ada
+<ul>
+<li>single dimension array에서 연속된 원소들에 대한 slice지원</li>
+<li>string에 대한 slice(substring reference)지원</li>
+</ul>
+</li>
+</ul>
+<h3 id="implementation-of-arrays">Implementation of Arrays</h3>
+<ul>
+<li>Compile Time Descriptor
+<ul>
+<li>array descriptor를 사용한다.</li>
+<li>descriptor는 lower bound, upper bound등 배열에 대한 정보를 가진 벡터이다.</li>
+<li>이를 <code>dope vecotor</code>라고 부른다. 검사용 벡터라는 뜻이다.</li>
+</ul>
+</li>
+<li>첨자(index)를 통해 주소(address)에 접근하는(mapping) access function을 가진다.
+<ul>
+<li>이때 언어에 따라 row major, column major 구현 방법이 나뉜다.</li>
+<li>사실 대부분의 언어는 행우선으로 구현된다. </li>
+<li>FORTRAN은 Array를 열우선으로 구현한 대표적인 언어이다.</li>
+<li>C언어 예시<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span>	</span><span style="color:#b48ead;">int</span><span> a[</span><span style="color:#d08770;">2</span><span>][</span><span style="color:#d08770;">3</span><span>] = { {</span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">2</span><span>, </span><span style="color:#d08770;">3</span><span>},
+</span><span>					{</span><span style="color:#d08770;">4</span><span>, </span><span style="color:#d08770;">5</span><span>, </span><span style="color:#d08770;">6</span><span>},
+</span><span>					{</span><span style="color:#d08770;">7</span><span>, </span><span style="color:#d08770;">8</span><span>, </span><span style="color:#d08770;">9</span><span>}};
+</span></code></pre>
+<ul>
+<li>C언어는 대표적인 행우선(row major) 언어이다.</li>
+<li>a[0] = {1, 2, 3}이므로 a[0][0], a[0][1], a[0][2]는 차례대로 1, 2, 3이다.</li>
+<li>이처럼 열을 우선적으로 순회한다.</li>
+</ul>
+</li>
+<li>열우선의 경우 아래와 같이 구현한다.<pre data-lang="Fortran" style="background-color:#2b303b;color:#c0c5ce;" class="language-Fortran "><code class="language-Fortran" data-lang="Fortran"><span>	location(matrix[i,j])
+</span><span>		= (address of matrix[1, 1]) + ((i-1)*n + (j-1)) * (element size)
+</span><span>			= A + B*i + C*j
+</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="associative-array">Associative Array</h3>
+<ul>
+<li>데이터 원소들(elements)의 정렬되지 않은 집합(collection)이다.</li>
+<li>데이터 원소들(elements)은 <code>key</code>에 의해 indexing된다.</li>
+<li>이때 element와 key는 hashing function을 통해 매핑된다.</li>
+</ul>
+<h3 id="reference">Reference</h3>
+<p><a href="https://stackoverflow.com/questions/8482318/what-is-a-conformant-array/33085128#33085128?newreg=ac58357844b94ad9af567a633c2b1b58">Stack Overflow - What is a Conformant Array?</a></p>
+<h2 id="record">Record</h2>
+<hr />
+<ul>
+<li>Array는 homogenous aggregation이며 index를 통해 원소에 접근한다.</li>
+<li>반면 Record는 heterogenous aggregation이며 name을 통해 원소에 접근한다.</li>
+</ul>
+<h3 id="record-operation">Record Operation</h3>
+<ul>
+<li>Assignment</li>
+<li>Initialization</li>
+<li>Comparison</li>
+<li>Field Copying</li>
+</ul>
+<h2 id="union">Union</h2>
+<hr />
+<ul>
+<li>Record의 field들은 서로 다른 위치에 저장되었다.</li>
+<li>Union은 field의 크기만큼 최대 메모리에서 할당한다.</li>
+<li>Union을 variant record(가변 레코드)로 보기도 한다.</li>
+</ul>
+<h3 id="design-issues-2">Design issues</h3>
+<ul>
+<li>type checking을 위해 <code>tag</code>를 사용한다.
+<ul>
+<li><code>ALGOL 68</code>에서는 <code>conformity clauses</code>를 사용했을 때만 reference가 가능하다.</li>
+<li><code>Pascal</code>에서는 <code>tag</code>값 각각에 대한 assign이 가능하다. 이 때문에 type checking에 문제가 있다.</li>
+<li><code>Ada</code>에서는 Constraint variant record, Unconstrained variant record를 모두 지원한다.
+<ul>
+<li>Constraint variant record의 경우 variant타입이 바뀔 수 없다.</li>
+<li>Unconstraint variant record의 경우 Pascal처럼 variant타입이 바뀔 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Union을 Record의 일종으로 보아야 하는지 고려해야 한다.</li>
+</ul>
+<h2 id="pointer">Pointer</h2>
+<hr />
+<ul>
+<li><code>C</code>에서 처음 포인터 개념을 도입하기 전에도 <code>Pascal</code>, <code>ALGOL</code>에서 포인터 개념은 사용되었다.</li>
+<li>포인터는 addressing의 flexibility를 증가시키기 위해 사용되며, 동적 메모리 관리를 담당한다.</li>
+<li>function allocation을 포인터를 사용해서 하기도 한다.</li>
+</ul>
+<h3 id="design-issues-3">Design Issues</h3>
+<ul>
+<li>포인터 변수의 lifetime</li>
+<li>동적 할당된 변수의 lifetime</li>
+<li>명시적 포인터(<code>C</code>, <code>C++</code>), 암시적 포인터(<code>Java</code>, <code>C++</code>)</li>
+</ul>
+<h3 id="pointer-operations">Pointer Operations</h3>
+<ul>
+<li>address-of opertaion</li>
+<li>assginment(assignment of an address)</li>
+<li>dereferencing</li>
+</ul>
+<h3 id="pointeoyi-munjejjeo">포인터의 문제점</h3>
+<ul>
+<li><strong>Dangling Pointers</strong>
+<ul>
+<li>허상 포인터</li>
+<li>존재 자체로 문제이며 위험하다.</li>
+<li>메모리 해제 과정의 문제로 발생한다. 이 떄문에 delete가 없는 <code>java</code>에서는 문제가 되지 않는다.</li>
+</ul>
+</li>
+<li><strong>Lost Heap Dynamic variable</strong>
+<ul>
+<li>분실 객체</li>
+<li>garbage라고도 한다.</li>
+<li>크게 위험하다기 보다는 메모리 낭비의 원인이 된다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="dangling-pointer-munje-haeggyeo">Dangling Pointer 문제 해결</h3>
+<ul>
+<li>Tombstone 사용
+<ul>
+<li>포인터가 메모리를 해제하면 Tombstone(비석)이 이 메모리는 죽었다고 표시하여 다른 포인터가 참조하지 못하도록 한다.</li>
+</ul>
+</li>
+<li>Locks-and-Keys
+<ul>
+<li>모든 포인터는 ordered pair로 존재한다(key, address)</li>
+<li>key값이 0이면 invalid이다.</li>
+</ul>
+</li>
+<li>두 방법 모두 검사가 필요하므로 성능 면에서 비효율적이다.</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

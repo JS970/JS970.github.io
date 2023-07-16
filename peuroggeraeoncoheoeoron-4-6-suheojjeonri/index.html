@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>프로그래밍언어론 2023-04-06 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="프로그래밍언어론 2023-04-06 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/peuroggeraeoncoheoeoron-4-6-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/peuroggeraeoncoheoeoron-4-6-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-04-06T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="프로그래밍언어론 2023-04-06 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/peuroggeraeoncoheoeoron-4-6-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "프로그래밍언어론 2023-04-06 수업정리"
+  
+    
+    
+      "datePublished":"2023-04-06T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/peuroggeraeoncoheoeoron-4-6-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-04-06">April  6, 2023</time>
+  	</div>
+  	<h1 class="post-title">프로그래밍언어론 2023-04-06 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Scheme(2)</li>
+<li>Lab - Tail Recursive Factorial</li>
+</ul>
+<h2 id="scheme-2">Scheme(2)</h2>
+<hr />
+<blockquote>
+<p>3.30 Scheme에서 이어짐</p>
+</blockquote>
+<ul>
+<li>Scheme은 LISP를 모태로 하는 함수형 프로그래밍 언어이다.</li>
+<li>LISP과 마찬가지로 Eval - Apply model을 따른다.</li>
+</ul>
+<h3 id="eval-apply">Eval - Apply</h3>
+<ul>
+<li>Scheme은 리스트로 함수 적용을 나타낸다.</li>
+<li>수식은 상수이거나 함수 적용 형태, 둘 중 하나이다.</li>
+<li>함수와 인수를 모두 계산하고(Eval), 함수를 적용한다(Apply).</li>
+<li><code>'</code> 기호를 사용하여 Eval의 예외 처리가 가능하다.(cont.)</li>
+</ul>
+<h3 id="defining-values">Defining Values</h3>
+<ul>
+<li>나중에 사용할 값을 정의하기 위해 define문법을 사용한다.</li>
+<li>define문법은 타 언어의 assignment와 유사하게 동작한다. 하지만 이는 틀린 표현이다.
+<ul>
+<li>Scheme에서 define은 Storage에 값을 저장하는 방식으로 동작하는 것이 아닌, binding을 만드는 방식으로 동작한다.</li>
+<li>binding을 통해 name과 value간의 1:1대응이 가능하다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="input-and-output">Input and Output</h3>
+<ul>
+<li>입력 함수 사용 예시</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(define num(read)) // 입력 받은 후 출력
+</span></code></pre>
+<ul>
+<li>출력 함수 사용 예시
+<ul>
+<li>write는 있는 그대로 출력한다.</li>
+<li>display는 개행문자 등 표준 출력을 반영하여 출력한다.</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(write (+ num 1)) // num+1 출력 
+</span><span>(display (+ num 1)) // num+1 출력
+</span><span>(wirte &quot;Hello \n World!&quot;) // &quot;Hello \n World!&quot; 출력
+</span><span>(display &quot;Hello \n World!&quot;) // 표준 출력으로 따음표 없이 Hello -&gt; 개행 -&gt; World 출력
+</span></code></pre>
+<h3 id="list">List</h3>
+<ul>
+<li><code>cons</code>(construct) 를 이용하여 List의 생성이 가능하다.
+<ul>
+<li>첫 번째 인자로 받은 원소를 두 번째 인자로 받은 리스트의 앞에 붙인 리스트를 반환)</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(cons 1 &#39;(2 3)) // (1 2 3)
+</span></code></pre>
+<ul>
+<li><code>list</code>를 이용하여 cons를 사용하지 않고 한번에 리스트 생성이 가능하다.</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(list 1 2 3) // (1 2 3)
+</span></code></pre>
+<ul>
+<li><code>car</code>를 사용하여 리스트의 맨 앞 원소를 반환할 수 있다.</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(car (list 1 2 3)) // 1
+</span></code></pre>
+<ul>
+<li><code>cdr</code>을 이용하여 리스트의 맨 앞을 제외한 나머지 리스트를 반환할 수 있다. 이때 리스트에는 1개 이상의 원소가 있어야 한다.(null에서는 맨 앞을 제외할 수 없으니까)</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(cdr &#39;(a b c)) // (b c)
+</span></code></pre>
+<ul>
+<li><code>car</code>, <code>cdr</code> 명령어의 다소 특이한 이름은 초기 IBM 704의 레지스터 이름에서 유래했다.</li>
+<li>List는 빈 리스트와 원소가 있는 리스트의 두 가지 형태로 나눌 수 있다.</li>
+<li>pair는 리스트를 구현하는 기본적인 방법이다.
+<ul>
+<li>(x y)는 (x.y)로 표현한다.</li>
+<li>(a b c)는 (a .(b.(c.())))로 구현된다.</li>
+<li>위의 표기를 트리 구조로 나타내면 아래와 같다.
+<img src="/image/PL/pair.png" alt="pair" /></li>
+</ul>
+</li>
+<li><code>pair?</code> 술어를 사용하여 어떤 S-expression이 pair인지 아닌지 검사 가능하다.
+<ul>
+<li>리스트 중 원소가 하나라도 있는 경우 <code>pair?</code> 의 결과가 <code>#t</code> 이다.</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(pair? (list 1 2 3)) // #t
+</span></code></pre>
+<ul>
+<li>어떤 리스트가 빈 리스트라면 null이다.</li>
+<li><code>null?</code> 술어를 사용하여 null인지 아닌지 판단 가능하다.</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(null? &#39;()) // #t
+</span></code></pre>
+<ul>
+<li>List가 아니면서 null도 아니고 pair도 아니라면 atom이다. 아래는 atom인지 아닌지 판별하는 함수이다.</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(define atom?
+</span><span>  (lambda (x)
+</span><span>	  (and (not (pair? x)) (not (null? x)))))
+</span></code></pre>
+<ul>
+<li>실행하면 아래와 같다.</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(atom? 3) // #t
+</span><span>(atom? &#39;()) // #f
+</span></code></pre>
+<h3 id="quote">quote</h3>
+<ul>
+<li><code>quote</code> 함수는 인자로 받은 값을 계산하지 말고 심볼로 보라는 뜻이다.
+<ul>
+<li>eval-apply의 예외 처리이다.</li>
+<li>앞서 설명한 <code>'</code>와 같은 의미이다.</li>
+</ul>
+</li>
+<li>상수 값에 대해서는 quote가 의미 없다.</li>
+<li>아래는 <code>quote</code>, <code>'</code> 의 사용 예시이다.
+<ul>
+<li>가장 마지막 예시 결과는 quote에 의해 '1이  '1이라는 심볼 그 자체로 출력된 것이다.</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(1 2 3) // error
+</span><span>(quote (1 2 3)) // (1 2 3)
+</span><span>(atom? (quote (1 2 3))) // #f
+</span><span>(atom? (quote ())) // #f
+</span><span>(atom? &#39;(1 2 3)) // #f
+</span><span>(atom? &#39;Scheme) // #t
+</span><span>(quote 1) // 1
+</span><span>&#39;1 // 1
+</span><span>(quote &#39;1) // &#39;1
+</span></code></pre>
+<h3 id="predicates">Predicates</h3>
+<ul>
+<li>술어(predictate)란 참/거짓을 반환하는 함수이다.(boolean functions)</li>
+<li>Scheme에서 술어는 물음표로 끝내는 것이 관례이다.</li>
+<li>앞서 살펴본 술어 이외에 대표적인 술어는 아래와 같다.
+<ul>
+<li><code>number?</code> : 인수가 수인지 검사한다.
+<ul>
+<li>수 : 1, 2, 3, 10, 100, 123 ...</li>
+<li>숫자 : 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</li>
+</ul>
+</li>
+<li><code>eq?</code> : 인수로 주어진 두 개의 atom이 같은지 검사(list도 되긴 한다.)</li>
+<li><code>complex?</code> : 복소수인지 검사</li>
+<li><code>real?</code> : 실수인지 검사</li>
+<li><code>rational?</code> : 유리수인지 검사</li>
+<li><code>integer?</code> : 정수인지 검사</li>
+<li><code>zero?</code> : 0인지 검사</li>
+<li><code>exact?</code> : 주어진 인수가 정확한 숫자인지 검사(정수, 유리수)</li>
+<li><code>inexact?</code> : 주어진 인수가 부동 소수점 수인지 판단.</li>
+<li><code>odd?</code>, <code>even?</code> : 주어진 홀수 또는 짝수인지 판단.</li>
+</ul>
+</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(exact? 3.0) // #f
+</span><span>(exact? 1/2) // #t
+</span></code></pre>
+<ul>
+<li>Scheme에서는 위의 술어들의 인자들에 대해서 C언어 등에서와 같이 그 자체만으로 형이 결정되는 것이 아닌 수의 포함관계를 모두 반영한다는 특징이 있다.</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(integer? 1.0) // #t
+</span></code></pre>
+<h3 id="comparison-operators-and-others">Comparison Operators and Others</h3>
+<ul>
+<li>숫자값이 같은지 비교하는 연산자는 <code>=</code>하나 뿐이다.
+<ul>
+<li>!=는 (not (= a b)) 형태로 사용해야 한다.</li>
+</ul>
+</li>
+<li>그 이외의 대소 비교 연산자는 C연산자와 동일하다.</li>
+<li><code>max</code> <code>min</code>등의 프로시저는 알아두면 유용하게 사용할 수 있다.</li>
+</ul>
+<h3 id="multiple-selection-using-cond">Multiple Selection Using cond</h3>
+<ul>
+<li>개별 조건을 검사하기 위해서 <code>cond</code>를 사용할 수 있다.</li>
+<li>아래 코드는 atom?을 <code>cond</code>를 사용하여 다시 구현한 것이다.</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(define atom?
+</span><span>  (lambda (x)
+</span><span>	  (cond
+</span><span>		  ((null? x) #f)
+</span><span>		  ((pair? x) #f)
+</span><span>		  (else #t))))
+</span></code></pre>
+<ul>
+<li>위의 구문 중 else부분은 아래와 같이 처리해도 된다.</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(define atom?
+</span><span>  (lambda (x)
+</span><span>	  (cond
+</span><span>		  ((null? x) #f)
+</span><span>		  ((pair? x) #f)
+</span><span>		  (#t #t))))
+</span></code></pre>
+<h2 id="lab-tail-recursive-factorial">Lab - Tail Recursive Factorial</h2>
+<hr />
+<h3 id="tail-recursion-ggori-jjaggw">Tail Recursion(꼬리 재귀)</h3>
+<ul>
+<li>재귀함수에서 재귀가 일어나는 부분에서 온전히 재귀 함수의 호출만을 반환하는 경우</li>
+<li>아래와 같은 코드는 꼬리 재귀 코드가 아니다.</li>
+</ul>
+<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">fact</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">n</span><span>) {
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(n == </span><span style="color:#d08770;">0</span><span>) </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">1</span><span>;
+</span><span>	</span><span style="color:#b48ead;">else return</span><span> n*</span><span style="color:#bf616a;">fact</span><span>(n-</span><span style="color:#d08770;">1</span><span>);
+</span><span>}
+</span></code></pre>
+<ul>
+<li>이를 꼬리 재귀 코드로 고치면 아래와 같다.</li>
+</ul>
+<pre data-lang="C" style="background-color:#2b303b;color:#c0c5ce;" class="language-C "><code class="language-C" data-lang="C"><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">ifact</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">n</span><span>, </span><span style="color:#b48ead;">int</span><span> x = </span><span style="color:#d08770;">1</span><span>) {
+</span><span>	</span><span style="color:#b48ead;">if</span><span>(n == </span><span style="color:#d08770;">0</span><span>) </span><span style="color:#b48ead;">return</span><span> x;
+</span><span>	</span><span style="color:#b48ead;">else return </span><span style="color:#bf616a;">ifact</span><span>(n-</span><span style="color:#d08770;">1</span><span>, n*x);
+</span><span>}
+</span></code></pre>
+<h3 id="schemeheu-sahyonhan-factorial-tail-recursive-implementation">Scheme을 사용한 factorial Tail recursive implementation</h3>
+<ul>
+<li>아래는 Scheme으로 구현한 tail-recursion factorial calculating function이다.</li>
+</ul>
+<pre data-lang="Scheme" style="background-color:#2b303b;color:#c0c5ce;" class="language-Scheme "><code class="language-Scheme" data-lang="Scheme"><span>(define ifact
+</span><span>  (lambda (n x)
+</span><span>	  (if (= n 0) x
+</span><span>	  (ifact (- n 1) (* n x)))))
+</span></code></pre>
+<h3 id="ssihaeng-ggyeogwa">실행 결과</h3>
+<p><img src="/image/PL/ifact.png" alt="ifact" /></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

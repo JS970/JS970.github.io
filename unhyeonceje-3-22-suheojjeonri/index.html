@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>운영체제 2023-03-22 수업정리 | Rounding Off</title>
+
+
+
+<meta property="og:title" content="운영체제 2023-03-22 수업정리">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/unhyeonceje-3-22-suheojjeonri/">
+<meta property="og:url" content="https://js970.github.io/unhyeonceje-3-22-suheojjeonri/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-03-22T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="운영체제 2023-03-22 수업정리">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/unhyeonceje-3-22-suheojjeonri/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "운영체제 2023-03-22 수업정리"
+  
+    
+    
+      "datePublished":"2023-03-22T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/unhyeonceje-3-22-suheojjeonri/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-03-22">March 22, 2023</time>
+  	</div>
+  	<h1 class="post-title">운영체제 2023-03-22 수업정리</h1>
+  	<div class="post-line"></div>
+  	<h1 id="flow">Flow</h1>
+<ul>
+<li>Process scheduling</li>
+<li>Scheduler</li>
+<li>Process creation &amp; termination</li>
+</ul>
+<h2 id="process-scheduling">Process scheduling</h2>
+<hr />
+<ul>
+<li>주어진 실행 가능한 프로세스 목록 중에서 어떤 프로세스를 실행할 것인지 정하는 규칙</li>
+<li>빠르고 빈번하게 일어난다.</li>
+<li>이런 규칙은 크게 아래와 같이 분류할 수 있다.
+<ul>
+<li>non-preemptive scheduling
+<ul>
+<li>실행 중인 프로세스에서 CPU 자원을 해제할 때까지 기다려야 한다.(yeild())</li>
+<li>프로세스 간 조율이 중요하다.</li>
+</ul>
+</li>
+<li>preemptive scheduling
+<ul>
+<li>대부분의 현대 scheduler 형태이다.</li>
+<li>scheduler가 interrupt를 통해 프로세스를 중지하고 context switching을 실시한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Process scheduling을 하는 이유
+<ul>
+<li>CPU에서 Time Sharing을 통해 프로세스를 빨리 switching해서 CPU사용률을 높이기 위해</li>
+</ul>
+</li>
+<li>scheduler는 다음에 실행이 가능한 프로세스 중에서 선택하여 다른 프로세스를 실행한다.</li>
+<li>프로세스에 대한 scheduling queue를 사용한다. 프로세스는 아래의 여러 큐 사이에서 이동한다.
+<ul>
+<li>Job Queue
+<ul>
+<li>시스템 내 모든 프로세스 큐</li>
+</ul>
+</li>
+<li>Ready Queue
+<ul>
+<li>main memory에 올라온 프로세스 큐</li>
+</ul>
+</li>
+<li>Device Queue
+<ul>
+<li>I/O 대기중인 프로세스 큐</li>
+</ul>
+</li>
+<li>Wait Queue
+<ul>
+<li>event 대기중인 프로세스 큐</li>
+</ul>
+</li>
+<li>Queue들은 아래와 같이 PCB의 arrivaled time에 따라 linked list형태로 구현된다.<img src="/image/OS/scheduler_queues.png" alt="Scheduling Queues" /></li>
+<li>Ready Queue에서 scheduler에 의해 다음 프로세스로 선택되면 CPU자원을 할당받는다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="scheduler">Scheduler</h2>
+<hr />
+<h3 id="short-term-scheduler-cpu-scheduler">Short-term scheduler(CPU scheduler)</h3>
+<ul>
+<li>CPU 점유를 할당할 다음 프로세스를 선택한다.</li>
+<li>milisecond단위로 빈번하게 동작한다.</li>
+</ul>
+<h3 id="medium-term-scheduler">Medium-term scheduler</h3>
+<ul>
+<li>swapping이 일어날 프로세스에 대해서 관리한다.</li>
+<li>아래 그림은 Medium-term scheduler의 동작 그림이다.<img src="/image/OS/mediumterm_scheduler.png" alt="Medium-term scheduler" /></li>
+</ul>
+<h3 id="long-term-scheduler-job-scheduler">Long-term scheduler(Job Scheduler)</h3>
+<ul>
+<li>ready queue로 올라갈 프로세스를 관리한다.</li>
+<li>수 초~ 수 분의 간격으로 빈번하지 않게 동작한다.</li>
+<li>multiprogramming의 정도를 관리한다.</li>
+</ul>
+<h2 id="process-creation-termination">Process creation &amp; termination</h2>
+<hr />
+<h3 id="process-creation">Process Creation</h3>
+<ul>
+<li>새로운 프로세스의 생성은 부모 프로세스가 자식 프로세스를 생성하는 형태로 이루어진다. 이를 트리 구조로 표현할 수 있다.</li>
+<li>일반적으로 프로세스는 PID라는 고유 번호를 통해 식별된다.</li>
+<li>Resource Sharing
+<ul>
+<li>자식 프로세스는 부모 프로세스의 모든 자원을 공유할 수 있다.</li>
+<li>자식 프로세스가 부모 프로세스의 일부 자원만 공유하는 것도 가능하다.</li>
+<li>심지어 서로 아무런 자원도 공유하지 않는 것 역시 가능하다.</li>
+</ul>
+</li>
+<li>Execution Modes
+<ul>
+<li>부모 프로세스는 wait()등의 system call을 통해 자식 프로세스의 실행이 끝날 때까지 대기할 수 있다.</li>
+<li>부모 프로세스와 자식 프로세스는 동시에 실행될 수도 있다.</li>
+</ul>
+</li>
+<li>Address Space Modes
+<ul>
+<li>자식 프로세스는 부모 프로세스의 복제본일 수 있다.</li>
+<li>자식 프로세스와 부모 프로세스는 전혀 다른 프로세스 일 수 있다.</li>
+</ul>
+</li>
+<li>아래는 유닉스 시스템에서 프로세스 생성 과정을 도식으로 나타낸 것이다.<img src="/image/OS/process_creation.png" alt="porcess creation" /></li>
+</ul>
+<h3 id="process-termination">Process Termination</h3>
+<ul>
+<li>프로세스의 마지막 코드에서, 프로세스는 exit()등의 프로세스 종료 system call을 사용하여 프로세스를 삭제할 수 있다.
+<ul>
+<li>자식 프로세스가 종료될 경우 pid를 부모 프로세스로 반환한다.</li>
+<li>OS로부터 할당받은 자원을 해제한다.</li>
+</ul>
+</li>
+<li>부모 프로세스는 abort()를 사용하여 자식 프로세스를 종료시킬 수 있다.
+<ul>
+<li>자식 프로세스가 자원을 초과해서 사용하는 경우</li>
+<li>Task수행 중 더 이상 자식 프로세스가 필요 없는 경우</li>
+<li>일부 운영 체제에서는 부모 프로세스가 종료되면 자식 프로세스가 실행되는 것을 허용하지 않는 경우도 있다.
+<ul>
+<li>이를 cascaded termination이라고 한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>부모 프로세스가 waiting하고 있지 않은 경우 해당 프로세스는 zombie process이다.</li>
+<li>부모 프로세스가 wait()없이 terminate하였다면 해당 프로세스는 orphan이다.</li>
+</ul>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<title>15829 - Hashing | Rounding Off</title>
+
+
+
+<meta property="og:title" content="15829 - Hashing">
+
+
+
+<meta name="author" content="JS970">
+
+
+<meta property="og:locale" content="en-US">
+
+
+<meta name="description" content="writing is much easier than remembering">
+<meta property="og:description" content="writing is much easier than remembering">
+
+
+
+<link rel="canonical" href="https://js970.github.io/15829-hashing/">
+<meta property="og:url" content="https://js970.github.io/15829-hashing/">
+
+
+
+<meta property="og:site_name" content="Rounding Off" />
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2023-02-11T00:00:00+00:00">
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary">
+
+
+
+  <meta property="twitter:title" content="15829 - Hashing">
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "author": {
+    "@type":"Person",
+	  "name":"JS970",
+  },
+  "description": "writing is much easier than remembering",
+  "url": "https://js970.github.io/15829-hashing/",
+  "@context":"https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "15829 - Hashing"
+  
+    
+    
+      "datePublished":"2023-02-11T00:00:00+00:00",
+    
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://js970.github.io/15829-hashing/"
+    },
+  
+}
+</script>
+
+  <link rel="stylesheet" href="https://js970.github.io/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://js970.github.io/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://js970.github.io/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://js970.github.io/assets/apple-touch-icon.png">
+
+  
+    <link type="application/atom+xml" rel="alternate" href="https://js970.github.io/atom.xml" title="Rounding Off" />
+  
+
+  
+
+  
+  
+</head>
+
+<body>
+  
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="https://js970.github.io/">
+        <h2 class="nav-title">Rounding Off</h2>
+      </a>
+      <ul>
+        
+          
+            <li><a href="https://js970.github.io">Posts</a></li>
+          
+            <li><a href="https://js970.github.io/tags">Tags</a></li>
+          
+            <li><a href="https://js970.github.io/about">About</a></li>
+          
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <main>
+    
+  <div class="post">
+  	<div class="post-info">
+  		<span>Written by</span> JS970<br>
+  		
+  		<span>on&nbsp;</span><time datetime="2023-02-11">February 11, 2023</time>
+  	</div>
+  	<h1 class="post-title">15829 - Hashing</h1>
+  	<div class="post-line"></div>
+  	<ul>
+<li>난이도: 브론즈 2</li>
+<li>날짜: 2023년 2월 11일</li>
+<li>상태: Correct</li>
+<li>추가 검토 여부: No</li>
+<li>알고리즘 : 정수의 성질</li>
+</ul>
+<h1 id="solution">solution</h1>
+<ul>
+<li>얼핏 생각하면 난감하지만 mod연산의 특징을 이해한다면 쉽게 풀 수 있다.</li>
+<li>mod 1234567891 공간에서 값을 가지기 때문에 31의 50승이라는 말도 안 되는 수임에도 불구하고 연산 과정마다 mod연산을 통해 hash값을 구할 수 있다.</li>
+<li>각각 따로 mod한 값을 이후에 더한 후 mod해도 다 더해서 mod한 값과 같다.</li>
+</ul>
+<h1 id="code">code</h1>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">long long int </span><span style="color:#8fa1b3;">pow</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">exp</span><span>, </span><span style="color:#b48ead;">long long int </span><span style="color:#bf616a;">n</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; exp; i++)
+</span><span>    {   
+</span><span>        n %= </span><span style="color:#d08770;">1234567891</span><span>;
+</span><span>        n *= </span><span style="color:#d08770;">31</span><span>;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return</span><span> n;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">long long int </span><span style="color:#8fa1b3;">myhash</span><span>(string </span><span style="color:#bf616a;">str</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">long long int</span><span> n;
+</span><span>    </span><span style="color:#b48ead;">long long int</span><span> ret = </span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; str.</span><span style="color:#bf616a;">length</span><span>(); i++)
+</span><span>    {
+</span><span>        n = str[i] - &#39;</span><span style="color:#a3be8c;">a</span><span>&#39; + </span><span style="color:#d08770;">1</span><span>;
+</span><span>        ret += </span><span style="color:#96b5b4;">pow</span><span>(i, n);
+</span><span>        ret %= </span><span style="color:#d08770;">1234567891</span><span>;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return</span><span> ret;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> L;
+</span><span>    cin &gt;&gt; L;
+</span><span>    string input;
+</span><span>    cin &gt;&gt; input;
+</span><span>    </span><span style="color:#bf616a;">myhash</span><span>(input);
+</span><span>    cout &lt;&lt; </span><span style="color:#bf616a;">myhash</span><span>(input) &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h1 id="ref">ref</h1>
+<p><a href="https://www.acmicpc.net/problem/15829">15829번: Hashing</a></p>
+
+  </div>
+
+	
+
+  <div class="pagination">
+  	
+		<a href="#" class="top">Top</a>
+		
+  </div>
+
+  </main>
+
+  
+  <footer>
+    <span>&copy; 2022 JS970. Made with <a href="https://www.getzola.org">Zola</a> using the <a
+          href="https://github.com/aaranxu/tale-zola">Tale-Zola</a> theme.</span>
+  </footer>
+  
+</body>
+</html>
